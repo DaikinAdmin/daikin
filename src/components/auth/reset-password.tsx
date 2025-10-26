@@ -49,7 +49,7 @@ const ResetPassword = () => {
                 },
                 onSuccess: () => {
                     setSuccess("New password has been created")
-                    router.replace(`/${locale}/signin`)
+                    router.replace(`/signin`)
                 },
                 onError: (ctx) => {
                     setError(`message: ${ctx.error.message}
@@ -68,7 +68,7 @@ const ResetPassword = () => {
         <CardWrapper
             cardTitle='Reset Password'
             cardDescription='create a new password'
-            cardFooterLink={`/${locale}/signin`}
+            cardFooterLink={`/signin`}
             cardFooterDescription='Remember your password?'
             cardFooterLinkTitle='Signin'
         >

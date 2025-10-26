@@ -12,7 +12,7 @@ const SignOut = () => {
 
     if(!session.data) {
       return (
-        <Button onClick={() => {router.push(`/${locale}/signin`)}}>
+        <Button onClick={() => {router.push(`/signin`)}}>
           Login
         </Button>
       )
@@ -23,7 +23,7 @@ const SignOut = () => {
     onClick={async() => {await signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push(`/${locale}/signin`)
+          router.push(`/signin`)
         }
       }
     })}}

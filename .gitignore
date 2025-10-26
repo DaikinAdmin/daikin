@@ -3,3 +3,11 @@
 node_modules/
 *.pem
 *.log
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+.auth/

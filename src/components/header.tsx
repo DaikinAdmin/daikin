@@ -95,6 +95,7 @@ export default function Header() {
                 href="/dashboard" 
                 className="text-sm xl:text-base text-gray-700 hover:text-[#003D7A] font-medium transition-colors"
                 locale={locale}
+                data-testid="dashboard-link"
               >
                 {t('auth.dashboard')}
               </Link>

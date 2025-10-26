@@ -62,7 +62,7 @@ const SignUp = () => {
         <CardWrapper
             cardTitle='SignUp'
             cardDescription='Create an new account'
-            cardFooterLink={`/${locale}/signin`}
+            cardFooterLink={`/signin`}
             cardFooterDescription='Already have an account?'
             cardFooterLinkTitle='Signin'
         >
