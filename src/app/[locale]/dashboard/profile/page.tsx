@@ -21,6 +21,7 @@ import { useRouter } from "@/i18n/navigation";
 import { Calendar, Lock } from "lucide-react";
 
 const postalCodeRegex = /^\d{2}-\d{3}$/;
+const phoneNumberRegex = /^[1-9]\d{8}$/;
 
 const profileSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,6 +30,7 @@ const profileSchema = z.object({
   apartmentNumber: z.string().optional(),
   city: z.string().optional(),
   postalCode: z.string().regex(postalCodeRegex, "Postal code must be in format XX-XXX").optional().or(z.literal("")),
+  phoneNumber: z.string().regex(phoneNumberRegex, "Phone number must be 9 digits and cannot start with 0").optional().or(z.literal("")),
 });
 
 type ProfileFormData = z.infer<typeof profileSchema>;
@@ -60,6 +62,7 @@ export default function ProfilePage() {
       apartmentNumber: "",
       city: "",
       postalCode: "",
+      phoneNumber: "",
     },
   });
 
@@ -95,6 +98,7 @@ export default function ProfilePage() {
           apartmentNumber: userDetails.apartmentNumber || "",
           city: userDetails.city || "",
           postalCode: userDetails.postalCode || "",
+          phoneNumber: userDetails.phoneNumber || "",
         });
       }
     } catch (err) {
@@ -271,6 +275,25 @@ export default function ProfilePage() {
               <CardTitle className="text-lg sm:text-xl">{t("address")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
+              <FormField
+                control={profileForm.control}
+                name="phoneNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm sm:text-base">{t("phoneNumber")}</FormLabel>
+                    <FormControl>
+                      <Input 
+                        placeholder={t("phoneNumberPlaceholder")} 
+                        {...field} 
+                        className="text-sm sm:text-base" 
+                        maxLength={9}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <FormField
                   control={profileForm.control}

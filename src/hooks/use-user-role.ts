@@ -2,7 +2,7 @@ import { Role } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 export function useUserRole() {
-    const [role, setRole] = useState<Role>(Role.USER);
+    const [role, setRole] = useState<Role | null>(null);
     useEffect(() => {
         async function fetchUserRole() {
             try {

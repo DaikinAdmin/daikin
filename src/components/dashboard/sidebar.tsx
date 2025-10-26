@@ -40,7 +40,7 @@ const getRoleNavItems = (t: any) => ({
     },
     {
       title: t("sidebar.myBenefits"),
-      href: "/dashboard/benefits",
+      href: "/dashboard/benefits/user",
       icon: Gift,
     },
   ],
@@ -73,6 +73,11 @@ const getRoleNavItems = (t: any) => ({
       icon: ShoppingBag,
     },
     {
+      title: "Services",
+      href: "/dashboard/services",
+      icon: Wrench,
+    },
+    {
       title: "Events",
       href: "/dashboard/events",
       icon: Calendar,
@@ -80,6 +85,11 @@ const getRoleNavItems = (t: any) => ({
     {
       title: "Benefits",
       href: "/dashboard/benefits",
+      icon: Gift,
+    },
+    {
+      title: "Benefits Redeemed",
+      href: "/dashboard/benefits-redeemed",
       icon: Gift,
     },
   ],
@@ -92,7 +102,7 @@ export function Sidebar() {
   const { data: session, isPending } = useSession();
   const user = session?.user;
   const role = useUserRole();
-  const navItems = getRoleNavItems(t)[role];
+  const navItems = role ? getRoleNavItems(t)[role] : [];
 
   // Don't render sidebar while session is loading
   if (isPending) {

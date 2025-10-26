@@ -30,6 +30,7 @@ type OrderData = {
   id: string;
   orderId: string;
   customerEmail: string;
+  customerPhoneNumber?: string | null;
   dateOfPurchase: string;
   nextDateOfService: string | null;
   totalPrice: number;
@@ -143,6 +144,13 @@ export default function ViewOrderPage() {
               <p className="text-lg">{order.customerEmail}</p>
             </div>
           </div>
+
+          {(userRole === "ADMIN" || userRole === "EMPLOYEE") && order.customerPhoneNumber && (
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">{t("phoneNumber")}</p>
+              <p className="text-lg">{order.customerPhoneNumber}</p>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-4">
             <div>

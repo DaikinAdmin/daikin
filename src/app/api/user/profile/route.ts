@@ -29,6 +29,7 @@ export async function GET(req: Request) {
             apartmentNumber: true,
             city: true,
             postalCode: true,
+            phoneNumber: true,
             daikinCoins: true,
           },
         },
@@ -57,12 +58,21 @@ export async function PATCH(req: Request) {
     }
 
     const body = await req.json();
-    const { name, dateOfBirth, street, apartmentNumber, city, postalCode } = body;
+    const { name, dateOfBirth, street, apartmentNumber, city, postalCode, phoneNumber } = body;
     console.log("Received profile update data:", body);
+    
     // Validate postal code format if provided
     if (postalCode && !/^\d{2}-\d{3}$/.test(postalCode)) {
       return NextResponse.json(
         { error: "Invalid postal code format. Use XX-XXX" },
+        { status: 400 }
+      );
+    }
+
+    // Validate phone number format if provided
+    if (phoneNumber && !/^[1-9]\d{8}$/.test(phoneNumber)) {
+      return NextResponse.json(
+        { error: "Invalid phone number. Must be 9 digits and cannot start with 0" },
         { status: 400 }
       );
     }
@@ -76,6 +86,7 @@ export async function PATCH(req: Request) {
         apartmentNumber: apartmentNumber ? apartmentNumber : null,
         city: city ? city : null,
         postalCode: postalCode ? postalCode : null,
+        phoneNumber: phoneNumber ? phoneNumber : null,
       },
       update: {
         dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : null,
@@ -83,6 +94,7 @@ export async function PATCH(req: Request) {
         apartmentNumber: apartmentNumber ? apartmentNumber : null,
         city: city ? city : null,
         postalCode: postalCode ? postalCode : null,
+        phoneNumber: phoneNumber ? phoneNumber : null,
       },
       select: {
           userId: true,
@@ -91,6 +103,7 @@ export async function PATCH(req: Request) {
           apartmentNumber: true,
           city: true,
           postalCode: true,
+          phoneNumber: true,
           daikinCoins: true,
       }
     });

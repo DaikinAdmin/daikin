@@ -35,7 +35,26 @@ export const GET = async (
             return NextResponse.json({ error: "Forbidden" }, { status: 403 });
         }
 
-        return NextResponse.json(order);
+        // For Admin and Employee, fetch user phone number
+        let customerPhoneNumber = null;
+        if (session.user.role === Role.ADMIN || session.user.role === Role.EMPLOYEE) {
+            const user = await prisma.user.findUnique({
+                where: { email: order.customerEmail },
+                select: {
+                    userDetails: {
+                        select: {
+                            phoneNumber: true,
+                        },
+                    },
+                },
+            });
+            customerPhoneNumber = user?.userDetails?.phoneNumber || null;
+        }
+
+        return NextResponse.json({
+            ...order,
+            customerPhoneNumber,
+        });
     } catch (error) {
         console.error("Error fetching order:", error);
         return NextResponse.json({ error: "Failed to fetch order" }, { status: 500 });

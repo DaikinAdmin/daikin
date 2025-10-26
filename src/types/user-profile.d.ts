@@ -16,5 +16,7 @@ export interface UserDetailsType {
     street: string | null,
     apartmentNumber: string | null,
     city: string | null,
-    postalCode: string | null
+    postalCode: string | null,
+    phoneNumber: string | null,
+    daikinCoins: number
 }
