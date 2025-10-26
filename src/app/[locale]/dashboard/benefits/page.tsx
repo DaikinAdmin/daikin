@@ -218,7 +218,7 @@ export default function BenefitsManagementPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">{t("title")}</h1>
-        <Button onClick={() => handleOpenDialog()}>
+        <Button data-testid="create-benefit" onClick={() => handleOpenDialog()}>
           <Plus className="mr-2 h-4 w-4" />
           {t("addNewBenefit")}
         </Button>
