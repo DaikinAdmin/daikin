@@ -77,8 +77,6 @@ export default function UserBenefitsPage() {
       }
     } catch (error) {
       console.error("Error fetching benefits:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -98,10 +96,23 @@ export default function UserBenefitsPage() {
 
   useEffect(() => {
     if (userRole === "USER") {
-      fetchBenefits();
-      fetchRedeemedBenefits();
+      const fetchData = async () => {
+        await Promise.all([fetchBenefits(), fetchRedeemedBenefits()]);
+        setLoading(false);
+      };
+      fetchData();
+    } else if (userRole) {
+      // If we know the role and it's not USER, stop loading
+      setLoading(false);
     }
   }, [userRole]);
+  
+  // Separate effect to stop loading once profile is available for USER role
+  useEffect(() => {
+    if (userRole === "USER" && userProfile?.userDetails) {
+      setLoading(false);
+    }
+  }, [userRole, userProfile]);
 
   const handleOpenDialog = (benefit: Benefit) => {
     setSelectedBenefit(benefit);
@@ -150,15 +161,14 @@ export default function UserBenefitsPage() {
 
   if (loading || !userProfile || !userProfile.userDetails) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex items-center justify-center h-64" data-testid="loading-spinner">
         <Loader2 className="h-8 w-8 animate-spin text-[#003D7A]" />
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header with User Coins */}
+    <div className="space-y-6" data-testid="user-benefits-page">{/* Header with User Coins */}
       <Card className="bg-gradient-to-r from-[#003D7A] to-[#0051A3] text-white">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-white">
@@ -254,7 +264,7 @@ export default function UserBenefitsPage() {
                   const needed = coinsNeeded(benefit.daikinCoins);
 
                   return (
-                    <TableRow key={benefit.id}>
+                    <TableRow key={benefit.id} data-testid="benefit-card">
                       <TableCell className="font-medium">{benefit.title}</TableCell>
                       <TableCell>{benefit.description}</TableCell>
                       <TableCell>
@@ -271,6 +281,7 @@ export default function UserBenefitsPage() {
                               size="sm"
                               onClick={() => handleOpenDialog(benefit)}
                               className="bg-[#003D7A] hover:bg-[#0051A3]"
+                              data-testid="redeem-benefit"
                             >
                               {t("redeem")}
                             </Button>

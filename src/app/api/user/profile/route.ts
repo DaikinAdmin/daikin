@@ -13,7 +13,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const user = await prisma.user.findUnique({
+    let user = await prisma.user.findUnique({
       where: { id: session.user.id },
       select: {
         id: true,
@@ -38,6 +38,40 @@ export async function GET(req: Request) {
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Auto-create userDetails if it doesn't exist
+    if (!user.userDetails) {
+      await prisma.userDetails.create({
+        data: {
+          userId: session.user.id,
+          daikinCoins: 0,
+        },
+      });
+
+      // Refetch user with newly created userDetails
+      user = await prisma.user.findUnique({
+        where: { id: session.user.id },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          role: true,
+          image: true,
+          twoFactorEnabled: true,
+          userDetails: {
+            select: {
+              dateOfBirth: true,
+              street: true,
+              apartmentNumber: true,
+              city: true,
+              postalCode: true,
+              phoneNumber: true,
+              daikinCoins: true,
+            },
+          },
+        },
+      });
     }
 
     return NextResponse.json(user);
