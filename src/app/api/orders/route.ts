@@ -73,7 +73,7 @@ export const POST = async (req: Request) => {
     }
 
     try {
-        const { orderId, customerEmail, dateOfPurchase, nextDateOfService, products } = await req.json();
+        const { orderId, customerEmail, dateOfPurchase, nextDateOfService, daikinCoins, products } = await req.json();
 
         if (!orderId || !customerEmail || !products || products.length === 0) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -88,14 +88,13 @@ export const POST = async (req: Request) => {
             return NextResponse.json({ error: "Order ID already exists" }, { status: 400 });
         }
 
-        // Calculate total price and daikinCoins from products
+        // Calculate total price from products
         const totalPrice = products.reduce((sum: number, product: any) => {
             return sum + (product.totalPrice || 0);
         }, 0);
 
-        const totalDaikinCoins = products.reduce((sum: number, product: any) => {
-            return sum + (product.daikinCoins || 0);
-        }, 0);
+        // Use the daikinCoins value from the order level (default to 0 if not provided)
+        const orderDaikinCoins = daikinCoins || 0;
 
         // Create order with products
         const order = await prisma.order.create({
@@ -105,7 +104,7 @@ export const POST = async (req: Request) => {
                 dateOfPurchase: dateOfPurchase ? new Date(dateOfPurchase) : new Date(),
                 nextDateOfService: nextDateOfService ? new Date(nextDateOfService) : null,
                 totalPrice,
-                daikinCoins: totalDaikinCoins,
+                daikinCoins: orderDaikinCoins,
                 products: {
                     create: products.map((product: any) => ({
                         productId: product.productId,
@@ -122,21 +121,22 @@ export const POST = async (req: Request) => {
             },
         });
 
-        // Update user's daikinCoins if the customer exists in the system
-        if (totalDaikinCoins > 0) {
+        // Update user's daikinCoins if the customer exists in the system and is a USER
+        if (orderDaikinCoins > 0) {
             const user = await prisma.user.findUnique({
                 where: { email: customerEmail },
                 include: { userDetails: true },
             });
 
-            if (user) {
+            // Only award coins to users with USER role
+            if (user && user.role === Role.USER) {
                 if (user.userDetails) {
                     // Update existing userDetails
                     await prisma.userDetails.update({
                         where: { userId: user.id },
                         data: {
                             daikinCoins: {
-                                increment: totalDaikinCoins,
+                                increment: orderDaikinCoins,
                             },
                         },
                     });
@@ -145,7 +145,7 @@ export const POST = async (req: Request) => {
                     await prisma.userDetails.create({
                         data: {
                             userId: user.id,
-                            daikinCoins: totalDaikinCoins,
+                            daikinCoins: orderDaikinCoins,
                         },
                     });
                 }

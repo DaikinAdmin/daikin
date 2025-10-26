@@ -80,7 +80,7 @@ export const PUT = async (
 
     try {
         const { id } = await params;
-        const { customerEmail, dateOfPurchase, nextDateOfService, products } = await req.json();
+        const { customerEmail, dateOfPurchase, nextDateOfService, daikinCoins, products } = await req.json();
 
         // Check if order exists
         const existingOrder = await prisma.order.findUnique({
@@ -92,26 +92,26 @@ export const PUT = async (
             return NextResponse.json({ error: "Order not found" }, { status: 404 });
         }
 
-        // Calculate total price and daikinCoins from products
+        // Calculate total price from products
         const totalPrice = products ? products.reduce((sum: number, product: any) => {
             return sum + (product.totalPrice || 0);
         }, 0) : existingOrder.totalPrice;
 
-        const totalDaikinCoins = products ? products.reduce((sum: number, product: any) => {
-            return sum + (product.daikinCoins || 0);
-        }, 0) : existingOrder.daikinCoins;
+        // Use the daikinCoins value from the order level (default to existing value if not provided)
+        const orderDaikinCoins = daikinCoins !== undefined ? daikinCoins : existingOrder.daikinCoins;
 
         // Calculate the difference in daikinCoins
-        const coinsDifference = totalDaikinCoins - existingOrder.daikinCoins;
+        const coinsDifference = orderDaikinCoins - existingOrder.daikinCoins;
 
-        // Update user's daikinCoins if the customer exists and there's a difference
+        // Update user's daikinCoins if the customer exists, there's a difference, and user is USER role
         if (coinsDifference !== 0) {
             const user = await prisma.user.findUnique({
                 where: { email: customerEmail || existingOrder.customerEmail },
                 include: { userDetails: true },
             });
 
-            if (user) {
+            // Only award coins to users with USER role
+            if (user && user.role === Role.USER) {
                 if (user.userDetails) {
                     // Update existing userDetails
                     await prisma.userDetails.update({
@@ -142,7 +142,7 @@ export const PUT = async (
                 dateOfPurchase: dateOfPurchase ? new Date(dateOfPurchase) : existingOrder.dateOfPurchase,
                 nextDateOfService: nextDateOfService ? new Date(nextDateOfService) : existingOrder.nextDateOfService,
                 totalPrice,
-                daikinCoins: totalDaikinCoins,
+                daikinCoins: orderDaikinCoins,
             },
             include: {
                 products: true,

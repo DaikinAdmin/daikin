@@ -15,6 +15,19 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
   Table,
   TableBody,
   TableCell,
@@ -22,9 +35,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowLeft, Loader2, Save, Plus, Trash2 } from "lucide-react";
+import { ArrowLeft, Loader2, Save, Plus, Trash2, Check, ChevronsUpDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useUserRole } from "@/hooks/use-user-role";
+import { cn } from "@/lib/utils";
 
 type Product = {
   id: string;
@@ -34,7 +48,6 @@ type Product = {
   price: number;
   quantity: number;
   totalPrice: number;
-  daikinCoins: number;
 };
 
 export default function NewOrderPage() {
@@ -56,9 +69,38 @@ export default function NewOrderPage() {
     customerEmail: "",
     dateOfPurchase: new Date().toISOString().split("T")[0],
     nextDateOfService: "",
+    daikinCoins: 0,
   });
 
   const [products, setProducts] = useState<Product[]>([]);
+  
+  // Email autocomplete state
+  const [openEmailCombobox, setOpenEmailCombobox] = useState(false);
+  const [emailSearchQuery, setEmailSearchQuery] = useState("");
+  const [emailSuggestions, setEmailSuggestions] = useState<Array<{ email: string; name: string | null }>>([]);
+  
+  // Search for user emails
+  useEffect(() => {
+    const searchEmails = async () => {
+      if (emailSearchQuery.length < 2) {
+        setEmailSuggestions([]);
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/users/search?q=${encodeURIComponent(emailSearchQuery)}`);
+        if (response.ok) {
+          const users = await response.json();
+          setEmailSuggestions(users);
+        }
+      } catch (error) {
+        console.error("Error searching emails:", error);
+      }
+    };
+
+    const debounce = setTimeout(searchEmails, 300);
+    return () => clearTimeout(debounce);
+  }, [emailSearchQuery]);
   
   const [newProduct, setNewProduct] = useState({
     productId: "",
@@ -66,7 +108,6 @@ export default function NewOrderPage() {
     warranty: "",
     price: 0,
     quantity: 1,
-    daikinCoins: 0,
   });
 
   const calculateProductTotal = () => {
@@ -91,7 +132,6 @@ export default function NewOrderPage() {
       warranty: "",
       price: 0,
       quantity: 1,
-      daikinCoins: 0,
     });
     setIsProductDialogOpen(false);
   };
@@ -112,7 +152,11 @@ export default function NewOrderPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...orderData,
+          orderId: orderData.orderId,
+          customerEmail: orderData.customerEmail,
+          dateOfPurchase: orderData.dateOfPurchase,
+          nextDateOfService: orderData.nextDateOfService,
+          daikinCoins: orderData.daikinCoins,
           products: products.map(({ id, ...product }) => product),
         }),
       });
@@ -163,15 +207,55 @@ export default function NewOrderPage() {
 
           <div className="grid gap-2">
             <Label htmlFor="customerEmail">{t("customerEmail")} *</Label>
-            <Input
-              id="customerEmail"
-              type="email"
-              value={orderData.customerEmail}
-              onChange={(e) =>
-                setOrderData({ ...orderData, customerEmail: e.target.value })
-              }
-              required
-            />
+            <Popover open={openEmailCombobox} onOpenChange={setOpenEmailCombobox}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  role="combobox"
+                  aria-expanded={openEmailCombobox}
+                  className="w-full justify-between"
+                >
+                  {orderData.customerEmail || t("selectCustomerEmail")}
+                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-full p-0">
+                <Command>
+                  <CommandInput 
+                    placeholder={t("searchEmail")} 
+                    value={emailSearchQuery}
+                    onValueChange={setEmailSearchQuery}
+                  />
+                  <CommandList>
+                    <CommandEmpty>{t("noEmailFound")}</CommandEmpty>
+                    <CommandGroup>
+                      {emailSuggestions.map((user) => (
+                        <CommandItem
+                          key={user.email}
+                          value={user.email}
+                          onSelect={(currentValue) => {
+                            setOrderData({ ...orderData, customerEmail: currentValue });
+                            setOpenEmailCombobox(false);
+                            setEmailSearchQuery("");
+                          }}
+                        >
+                          <Check
+                            className={cn(
+                              "mr-2 h-4 w-4",
+                              orderData.customerEmail === user.email ? "opacity-100" : "opacity-0"
+                            )}
+                          />
+                          <div className="flex flex-col">
+                            <span>{user.email}</span>
+                            {user.name && <span className="text-sm text-muted-foreground">{user.name}</span>}
+                          </div>
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </PopoverContent>
+            </Popover>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -198,6 +282,20 @@ export default function NewOrderPage() {
                 }
               />
             </div>
+          </div>
+
+          <div className="grid gap-2">
+            <Label htmlFor="daikinCoins">{t("daikinCoins")}</Label>
+            <Input
+              id="daikinCoins"
+              type="number"
+              min="0"
+              value={orderData.daikinCoins}
+              onChange={(e) =>
+                setOrderData({ ...orderData, daikinCoins: parseInt(e.target.value) || 0 })
+              }
+              placeholder="0"
+            />
           </div>
         </CardContent>
       </Card>
@@ -228,7 +326,6 @@ export default function NewOrderPage() {
                   <TableHead>{t("price")}</TableHead>
                   <TableHead>{t("quantity")}</TableHead>
                   <TableHead>{t("total")}</TableHead>
-                  <TableHead>{t("daikinCoins")}</TableHead>
                   <TableHead className="text-right">{t("actions")}</TableHead>
                 </TableRow>
               </TableHeader>
@@ -241,7 +338,6 @@ export default function NewOrderPage() {
                     <TableCell>{product.price.toFixed(2)} zł</TableCell>
                     <TableCell>{product.quantity}</TableCell>
                     <TableCell>{product.totalPrice.toFixed(2)} zł</TableCell>
-                    <TableCell>{product.daikinCoins}</TableCell>
                     <TableCell className="text-right">
                       <Button
                         variant="destructive"
@@ -260,7 +356,7 @@ export default function NewOrderPage() {
                   <TableCell className="font-bold">
                     {calculateOrderTotal().toFixed(2)} zł
                   </TableCell>
-                  <TableCell colSpan={2}></TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -374,32 +470,14 @@ export default function NewOrderPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="totalPrice">{t("totalPrice")}</Label>
-                <Input
-                  id="totalPrice"
-                  type="number"
-                  value={calculateProductTotal().toFixed(2)}
-                  disabled
-                />
-              </div>
-
-              <div className="grid gap-2">
-                <Label htmlFor="daikinCoins">{t("daikinCoins")}</Label>
-                <Input
-                  id="daikinCoins"
-                  type="number"
-                  min="0"
-                  value={newProduct.daikinCoins}
-                  onChange={(e) =>
-                    setNewProduct({
-                      ...newProduct,
-                      daikinCoins: parseInt(e.target.value) || 0,
-                    })
-                  }
-                />
-              </div>
+            <div className="grid gap-2">
+              <Label htmlFor="totalPrice">{t("totalPrice")}</Label>
+              <Input
+                id="totalPrice"
+                type="number"
+                value={calculateProductTotal().toFixed(2)}
+                disabled
+              />
             </div>
           </div>
           <DialogFooter>
