@@ -18,8 +18,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Daikin - Vdoskonalennya povitrya",
+  title: "AMM Salon - Vdoskonalennya povitrya",
   description: "Otkryte innovatsiyni rishennya HVAC vid Daikin, rozrobleni dlya stvorennya ideal'noho vnutrishn'oho seredovyshcha dlya vashoho domu ta biznesu.",
+  icons: {
+    icon: '/favicon.ico',
+  }
 };
 
 export function generateStaticParams() {

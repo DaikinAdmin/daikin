@@ -1,6 +1,6 @@
 {
   "header": {
-    "logo": "Daikin",
+    "logo": "AMM Salon",
     "nav": {
       "blog": "Blog",
       "benefits": "Korzyści",
@@ -101,7 +101,7 @@
     }
   },
   "dashboard": {
-    "title": "Panel Daikin",
+    "title": "Panel AMM Salon",
     "welcome": "Witaj ponownie, {name}!",
     "subtitle": "Oto co dzieje się z Twoim kontem dzisiaj.",
     "quickActions": "Szybkie akcje",

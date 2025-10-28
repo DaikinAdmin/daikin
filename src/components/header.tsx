@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Menu, X, LogOut, Settings, ChevronDown, LayoutDashboard, UserCircle, LogIn } from "lucide-react";
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from "@/components/language-switcher";
@@ -53,8 +54,14 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3" locale={locale}>
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#003D7A] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-base sm:text-lg">D</span>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 relative">
+                <Image 
+                  src="/daikin_logo.png" 
+                  alt="AMM Salon Logo" 
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
               <span className="text-lg sm:text-2xl font-bold text-[#003D7A]">{t('logo')}</span>
             </Link>
