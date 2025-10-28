@@ -593,7 +593,7 @@
     "terms": "Terms of Service",
     "cookies": "Cookie Policy"
   },
-  "signIn": {
+    "signIn": {
     "title": "Sign In",
     "description": "Enter your details below to login to your account",
     "email": "Email",
@@ -612,5 +612,34 @@
       "loginFailed": "Email login failed. Please try again.",
       "somethingWrong": "Something went wrong. Please try again."
     }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "Sorry, we couldn't find the page you're looking for. The page may have been moved or doesn't exist.",
+      "backHome": "Back to Home",
+      "goBack": "Go Back",
+      "helpfulLinks": "Here are some helpful links instead:",
+      "products": "Products",
+      "contact": "Contact Us",
+      "dashboard": "Dashboard"
+    },
+    "forbidden": {
+      "title": "Access Forbidden",
+      "description": "You don't have permission to access this page. Please contact your administrator if you believe this is an error.",
+      "backHome": "Back to Home",
+      "goBack": "Go Back",
+      "help": "Need help?",
+      "contactSupport": "Contact Support"
+    },
+    "unauthorized": {
+      "title": "Authentication Required",
+      "description": "You need to be signed in to access this page. Please log in with your account to continue.",
+      "signIn": "Sign In",
+      "backHome": "Back to Home",
+      "noAccount": "Don't have an account yet?",
+      "createAccount": "Create an Account"
+    }
   }
 }
+

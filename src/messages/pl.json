@@ -612,5 +612,27 @@
       "loginFailed": "Logowanie nie powiodło się. Spróbuj ponownie.",
       "somethingWrong": "Coś poszło nie tak. Spróbuj ponownie."
     }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Strona nie znaleziona",
+      "description": "Przepraszamy, nie mogliśmy znaleźć strony, której szukasz. Być może została przeniesiona lub już nie istnieje.",
+      "goHome": "Wróć do strony głównej",
+      "goBack": "Wróć",
+      "searchProducts": "Wyszukaj produkty"
+    },
+    "forbidden": {
+      "title": "Dostęp zabroniony",
+      "description": "Nie masz uprawnień do dostępu do tej strony. Jeśli uważasz, że jest to błąd, skontaktuj się z administratorem.",
+      "goHome": "Wróć do strony głównej",
+      "goBack": "Wróć"
+    },
+    "unauthorized": {
+      "title": "Wymagane uwierzytelnienie",
+      "description": "Musisz być zalogowany, aby uzyskać dostęp do tej strony. Zaloguj się lub utwórz konto, aby kontynuować.",
+      "goHome": "Wróć do strony głównej",
+      "goBack": "Wróć",
+      "login": "Zaloguj się"
+    }
   }
 }
