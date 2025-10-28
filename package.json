@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "prisma generate",
     "test:e2e": "npx playwright test",
     "report:axe": "npx axe-playwright-report build-report",
     "report:pw": "npx playwright show-report"
