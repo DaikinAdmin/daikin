@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { Role } from "@prisma/client";
 import { sendEmail } from "@/helpers/email/resend";
 
@@ -64,7 +64,7 @@ export const POST = async (
 
         // Send email notification
         const productsList = order.products
-            .map((p) => `- ${p.productDescription} (ID: ${p.productId})`)
+            .map((p: any) => `- ${p.productDescription} (ID: ${p.productId})`)
             .join('\n');
 
         const emailHtml = `

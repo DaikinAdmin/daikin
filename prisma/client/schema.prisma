@@ -1,0 +1,188 @@
+// prisma/schema.prisma
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./client" // update this if needed
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  EMPLOYEE
+  ADMIN
+}
+
+enum ServiceStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id               String       @id @default(cuid())
+  name             String
+  email            String
+  emailVerified    Boolean      @default(false)
+  image            String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  twoFactorEnabled Boolean      @default(false)
+  username         String?
+  displayUsername  String?
+  role             Role         @default(USER)
+  userDetails      UserDetails?
+  Session          Session[]
+  Account          Account[]
+  TwoFactor        TwoFactor[]
+  benefits         Benefits[]
+  services         Service[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model UserDetails {
+  id              String    @id @default(cuid())
+  dateOfBirth     DateTime?
+  street          String?
+  apartmentNumber String?
+  city            String?
+  postalCode      String?
+  phoneNumber     String?
+  daikinCoins     Int       @default(0)
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_details")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("session")
+}
+
+model Account {
+  id           String    @id @default(cuid())
+  accountId    String
+  providerId   String
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken  String?
+  refreshToken String?
+  idToken      String?
+  expiresAt    DateTime?
+  password     String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
+
+  @@map("verification")
+}
+
+model TwoFactor {
+  id          String @id @default(cuid())
+  secret      String
+  backupCodes String
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("twoFactor")
+}
+
+model Order {
+  id                     String         @id @default(cuid())
+  orderId                String         @unique
+  customerEmail          String
+  dateOfPurchase         DateTime       @default(now())
+  nextDateOfService      DateTime?
+  totalPrice             Float          @default(0)
+  daikinCoins            Int            @default(0)
+  notificationSent30Days Boolean        @default(false)
+  notificationSent7Days  Boolean        @default(false)
+  createdAt              DateTime       @default(now())
+  updatedAt              DateTime       @updatedAt
+  products               OrderProduct[]
+  services               Service[]
+
+  @@map("order")
+}
+
+model OrderProduct {
+  id                 String  @id @default(cuid())
+  productId          String
+  productDescription String
+  warranty           String?
+  price              Float
+  quantity           Int     @default(1)
+  totalPrice         Float
+  orderId            String
+  order              Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("order_product")
+}
+
+model BenefitDescription {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  daikinCoins Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  isActive    Boolean    @default(true)
+  benefits    Benefits[]
+
+  @@map("benefit_description")
+}
+
+model Benefits {
+  id                   String             @id @default(cuid())
+  userId               String
+  redeemedAt           DateTime           @default(now())
+  comment              String?
+  benefitDescriptionId String
+  benefitDescription   BenefitDescription @relation(fields: [benefitDescriptionId], references: [id])
+  User                 User[]
+
+  @@map("benefits")
+}
+
+model Service {
+  id                    String        @id @default(cuid())
+  orderId               String
+  userId                String
+  dateOfProposedService DateTime
+  dateOfService         DateTime?
+  serviceDetails        String
+  status                ServiceStatus @default(PENDING)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+  order                 Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  user                  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

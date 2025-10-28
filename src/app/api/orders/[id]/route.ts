@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { Role } from "@prisma/client";
 
 // GET single order (Admin and Employee see all, Users see their own)

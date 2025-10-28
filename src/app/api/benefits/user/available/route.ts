@@ -1,5 +1,5 @@
 import { auth } from "@/lib/auth";
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 

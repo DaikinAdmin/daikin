@@ -1,5 +1,5 @@
 // auth.ts
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { email } from "@/helpers/email/resend";
 import { ForgotPasswordSchema } from "@/helpers/zod/forgot-password-schema";
 import SignInSchema from "@/helpers/zod/login-schema";

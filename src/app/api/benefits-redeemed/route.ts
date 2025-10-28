@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { Role } from "@prisma/client";
 
 // GET all redeemed benefits (Admin only)
@@ -34,7 +34,7 @@ export const GET = async (req: Request) => {
         // Filter on the client side if search is provided
         let filteredBenefits = redeemedBenefits;
         if (search) {
-            filteredBenefits = redeemedBenefits.filter(benefit => 
+            filteredBenefits = redeemedBenefits.filter((benefit: any) =>
                 benefit.benefitDescription.title.toLowerCase().includes(search.toLowerCase())
             );
         }

@@ -1,5 +1,5 @@
 import { auth } from "@/lib/auth";
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -33,7 +33,7 @@ export async function GET() {
         });
 
         // Transform data for frontend
-        const formattedBenefits = redeemedBenefits.map((benefit) => ({
+        const formattedBenefits = redeemedBenefits.map((benefit: any) => ({
             id: benefit.id,
             benefitTitle: benefit.benefitDescription.title,
             benefitDescription: benefit.benefitDescription.description,

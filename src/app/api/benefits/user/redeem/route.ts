@@ -1,5 +1,5 @@
 import { auth } from "@/lib/auth";
-import { prisma } from "@/db";
+import prisma from "@/db";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
         }
 
         // Use transaction to ensure atomicity
-        const result = await prisma.$transaction(async (tx) => {
+        const result = await prisma.$transaction(async (tx: any) => {
             // Deduct coins from user
             await tx.userDetails.update({
                 where: { userId: session.user.id },
