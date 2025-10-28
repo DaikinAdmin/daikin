@@ -1,9 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "functions": {
-    "api/**/*.ts": {
-      "includeFiles": "node_modules/.prisma/client/**"
-    }
-  }
+  "installCommand": "npm install"
 }
