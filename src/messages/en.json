@@ -100,6 +100,220 @@
       "price": "Starting from $4,200"
     }
   },
+  "airConditioning": {
+    "hero": {
+      "title": "Air Conditioning Systems",
+      "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
+    },
+    "products": {
+      "title": "Our Air Conditioning Range",
+      "subtitle": "Discover premium cooling solutions for every space",
+      "aurora": {
+        "name": "Daikin Aurora Series",
+        "category": "Wall-Mounted AC",
+        "description": "Sleek and stylish wall-mounted unit with advanced filtration and whisper-quiet operation. Perfect for bedrooms and living spaces.",
+        "features": ["21 SEER2", "Advanced Filtration", "Whisper-Quiet 19 dB", "Wi-Fi Control", "Inverter Technology"],
+        "price": "Starting from $2,800"
+      },
+      "emura": {
+        "name": "Daikin Emura",
+        "category": "Premium Wall-Mounted",
+        "description": "Award-winning design meets cutting-edge technology. The Emura series offers unmatched style and performance for modern homes.",
+        "features": ["26 SEER2", "3D Airflow", "Silver Ion Filter", "Alexa & Google Compatible", "Motion Sensor"],
+        "price": "Starting from $3,200"
+      },
+      "stylish": {
+        "name": "Daikin Stylish",
+        "category": "Designer Series",
+        "description": "Contemporary design with powerful performance. The Stylish series blends seamlessly with any interior décor while delivering superior comfort.",
+        "features": ["20 SEER2", "Flash Streamer", "Coanda Airflow", "App Control", "Energy Efficient"],
+        "price": "Starting from $2,600"
+      },
+      "perfera": {
+        "name": "Daikin Perfera",
+        "category": "High-Performance AC",
+        "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
+        "features": ["24 SEER2", "Intelligent Eye Sensor", "Multi-Zone Capable", "R-32 Refrigerant", "Ultra-Quiet"],
+        "price": "Starting from $3,400"
+      }
+    },
+    "features": "Key Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
+    "whyChoose": {
+      "title": "Why Choose Daikin Air Conditioning?",
+      "efficiency": {
+        "title": "Superior Efficiency",
+        "description": "Industry-leading SEER ratings that reduce energy costs while keeping you comfortable year-round."
+      },
+      "comfort": {
+        "title": "Perfect Comfort",
+        "description": "Advanced climate control technology ensures consistent temperature and humidity levels throughout your space."
+      },
+      "air": {
+        "title": "Clean Air",
+        "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality."
+      }
+    }
+  },
+  "heatPumps": {
+    "hero": {
+      "title": "Heat Pump Systems",
+      "subtitle": "Sustainable heating and cooling with Daikin's advanced heat pump technology. Save energy while enjoying year-round comfort."
+    },
+    "products": {
+      "title": "Our Heat Pump Solutions",
+      "subtitle": "Eco-friendly systems for efficient heating and cooling",
+      "daikinFit": {
+        "name": "Daikin Fit",
+        "category": "Compact Heat Pump",
+        "description": "Ultra-compact design that fits almost anywhere. Ideal for homes with limited outdoor space without compromising performance.",
+        "features": ["19 SEER / 10 HSPF", "Compact Design", "Low Sound Levels", "R-32 Refrigerant", "10-Year Warranty"],
+        "price": "Starting from $3,500"
+      },
+      "altherma": {
+        "name": "Daikin Altherma 3",
+        "category": "Air-to-Water Heat Pump",
+        "description": "Complete heating and hot water solution for residential applications. Works efficiently even in extreme cold conditions.",
+        "features": ["A+++ Energy Rating", "Works to -28°C", "Domestic Hot Water", "Smart Grid Ready", "Quiet Operation"],
+        "price": "Starting from $8,500"
+      },
+      "althermaH": {
+        "name": "Daikin Altherma 3 H HT",
+        "category": "High-Temperature Heat Pump",
+        "description": "High-temperature heat pump perfect for retrofit applications. Delivers water up to 70°C for radiator systems.",
+        "features": ["High Temperature Output", "Retrofit Compatible", "R-32 Technology", "Heating & Cooling", "Weather Dependent Control"],
+        "price": "Starting from $9,800"
+      }
+    },
+    "features": "Key Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
+    "benefits": {
+      "title": "Benefits of Heat Pump Systems",
+      "eco": {
+        "title": "Eco-Friendly",
+        "description": "Reduce your carbon footprint with renewable energy technology that extracts heat from the air."
+      },
+      "efficiency": {
+        "title": "Energy Savings",
+        "description": "Up to 50% energy savings compared to traditional heating systems, lowering your utility bills significantly."
+      },
+      "versatile": {
+        "title": "Heating & Cooling",
+        "description": "One system for year-round comfort. Heat in winter, cool in summer with the same efficient unit."
+      },
+      "reliable": {
+        "title": "Reliable Performance",
+        "description": "Proven technology that works efficiently even in extreme temperatures, ensuring comfort all year."
+      }
+    }
+  },
+  "airPurifier": {
+    "hero": {
+      "title": "Air Purifiers",
+      "subtitle": "Breathe cleaner, healthier air with Daikin's advanced air purification technology. Remove pollutants, allergens, and odors effectively."
+    },
+    "products": {
+      "title": "Our Air Purifier Range",
+      "subtitle": "Advanced filtration for healthier indoor environments",
+      "mc55w": {
+        "name": "Daikin MC55W",
+        "category": "Compact Air Purifier",
+        "description": "Perfect for small to medium rooms. Combines HEPA filtration with Streamer technology for comprehensive air purification.",
+        "features": ["HEPA Filter", "Streamer Technology", "Covers 41m²", "Compact Design", "Low Noise"],
+        "price": "$399"
+      },
+      "mc70l": {
+        "name": "Daikin MC70L",
+        "category": "Large Room Purifier",
+        "description": "Powerful air purifier designed for larger spaces. Removes 99.97% of airborne particles with advanced multi-stage filtration.",
+        "features": ["True HEPA Filter", "Active Plasma Ion", "Covers 70m²", "Auto Mode", "Air Quality Sensor"],
+        "price": "$599"
+      },
+      "mcz70w": {
+        "name": "Daikin MCZ70W",
+        "category": "Humidifying Air Purifier",
+        "description": "Ultimate air treatment system that purifies and humidifies. Maintains optimal humidity while removing allergens and pollutants.",
+        "features": ["Humidifying Function", "Streamer + HEPA", "Covers 70m²", "Smart Sensors", "App Control"],
+        "price": "$799"
+      }
+    },
+    "features": "Key Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
+    "technology": {
+      "title": "Advanced Purification Technology",
+      "streamer": {
+        "title": "Streamer Technology",
+        "description": "Daikin's proprietary Streamer technology decomposes allergens, viruses, and bacteria at molecular level."
+      },
+      "hepa": {
+        "title": "HEPA Filtration",
+        "description": "Captures 99.97% of particles as small as 0.3 microns including dust, pollen, and pet dander."
+      },
+      "humidifying": {
+        "title": "Humidifying Function",
+        "description": "Maintains optimal humidity levels for improved comfort and respiratory health throughout the year."
+      }
+    }
+  },
+  "otherProducts": {
+    "hero": {
+      "title": "Other Products & Solutions",
+      "subtitle": "Complete your HVAC system with Daikin's smart controls, commercial solutions, and accessories."
+    },
+    "products": {
+      "title": "Additional Products & Services",
+      "subtitle": "Enhance your comfort with our complete range",
+      "thermostat": {
+        "name": "Daikin One+ Smart Thermostat",
+        "category": "Smart Control",
+        "description": "Next-generation smart thermostat with intuitive interface and advanced features. Control your comfort from anywhere.",
+        "features": ["Wi-Fi Enabled", "Smart Scheduling", "Geofencing", "Voice Control", "Energy Reports"],
+        "price": "$299"
+      },
+      "vrv": {
+        "name": "VRV X Series",
+        "category": "Commercial HVAC",
+        "description": "Industry-leading Variable Refrigerant Volume system for commercial buildings. Maximum flexibility and efficiency.",
+        "features": ["Heat Recovery", "Individual Zone Control", "Energy Efficiency", "Modular Design", "Easy Installation"],
+        "price": "Contact for pricing"
+      },
+      "rebel": {
+        "name": "Daikin Rebel Series",
+        "category": "Light Commercial",
+        "description": "Robust packaged rooftop units designed for light commercial applications with outstanding reliability and performance.",
+        "features": ["Up to 16 SEER", "Durable Construction", "Easy Service Access", "Flexible Options", "10-Year Warranty"],
+        "price": "Starting from $4,200"
+      },
+      "accessories": {
+        "name": "Daikin Accessories",
+        "category": "Add-ons & Parts",
+        "description": "Complete range of accessories including filters, remote controls, mounting brackets, and installation kits.",
+        "features": ["Genuine Parts", "Easy Installation", "Wide Compatibility", "Quality Assured", "Expert Support"],
+        "price": "Varies by product"
+      }
+    },
+    "features": "Key Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
+    "solutions": {
+      "title": "Complete HVAC Solutions",
+      "smart": {
+        "title": "Smart Controls",
+        "description": "Intelligent thermostats and controllers that optimize comfort while reducing energy consumption."
+      },
+      "commercial": {
+        "title": "Commercial Systems",
+        "description": "Scalable VRV and packaged solutions designed for commercial buildings of all sizes."
+      },
+      "accessories": {
+        "title": "Accessories & Parts",
+        "description": "Genuine Daikin parts and accessories to maintain peak performance and extend system life."
+      }
+    }
+  },
   "dashboard": {
     "title": "AMM Salon Dashboard",
     "welcome": "Welcome back, {name}!",

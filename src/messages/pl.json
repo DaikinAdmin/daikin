@@ -100,6 +100,220 @@
       "price": "Od 4200 zł"
     }
   },
+  "airConditioning": {
+    "hero": {
+      "title": "Systemy Klimatyzacji",
+      "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
+    },
+    "products": {
+      "title": "Nasza Gama Klimatyzacji",
+      "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni",
+      "aurora": {
+        "name": "Seria Daikin Aurora",
+        "category": "Klimatyzacja Ścienna",
+        "description": "Elegancka i stylowa jednostka naścienna z zaawansowaną filtracją i szepczącą cichą pracą. Idealna do sypialni i salonów.",
+        "features": ["21 SEER2", "Zaawansowana Filtracja", "Szeptanie-Cicha 19 dB", "Sterowanie Wi-Fi", "Technologia Inwertera"],
+        "price": "Od 2800 zł"
+      },
+      "emura": {
+        "name": "Daikin Emura",
+        "category": "Premium Naścienna",
+        "description": "Nagradzany design spotyka się z najnowszą technologią. Seria Emura oferuje niezrównany styl i wydajność dla nowoczesnych domów.",
+        "features": ["26 SEER2", "Przepływ Powietrza 3D", "Filtr Jonów Srebra", "Kompatybilny z Alexa & Google", "Czujnik Ruchu"],
+        "price": "Od 3200 zł"
+      },
+      "stylish": {
+        "name": "Daikin Stylish",
+        "category": "Seria Designerska",
+        "description": "Współczesny design z potężną wydajnością. Seria Stylish płynnie wtapia się w każdy wystrój wnętrza, zapewniając doskonały komfort.",
+        "features": ["20 SEER2", "Flash Streamer", "Przepływ Coanda", "Sterowanie Aplikacją", "Energooszczędny"],
+        "price": "Od 2600 zł"
+      },
+      "perfera": {
+        "name": "Daikin Perfera",
+        "category": "Wysokowydajna Klimatyzacja",
+        "description": "Najwyższa wydajność z inteligentnymi funkcjami komfortu. Idealna dla większych pomieszczeń i wymagających zastosowań.",
+        "features": ["24 SEER2", "Inteligentny Czujnik Oka", "Zdolność Wielostrefowa", "Czynnik Chłodniczy R-32", "Ultra-Cicha"],
+        "price": "Od 3400 zł"
+      }
+    },
+    "features": "Kluczowe Cechy",
+    "learnMore": "Dowiedz się więcej",
+    "getQuote": "Otrzymaj Wycenę",
+    "whyChoose": {
+      "title": "Dlaczego Wybrać Klimatyzację Daikin?",
+      "efficiency": {
+        "title": "Doskonała Wydajność",
+        "description": "Wiodące w branży oceny SEER, które obniżają koszty energii, zapewniając komfort przez cały rok."
+      },
+      "comfort": {
+        "title": "Doskonały Komfort",
+        "description": "Zaawansowana technologia kontroli klimatu zapewnia stałą temperaturę i wilgotność w całej przestrzeni."
+      },
+      "air": {
+        "title": "Czyste Powietrze",
+        "description": "Wieloetapowe systemy filtracji usuwają alergeny, kurz i zapachy dla zdrowszej jakości powietrza wewnętrznego."
+      }
+    }
+  },
+  "heatPumps": {
+    "hero": {
+      "title": "Systemy Pomp Ciepła",
+      "subtitle": "Zrównoważone ogrzewanie i chłodzenie z zaawansowaną technologią pomp ciepła Daikin. Oszczędzaj energię, ciesząc się komfortem przez cały rok."
+    },
+    "products": {
+      "title": "Nasze Rozwiązania Pomp Ciepła",
+      "subtitle": "Ekologiczne systemy dla efektywnego ogrzewania i chłodzenia",
+      "daikinFit": {
+        "name": "Daikin Fit",
+        "category": "Kompaktowa Pompa Ciepła",
+        "description": "Ultra-kompaktowy design, który pasuje niemal wszędzie. Idealny dla domów z ograniczoną przestrzenią zewnętrzną bez kompromisu w wydajności.",
+        "features": ["19 SEER / 10 HSPF", "Kompaktowy Design", "Niski Poziom Hałasu", "Czynnik Chłodniczy R-32", "Gwarancja 10 Lat"],
+        "price": "Od 3500 zł"
+      },
+      "altherma": {
+        "name": "Daikin Altherma 3",
+        "category": "Pompa Ciepła Powietrze-Woda",
+        "description": "Kompleksowe rozwiązanie ogrzewania i ciepłej wody dla zastosowań mieszkalnych. Działa efektywnie nawet w ekstremalnie zimnych warunkach.",
+        "features": ["Klasa Energetyczna A+++", "Działa do -28°C", "Ciepła Woda Użytkowa", "Gotowy na Smart Grid", "Cicha Praca"],
+        "price": "Od 8500 zł"
+      },
+      "althermaH": {
+        "name": "Daikin Altherma 3 H HT",
+        "category": "Wysokotemperaturowa Pompa Ciepła",
+        "description": "Wysokotemperaturowa pompa ciepła idealna do modernizacji. Dostarcza wodę do 70°C dla systemów grzejnikowych.",
+        "features": ["Wyjście Wysokotemperaturowe", "Kompatybilny z Modernizacją", "Technologia R-32", "Ogrzewanie i Chłodzenie", "Sterowanie Zależne od Pogody"],
+        "price": "Od 9800 zł"
+      }
+    },
+    "features": "Kluczowe Cechy",
+    "learnMore": "Dowiedz się więcej",
+    "getQuote": "Otrzymaj Wycenę",
+    "benefits": {
+      "title": "Korzyści z Systemów Pomp Ciepła",
+      "eco": {
+        "title": "Ekologiczny",
+        "description": "Zmniejsz swój ślad węglowy dzięki technologii energii odnawialnej, która pobiera ciepło z powietrza."
+      },
+      "efficiency": {
+        "title": "Oszczędność Energii",
+        "description": "Do 50% oszczędności energii w porównaniu do tradycyjnych systemów ogrzewania, znacznie obniżając rachunki za media."
+      },
+      "versatile": {
+        "title": "Ogrzewanie i Chłodzenie",
+        "description": "Jeden system dla całorocznego komfortu. Grzej zimą, chłódź latem z tym samym wydajnym urządzeniem."
+      },
+      "reliable": {
+        "title": "Niezawodna Wydajność",
+        "description": "Sprawdzona technologia, która działa efektywnie nawet w ekstremalnych temperaturach, zapewniając komfort przez cały rok."
+      }
+    }
+  },
+  "airPurifier": {
+    "hero": {
+      "title": "Oczyszczacze Powietrza",
+      "subtitle": "Oddychaj czystszym, zdrowszym powietrzem dzięki zaawansowanej technologii oczyszczania powietrza Daikin. Skutecznie usuwa zanieczyszczenia, alergeny i zapachy."
+    },
+    "products": {
+      "title": "Nasza Gama Oczyszczaczy Powietrza",
+      "subtitle": "Zaawansowana filtracja dla zdrowszych środowisk wewnętrznych",
+      "mc55w": {
+        "name": "Daikin MC55W",
+        "category": "Kompaktowy Oczyszczacz Powietrza",
+        "description": "Idealny do małych i średnich pomieszczeń. Łączy filtrację HEPA z technologią Streamer dla kompleksowego oczyszczania powietrza.",
+        "features": ["Filtr HEPA", "Technologia Streamer", "Pokrycie 41m²", "Kompaktowy Design", "Niski Hałas"],
+        "price": "399 zł"
+      },
+      "mc70l": {
+        "name": "Daikin MC70L",
+        "category": "Oczyszczacz dla Dużych Pomieszczeń",
+        "description": "Potężny oczyszczacz powietrza zaprojektowany dla większych przestrzeni. Usuwa 99,97% cząstek unoszących się w powietrzu dzięki zaawansowanej wieloetapowej filtracji.",
+        "features": ["Prawdziwy Filtr HEPA", "Aktywne Jony Plazmy", "Pokrycie 70m²", "Tryb Automatyczny", "Czujnik Jakości Powietrza"],
+        "price": "599 zł"
+      },
+      "mcz70w": {
+        "name": "Daikin MCZ70W",
+        "category": "Nawilżający Oczyszczacz Powietrza",
+        "description": "Najlepszy system uzdatniania powietrza, który oczyszcza i nawilża. Utrzymuje optymalną wilgotność, jednocześnie usuwając alergeny i zanieczyszczenia.",
+        "features": ["Funkcja Nawilżania", "Streamer + HEPA", "Pokrycie 70m²", "Inteligentne Czujniki", "Sterowanie Aplikacją"],
+        "price": "799 zł"
+      }
+    },
+    "features": "Kluczowe Cechy",
+    "learnMore": "Dowiedz się więcej",
+    "getQuote": "Otrzymaj Wycenę",
+    "technology": {
+      "title": "Zaawansowana Technologia Oczyszczania",
+      "streamer": {
+        "title": "Technologia Streamer",
+        "description": "Zastrzeżona technologia Streamer Daikin rozkłada alergeny, wirusy i bakterie na poziomie molekularnym."
+      },
+      "hepa": {
+        "title": "Filtracja HEPA",
+        "description": "Wychwytuje 99,97% cząstek małych jak 0,3 mikrona, w tym kurz, pyłki i sierść zwierząt."
+      },
+      "humidifying": {
+        "title": "Funkcja Nawilżania",
+        "description": "Utrzymuje optymalne poziomy wilgotności dla poprawy komfortu i zdrowia układu oddechowego przez cały rok."
+      }
+    }
+  },
+  "otherProducts": {
+    "hero": {
+      "title": "Inne Produkty i Rozwiązania",
+      "subtitle": "Uzupełnij swój system HVAC o inteligentne sterowanie, rozwiązania komercyjne i akcesoria Daikin."
+    },
+    "products": {
+      "title": "Dodatkowe Produkty i Usługi",
+      "subtitle": "Zwiększ swój komfort dzięki naszej kompletnej gamie",
+      "thermostat": {
+        "name": "Inteligentny Termostat Daikin One+",
+        "category": "Inteligentne Sterowanie",
+        "description": "Termostat inteligentny nowej generacji z intuicyjnym interfejsem i zaawansowanymi funkcjami. Kontroluj swój komfort z dowolnego miejsca.",
+        "features": ["Wi-Fi", "Inteligentne Planowanie", "Geofencing", "Sterowanie Głosowe", "Raporty Energii"],
+        "price": "299 zł"
+      },
+      "vrv": {
+        "name": "Seria VRV X",
+        "category": "Komercyjne HVAC",
+        "description": "Wiodący w branży system o zmiennym przepływie czynnika chłodniczego dla budynków komercyjnych. Maksymalna elastyczność i wydajność.",
+        "features": ["Odzyskiwanie Ciepła", "Indywidualne Sterowanie Strefą", "Efektywność Energetyczna", "Modułowy Design", "Łatwy Montaż"],
+        "price": "Skontaktuj się w sprawie ceny"
+      },
+      "rebel": {
+        "name": "Seria Daikin Rebel",
+        "category": "Lekko Komercyjny",
+        "description": "Wytrzymałe jednostki dachowe packaged zaprojektowane dla lekkich zastosowań komercyjnych z wyjątkową niezawodnością i wydajnością.",
+        "features": ["Do 16 SEER", "Trwała Konstrukcja", "Łatwy Dostęp Serwisowy", "Elastyczne Opcje", "Gwarancja 10 Lat"],
+        "price": "Od 4200 zł"
+      },
+      "accessories": {
+        "name": "Akcesoria Daikin",
+        "category": "Dodatki i Części",
+        "description": "Kompletna gama akcesoriów, w tym filtry, piloty, uchwyty montażowe i zestawy instalacyjne.",
+        "features": ["Oryginalne Części", "Łatwy Montaż", "Szeroka Kompatybilność", "Zapewniona Jakość", "Wsparcie Ekspertów"],
+        "price": "Różne w zależności od produktu"
+      }
+    },
+    "features": "Kluczowe Cechy",
+    "learnMore": "Dowiedz się więcej",
+    "getQuote": "Otrzymaj Wycenę",
+    "solutions": {
+      "title": "Kompleksowe Rozwiązania HVAC",
+      "smart": {
+        "title": "Inteligentne Sterowanie",
+        "description": "Inteligentne termostaty i regulatory, które optymalizują komfort przy jednoczesnym zmniejszeniu zużycia energii."
+      },
+      "commercial": {
+        "title": "Systemy Komercyjne",
+        "description": "Skalowalne rozwiązania VRV i packaged zaprojektowane dla budynków komercyjnych wszystkich rozmiarów."
+      },
+      "accessories": {
+        "title": "Akcesoria i Części",
+        "description": "Oryginalne części i akcesoria Daikin do utrzymania szczytowej wydajności i wydłużenia żywotności systemu."
+      }
+    }
+  },
   "dashboard": {
     "title": "Panel AMM Salon",
     "welcome": "Witaj ponownie, {name}!",
