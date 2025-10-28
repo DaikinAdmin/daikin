@@ -8,6 +8,7 @@ import { twoFactorSchema } from "@/helpers/zod/two-factor-schema";
 import { Role } from "@prisma/client";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
+import { nextCookies } from "better-auth/next-js";
 import {
   twoFactor
 } from "better-auth/plugins";
@@ -81,6 +82,7 @@ export const auth = betterAuth({
       { path: "/two-factor/disable", schema: PasswordSchema },
       { path: "/two-factor/verify-otp", schema: twoFactorSchema },
       { path: "/forgot-password", schema: ForgotPasswordSchema },
-    ])
+    ]),
+    nextCookies()
   ],
 });

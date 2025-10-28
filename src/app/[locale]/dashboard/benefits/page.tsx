@@ -214,6 +214,38 @@ export default function BenefitsManagementPage() {
     );
   }
 
+  // User view - show benefits as cards for redemption
+  if (userRole && userRole !== "ADMIN") {
+    return (
+      <div className="space-y-6">
+        <h1 className="text-3xl font-bold">{t("title")}</h1>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.filter(b => b.isActive).map((benefit) => (
+            <Card key={benefit.id} data-testid="benefit-card">
+              <CardHeader>
+                <CardTitle>{benefit.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl font-bold">{benefit.daikinCoins}</span>
+                    <span className="text-sm text-muted-foreground">coins</span>
+                  </div>
+                  <Button data-testid="redeem-benefit" size="sm">
+                    {t("redeem")}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Admin view - show benefits management table
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -280,7 +312,7 @@ export default function BenefitsManagementPage() {
                 </TableRow>
               ) : (
                 benefits.map((benefit) => (
-                  <TableRow key={benefit.id}>
+                  <TableRow key={benefit.id} data-testid="benefit-card">
                     <TableCell className="font-medium">{benefit.title}</TableCell>
                     <TableCell>{benefit.daikinCoins}</TableCell>
                     <TableCell>
@@ -337,6 +369,7 @@ export default function BenefitsManagementPage() {
                 <Label htmlFor="title">{t("benefitTitle")}</Label>
                 <Input
                   id="title"
+                  name="title"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   required
@@ -344,8 +377,10 @@ export default function BenefitsManagementPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">{t("description")}</Label>
-                <Input
+                <textarea
                   id="description"
+                  name="description"
+                  className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   required
@@ -355,6 +390,7 @@ export default function BenefitsManagementPage() {
                 <Label htmlFor="daikinCoins">{t("daikinCoins")}</Label>
                 <Input
                   id="daikinCoins"
+                  name="daikinCoins"
                   type="number"
                   min="0"
                   value={formData.daikinCoins}
@@ -365,6 +401,7 @@ export default function BenefitsManagementPage() {
               <div className="flex items-center space-x-2">
                 <Switch
                   id="isActive"
+                  name="isActive"
                   checked={formData.isActive}
                   onCheckedChange={(checked) => setFormData({ ...formData, isActive: checked })}
                 />
@@ -380,7 +417,7 @@ export default function BenefitsManagementPage() {
               >
                 {t("cancel")}
               </Button>
-              <Button type="submit" disabled={isSubmitting}>
+              <Button type="submit" data-testid="save-benefit" disabled={isSubmitting}>
                 {isSubmitting 
                   ? (editingBenefit ? t("saving") : t("creating"))
                   : (editingBenefit ? t("save") : t("createBenefit"))
