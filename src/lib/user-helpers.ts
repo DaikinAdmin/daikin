@@ -1,4 +1,4 @@
-import prisma from "@/db";
+import { prisma } from "@/db";
 
 export async function getUserWithRole(userId: string) {
   return await prisma.user.findUnique({

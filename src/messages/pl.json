@@ -617,22 +617,28 @@
     "notFound": {
       "title": "Strona nie znaleziona",
       "description": "Przepraszamy, nie mogliśmy znaleźć strony, której szukasz. Być może została przeniesiona lub już nie istnieje.",
-      "goHome": "Wróć do strony głównej",
+      "backHome": "Wróć do strony głównej",
       "goBack": "Wróć",
-      "searchProducts": "Wyszukaj produkty"
+      "helpfulLinks": "Oto kilka pomocnych linków:",
+      "products": "Produkty",
+      "contact": "Kontakt",
+      "dashboard": "Panel"
     },
     "forbidden": {
       "title": "Dostęp zabroniony",
       "description": "Nie masz uprawnień do dostępu do tej strony. Jeśli uważasz, że jest to błąd, skontaktuj się z administratorem.",
-      "goHome": "Wróć do strony głównej",
-      "goBack": "Wróć"
+      "backHome": "Wróć do strony głównej",
+      "goBack": "Wróć",
+      "help": "Potrzebujesz pomocy?",
+      "contactSupport": "Skontaktuj się z pomocą techniczną"
     },
     "unauthorized": {
       "title": "Wymagane uwierzytelnienie",
       "description": "Musisz być zalogowany, aby uzyskać dostęp do tej strony. Zaloguj się lub utwórz konto, aby kontynuować.",
-      "goHome": "Wróć do strony głównej",
-      "goBack": "Wróć",
-      "login": "Zaloguj się"
+      "signIn": "Zaloguj się",
+      "backHome": "Wróć do strony głównej",
+      "noAccount": "Nie masz jeszcze konta?",
+      "createAccount": "Utwórz konto"
     }
   }
 }

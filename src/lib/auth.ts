@@ -1,5 +1,5 @@
 // auth.ts
-import prisma from "@/db";
+import { prisma } from "@/db";
 import { email } from "@/helpers/email/resend";
 import { ForgotPasswordSchema } from "@/helpers/zod/forgot-password-schema";
 import SignInSchema from "@/helpers/zod/login-schema";
@@ -59,7 +59,7 @@ export const auth = betterAuth({
   session: {
     expiresIn: 60 * 60 * 24 * 7,
     updateAge: 60 * 60 * 24,
-    freshAge: 60 * 60 * 24,  
+    freshAge: 60 * 60 * 24,
   },
   plugins: [
     twoFactor({
