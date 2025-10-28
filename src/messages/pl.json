@@ -5,11 +5,24 @@
       "blog": "Blog",
       "benefits": "Korzyści",
       "about": "O nas",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "products": "Produkty",
+      "airConditioning": "Klimatyzacja",
+      "heatPumps": "Pompy ciepła",
+      "airPurifier": "Odświeźacz",
+      "other": "Inny",
+      "services": "Usługi",
+      "installation": "Montaż",
+      "maintenance": "Serwis",
+      "news": "Wiadomości",
+      "knowledge": "Twoja wiedza",
+      "realizations": "Realizację",
+      "account": "Twoje konto"
     },
     "auth": {
       "dashboard": "Panel",
       "signIn": "Zaloguj się",
+      "signUp": "Zarejestruj się",
       "signOut": "Wyloguj się",
       "settings": "Ustawienia"
     }

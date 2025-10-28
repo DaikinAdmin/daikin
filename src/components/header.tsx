@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, LogOut, Settings } from "lucide-react";
+import { Menu, X, LogOut, Settings, ChevronDown, LayoutDashboard, UserCircle, LogIn } from "lucide-react";
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from "@/components/language-switcher";
 import { Link, useRouter } from "@/i18n/navigation";
@@ -61,93 +61,148 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            <Link
-              href="/"
-              className="text-sm xl:text-base text-gray-700 hover:text-[#003D7A] font-medium transition-colors"
-              locale={locale}
-            >
-              {t('nav.blog')}
-            </Link>
-            <Link
-              href="/benefits"
-              className="text-sm xl:text-base text-gray-700 hover:text-[#003D7A] font-medium transition-colors"
-              locale={locale}
-            >
-              {t('nav.benefits')}
-            </Link>
+          <nav className="hidden lg:flex items-center space-x-1">
+            {/* O nas */}
             <Link
               href="/about"
-              className="text-sm xl:text-base text-gray-700 hover:text-[#003D7A] font-medium transition-colors"
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.about')}
             </Link>
+
+            {/* Produkty */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+                {t('nav.products')}
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-[200px]">
+                <DropdownMenuItem asChild>
+                  <Link href="/products/air-conditioning" className="cursor-pointer" locale={locale}>
+                    {t('nav.airConditioning')}
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/products/heat-pumps" className="cursor-pointer" locale={locale}>
+                    {t('nav.heatPumps')}
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/products/air-purifier" className="cursor-pointer" locale={locale}>
+                    {t('nav.airPurifier')}
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/products/other" className="cursor-pointer" locale={locale}>
+                    {t('nav.other')}
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Usługi */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+                {t('nav.services')}
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-[200px]">
+                <DropdownMenuItem asChild>
+                  <Link href="/services/installation" className="cursor-pointer" locale={locale}>
+                    {t('nav.installation')}
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/services/maintenance" className="cursor-pointer" locale={locale}>
+                    {t('nav.maintenance')}
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Wiadomości */}
             <Link
-              href="/contact"
-              className="text-sm xl:text-base text-gray-700 hover:text-[#003D7A] font-medium transition-colors"
+              href="/news"
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
-              {t('nav.contact')}
+              {t('nav.news')}
             </Link>
-            {session?.user && (
-              <Link 
-                href="/dashboard" 
-                className="text-sm xl:text-base text-gray-700 hover:text-[#003D7A] font-medium transition-colors"
-                locale={locale}
-                data-testid="dashboard-link"
-              >
-                {t('auth.dashboard')}
-              </Link>
-            )}
+
+            {/* Twoja wiedza */}
+            <Link
+              href="/knowledge"
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              locale={locale}
+            >
+              {t('nav.knowledge')}
+            </Link>
+
+            {/* Realizację */}
+            <Link
+              href="/realizations"
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              locale={locale}
+            >
+              {t('nav.realizations')}
+            </Link>
+
+            {/* Twoje konto */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+                {t('nav.account')}
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[200px]">
+                {session?.user ? (
+                  <>
+                    <DropdownMenuItem asChild>
+                      <Link href="/dashboard" className="cursor-pointer" locale={locale}>
+                        <LayoutDashboard className="h-4 w-4 mr-2" />
+                        {t('auth.dashboard')}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/dashboard/profile" className="cursor-pointer" locale={locale}>
+                        <Settings className="h-4 w-4 mr-2" />
+                        {t('auth.settings')}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
+                      <LogOut className="h-4 w-4 mr-2" />
+                      {t('auth.signOut')}
+                    </DropdownMenuItem>
+                  </>
+                ) : (
+                  <>
+                    <DropdownMenuItem asChild>
+                      <Link href="/signin" className="cursor-pointer" locale={locale}>
+                        <LogIn className="h-4 w-4 mr-2" />
+                        {t('auth.signIn')}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/signup" className="cursor-pointer" locale={locale}>
+                        <UserCircle className="h-4 w-4 mr-2" />
+                        {t('auth.signUp')}
+                      </Link>
+                    </DropdownMenuItem>
+                  </>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
-          {/* Auth Buttons */}
-          <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
-            <LanguageSwitcher />
-            {session?.user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="focus:outline-none focus:ring-2 focus:ring-[#003D7A] focus:ring-offset-2 rounded-full">
-                    <Avatar className="h-9 w-9 xl:h-10 xl:w-10">
-                      <AvatarImage src={session.user.image || undefined} alt={session.user.name || "User"} />
-                      <AvatarFallback className="text-sm">{getInitials(session.user.name)}</AvatarFallback>
-                    </Avatar>
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-44 sm:w-48">
-                  <DropdownMenuItem asChild>
-                    <Link href="/dashboard/profile" className="w-full cursor-pointer text-sm" locale={locale}>
-                      <Settings className="h-4 w-4 mr-2" />
-                      {t('auth.settings')}
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-sm">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    {t('auth.signOut')}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link
-                href="/signin"
-                className="px-3 xl:px-4 py-2 border border-[#003D7A] text-[#003D7A] rounded-md hover:bg-[#F5F8FF] transition-colors font-medium text-sm xl:text-base"
-                locale={locale}
-              >
-                {t('auth.signIn')}
-              </Link>
-            )}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center space-x-2">
-            <div className="hidden sm:block">
+          {/* Language Switcher and Mobile menu button */}
+          <div className="flex items-center space-x-2 lg:space-x-3">
+            <div className="hidden sm:block lg:block">
               <LanguageSwitcher />
             </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -209,22 +264,7 @@ export default function Header() {
             
             {/* Navigation Links */}
             <nav className="flex-1 px-4 py-6 space-y-2">
-              <Link
-                href="/"
-                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-                locale={locale}
-              >
-                {t('nav.blog')}
-              </Link>
-              <Link
-                href="/benefits"
-                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-                locale={locale}
-              >
-                {t('nav.benefits')}
-              </Link>
+              {/* O nas */}
               <Link
                 href="/about"
                 className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
@@ -233,13 +273,101 @@ export default function Header() {
               >
                 {t('nav.about')}
               </Link>
+
+              {/* Produkty */}
+              <div className="space-y-1">
+                <div className="px-4 py-2 text-base sm:text-lg text-gray-900 font-semibold">
+                  {t('nav.products')}
+                </div>
+                <div className="pl-4 space-y-1">
+                  <Link
+                    href="/products/air-conditioning"
+                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('nav.airConditioning')}
+                  </Link>
+                  <Link
+                    href="/products/heat-pumps"
+                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('nav.heatPumps')}
+                  </Link>
+                  <Link
+                    href="/products/air-purifier"
+                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('nav.airPurifier')}
+                  </Link>
+                  <Link
+                    href="/products/other"
+                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('nav.other')}
+                  </Link>
+                </div>
+              </div>
+
+              {/* Usługi */}
+              <div className="space-y-1">
+                <div className="px-4 py-2 text-base sm:text-lg text-gray-900 font-semibold">
+                  {t('nav.services')}
+                </div>
+                <div className="pl-4 space-y-1">
+                  <Link
+                    href="/services/installation"
+                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('nav.installation')}
+                  </Link>
+                  <Link
+                    href="/services/maintenance"
+                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('nav.maintenance')}
+                  </Link>
+                </div>
+              </div>
+
+              {/* Wiadomości */}
               <Link
-                href="/contact"
+                href="/news"
                 className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 locale={locale}
               >
-                {t('nav.contact')}
+                {t('nav.news')}
+              </Link>
+
+              {/* Twoja wiedza */}
+              <Link
+                href="/knowledge"
+                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+                locale={locale}
+              >
+                {t('nav.knowledge')}
+              </Link>
+
+              {/* Realizację */}
+              <Link
+                href="/realizations"
+                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+                locale={locale}
+              >
+                {t('nav.realizations')}
               </Link>
             </nav>
             
@@ -258,14 +386,24 @@ export default function Header() {
                   {t('auth.signOut')}
                 </Button>
               ) : (
-                <Link
-                  href="/signin"
-                  className="block px-4 py-3 bg-[#003D7A] text-white rounded-lg hover:bg-[#002952] transition-colors font-medium text-center text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                  locale={locale}
-                >
-                  {t('auth.signIn')}
-                </Link>
+                <div className="space-y-2">
+                  <Link
+                    href="/signin"
+                    className="block px-4 py-3 bg-[#003D7A] text-white rounded-lg hover:bg-[#002952] transition-colors font-medium text-center text-base"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('auth.signIn')}
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="block px-4 py-3 border-2 border-[#003D7A] text-[#003D7A] rounded-lg hover:bg-blue-50 transition-colors font-medium text-center text-base"
+                    onClick={() => setIsMenuOpen(false)}
+                    locale={locale}
+                  >
+                    {t('auth.signUp')}
+                  </Link>
+                </div>
               )}
               
               {/* Language Switcher */}

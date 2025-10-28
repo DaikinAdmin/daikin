@@ -5,11 +5,24 @@
       "blog": "Блог",
       "benefits": "Переваги",
       "about": "Про нас",
-      "contact": "Контакти"
+      "contact": "Контакти",
+      "products": "Продукти",
+      "airConditioning": "Кондиціонування",
+      "heatPumps": "Теплові насоси",
+      "airPurifier": "Очисник повітря",
+      "other": "Інше",
+      "services": "Послуги",
+      "installation": "Монтаж",
+      "maintenance": "Обслуговування",
+      "news": "Новини",
+      "knowledge": "Ваші знання",
+      "realizations": "Реалізації",
+      "account": "Ваш обліковий запис"
     },
     "auth": {
       "dashboard": "Панель",
       "signIn": "Увійти",
+      "signUp": "Зареєструватися",
       "signOut": "Вийти",
       "settings": "Налаштування"
     }

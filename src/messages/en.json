@@ -5,11 +5,24 @@
       "blog": "Blog",
       "benefits": "Benefits",
       "about": "About Us",
-      "contact": "Contact"
+      "contact": "Contact",
+      "products": "Products",
+      "airConditioning": "Air Conditioning",
+      "heatPumps": "Heat Pumps",
+      "airPurifier": "Air Purifier",
+      "other": "Other",
+      "services": "Services",
+      "installation": "Installation",
+      "maintenance": "Maintenance",
+      "news": "News",
+      "knowledge": "Your Knowledge",
+      "realizations": "Realizations",
+      "account": "Your Account"
     },
     "auth": {
       "dashboard": "Dashboard",
       "signIn": "Sign In",
+      "signUp": "Sign Up",
       "signOut": "Sign Out",
       "settings": "Settings"
     }
