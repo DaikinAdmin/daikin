@@ -131,35 +131,60 @@
       "name": "Daikin Fit Heat Pump",
       "category": "Heat Pump Systems",
       "description": "Compact design with superior efficiency and quiet operation. Perfect for residential applications with limited space.",
-      "features": ["19 SEER", "Quiet Operation", "Compact Design", "R-32 Refrigerant"],
+      "features": [
+        "19 SEER",
+        "Quiet Operation",
+        "Compact Design",
+        "R-32 Refrigerant"
+      ],
       "price": "Starting from $3,500"
     },
     "vrv": {
       "name": "VRV X Series",
       "category": "Commercial HVAC",
       "description": "Variable Refrigerant Volume system offering ultimate flexibility and energy efficiency for commercial buildings.",
-      "features": ["Heat Recovery", "Individual Control", "Energy Efficient", "Smart Controls"],
+      "features": [
+        "Heat Recovery",
+        "Individual Control",
+        "Energy Efficient",
+        "Smart Controls"
+      ],
       "price": "Contact for pricing"
     },
     "thermostat": {
       "name": "Daikin One+ Smart Thermostat",
       "category": "Smart Controls",
       "description": "Advanced smart thermostat with WiFi connectivity and intelligent comfort management.",
-      "features": ["WiFi Enabled", "Smart Scheduling", "Energy Reports", "Voice Control"],
+      "features": [
+        "WiFi Enabled",
+        "Smart Scheduling",
+        "Energy Reports",
+        "Voice Control"
+      ],
       "price": "$299"
     },
     "aurora": {
       "name": "Daikin Aurora Series",
       "category": "Ductless Systems",
       "description": "Sleek wall-mounted units with advanced filtration and quiet operation for residential comfort.",
-      "features": ["Inverter Technology", "Multi-Zone", "Advanced Filtration", "Remote Control"],
+      "features": [
+        "Inverter Technology",
+        "Multi-Zone",
+        "Advanced Filtration",
+        "Remote Control"
+      ],
       "price": "Starting from $2,800"
     },
     "rebel": {
       "name": "Daikin Rebel Series",
       "category": "Packaged Units",
       "description": "Robust packaged units designed for commercial applications with excellent reliability.",
-      "features": ["High Efficiency", "Durable Design", "Easy Maintenance", "Flexible Installation"],
+      "features": [
+        "High Efficiency",
+        "Durable Design",
+        "Easy Maintenance",
+        "Flexible Installation"
+      ],
       "price": "Starting from $4,200"
     }
   },
@@ -175,28 +200,52 @@
         "name": "Daikin Aurora Series",
         "category": "Wall-Mounted AC",
         "description": "Sleek and stylish wall-mounted unit with advanced filtration and whisper-quiet operation. Perfect for bedrooms and living spaces.",
-        "features": ["21 SEER2", "Advanced Filtration", "Whisper-Quiet 19 dB", "Wi-Fi Control", "Inverter Technology"],
+        "features": [
+          "21 SEER2",
+          "Advanced Filtration",
+          "Whisper-Quiet 19 dB",
+          "Wi-Fi Control",
+          "Inverter Technology"
+        ],
         "price": "Starting from $2,800"
       },
       "emura": {
         "name": "Daikin Emura",
         "category": "Premium Wall-Mounted",
         "description": "Award-winning design meets cutting-edge technology. The Emura series offers unmatched style and performance for modern homes.",
-        "features": ["26 SEER2", "3D Airflow", "Silver Ion Filter", "Alexa & Google Compatible", "Motion Sensor"],
+        "features": [
+          "26 SEER2",
+          "3D Airflow",
+          "Silver Ion Filter",
+          "Alexa & Google Compatible",
+          "Motion Sensor"
+        ],
         "price": "Starting from $3,200"
       },
       "stylish": {
         "name": "Daikin Stylish",
         "category": "Designer Series",
         "description": "Contemporary design with powerful performance. The Stylish series blends seamlessly with any interior décor while delivering superior comfort.",
-        "features": ["20 SEER2", "Flash Streamer", "Coanda Airflow", "App Control", "Energy Efficient"],
+        "features": [
+          "20 SEER2",
+          "Flash Streamer",
+          "Coanda Airflow",
+          "App Control",
+          "Energy Efficient"
+        ],
         "price": "Starting from $2,600"
       },
       "perfera": {
         "name": "Daikin Perfera",
         "category": "High-Performance AC",
         "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
-        "features": ["24 SEER2", "Intelligent Eye Sensor", "Multi-Zone Capable", "R-32 Refrigerant", "Ultra-Quiet"],
+        "features": [
+          "24 SEER2",
+          "Intelligent Eye Sensor",
+          "Multi-Zone Capable",
+          "R-32 Refrigerant",
+          "Ultra-Quiet"
+        ],
         "price": "Starting from $3,400"
       }
     },
@@ -231,21 +280,39 @@
         "name": "Daikin Fit",
         "category": "Compact Heat Pump",
         "description": "Ultra-compact design that fits almost anywhere. Ideal for homes with limited outdoor space without compromising performance.",
-        "features": ["19 SEER / 10 HSPF", "Compact Design", "Low Sound Levels", "R-32 Refrigerant", "10-Year Warranty"],
+        "features": [
+          "19 SEER / 10 HSPF",
+          "Compact Design",
+          "Low Sound Levels",
+          "R-32 Refrigerant",
+          "10-Year Warranty"
+        ],
         "price": "Starting from $3,500"
       },
       "altherma": {
         "name": "Daikin Altherma 3",
         "category": "Air-to-Water Heat Pump",
         "description": "Complete heating and hot water solution for residential applications. Works efficiently even in extreme cold conditions.",
-        "features": ["A+++ Energy Rating", "Works to -28°C", "Domestic Hot Water", "Smart Grid Ready", "Quiet Operation"],
+        "features": [
+          "A+++ Energy Rating",
+          "Works to -28°C",
+          "Domestic Hot Water",
+          "Smart Grid Ready",
+          "Quiet Operation"
+        ],
         "price": "Starting from $8,500"
       },
       "althermaH": {
         "name": "Daikin Altherma 3 H HT",
         "category": "High-Temperature Heat Pump",
         "description": "High-temperature heat pump perfect for retrofit applications. Delivers water up to 70°C for radiator systems.",
-        "features": ["High Temperature Output", "Retrofit Compatible", "R-32 Technology", "Heating & Cooling", "Weather Dependent Control"],
+        "features": [
+          "High Temperature Output",
+          "Retrofit Compatible",
+          "R-32 Technology",
+          "Heating & Cooling",
+          "Weather Dependent Control"
+        ],
         "price": "Starting from $9,800"
       }
     },
@@ -284,21 +351,39 @@
         "name": "Daikin MC55W",
         "category": "Compact Air Purifier",
         "description": "Perfect for small to medium rooms. Combines HEPA filtration with Streamer technology for comprehensive air purification.",
-        "features": ["HEPA Filter", "Streamer Technology", "Covers 41m²", "Compact Design", "Low Noise"],
+        "features": [
+          "HEPA Filter",
+          "Streamer Technology",
+          "Covers 41m²",
+          "Compact Design",
+          "Low Noise"
+        ],
         "price": "$399"
       },
       "mc70l": {
         "name": "Daikin MC70L",
         "category": "Large Room Purifier",
         "description": "Powerful air purifier designed for larger spaces. Removes 99.97% of airborne particles with advanced multi-stage filtration.",
-        "features": ["True HEPA Filter", "Active Plasma Ion", "Covers 70m²", "Auto Mode", "Air Quality Sensor"],
+        "features": [
+          "True HEPA Filter",
+          "Active Plasma Ion",
+          "Covers 70m²",
+          "Auto Mode",
+          "Air Quality Sensor"
+        ],
         "price": "$599"
       },
       "mcz70w": {
         "name": "Daikin MCZ70W",
         "category": "Humidifying Air Purifier",
         "description": "Ultimate air treatment system that purifies and humidifies. Maintains optimal humidity while removing allergens and pollutants.",
-        "features": ["Humidifying Function", "Streamer + HEPA", "Covers 70m²", "Smart Sensors", "App Control"],
+        "features": [
+          "Humidifying Function",
+          "Streamer + HEPA",
+          "Covers 70m²",
+          "Smart Sensors",
+          "App Control"
+        ],
         "price": "$799"
       }
     },
@@ -333,28 +418,52 @@
         "name": "Daikin One+ Smart Thermostat",
         "category": "Smart Control",
         "description": "Next-generation smart thermostat with intuitive interface and advanced features. Control your comfort from anywhere.",
-        "features": ["Wi-Fi Enabled", "Smart Scheduling", "Geofencing", "Voice Control", "Energy Reports"],
+        "features": [
+          "Wi-Fi Enabled",
+          "Smart Scheduling",
+          "Geofencing",
+          "Voice Control",
+          "Energy Reports"
+        ],
         "price": "$299"
       },
       "vrv": {
         "name": "VRV X Series",
         "category": "Commercial HVAC",
         "description": "Industry-leading Variable Refrigerant Volume system for commercial buildings. Maximum flexibility and efficiency.",
-        "features": ["Heat Recovery", "Individual Zone Control", "Energy Efficiency", "Modular Design", "Easy Installation"],
+        "features": [
+          "Heat Recovery",
+          "Individual Zone Control",
+          "Energy Efficiency",
+          "Modular Design",
+          "Easy Installation"
+        ],
         "price": "Contact for pricing"
       },
       "rebel": {
         "name": "Daikin Rebel Series",
         "category": "Light Commercial",
         "description": "Robust packaged rooftop units designed for light commercial applications with outstanding reliability and performance.",
-        "features": ["Up to 16 SEER", "Durable Construction", "Easy Service Access", "Flexible Options", "10-Year Warranty"],
+        "features": [
+          "Up to 16 SEER",
+          "Durable Construction",
+          "Easy Service Access",
+          "Flexible Options",
+          "10-Year Warranty"
+        ],
         "price": "Starting from $4,200"
       },
       "accessories": {
         "name": "Daikin Accessories",
         "category": "Add-ons & Parts",
         "description": "Complete range of accessories including filters, remote controls, mounting brackets, and installation kits.",
-        "features": ["Genuine Parts", "Easy Installation", "Wide Compatibility", "Quality Assured", "Expert Support"],
+        "features": [
+          "Genuine Parts",
+          "Easy Installation",
+          "Wide Compatibility",
+          "Quality Assured",
+          "Expert Support"
+        ],
         "price": "Varies by product"
       }
     },
@@ -670,7 +779,7 @@
       "airPurifiers": "Air Purifiers"
     }
   },
-    "signIn": {
+  "signIn": {
     "title": "Sign In",
     "description": "Enter your details below to login to your account",
     "email": "Email",
@@ -716,325 +825,389 @@
       "backHome": "Back to Home",
       "noAccount": "Don't have an account yet?",
       "createAccount": "Create an Account"
-    },
-    "services": {
-      "installation": {
-        "hero": {
-          "badge": "Professional Installation",
-          "title": "Expert Daikin Installation Services",
-          "subtitle": "Trust our certified technicians to install your Daikin HVAC system with precision and care, ensuring optimal performance and longevity.",
-          "cta": {
-            "schedule": "Schedule Installation",
-            "contact": "Contact Us"
-          }
-        },
-        "whyChoose": {
-          "title": "Why Choose Our Installation Service?",
-          "subtitle": "Professional installation is crucial for your HVAC system's performance and efficiency",
-          "reasons": {
-            "certified": {
-              "title": "Certified Technicians",
-              "description": "All our installers are Daikin-certified and highly trained professionals"
-            },
-            "quality": {
-              "title": "Quality Guaranteed",
-              "description": "We use only genuine Daikin parts and follow manufacturer specifications"
-            },
-            "fast": {
-              "title": "Fast & Efficient",
-              "description": "Most installations completed within 1-2 days with minimal disruption"
-            },
-            "warranty": {
-              "title": "Extended Warranty",
-              "description": "Professional installation ensures your manufacturer warranty remains valid"
-            }
-          }
-        },
-        "process": {
-          "title": "Our Installation Process",
-          "subtitle": "Six simple steps to a perfectly installed HVAC system",
-          "steps": {
-            "step1": {
-              "title": "Initial Consultation",
-              "description": "We assess your space, discuss your needs, and recommend the best Daikin system for your requirements"
-            },
-            "step2": {
-              "title": "Site Survey",
-              "description": "Our technicians perform a detailed site inspection to plan the optimal installation layout"
-            },
-            "step3": {
-              "title": "Custom Design",
-              "description": "We create a customized installation plan tailored to your building's specifications"
-            },
-            "step4": {
-              "title": "Professional Installation",
-              "description": "Our certified team installs your system with precision, following all safety and quality standards"
-            },
-            "step5": {
-              "title": "Testing & Commissioning",
-              "description": "We thoroughly test all components to ensure everything operates perfectly"
-            },
-            "step6": {
-              "title": "Training & Handover",
-              "description": "We train you on system operation and provide all necessary documentation"
-            }
-          }
-        },
-        "whatWeInstall": {
-          "title": "What We Install",
-          "subtitle": "Comprehensive installation services for all Daikin products",
-          "categories": {
-            "residential": {
-              "title": "Residential Systems",
-              "items": {
-                "1": "Split system air conditioners",
-                "2": "Multi-split systems for multiple rooms",
-                "3": "Ducted air conditioning systems",
-                "4": "Heat pumps for heating and cooling"
-              }
-            },
-            "commercial": {
-              "title": "Commercial Solutions",
-              "items": {
-                "1": "VRV/VRF systems for large buildings",
-                "2": "Packaged rooftop units",
-                "3": "Commercial split systems",
-                "4": "Building management system integration"
-              }
-            },
-            "industrial": {
-              "title": "Industrial Applications",
-              "items": {
-                "1": "Large capacity chillers",
-                "2": "Process cooling systems",
-                "3": "Cold storage solutions",
-                "4": "Industrial ventilation systems"
-              }
-            },
-            "specialized": {
-              "title": "Specialized Systems",
-              "items": {
-                "1": "Air purification systems",
-                "2": "Humidity control solutions",
-                "3": "Smart home integration",
-                "4": "Zone control systems"
-              }
-            }
-          }
-        },
-        "guarantee": {
-          "title": "Our Installation Guarantee",
-          "subtitle": "We stand behind every installation with our comprehensive service guarantee",
-          "items": {
-            "1": "100% satisfaction guarantee on all workmanship",
-            "2": "Manufacturer warranty protection",
-            "3": "Free follow-up visit within 30 days",
-            "4": "24/7 emergency support for first year",
-            "5": "Lifetime technical support and advice"
-          },
-          "certification": {
-            "title": "Certified Excellence",
-            "subtitle": "Industry-leading credentials",
-            "items": {
-              "1": "Daikin Authorized Installer",
-              "2": "EPA Certified Technicians",
-              "3": "NATE Certification Holders"
-            }
-          }
-        },
+    }
+  },
+  "services": {
+    "installation": {
+      "hero": {
+        "badge": "Professional Installation",
+        "title": "Expert Daikin Installation Services",
+        "subtitle": "Trust our certified technicians to install your Daikin HVAC system with precision and care, ensuring optimal performance and longevity.",
         "cta": {
-          "title": "Ready to Install Your Daikin System?",
-          "subtitle": "Get a free consultation and quote from our expert team today",
-          "schedule": "Schedule Consultation",
-          "viewProducts": "View Products"
-        }
-      },
-      "maintenance": {
-        "hero": {
-          "badge": "Preventive Maintenance",
-          "title": "Daikin Maintenance & Service Plans",
-          "subtitle": "Keep your HVAC system running at peak performance with our comprehensive maintenance services and flexible service plans.",
-          "cta": {
-            "schedule": "Schedule Maintenance",
-            "emergency": "24/7 Emergency Service"
-          }
-        },
-        "whyMaintenance": {
-          "title": "Why Regular Maintenance Matters",
-          "subtitle": "Protect your investment and ensure optimal performance year-round",
-          "benefits": {
-            "efficiency": {
-              "title": "Improved Efficiency",
-              "description": "Regular maintenance can improve energy efficiency by up to 30%"
-            },
-            "lifespan": {
-              "title": "Extended Lifespan",
-              "description": "Proper care can extend your system's life by 10-15 years"
-            },
-            "reliability": {
-              "title": "Fewer Breakdowns",
-              "description": "Preventive maintenance reduces emergency repairs by 95%"
-            },
-            "airQuality": {
-              "title": "Better Air Quality",
-              "description": "Clean filters and coils mean healthier indoor air"
-            }
-          }
-        },
-        "plans": {
-          "title": "Maintenance Plans",
-          "subtitle": "Choose the plan that best fits your needs",
-          "recommended": "Most Popular",
-          "perVisit": "/visit",
-          "selectPlan": "Select This Plan",
-          "packages": {
-            "basic": {
-              "title": "Basic",
-              "description": "Essential maintenance for homeowners",
-              "price": "$99",
-              "features": {
-                "1": "Annual system inspection",
-                "2": "Filter cleaning and replacement",
-                "3": "Basic performance check",
-                "4": "Priority scheduling",
-                "5": "10% discount on repairs"
-              }
-            },
-            "standard": {
-              "title": "Standard",
-              "description": "Comprehensive care for optimal performance",
-              "price": "$179",
-              "features": {
-                "1": "Two visits per year (spring & fall)",
-                "2": "Complete system cleaning",
-                "3": "Refrigerant level check",
-                "4": "Electrical component inspection",
-                "5": "15% discount on repairs"
-              }
-            },
-            "premium": {
-              "title": "Premium",
-              "description": "Ultimate protection and peace of mind",
-              "price": "$299",
-              "features": {
-                "1": "Quarterly visits (4x per year)",
-                "2": "All Standard features included",
-                "3": "24/7 priority emergency service",
-                "4": "Free minor repairs (up to $200)",
-                "5": "20% discount on major repairs"
-              }
-            }
-          }
-        },
-        "included": {
-          "title": "What's Included in Every Service",
-          "subtitle": "Comprehensive maintenance checklist performed by certified technicians",
-          "services": {
-            "1": {
-              "title": "Filter Inspection & Cleaning",
-              "description": "Clean or replace air filters for optimal airflow"
-            },
-            "2": {
-              "title": "Coil Cleaning",
-              "description": "Clean evaporator and condenser coils"
-            },
-            "3": {
-              "title": "Refrigerant Check",
-              "description": "Verify refrigerant levels and check for leaks"
-            },
-            "4": {
-              "title": "Electrical Inspection",
-              "description": "Test all electrical connections and components"
-            },
-            "5": {
-              "title": "Thermostat Calibration",
-              "description": "Ensure accurate temperature control"
-            },
-            "6": {
-              "title": "Drain Line Service",
-              "description": "Clear condensate drains to prevent clogs"
-            },
-            "7": {
-              "title": "Fan Motor Inspection",
-              "description": "Lubricate and test all motors and fans"
-            },
-            "8": {
-              "title": "Safety Check",
-              "description": "Verify all safety controls are functioning"
-            },
-            "9": {
-              "title": "Performance Test",
-              "description": "Measure and optimize system performance"
-            }
-          }
-        },
-        "warningSigns": {
-          "title": "Warning Signs You Need Service",
-          "subtitle": "Don't wait for a breakdown - watch for these common issues",
-          "signs": {
-            "1": {
-              "title": "Unusual Noises",
-              "description": "Grinding, squealing, or banging sounds indicate mechanical problems"
-            },
-            "2": {
-              "title": "Weak Airflow",
-              "description": "Reduced airflow suggests blocked filters or failing components"
-            },
-            "3": {
-              "title": "High Energy Bills",
-              "description": "Sudden increases in energy costs indicate system inefficiency"
-            },
-            "4": {
-              "title": "Uneven Temperatures",
-              "description": "Hot or cold spots mean your system isn't distributing air properly"
-            },
-            "5": {
-              "title": "Frequent Cycling",
-              "description": "System turning on and off too often needs professional attention"
-            },
-            "6": {
-              "title": "Bad Odors",
-              "description": "Musty or burning smells require immediate inspection"
-            }
-          },
-          "emergency": {
-            "title": "Need Emergency Service?",
-            "description": "We offer 24/7 emergency repairs for critical HVAC issues. Don't hesitate to call us anytime.",
-            "cta": "Call Emergency Service"
-          }
-        },
-        "seasonal": {
-          "title": "Seasonal Maintenance Tips",
-          "subtitle": "Keep your system ready for every season",
-          "spring": {
-            "title": "Spring/Summer Preparation",
-            "tasks": {
-              "1": "Clean or replace air filters",
-              "2": "Check refrigerant levels",
-              "3": "Clean outdoor unit and remove debris",
-              "4": "Test cooling performance",
-              "5": "Inspect ductwork for leaks"
-            }
-          },
-          "fall": {
-            "title": "Fall/Winter Preparation",
-            "tasks": {
-              "1": "Inspect heating elements",
-              "2": "Test heat pump reversing valve",
-              "3": "Check thermostat operation",
-              "4": "Clean indoor coils",
-              "5": "Verify proper airflow"
-            }
-          }
-        },
-        "cta": {
-          "title": "Protect Your Investment Today",
-          "subtitle": "Sign up for a maintenance plan and enjoy peace of mind year-round",
-          "schedule": "Schedule Service",
+          "schedule": "Schedule Installation",
           "contact": "Contact Us"
         }
+      },
+      "whyChoose": {
+        "title": "Why Choose Our Installation Service?",
+        "subtitle": "Professional installation is crucial for your HVAC system's performance and efficiency",
+        "reasons": {
+          "certified": {
+            "title": "Certified Technicians",
+            "description": "All our installers are Daikin-certified and highly trained professionals"
+          },
+          "quality": {
+            "title": "Quality Guaranteed",
+            "description": "We use only genuine Daikin parts and follow manufacturer specifications"
+          },
+          "fast": {
+            "title": "Fast & Efficient",
+            "description": "Most installations completed within 1-2 days with minimal disruption"
+          },
+          "warranty": {
+            "title": "Extended Warranty",
+            "description": "Professional installation ensures your manufacturer warranty remains valid"
+          }
+        }
+      },
+      "process": {
+        "title": "Our Installation Process",
+        "subtitle": "Six simple steps to a perfectly installed HVAC system",
+        "steps": {
+          "step1": {
+            "title": "Initial Consultation",
+            "description": "We assess your space, discuss your needs, and recommend the best Daikin system for your requirements"
+          },
+          "step2": {
+            "title": "Site Survey",
+            "description": "Our technicians perform a detailed site inspection to plan the optimal installation layout"
+          },
+          "step3": {
+            "title": "Custom Design",
+            "description": "We create a customized installation plan tailored to your building's specifications"
+          },
+          "step4": {
+            "title": "Professional Installation",
+            "description": "Our certified team installs your system with precision, following all safety and quality standards"
+          },
+          "step5": {
+            "title": "Testing & Commissioning",
+            "description": "We thoroughly test all components to ensure everything operates perfectly"
+          },
+          "step6": {
+            "title": "Training & Handover",
+            "description": "We train you on system operation and provide all necessary documentation"
+          }
+        }
+      },
+      "whatWeInstall": {
+        "title": "What We Install",
+        "subtitle": "Comprehensive installation services for all Daikin products",
+        "categories": {
+          "residential": {
+            "title": "Residential Systems",
+            "items": {
+              "1": "Split system air conditioners",
+              "2": "Multi-split systems for multiple rooms",
+              "3": "Ducted air conditioning systems",
+              "4": "Heat pumps for heating and cooling"
+            }
+          },
+          "commercial": {
+            "title": "Commercial Solutions",
+            "items": {
+              "1": "VRV/VRF systems for large buildings",
+              "2": "Packaged rooftop units",
+              "3": "Commercial split systems",
+              "4": "Building management system integration"
+            }
+          },
+          "industrial": {
+            "title": "Industrial Applications",
+            "items": {
+              "1": "Large capacity chillers",
+              "2": "Process cooling systems",
+              "3": "Cold storage solutions",
+              "4": "Industrial ventilation systems"
+            }
+          },
+          "specialized": {
+            "title": "Specialized Systems",
+            "items": {
+              "1": "Air purification systems",
+              "2": "Humidity control solutions",
+              "3": "Smart home integration",
+              "4": "Zone control systems"
+            }
+          }
+        }
+      },
+      "guarantee": {
+        "title": "Our Installation Guarantee",
+        "subtitle": "We stand behind every installation with our comprehensive service guarantee",
+        "items": {
+          "1": "100% satisfaction guarantee on all workmanship",
+          "2": "Manufacturer warranty protection",
+          "3": "Free follow-up visit within 30 days",
+          "4": "24/7 emergency support for first year",
+          "5": "Lifetime technical support and advice"
+        },
+        "certification": {
+          "title": "Certified Excellence",
+          "subtitle": "Industry-leading credentials",
+          "items": {
+            "1": "Daikin Authorized Installer",
+            "2": "EPA Certified Technicians",
+            "3": "NATE Certification Holders"
+          }
+        }
+      },
+      "cta": {
+        "title": "Ready to Install Your Daikin System?",
+        "subtitle": "Get a free consultation and quote from our expert team today",
+        "schedule": "Schedule Consultation",
+        "viewProducts": "View Products"
       }
+    },
+    "maintenance": {
+      "hero": {
+        "badge": "Preventive Maintenance",
+        "title": "Daikin Maintenance & Service Plans",
+        "subtitle": "Keep your HVAC system running at peak performance with our comprehensive maintenance services and flexible service plans.",
+        "cta": {
+          "schedule": "Schedule Maintenance",
+          "emergency": "24/7 Emergency Service"
+        }
+      },
+      "whyMaintenance": {
+        "title": "Why Regular Maintenance Matters",
+        "subtitle": "Protect your investment and ensure optimal performance year-round",
+        "benefits": {
+          "efficiency": {
+            "title": "Improved Efficiency",
+            "description": "Regular maintenance can improve energy efficiency by up to 30%"
+          },
+          "lifespan": {
+            "title": "Extended Lifespan",
+            "description": "Proper care can extend your system's life by 10-15 years"
+          },
+          "reliability": {
+            "title": "Fewer Breakdowns",
+            "description": "Preventive maintenance reduces emergency repairs by 95%"
+          },
+          "airQuality": {
+            "title": "Better Air Quality",
+            "description": "Clean filters and coils mean healthier indoor air"
+          }
+        }
+      },
+      "plans": {
+        "title": "Maintenance Plans",
+        "subtitle": "Choose the plan that best fits your needs",
+        "recommended": "Most Popular",
+        "perVisit": "/visit",
+        "selectPlan": "Select This Plan",
+        "packages": {
+          "basic": {
+            "title": "Basic",
+            "description": "Essential maintenance for homeowners",
+            "price": "$99",
+            "features": {
+              "1": "Annual system inspection",
+              "2": "Filter cleaning and replacement",
+              "3": "Basic performance check",
+              "4": "Priority scheduling",
+              "5": "10% discount on repairs"
+            }
+          },
+          "standard": {
+            "title": "Standard",
+            "description": "Comprehensive care for optimal performance",
+            "price": "$179",
+            "features": {
+              "1": "Two visits per year (spring & fall)",
+              "2": "Complete system cleaning",
+              "3": "Refrigerant level check",
+              "4": "Electrical component inspection",
+              "5": "15% discount on repairs"
+            }
+          },
+          "premium": {
+            "title": "Premium",
+            "description": "Ultimate protection and peace of mind",
+            "price": "$299",
+            "features": {
+              "1": "Quarterly visits (4x per year)",
+              "2": "All Standard features included",
+              "3": "24/7 priority emergency service",
+              "4": "Free minor repairs (up to $200)",
+              "5": "20% discount on major repairs"
+            }
+          }
+        }
+      },
+      "included": {
+        "title": "What's Included in Every Service",
+        "subtitle": "Comprehensive maintenance checklist performed by certified technicians",
+        "services": {
+          "1": {
+            "title": "Filter Inspection & Cleaning",
+            "description": "Clean or replace air filters for optimal airflow"
+          },
+          "2": {
+            "title": "Coil Cleaning",
+            "description": "Clean evaporator and condenser coils"
+          },
+          "3": {
+            "title": "Refrigerant Check",
+            "description": "Verify refrigerant levels and check for leaks"
+          },
+          "4": {
+            "title": "Electrical Inspection",
+            "description": "Test all electrical connections and components"
+          },
+          "5": {
+            "title": "Thermostat Calibration",
+            "description": "Ensure accurate temperature control"
+          },
+          "6": {
+            "title": "Drain Line Service",
+            "description": "Clear condensate drains to prevent clogs"
+          },
+          "7": {
+            "title": "Fan Motor Inspection",
+            "description": "Lubricate and test all motors and fans"
+          },
+          "8": {
+            "title": "Safety Check",
+            "description": "Verify all safety controls are functioning"
+          },
+          "9": {
+            "title": "Performance Test",
+            "description": "Measure and optimize system performance"
+          }
+        }
+      },
+      "warningSigns": {
+        "title": "Warning Signs You Need Service",
+        "subtitle": "Don't wait for a breakdown - watch for these common issues",
+        "signs": {
+          "1": {
+            "title": "Unusual Noises",
+            "description": "Grinding, squealing, or banging sounds indicate mechanical problems"
+          },
+          "2": {
+            "title": "Weak Airflow",
+            "description": "Reduced airflow suggests blocked filters or failing components"
+          },
+          "3": {
+            "title": "High Energy Bills",
+            "description": "Sudden increases in energy costs indicate system inefficiency"
+          },
+          "4": {
+            "title": "Uneven Temperatures",
+            "description": "Hot or cold spots mean your system isn't distributing air properly"
+          },
+          "5": {
+            "title": "Frequent Cycling",
+            "description": "System turning on and off too often needs professional attention"
+          },
+          "6": {
+            "title": "Bad Odors",
+            "description": "Musty or burning smells require immediate inspection"
+          }
+        },
+        "emergency": {
+          "title": "Need Emergency Service?",
+          "description": "We offer 24/7 emergency repairs for critical HVAC issues. Don't hesitate to call us anytime.",
+          "cta": "Call Emergency Service"
+        }
+      },
+      "seasonal": {
+        "title": "Seasonal Maintenance Tips",
+        "subtitle": "Keep your system ready for every season",
+        "spring": {
+          "title": "Spring/Summer Preparation",
+          "tasks": {
+            "1": "Clean or replace air filters",
+            "2": "Check refrigerant levels",
+            "3": "Clean outdoor unit and remove debris",
+            "4": "Test cooling performance",
+            "5": "Inspect ductwork for leaks"
+          }
+        },
+        "fall": {
+          "title": "Fall/Winter Preparation",
+          "tasks": {
+            "1": "Inspect heating elements",
+            "2": "Test heat pump reversing valve",
+            "3": "Check thermostat operation",
+            "4": "Clean indoor coils",
+            "5": "Verify proper airflow"
+          }
+        }
+      },
+      "cta": {
+        "title": "Protect Your Investment Today",
+        "subtitle": "Sign up for a maintenance plan and enjoy peace of mind year-round",
+        "schedule": "Schedule Service",
+        "contact": "Contact Us"
+      }
+    }
+  },
+  "news": {
+    "hero": {
+      "badge": "Industry News & Updates",
+      "title": "Latest News",
+      "subtitle": "Stay informed about the latest developments in HVAC technology, industry trends, and Daikin innovations"
+    },
+    "categories": {
+      "all": "All News",
+      "company": "Company",
+      "technology": "Technology",
+      "sustainability": "Sustainability",
+      "industry": "Industry",
+      "innovation": "Innovation",
+      "market": "Market"
+    },
+    "featured": {
+      "imageLabel": "Featured Story"
+    },
+    "articles": {
+      "1": {
+        "title": "Daikin Expands Operations in Poland with New Service Center",
+        "excerpt": "Daikin announces the opening of a state-of-the-art service center in Warsaw, strengthening its commitment to the Polish market and providing enhanced support for residential and commercial customers.",
+        "date": "October 15, 2025",
+        "readTime": "5 min read"
+      },
+      "2": {
+        "title": "AI-Powered HVAC Systems: The Future is Here",
+        "excerpt": "Artificial intelligence is revolutionizing climate control. Learn how smart HVAC systems are optimizing energy consumption and improving indoor air quality through predictive maintenance and adaptive learning.",
+        "date": "October 10, 2025",
+        "readTime": "4 min read"
+      },
+      "3": {
+        "title": "Sustainable Cooling: R-32 Refrigerant Leads the Way",
+        "excerpt": "Daikin's commitment to environmental sustainability continues with expanded R-32 refrigerant adoption. This eco-friendly solution reduces global warming potential by 75% compared to traditional refrigerants.",
+        "date": "October 5, 2025",
+        "readTime": "6 min read"
+      },
+      "4": {
+        "title": "Heat Pump Market Surges as Europe Moves Toward Electrification",
+        "excerpt": "European heat pump installations reach record highs as governments push for renewable heating solutions. Industry experts predict continued growth through 2030, with Poland showing particularly strong adoption rates.",
+        "date": "September 28, 2025",
+        "readTime": "5 min read"
+      },
+      "5": {
+        "title": "Smart Building Integration: IoT and HVAC Convergence",
+        "excerpt": "The integration of Internet of Things (IoT) technology with HVAC systems is creating smarter, more efficient buildings. Discover how connected systems are reducing energy costs by up to 40%.",
+        "date": "September 20, 2025",
+        "readTime": "7 min read"
+      },
+      "6": {
+        "title": "HVAC Market Trends: What to Expect in 2026",
+        "excerpt": "Industry analysis reveals key trends shaping the HVAC market: increased demand for heat pumps, smart controls adoption, and focus on indoor air quality solutions driven by health consciousness.",
+        "date": "September 15, 2025",
+        "readTime": "4 min read"
+      }
+    },
+    "readMore": "Read More",
+    "latestNews": "Latest News",
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "subtitle": "Get the latest HVAC news and updates delivered to your inbox",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
     }
   }
 }
-
