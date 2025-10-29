@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
+import { withPrisma } from "@/db/utils";
 import { Role } from "@prisma/client";
 
 // GET all services (Admin, Employee, and USER roles)
@@ -14,7 +15,8 @@ export const GET = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    try {
+    return withPrisma(async () => {
+        try {
         const { searchParams } = new URL(req.url);
         const search = searchParams.get("search") || "";
 
@@ -75,10 +77,11 @@ export const GET = async (req: Request) => {
         });
 
         return NextResponse.json(orders);
-    } catch (error) {
-        console.error("Error fetching services:", error);
-        return NextResponse.json({ error: "Failed to fetch services" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error fetching services:", error);
+            return NextResponse.json({ error: "Failed to fetch services" }, { status: 500 });
+        }
+    });
 };
 
 // POST create service request (USER role only)
@@ -95,7 +98,8 @@ export const POST = async (req: Request) => {
         return NextResponse.json({ error: "Only users can request services" }, { status: 403 });
     }
 
-    try {
+    return withPrisma(async () => {
+        try {
         const { orderId, dateOfProposedService, serviceDetails } = await req.json();
 
         if (!orderId || !dateOfProposedService) {
@@ -126,8 +130,9 @@ export const POST = async (req: Request) => {
         });
 
         return NextResponse.json(service, { status: 201 });
-    } catch (error) {
-        console.error("Error creating service request:", error);
-        return NextResponse.json({ error: "Failed to create service request" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error creating service request:", error);
+            return NextResponse.json({ error: "Failed to create service request" }, { status: 500 });
+        }
+    });
 };

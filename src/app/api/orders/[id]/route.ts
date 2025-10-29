@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
+import { withPrisma } from "@/db/utils";
 import { Role } from "@prisma/client";
 
 // GET single order (Admin and Employee see all, Users see their own)
@@ -17,8 +18,9 @@ export const GET = async (
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    try {
-        const { id } = await params;
+    return withPrisma(async () => {
+        try {
+            const { id } = await params;
         const order = await prisma.order.findUnique({
             where: { id },
             include: {
@@ -55,10 +57,11 @@ export const GET = async (
             ...order,
             customerPhoneNumber,
         });
-    } catch (error) {
-        console.error("Error fetching order:", error);
-        return NextResponse.json({ error: "Failed to fetch order" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error fetching order:", error);
+            return NextResponse.json({ error: "Failed to fetch order" }, { status: 500 });
+        }
+    });
 };
 
 // PUT update order (Admin and Employee only)
@@ -78,8 +81,9 @@ export const PUT = async (
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    try {
-        const { id } = await params;
+    return withPrisma(async () => {
+        try {
+            const { id } = await params;
         const { customerEmail, dateOfPurchase, nextDateOfService, daikinCoins, products } = await req.json();
 
         // Check if order exists
@@ -177,10 +181,11 @@ export const PUT = async (
         });
 
         return NextResponse.json(finalOrder);
-    } catch (error) {
-        console.error("Error updating order:", error);
-        return NextResponse.json({ error: "Failed to update order" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error updating order:", error);
+            return NextResponse.json({ error: "Failed to update order" }, { status: 500 });
+        }
+    });
 };
 
 // DELETE order (Admin only)
@@ -200,8 +205,9 @@ export const DELETE = async (
         return NextResponse.json({ error: "Forbidden - Admin only" }, { status: 403 });
     }
 
-    try {
-        const { id } = await params;
+    return withPrisma(async () => {
+        try {
+            const { id } = await params;
 
         // Check if order exists
         const order = await prisma.order.findUnique({
@@ -218,8 +224,9 @@ export const DELETE = async (
         });
 
         return NextResponse.json({ message: "Order deleted successfully" });
-    } catch (error) {
-        console.error("Error deleting order:", error);
-        return NextResponse.json({ error: "Failed to delete order" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error deleting order:", error);
+            return NextResponse.json({ error: "Failed to delete order" }, { status: 500 });
+        }
+    });
 };

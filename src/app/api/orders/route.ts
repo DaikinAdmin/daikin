@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
+import { withPrisma } from "@/db/utils";
 import { Role } from "@prisma/client";
 
 // GET all orders (Admin and Employee see all, Users see their own)
@@ -14,7 +15,8 @@ export const GET = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    try {
+    return withPrisma(async () => {
+        try {
         const { searchParams } = new URL(req.url);
         const search = searchParams.get("search") || "";
 
@@ -52,10 +54,11 @@ export const GET = async (req: Request) => {
         });
 
         return NextResponse.json(orders);
-    } catch (error) {
-        console.error("Error fetching orders:", error);
-        return NextResponse.json({ error: "Failed to fetch orders" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error fetching orders:", error);
+            return NextResponse.json({ error: "Failed to fetch orders" }, { status: 500 });
+        }
+    });
 };
 
 // POST create new order (Admin and Employee only)
@@ -72,7 +75,8 @@ export const POST = async (req: Request) => {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    try {
+    return withPrisma(async () => {
+        try {
         const { orderId, customerEmail, dateOfPurchase, nextDateOfService, daikinCoins, products } = await req.json();
 
         if (!orderId || !customerEmail || !products || products.length === 0) {
@@ -153,8 +157,9 @@ export const POST = async (req: Request) => {
         }
 
         return NextResponse.json(order, { status: 201 });
-    } catch (error) {
-        console.error("Error creating order:", error);
-        return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
-    }
+        } catch (error) {
+            console.error("Error creating order:", error);
+            return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
+        }
+    });
 };
