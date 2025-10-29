@@ -1209,5 +1209,96 @@
       "placeholder": "Enter your email",
       "subscribe": "Subscribe"
     }
+  },
+  "about": {
+    "hero": {
+      "title": "About AMM Salon",
+      "subtitle": "Your trusted partner in climate control solutions for over 15 years"
+    },
+    "overview": {
+      "title": "Who We Are",
+      "paragraph1": "AMM Salon is a leading authorized Daikin dealer and installer, specializing in premium air conditioning, heating, and ventilation solutions. Since 2009, we have been dedicated to providing our customers with the highest quality climate control systems.",
+      "paragraph2": "As an official Daikin partner, we offer the complete range of their innovative products, from residential air conditioners to commercial HVAC systems. Our team of certified technicians ensures professional installation, maintenance, and support for every project.",
+      "paragraph3": "We pride ourselves on our commitment to excellence, customer satisfaction, and staying at the forefront of HVAC technology. Our mission is to create comfortable, energy-efficient indoor environments that enhance the quality of life for our customers."
+    },
+    "stats": {
+      "experience": "15+",
+      "experienceLabel": "Years of Experience",
+      "projects": "5000+",
+      "projectsLabel": "Completed Projects",
+      "clients": "98%",
+      "clientsLabel": "Satisfied Clients",
+      "satisfaction": "24/7",
+      "satisfactionLabel": "Customer Support"
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "The principles that guide everything we do",
+      "quality": {
+        "title": "Quality First",
+        "description": "We only work with premium Daikin products and ensure every installation meets the highest industry standards."
+      },
+      "customer": {
+        "title": "Customer Focus",
+        "description": "Your satisfaction is our priority. We provide personalized solutions tailored to your specific needs and budget."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We stay updated with the latest HVAC technologies to offer you the most efficient and advanced climate control solutions."
+      }
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive HVAC solutions for residential and commercial needs",
+      "installation": {
+        "title": "Professional Installation",
+        "description": "Expert installation of air conditioning, heating systems, and heat pumps with precision and care."
+      },
+      "maintenance": {
+        "title": "Regular Maintenance",
+        "description": "Scheduled maintenance services to keep your systems running efficiently and extend their lifespan."
+      },
+      "consultation": {
+        "title": "Free Consultation",
+        "description": "Expert advice on choosing the right climate control solution for your home or business."
+      },
+      "warranty": {
+        "title": "Warranty Service",
+        "description": "Comprehensive warranty coverage and support for all Daikin products we install."
+      },
+      "repair": {
+        "title": "Emergency Repairs",
+        "description": "Fast and reliable repair services available 24/7 to keep your comfort uninterrupted."
+      },
+      "modernization": {
+        "title": "System Upgrades",
+        "description": "Modernization services to upgrade your existing HVAC systems for better efficiency."
+      }
+    },
+    "whyUs": {
+      "title": "Why Choose AMM Salon?",
+      "certified": {
+        "title": "Certified Daikin Partner",
+        "description": "As an authorized Daikin dealer, we have access to the latest products, training, and support."
+      },
+      "experience": {
+        "title": "15+ Years Experience",
+        "description": "Over a decade and a half of expertise in HVAC installation, maintenance, and repair."
+      },
+      "warranty": {
+        "title": "Extended Warranty",
+        "description": "All our installations come with comprehensive warranty coverage for your peace of mind."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock customer support for emergency repairs and technical assistance."
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Perfect Climate Control?",
+      "subtitle": "Contact us today for a free consultation and discover how we can improve your indoor comfort",
+      "getStarted": "Get Started",
+      "contact": "Call Us Now"
+    }
   }
 }

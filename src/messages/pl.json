@@ -1209,5 +1209,96 @@
       "placeholder": "Wprowadź swój e-mail",
       "subscribe": "Zapisz się"
     }
+  },
+  "about": {
+    "hero": {
+      "title": "O AMM Salon",
+      "subtitle": "Twój zaufany partner w rozwiązaniach klimatyzacyjnych od ponad 15 lat"
+    },
+    "overview": {
+      "title": "Kim jesteśmy",
+      "paragraph1": "AMM Salon to wiodący autoryzowany dealer i instalator Daikin, specjalizujący się w wysokiej jakości rozwiązaniach klimatyzacyjnych, grzewczych i wentylacyjnych. Od 2009 roku dostarczamy naszym klientom najwyższej jakości systemy kontroli klimatu.",
+      "paragraph2": "Jako oficjalny partner Daikin, oferujemy pełną gamę ich innowacyjnych produktów, od domowych klimatyzatorów po komercyjne systemy HVAC. Nasz zespół certyfikowanych techników zapewnia profesjonalną instalację, konserwację i wsparcie dla każdego projektu.",
+      "paragraph3": "Jesteśmy dumni z naszego zaangażowania w doskonałość, satysfakcję klienta i bycie na czele technologii HVAC. Naszą misją jest tworzenie komfortowych, energooszczędnych środowisk wewnętrznych, które poprawiają jakość życia naszych klientów."
+    },
+    "stats": {
+      "experience": "15+",
+      "experienceLabel": "Lat doświadczenia",
+      "projects": "5000+",
+      "projectsLabel": "Zrealizowanych projektów",
+      "clients": "98%",
+      "clientsLabel": "Zadowolonych klientów",
+      "satisfaction": "24/7",
+      "satisfactionLabel": "Wsparcie klienta"
+    },
+    "values": {
+      "title": "Nasze wartości",
+      "subtitle": "Zasady, które kierują wszystkim, co robimy",
+      "quality": {
+        "title": "Jakość przede wszystkim",
+        "description": "Pracujemy tylko z produktami premium Daikin i zapewniamy, że każda instalacja spełnia najwyższe standardy branżowe."
+      },
+      "customer": {
+        "title": "Fokus na kliencie",
+        "description": "Twoja satysfakcja jest naszym priorytetem. Zapewniamy spersonalizowane rozwiązania dostosowane do Twoich konkretnych potrzeb i budżetu."
+      },
+      "innovation": {
+        "title": "Innowacja",
+        "description": "Śledzimy najnowsze technologie HVAC, aby zaoferować Ci najbardziej wydajne i zaawansowane rozwiązania kontroli klimatu."
+      }
+    },
+    "services": {
+      "title": "Nasze usługi",
+      "subtitle": "Kompleksowe rozwiązania HVAC dla potrzeb mieszkaniowych i komercyjnych",
+      "installation": {
+        "title": "Profesjonalna instalacja",
+        "description": "Fachowa instalacja klimatyzacji, systemów grzewczych i pomp ciepła z precyzją i troską."
+      },
+      "maintenance": {
+        "title": "Regularna konserwacja",
+        "description": "Usługi konserwacji zgodnie z harmonogramem, aby utrzymać wydajność systemów i przedłużyć ich żywotność."
+      },
+      "consultation": {
+        "title": "Bezpłatna konsultacja",
+        "description": "Eksperckie doradztwo w wyborze odpowiedniego rozwiązania klimatyzacyjnego dla Twojego domu lub firmy."
+      },
+      "warranty": {
+        "title": "Serwis gwarancyjny",
+        "description": "Kompleksowa gwarancja i wsparcie dla wszystkich instalowanych przez nas produktów Daikin."
+      },
+      "repair": {
+        "title": "Naprawy awaryjne",
+        "description": "Szybkie i niezawodne usługi naprawcze dostępne 24/7, aby zapewnić nieprzerwany komfort."
+      },
+      "modernization": {
+        "title": "Modernizacja systemów",
+        "description": "Usługi modernizacji istniejących systemów HVAC dla lepszej wydajności."
+      }
+    },
+    "whyUs": {
+      "title": "Dlaczego AMM Salon?",
+      "certified": {
+        "title": "Certyfikowany partner Daikin",
+        "description": "Jako autoryzowany dealer Daikin, mamy dostęp do najnowszych produktów, szkoleń i wsparcia."
+      },
+      "experience": {
+        "title": "Ponad 15 lat doświadczenia",
+        "description": "Ponad półtorej dekady ekspertyzy w instalacji, konserwacji i naprawie HVAC."
+      },
+      "warranty": {
+        "title": "Przedłużona gwarancja",
+        "description": "Wszystkie nasze instalacje objęte są kompleksową gwarancją dla Twojego spokoju ducha."
+      },
+      "support": {
+        "title": "Wsparcie 24/7",
+        "description": "Całodobowe wsparcie klienta dla napraw awaryjnych i pomocy technicznej."
+      }
+    },
+    "cta": {
+      "title": "Gotowy na doskonałą kontrolę klimatu?",
+      "subtitle": "Skontaktuj się z nami już dziś, aby uzyskać bezpłatną konsultację i odkryj, jak możemy poprawić Twój komfort w pomieszczeniach",
+      "getStarted": "Zacznij teraz",
+      "contact": "Zadzwoń do nas"
+    }
   }
 }
