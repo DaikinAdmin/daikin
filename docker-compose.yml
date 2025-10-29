@@ -2,7 +2,7 @@
 version: "3.9"
 services:
   db:
-    container_name: BETTER_AUTH_NEXTJS_OAUTH
+    container_name: DAIKIN_AMM_SALON_DB
     image: postgres:17-alpine
     restart: always
     ports:

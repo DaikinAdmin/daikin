@@ -63,27 +63,27 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href="/" className="text-blue-100 hover:text-white transition-colors">
-                  Blog
+                  {t('links.blog')}
                 </Link>
               </li>
               <li>
                 <Link href="/benefits" className="text-blue-100 hover:text-white transition-colors">
-                  Benefits
+                  {t('links.benefits')}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-blue-100 hover:text-white transition-colors">
-                  About Us
+                  {t('links.about')}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-blue-100 hover:text-white transition-colors">
-                  Contact
+                  {t('links.contact')}
                 </Link>
               </li>
               <li>
                 <Link href="/dashboard" className="text-blue-100 hover:text-white transition-colors">
-                  Dashboard
+                  {t('links.dashboard')}
                 </Link>
               </li>
             </ul>
@@ -95,27 +95,27 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors">
-                  Air Conditioning
+                  {t('productLinks.airConditioning')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors">
-                  Heat Pumps
+                  {t('productLinks.heatPumps')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors">
-                  VRV Systems
+                  {t('productLinks.vrvSystems')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors">
-                  Refrigeration
+                  {t('productLinks.refrigeration')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors">
-                  Air Purifiers
+                  {t('productLinks.airPurifiers')}
                 </a>
               </li>
             </ul>

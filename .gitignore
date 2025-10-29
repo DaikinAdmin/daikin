@@ -1,5 +1,8 @@
 .next/
 .env
+.vscode/
+.idea/
+.auth/
 node_modules/
 *.pem
 *.log

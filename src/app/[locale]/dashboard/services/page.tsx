@@ -61,7 +61,7 @@ type Service = {
 };
 
 export default function ServicesPage() {
-  const t = useTranslations("dashboard.services");
+  const t = useTranslations("dashboard.serviceManagement");
   const userRole = useUserRole();
   const { userProfile } = useUserProfile();
   const [services, setServices] = useState<Service[]>([]);

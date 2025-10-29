@@ -18,10 +18,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AMM Salon - Vdoskonalennya povitrya",
-  description: "Otkryte innovatsiyni rishennya HVAC vid Daikin, rozrobleni dlya stvorennya ideal'noho vnutrishn'oho seredovyshcha dlya vashoho domu ta biznesu.",
+  title: "AMM Salon - Daikin HVAC Solutions in Poland",
+  description: "AMM Salon is your trusted partner for Daikin HVAC solutions in Poland. We offer top-quality air conditioning, heating, and ventilation systems tailored to your needs.",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.png',
   }
 };
 

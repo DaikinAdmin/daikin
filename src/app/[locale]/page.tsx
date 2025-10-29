@@ -1,7 +1,8 @@
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import ProductCarousel from '@/components/product-carousel';
-import { Link } from 'lucide-react';
+import { HeroCarousel } from '@/components/hero-carousel';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
@@ -17,40 +18,15 @@ export default function Home({
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <div className="p-8">
-      <h1 className="text-4xl font-bold text-center">
-        {t('hero.title')}
-      </h1>
-
-      {t('hero.title')}      {/* Hero Section */}
-
-      <section className="bg-gradient-to-br from-[#003D7A] to-[#0052CC] text-white">
-
-        <p className="text-xl lg:text-2xl mb-8 max-w-4xl mx-auto opacity-90">
-          {t('hero.subtitle')}
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/dashboard"
-            className="px-8 py-4 bg-white text-[#003D7A] rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
-          >
-            {t('hero.cta.explore')}
-          </Link>
-          <Link
-            href="/contact"
-            className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#003D7A] transition-colors font-semibold text-lg"
-          >
-            {t('hero.cta.quote')}
-          </Link>
-        </div>
-      </section >
+      
+      {/* Hero Carousel Section */}
+      <HeroCarousel />
 
       {/* Product Carousel */}
-      < ProductCarousel />
+      <ProductCarousel />
 
       {/* Features Section */}
-      < section className="py-16 bg-gray-50" >
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
@@ -94,10 +70,10 @@ export default function Home({
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* CTA Section */}
-      < section className="py-16 bg-[#003D7A] text-white" >
+      <section className="py-16 bg-[#003D7A] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
             {t('cta.title')}
@@ -120,10 +96,9 @@ export default function Home({
             </Link>
           </div>
         </div>
-      </section >
+      </section>
 
       <Footer />
-      </div>
-    </div >
+    </div>
   );
 }
