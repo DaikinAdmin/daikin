@@ -2,8 +2,6 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
-import { Role } from "@prisma/client";
-import bcrypt from "bcryptjs";
 
 // GET all users (Admin only)
 export const GET = async (req: Request) => {
@@ -15,7 +13,7 @@ export const GET = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN) {
+    if (session.user.role !== "admin") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -46,7 +44,7 @@ export const POST = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN) {
+    if (session.user.role !== "admin") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -62,34 +60,42 @@ export const POST = async (req: Request) => {
             return NextResponse.json({ error: "User with this email already exists" }, { status: 400 });
         }
 
-        // Hash default password
-        const hashedPassword = await bcrypt.hash("P@ssw0rd", 10);
+        const response = await auth.api.signUpEmail({
+            body: {
+                email: email,
+                password: "P@ssw0rd",
+                role: role || 'user',
+                name: name,
+            }
+        })
 
-        // Create user with account
-        const user = await prisma.user.create({
-            data: {
-                name,
-                email,
-                role: role || Role.USER,
-                Account: {
-                    create: {
-                        accountId: email,
-                        providerId: "credential",
-                        password: hashedPassword,
-                    },
-                },
-                userDetails: {
-                    create: {
-                        daikinCoins: 0,
-                    },
-                },
-            },
-            include: {
-                userDetails: true,
-            },
-        });
+        // const hashedPassword = await bcrypt.hash("P@ssw0rd", 10);
 
-        return NextResponse.json(user, { status: 201 });
+        // // Create user with account
+        // const user = await prisma.user.create({
+        //     data: {
+        //         name,
+        //         email,
+        //         role: role || "user",
+        //         Account: {
+        //             create: {
+        //                 accountId: email,
+        //                 providerId: "credential",
+        //                 password: hashedPassword,
+        //             },
+        //         },
+        //         userDetails: {
+        //             create: {
+        //                 daikinCoins: 0,
+        //             },
+        //         },
+        //     },
+        //     include: {
+        //         userDetails: true,
+        //     },
+        // });
+
+        return NextResponse.json(response.user, { status: 201 });
     } catch (error) {
         console.error("Error creating user:", error);
         return NextResponse.json({ error: "Failed to create user" }, { status: 500 });

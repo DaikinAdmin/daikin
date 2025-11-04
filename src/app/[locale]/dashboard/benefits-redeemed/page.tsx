@@ -43,7 +43,7 @@ export default function BenefitsRedeemedPage() {
 
   // Redirect non-admin users
   useEffect(() => {
-    if (userRole && userRole !== "ADMIN") {
+    if (userRole && userRole !== "admin") {
       router.replace("/dashboard");
     }
   }, [userRole, router]);
@@ -69,7 +69,7 @@ export default function BenefitsRedeemedPage() {
   };
 
   useEffect(() => {
-    if (userRole === "ADMIN") {
+    if (userRole === "admin") {
       fetchRedeemedBenefits();
     }
   }, [userRole]);
@@ -79,7 +79,7 @@ export default function BenefitsRedeemedPage() {
     fetchRedeemedBenefits(searchQuery);
   };
 
-  if (userRole !== "ADMIN") {
+  if (userRole !== "admin") {
     return null;
   }
 

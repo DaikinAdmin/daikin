@@ -165,7 +165,7 @@ export default function OrdersPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">{t("title")}</h1>
-        {(userRole === "ADMIN" || userRole === "EMPLOYEE") && (
+        {(userRole === "admin" || userRole === "employee") && (
           <Button onClick={handleNewOrder}>
             <Plus className="mr-2 h-4 w-4" />
             {t("addNewOrder")}
@@ -179,7 +179,7 @@ export default function OrdersPage() {
           <div className="flex gap-2">
             <Input
               placeholder={
-                userRole === "USER" 
+                userRole === "user" 
                   ? t("searchByOrderId")
                   : t("searchPlaceholder")
               }
@@ -211,7 +211,7 @@ export default function OrdersPage() {
       <Card>
         <CardHeader>
           <CardTitle>
-            {userRole === "USER" ? t("myOrders") : t("allOrders")}
+            {userRole === "user" ? t("myOrders") : t("allOrders")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -219,13 +219,13 @@ export default function OrdersPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>{t("orderId")}</TableHead>
-                {(userRole === "ADMIN" || userRole === "EMPLOYEE") && (
+                {(userRole === "admin" || userRole === "employee") && (
                   <TableHead>{t("customerEmail")}</TableHead>
                 )}
                 <TableHead>{t("dateOfPurchase")}</TableHead>
                 <TableHead>{t("dateOfService")}</TableHead>
                 <TableHead>{t("totalPrice")}</TableHead>
-                {userRole === "USER" && (
+                {userRole === "user" && (
                   <TableHead>{t("daikinCoins")}</TableHead>
                 )}
                 <TableHead className="text-right">{t("actions")}</TableHead>
@@ -235,7 +235,7 @@ export default function OrdersPage() {
               {orders.length === 0 ? (
                 <TableRow>
                   <TableCell 
-                    colSpan={userRole === "USER" ? 6 : 6} 
+                    colSpan={userRole === "user" ? 6 : 6} 
                     className="text-center text-muted-foreground"
                   >
                     {t("noOrdersFound")}
@@ -245,7 +245,7 @@ export default function OrdersPage() {
                 orders.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell className="font-medium">{order.orderId}</TableCell>
-                    {(userRole === "ADMIN" || userRole === "EMPLOYEE") && (
+                    {(userRole === "admin" || userRole === "employee") && (
                       <TableCell>{order.customerEmail}</TableCell>
                     )}
                     <TableCell>
@@ -261,7 +261,7 @@ export default function OrdersPage() {
                       )}
                     </TableCell>
                     <TableCell>{order.totalPrice.toFixed(2)} zł</TableCell>
-                    {userRole === "USER" && (
+                    {userRole === "user" && (
                       <TableCell>{order.daikinCoins}</TableCell>
                     )}
                     <TableCell className="text-right">
@@ -273,7 +273,7 @@ export default function OrdersPage() {
                         >
                           <Eye className="h-4 w-4" />
                         </Button>
-                        {(userRole === "ADMIN" || userRole === "EMPLOYEE") && (
+                        {(userRole === "admin" || userRole === "employee") && (
                           <>
                             <Button
                               variant="outline"
@@ -282,7 +282,7 @@ export default function OrdersPage() {
                             >
                               <Pencil className="h-4 w-4" />
                             </Button>
-                            {userRole === "ADMIN" && (
+                            {userRole === "admin" && (
                               <Button
                                 variant="destructive"
                                 size="sm"

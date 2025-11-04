@@ -21,8 +21,14 @@ import { redirect } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
 import { useUserRole } from "@/hooks/use-user-role";
 
-const getRoleNavItems = (t: any) => ({
-  USER: [
+type UserRole = "user" | "employee" | "admin";
+
+const getRoleNavItems = (t: any): Record<UserRole, Array<{
+  title: string;
+  href: string;
+  icon: any;
+}>> => ({
+  user: [
     {
       title: t("sidebar.userProfile"),
       href: "/dashboard/profile",
@@ -44,7 +50,7 @@ const getRoleNavItems = (t: any) => ({
       icon: Gift,
     },
   ],
-  EMPLOYEE: [
+  employee: [
     {
       title: "Create Order",
       href: "/dashboard/create-order",
@@ -61,7 +67,7 @@ const getRoleNavItems = (t: any) => ({
       icon: MessageSquare,
     },
   ],
-  ADMIN: [
+  admin: [
     {
       title: "Users",
       href: "/dashboard/users",
@@ -102,7 +108,7 @@ export function Sidebar() {
   const { data: session, isPending } = useSession();
   const user = session?.user;
   const role = useUserRole();
-  const navItems = role ? getRoleNavItems(t)[role] : [];
+  const navItems = role ? getRoleNavItems(t)[role as UserRole] : [];
 
   // Don't render sidebar while session is loading
   if (isPending) {

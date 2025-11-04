@@ -317,17 +317,17 @@ export default function ServicesPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>{userRole === "USER" ? t("myServices") : t("allServices")}</CardTitle>
+          <CardTitle>{userRole === "user" ? t("myServices") : t("allServices")}</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>{t("orderId")}</TableHead>
-                {userRole !== "USER" && <TableHead>{t("customerEmail")}</TableHead>}
+                {userRole !== "user" && <TableHead>{t("customerEmail")}</TableHead>}
                 <TableHead>{t("productDescription")}</TableHead>
                 <TableHead>{t("serviceDate")}</TableHead>
-                {userRole !== "USER" && <TableHead>{t("serviceRequest")}</TableHead>}
+                {userRole !== "user" && <TableHead>{t("serviceRequest")}</TableHead>}
                 <TableHead>{t("status")}</TableHead>
                 <TableHead className="text-right">{t("actions")}</TableHead>
               </TableRow>
@@ -335,7 +335,7 @@ export default function ServicesPage() {
             <TableBody>
               {services.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={userRole === "USER" ? 5 : 7} className="text-center text-muted-foreground">
+                  <TableCell colSpan={userRole === "user" ? 5 : 7} className="text-center text-muted-foreground">
                     {t("noServicesFound")}
                   </TableCell>
                 </TableRow>
@@ -352,7 +352,7 @@ export default function ServicesPage() {
                   return (
                     <TableRow key={service.id} className={cn("border-l-4", statusInfo.color)}>
                       <TableCell className="font-medium">{service.orderId}</TableCell>
-                      {userRole !== "USER" && <TableCell>{service.customerEmail}</TableCell>}
+                      {userRole !== "user" && <TableCell>{service.customerEmail}</TableCell>}
                       <TableCell>
                         <div className="max-w-xs">
                           {service.products.map((p) => p.productDescription).join(", ")}
@@ -368,7 +368,7 @@ export default function ServicesPage() {
                             : `${statusInfo.days} ${t("daysUntilService")}`}
                         </div>
                       </TableCell>
-                      {userRole !== "USER" && (
+                      {userRole !== "user" && (
                         <TableCell>
                           {serviceRequest ? (
                             <div className="text-sm">
@@ -402,7 +402,7 @@ export default function ServicesPage() {
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
-                          {userRole === "USER" ? (
+                          {userRole === "user" ? (
                             <Button
                               size="sm"
                               onClick={() => handleOpenServiceDialog(service)}

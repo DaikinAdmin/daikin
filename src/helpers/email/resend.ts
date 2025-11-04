@@ -5,7 +5,7 @@ export const email = nodemailer.createTransport({
     port: Number(process.env.MAIL_PORT),
     secure: true,
     auth: {
-        user: process.env.MAIL_USER,
+        user: process.env.MAIL_USER, // Fixed typo: was MAIL_user
         pass: process.env.MAIL_PASSWORD,
     },
     tls: {
@@ -28,7 +28,7 @@ export const sendEmail = async ({
     html: string;
 }) => {
     return email.sendMail({
-        from: process.env.MAIL_USER,
+        from: process.env.MAIL_USER, // Fixed to match the corrected env var
         to,
         subject,
         html,

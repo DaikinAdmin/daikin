@@ -57,9 +57,9 @@ export default function NewOrderPage() {
   const [saving, setSaving] = useState(false);
   const [isProductDialogOpen, setIsProductDialogOpen] = useState(false);
 
-  // Redirect USER role to orders list page
+  // Redirect user role to orders list page
   useEffect(() => {
-    if (userRole === "USER") {
+    if (userRole === "user") {
       router.replace("/dashboard/orders");
     }
   }, [userRole, router]);

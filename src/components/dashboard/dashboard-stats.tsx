@@ -12,11 +12,11 @@ import {
 } from "lucide-react";
 
 interface DashboardStatsProps {
-  userRole: "USER" | "EMPLOYEE" | "ADMIN";
+  userRole: "user" | "employee" | "admin";
 }
 
 const statsConfig = {
-  USER: [
+  user: [
     {
       title: "Active Orders",
       value: "3",
@@ -39,7 +39,7 @@ const statsConfig = {
       change: "Almost complete",
     },
   ],
-  EMPLOYEE: [
+  employee: [
     {
       title: "Orders Created",
       value: "24",
@@ -62,7 +62,7 @@ const statsConfig = {
       change: "5 unread",
     },
   ],
-  ADMIN: [
+  admin: [
     {
       title: "Total Users",
       value: "1,247",

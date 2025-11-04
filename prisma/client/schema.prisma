@@ -10,12 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  USER
-  EMPLOYEE
-  ADMIN
-}
-
 enum ServiceStatus {
   PENDING
   APPROVED
@@ -33,7 +27,10 @@ model User {
   twoFactorEnabled Boolean      @default(false)
   username         String?
   displayUsername  String?
-  role             Role         @default(USER)
+  role             String       @default("user")
+  banned           Boolean?     @default(false)
+  banReason        String?
+  banExpires       DateTime?
   userDetails      UserDetails?
   Session          Session[]
   Account          Account[]

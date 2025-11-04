@@ -17,7 +17,7 @@ export const GET = async (
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN) {
+    if (session.user.role !== "admin") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -51,7 +51,7 @@ export const PUT = async (
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN) {
+    if (session.user.role !== "admin") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -89,7 +89,7 @@ export const DELETE = async (
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN) {
+    if (session.user.role !== "admin") {
         return NextResponse.json({ error: "Forbidden - Admin only" }, { status: 403 });
     }
 

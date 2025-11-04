@@ -14,7 +14,7 @@ export const GET = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN && session.user.role !== Role.EMPLOYEE) {
+    if (session.user.role !== "admin" && session.user.role !== "employee") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -26,10 +26,10 @@ export const GET = async (req: Request) => {
             return NextResponse.json([]);
         }
 
-        // Search for users with USER role whose email contains the query
+        // Search for users with user role whose email contains the query
         const users = await prisma.user.findMany({
             where: {
-                role: Role.USER,
+                role: "user",
                 email: {
                     contains: query,
                     mode: "insensitive",

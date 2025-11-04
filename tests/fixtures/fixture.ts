@@ -15,7 +15,7 @@ interface TestOptions {
 
 export const test = base.extend<TestOptions>({
     userPage: async ({ browser, baseURL }, use) => {
-        const context = await browser.newContext({ storageState: '.auth/USER.json' });
+        const context = await browser.newContext({ storageState: '.auth/user.json' });
         const page = await context.newPage();
         await page.goto(baseURL!);
         await use(page);
@@ -23,7 +23,7 @@ export const test = base.extend<TestOptions>({
     },
 
     employeePage: async ({ browser, baseURL }, use) => {
-        const context = await browser.newContext({ storageState: '.auth/EMPLOYEE.json' });
+        const context = await browser.newContext({ storageState: '.auth/employee.json' });
         const page = await context.newPage();
         await page.goto(baseURL!);
         await use(page);
@@ -31,7 +31,7 @@ export const test = base.extend<TestOptions>({
     },
 
     adminPage: async ({ browser, baseURL }, use) => {
-        const context = await browser.newContext({ storageState: '.auth/ADMIN.json' });
+        const context = await browser.newContext({ storageState: '.auth/admin.json' });
         const page = await context.newPage();
         await page.goto(baseURL!);
         await use(page);

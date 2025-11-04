@@ -61,7 +61,7 @@ export default function BenefitsManagementPage() {
 
   // Redirect non-admin users
   useEffect(() => {
-    if (userRole && userRole !== "ADMIN") {
+    if (userRole && userRole !== "admin") {
       router.replace("/dashboard");
     }
   }, [userRole, router]);
@@ -87,7 +87,7 @@ export default function BenefitsManagementPage() {
   };
 
   useEffect(() => {
-    if (userRole === "ADMIN") {
+    if (userRole === "admin") {
       fetchBenefits();
     }
   }, [userRole]);
@@ -202,7 +202,7 @@ export default function BenefitsManagementPage() {
     }
   };
 
-  if (userRole !== "ADMIN") {
+  if (userRole !== "admin") {
     return null;
   }
 
@@ -215,7 +215,7 @@ export default function BenefitsManagementPage() {
   }
 
   // User view - show benefits as cards for redemption
-  if (userRole && userRole !== "ADMIN") {
+  if (userRole && userRole !== "admin") {
     return (
       <div className="space-y-6">
         <h1 className="text-3xl font-bold">{t("title")}</h1>

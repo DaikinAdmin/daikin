@@ -5,7 +5,7 @@ import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
 import { Role } from "@prisma/client";
 
-// GET all services (Admin, Employee, and USER roles)
+// GET all services (Admin, Employee, and user roles)
 export const GET = async (req: Request) => {
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -27,8 +27,8 @@ export const GET = async (req: Request) => {
             },
         };
 
-        // USER role: only see their own orders
-        if (session.user.role === Role.USER) {
+        // user role: only see their own orders
+        if (session.user.role === "user") {
             whereClause.customerEmail = session.user.email;
         }
 
@@ -84,7 +84,7 @@ export const GET = async (req: Request) => {
     });
 };
 
-// POST create service request (USER role only)
+// POST create service request (user role only)
 export const POST = async (req: Request) => {
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -94,7 +94,7 @@ export const POST = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.USER) {
+    if (session.user.role !== "user") {
         return NextResponse.json({ error: "Only users can request services" }, { status: 403 });
     }
 

@@ -8,20 +8,20 @@ The `global-setup.ts` file automatically logs in with all three user roles and s
 
 The following test users are authenticated:
 
-1. **USER Role**
+1. **user Role**
    - Email: XX@XX.com
    - Password: XXXXXXXX
-   - State saved to: `.auth/USER.json`
+   - State saved to: `.auth/user.json`
 
-2. **EMPLOYEE Role**
+2. **employee Role**
    - Email: XX@XX.com
    - Password: XXXXXXXX
-   - State saved to: `.auth/EMPLOYEE.json`
+   - State saved to: `.auth/employee.json`
 
-3. **ADMIN Role**
+3. **admin Role**
    - Email: XX@XX.com
    - Password: XXXXXXXX
-   - State saved to: `.auth/ADMIN.json`
+   - State saved to: `.auth/admin.json`
 
 ## Usage in Tests
 
@@ -33,12 +33,12 @@ import path from 'path';
 
 // Extend base test with authentication
 const test = base.extend({
-  storageState: path.resolve(__dirname, '../.auth/USER.json'),
+  storageState: path.resolve(__dirname, '../.auth/user.json'),
 });
 
 test('user can access dashboard', async ({ page }) => {
   await page.goto('/dashboard');
-  // Test will run with USER authentication
+  // Test will run with user authentication
 });
 ```
 
@@ -50,21 +50,21 @@ projects: [
     name: 'user-tests',
     use: {
       ...devices['Desktop Chrome'],
-      storageState: '.auth/USER.json',
+      storageState: '.auth/user.json',
     },
   },
   {
     name: 'employee-tests',
     use: {
       ...devices['Desktop Chrome'],
-      storageState: '.auth/EMPLOYEE.json',
+      storageState: '.auth/employee.json',
     },
   },
   {
     name: 'admin-tests',
     use: {
       ...devices['Desktop Chrome'],
-      storageState: '.auth/ADMIN.json',
+      storageState: '.auth/admin.json',
     },
   },
 ],
@@ -77,7 +77,7 @@ import { test, expect } from '@playwright/test';
 import path from 'path';
 
 test.describe('Role-based tests', () => {
-  ['USER', 'EMPLOYEE', 'ADMIN'].forEach((role) => {
+  ['user', 'employee', 'admin'].forEach((role) => {
     test(`${role} can access dashboard`, async ({ browser }) => {
       const context = await browser.newContext({
         storageState: path.resolve(__dirname, `../.auth/${role}.json`),

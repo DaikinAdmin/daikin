@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
-import { Role } from "@prisma/client";
 
 // GET single order (Admin and Employee see all, Users see their own)
 export const GET = async (
@@ -33,13 +32,13 @@ export const GET = async (
         }
 
         // Users can only view their own orders
-        if (session.user.role === Role.USER && order.customerEmail !== session.user.email) {
+        if (session.user.role === "user" && order.customerEmail !== session.user.email) {
             return NextResponse.json({ error: "Forbidden" }, { status: 403 });
         }
 
         // For Admin and Employee, fetch user phone number
         let customerPhoneNumber = null;
-        if (session.user.role === Role.ADMIN || session.user.role === Role.EMPLOYEE) {
+        if (session.user.role === "admin" || session.user.role === "employee") {
             const user = await prisma.user.findUnique({
                 where: { email: order.customerEmail },
                 select: {
@@ -77,7 +76,7 @@ export const PUT = async (
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN && session.user.role !== Role.EMPLOYEE) {
+    if (session.user.role !== "admin" && session.user.role !== "employee") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -107,15 +106,15 @@ export const PUT = async (
         // Calculate the difference in daikinCoins
         const coinsDifference = orderDaikinCoins - existingOrder.daikinCoins;
 
-        // Update user's daikinCoins if the customer exists, there's a difference, and user is USER role
+        // Update user's daikinCoins if the customer exists, there's a difference, and user is user role
         if (coinsDifference !== 0) {
             const user = await prisma.user.findUnique({
                 where: { email: customerEmail || existingOrder.customerEmail },
                 include: { userDetails: true },
             });
 
-            // Only award coins to users with USER role
-            if (user && user.role === Role.USER) {
+            // Only award coins to users with user role
+            if (user && user.role === "user") {
                 if (user.userDetails) {
                     // Update existing userDetails
                     await prisma.userDetails.update({
@@ -201,7 +200,7 @@ export const DELETE = async (
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN) {
+    if (session.user.role !== "admin") {
         return NextResponse.json({ error: "Forbidden - Admin only" }, { status: 403 });
     }
 

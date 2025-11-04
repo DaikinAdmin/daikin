@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
-import { Role } from "@prisma/client";
 
 // GET all orders (Admin and Employee see all, Users see their own)
 export const GET = async (req: Request) => {
@@ -23,7 +22,7 @@ export const GET = async (req: Request) => {
         // Build where clause based on user role
         let whereClause: any = {};
 
-        if (session.user.role === Role.USER) {
+        if (session.user.role === "user") {
             // Users can only see their own orders
             whereClause.customerEmail = session.user.email;
             
@@ -31,7 +30,7 @@ export const GET = async (req: Request) => {
             if (search) {
                 whereClause.orderId = { contains: search, mode: "insensitive" };
             }
-        } else if (session.user.role === Role.ADMIN || session.user.role === Role.EMPLOYEE) {
+        } else if (session.user.role === "admin" || session.user.role === "employee") {
             // Admin and Employee can see all orders and search by orderId or email
             if (search) {
                 whereClause.OR = [
@@ -71,7 +70,7 @@ export const POST = async (req: Request) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (session.user.role !== Role.ADMIN && session.user.role !== Role.EMPLOYEE) {
+    if (session.user.role !== "admin" && session.user.role !== "employee") {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -125,15 +124,15 @@ export const POST = async (req: Request) => {
             },
         });
 
-        // Update user's daikinCoins if the customer exists in the system and is a USER
+        // Update user's daikinCoins if the customer exists in the system and is a user
         if (orderDaikinCoins > 0) {
             const user = await prisma.user.findUnique({
                 where: { email: customerEmail },
                 include: { userDetails: true },
             });
 
-            // Only award coins to users with USER role
-            if (user && user.role === Role.USER) {
+            // Only award coins to users with user role
+            if (user && user.role === "user") {
                 if (user.userDetails) {
                     // Update existing userDetails
                     await prisma.userDetails.update({

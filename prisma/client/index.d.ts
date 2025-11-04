@@ -73,16 +73,7 @@ export type Service = $Result.DefaultSelection<Prisma.$ServicePayload>
  * Enums
  */
 export namespace $Enums {
-  export const Role: {
-  USER: 'USER',
-  EMPLOYEE: 'EMPLOYEE',
-  ADMIN: 'ADMIN'
-};
-
-export type Role = (typeof Role)[keyof typeof Role]
-
-
-export const ServiceStatus: {
+  export const ServiceStatus: {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED'
@@ -91,10 +82,6 @@ export const ServiceStatus: {
 export type ServiceStatus = (typeof ServiceStatus)[keyof typeof ServiceStatus]
 
 }
-
-export type Role = $Enums.Role
-
-export const Role: typeof $Enums.Role
 
 export type ServiceStatus = $Enums.ServiceStatus
 
@@ -1960,7 +1947,10 @@ export namespace Prisma {
     twoFactorEnabled: boolean | null
     username: string | null
     displayUsername: string | null
-    role: $Enums.Role | null
+    role: string | null
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1974,7 +1964,10 @@ export namespace Prisma {
     twoFactorEnabled: boolean | null
     username: string | null
     displayUsername: string | null
-    role: $Enums.Role | null
+    role: string | null
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1989,6 +1982,9 @@ export namespace Prisma {
     username: number
     displayUsername: number
     role: number
+    banned: number
+    banReason: number
+    banExpires: number
     _all: number
   }
 
@@ -2005,6 +2001,9 @@ export namespace Prisma {
     username?: true
     displayUsername?: true
     role?: true
+    banned?: true
+    banReason?: true
+    banExpires?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2019,6 +2018,9 @@ export namespace Prisma {
     username?: true
     displayUsername?: true
     role?: true
+    banned?: true
+    banReason?: true
+    banExpires?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2033,6 +2035,9 @@ export namespace Prisma {
     username?: true
     displayUsername?: true
     role?: true
+    banned?: true
+    banReason?: true
+    banExpires?: true
     _all?: true
   }
 
@@ -2119,7 +2124,10 @@ export namespace Prisma {
     twoFactorEnabled: boolean
     username: string | null
     displayUsername: string | null
-    role: $Enums.Role
+    role: string
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -2151,6 +2159,9 @@ export namespace Prisma {
     username?: boolean
     displayUsername?: boolean
     role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
     userDetails?: boolean | User$userDetailsArgs<ExtArgs>
     Session?: boolean | User$SessionArgs<ExtArgs>
     Account?: boolean | User$AccountArgs<ExtArgs>
@@ -2172,6 +2183,9 @@ export namespace Prisma {
     username?: boolean
     displayUsername?: boolean
     role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2186,6 +2200,9 @@ export namespace Prisma {
     username?: boolean
     displayUsername?: boolean
     role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2200,9 +2217,12 @@ export namespace Prisma {
     username?: boolean
     displayUsername?: boolean
     role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "createdAt" | "updatedAt" | "twoFactorEnabled" | "username" | "displayUsername" | "role", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "createdAt" | "updatedAt" | "twoFactorEnabled" | "username" | "displayUsername" | "role" | "banned" | "banReason" | "banExpires", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userDetails?: boolean | User$userDetailsArgs<ExtArgs>
     Session?: boolean | User$SessionArgs<ExtArgs>
@@ -2236,7 +2256,10 @@ export namespace Prisma {
       twoFactorEnabled: boolean
       username: string | null
       displayUsername: string | null
-      role: $Enums.Role
+      role: string
+      banned: boolean | null
+      banReason: string | null
+      banExpires: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2676,7 +2699,10 @@ export namespace Prisma {
     readonly twoFactorEnabled: FieldRef<"User", 'Boolean'>
     readonly username: FieldRef<"User", 'String'>
     readonly displayUsername: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'Role'>
+    readonly role: FieldRef<"User", 'String'>
+    readonly banned: FieldRef<"User", 'Boolean'>
+    readonly banReason: FieldRef<"User", 'String'>
+    readonly banExpires: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -14383,7 +14409,10 @@ export namespace Prisma {
     twoFactorEnabled: 'twoFactorEnabled',
     username: 'username',
     displayUsername: 'displayUsername',
-    role: 'role'
+    role: 'role',
+    banned: 'banned',
+    banReason: 'banReason',
+    banExpires: 'banExpires'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -14595,20 +14624,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Role'
-   */
-  export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
-    
-
-
-  /**
-   * Reference to a field of type 'Role[]'
-   */
-  export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -14667,7 +14682,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFilter<"User"> | boolean
     username?: StringNullableFilter<"User"> | string | null
     displayUsername?: StringNullableFilter<"User"> | string | null
-    role?: EnumRoleFilter<"User"> | $Enums.Role
+    role?: StringFilter<"User"> | string
+    banned?: BoolNullableFilter<"User"> | boolean | null
+    banReason?: StringNullableFilter<"User"> | string | null
+    banExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     userDetails?: XOR<UserDetailsNullableScalarRelationFilter, UserDetailsWhereInput> | null
     Session?: SessionListRelationFilter
     Account?: AccountListRelationFilter
@@ -14688,6 +14706,9 @@ export namespace Prisma {
     username?: SortOrderInput | SortOrder
     displayUsername?: SortOrderInput | SortOrder
     role?: SortOrder
+    banned?: SortOrderInput | SortOrder
+    banReason?: SortOrderInput | SortOrder
+    banExpires?: SortOrderInput | SortOrder
     userDetails?: UserDetailsOrderByWithRelationInput
     Session?: SessionOrderByRelationAggregateInput
     Account?: AccountOrderByRelationAggregateInput
@@ -14710,7 +14731,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFilter<"User"> | boolean
     username?: StringNullableFilter<"User"> | string | null
     displayUsername?: StringNullableFilter<"User"> | string | null
-    role?: EnumRoleFilter<"User"> | $Enums.Role
+    role?: StringFilter<"User"> | string
+    banned?: BoolNullableFilter<"User"> | boolean | null
+    banReason?: StringNullableFilter<"User"> | string | null
+    banExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     userDetails?: XOR<UserDetailsNullableScalarRelationFilter, UserDetailsWhereInput> | null
     Session?: SessionListRelationFilter
     Account?: AccountListRelationFilter
@@ -14731,6 +14755,9 @@ export namespace Prisma {
     username?: SortOrderInput | SortOrder
     displayUsername?: SortOrderInput | SortOrder
     role?: SortOrder
+    banned?: SortOrderInput | SortOrder
+    banReason?: SortOrderInput | SortOrder
+    banExpires?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -14750,7 +14777,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolWithAggregatesFilter<"User"> | boolean
     username?: StringNullableWithAggregatesFilter<"User"> | string | null
     displayUsername?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+    role?: StringWithAggregatesFilter<"User"> | string
+    banned?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    banReason?: StringNullableWithAggregatesFilter<"User"> | string | null
+    banExpires?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type UserDetailsWhereInput = {
@@ -15483,7 +15513,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsCreateNestedOneWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Account?: AccountCreateNestedManyWithoutUserInput
@@ -15503,7 +15536,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsUncheckedCreateNestedOneWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Account?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -15523,7 +15559,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUpdateOneWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Account?: AccountUpdateManyWithoutUserNestedInput
@@ -15543,7 +15582,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUncheckedUpdateOneWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -15563,7 +15605,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -15577,7 +15622,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -15591,7 +15639,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserDetailsCreateInput = {
@@ -16420,11 +16471,20 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type EnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type UserDetailsNullableScalarRelationFilter = {
@@ -16499,6 +16559,9 @@ export namespace Prisma {
     username?: SortOrder
     displayUsername?: SortOrder
     role?: SortOrder
+    banned?: SortOrder
+    banReason?: SortOrder
+    banExpires?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -16513,6 +16576,9 @@ export namespace Prisma {
     username?: SortOrder
     displayUsername?: SortOrder
     role?: SortOrder
+    banned?: SortOrder
+    banReason?: SortOrder
+    banExpires?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -16527,6 +16593,9 @@ export namespace Prisma {
     username?: SortOrder
     displayUsername?: SortOrder
     role?: SortOrder
+    banned?: SortOrder
+    banReason?: SortOrder
+    banExpires?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -16587,17 +16656,15 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -16605,7 +16672,10 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -16666,20 +16736,6 @@ export namespace Prisma {
 
   export type UserDetailsSumOrderByAggregateInput = {
     daikinCoins?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -17187,8 +17243,12 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type EnumRoleFieldUpdateOperationsInput = {
-    set?: $Enums.Role
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type UserDetailsUpdateOneWithoutUserNestedInput = {
@@ -17355,10 +17415,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutUserDetailsInput, UserUncheckedCreateWithoutUserDetailsInput>
     connectOrCreate?: UserCreateOrConnectWithoutUserDetailsInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -17671,11 +17727,20 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedEnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -17756,25 +17821,12 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -18222,7 +18274,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     Session?: SessionCreateNestedManyWithoutUserInput
     Account?: AccountCreateNestedManyWithoutUserInput
     TwoFactor?: TwoFactorCreateNestedManyWithoutUserInput
@@ -18241,7 +18296,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Account?: AccountUncheckedCreateNestedManyWithoutUserInput
     TwoFactor?: TwoFactorUncheckedCreateNestedManyWithoutUserInput
@@ -18276,7 +18334,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Session?: SessionUpdateManyWithoutUserNestedInput
     Account?: AccountUpdateManyWithoutUserNestedInput
     TwoFactor?: TwoFactorUpdateManyWithoutUserNestedInput
@@ -18295,7 +18356,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     TwoFactor?: TwoFactorUncheckedUpdateManyWithoutUserNestedInput
@@ -18314,7 +18378,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsCreateNestedOneWithoutUserInput
     Account?: AccountCreateNestedManyWithoutUserInput
     TwoFactor?: TwoFactorCreateNestedManyWithoutUserInput
@@ -18333,7 +18400,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsUncheckedCreateNestedOneWithoutUserInput
     Account?: AccountUncheckedCreateNestedManyWithoutUserInput
     TwoFactor?: TwoFactorUncheckedCreateNestedManyWithoutUserInput
@@ -18368,7 +18438,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUpdateOneWithoutUserNestedInput
     Account?: AccountUpdateManyWithoutUserNestedInput
     TwoFactor?: TwoFactorUpdateManyWithoutUserNestedInput
@@ -18387,7 +18460,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUncheckedUpdateOneWithoutUserNestedInput
     Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     TwoFactor?: TwoFactorUncheckedUpdateManyWithoutUserNestedInput
@@ -18406,7 +18482,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsCreateNestedOneWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     TwoFactor?: TwoFactorCreateNestedManyWithoutUserInput
@@ -18425,7 +18504,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsUncheckedCreateNestedOneWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     TwoFactor?: TwoFactorUncheckedCreateNestedManyWithoutUserInput
@@ -18460,7 +18542,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUpdateOneWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     TwoFactor?: TwoFactorUpdateManyWithoutUserNestedInput
@@ -18479,7 +18564,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUncheckedUpdateOneWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     TwoFactor?: TwoFactorUncheckedUpdateManyWithoutUserNestedInput
@@ -18498,7 +18586,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsCreateNestedOneWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Account?: AccountCreateNestedManyWithoutUserInput
@@ -18517,7 +18608,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsUncheckedCreateNestedOneWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Account?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -18552,7 +18646,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUpdateOneWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Account?: AccountUpdateManyWithoutUserNestedInput
@@ -18571,7 +18668,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUncheckedUpdateOneWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -18839,7 +18939,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsCreateNestedOneWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Account?: AccountCreateNestedManyWithoutUserInput
@@ -18858,7 +18961,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsUncheckedCreateNestedOneWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Account?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -18924,7 +19030,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUpdateOneWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Account?: AccountUpdateManyWithoutUserNestedInput
@@ -18943,7 +19052,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUncheckedUpdateOneWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -18997,7 +19109,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsCreateNestedOneWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Account?: AccountCreateNestedManyWithoutUserInput
@@ -19016,7 +19131,10 @@ export namespace Prisma {
     twoFactorEnabled?: boolean
     username?: string | null
     displayUsername?: string | null
-    role?: $Enums.Role
+    role?: string
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
     userDetails?: UserDetailsUncheckedCreateNestedOneWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Account?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -19092,7 +19210,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUpdateOneWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Account?: AccountUpdateManyWithoutUserNestedInput
@@ -19111,7 +19232,10 @@ export namespace Prisma {
     twoFactorEnabled?: BoolFieldUpdateOperationsInput | boolean
     username?: NullableStringFieldUpdateOperationsInput | string | null
     displayUsername?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    role?: StringFieldUpdateOperationsInput | string
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDetails?: UserDetailsUncheckedUpdateOneWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Account?: AccountUncheckedUpdateManyWithoutUserNestedInput

@@ -1,7 +1,4 @@
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('USER', 'EMPLOYEE', 'ADMIN');
-
--- CreateEnum
 CREATE TYPE "ServiceStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
 
 -- CreateTable
@@ -16,7 +13,7 @@ CREATE TABLE "user" (
     "twoFactorEnabled" BOOLEAN NOT NULL DEFAULT false,
     "username" TEXT,
     "displayUsername" TEXT,
-    "role" "Role" NOT NULL DEFAULT 'USER',
+    "role" TEXT NOT NULL DEFAULT 'user',
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );

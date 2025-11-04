@@ -61,7 +61,7 @@ export default function UserBenefitsPage() {
 
   // Redirect non-user roles
   useEffect(() => {
-    if (userRole && userRole !== "USER") {
+    if (userRole && userRole !== "user") {
       router.replace("/dashboard");
     }
   }, [userRole, router]);
@@ -95,21 +95,21 @@ export default function UserBenefitsPage() {
   };
 
   useEffect(() => {
-    if (userRole === "USER") {
+    if (userRole === "user") {
       const fetchData = async () => {
         await Promise.all([fetchBenefits(), fetchRedeemedBenefits()]);
         setLoading(false);
       };
       fetchData();
     } else if (userRole) {
-      // If we know the role and it's not USER, stop loading
+      // If we know the role and it's not user, stop loading
       setLoading(false);
     }
   }, [userRole]);
   
-  // Separate effect to stop loading once profile is available for USER role
+  // Separate effect to stop loading once profile is available for user role
   useEffect(() => {
-    if (userRole === "USER" && userProfile?.userDetails) {
+    if (userRole === "user" && userProfile?.userDetails) {
       setLoading(false);
     }
   }, [userRole, userProfile]);

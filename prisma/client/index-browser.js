@@ -131,7 +131,10 @@ exports.Prisma.UserScalarFieldEnum = {
   twoFactorEnabled: 'twoFactorEnabled',
   username: 'username',
   displayUsername: 'displayUsername',
-  role: 'role'
+  role: 'role',
+  banned: 'banned',
+  banReason: 'banReason',
+  banExpires: 'banExpires'
 };
 
 exports.Prisma.UserDetailsScalarFieldEnum = {
@@ -259,12 +262,6 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.Role = exports.$Enums.Role = {
-  USER: 'USER',
-  EMPLOYEE: 'EMPLOYEE',
-  ADMIN: 'ADMIN'
-};
-
 exports.ServiceStatus = exports.$Enums.ServiceStatus = {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',

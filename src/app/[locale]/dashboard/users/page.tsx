@@ -57,7 +57,7 @@ export default function UsersPage() {
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
-    role: "USER",
+    role: "user",
   });
 
   const fetchUsers = async () => {
@@ -93,7 +93,7 @@ export default function UsersPage() {
 
       if (response.ok) {
         setIsAddDialogOpen(false);
-        setNewUser({ name: "", email: "", role: "USER" });
+        setNewUser({ name: "", email: "", role: "user" });
         await fetchUsers();
       } else {
         const error = await response.json();
@@ -180,9 +180,9 @@ export default function UsersPage() {
                   <TableCell>
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        user.role === "ADMIN"
+                        user.role === "admin"
                           ? "bg-red-100 text-red-800"
-                          : user.role === "EMPLOYEE"
+                          : user.role === "employee"
                           ? "bg-blue-100 text-blue-800"
                           : "bg-green-100 text-green-800"
                       }`}
@@ -282,9 +282,9 @@ export default function UsersPage() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="USER">User</SelectItem>
-                    <SelectItem value="EMPLOYEE">Employee</SelectItem>
-                    <SelectItem value="ADMIN">Admin</SelectItem>
+                    <SelectItem value="user">User</SelectItem>
+                    <SelectItem value="employee">Employee</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

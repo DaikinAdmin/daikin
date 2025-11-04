@@ -10,11 +10,11 @@ import {
 } from "lucide-react";
 
 interface RecentActivityProps {
-  userRole: "USER" | "EMPLOYEE" | "ADMIN";
+  userRole: "user" | "employee" | "admin";
 }
 
 const activityConfig = {
-  USER: [
+  user: [
     {
       title: "Order #2024-001 shipped",
       description: "Your laptop order is on its way",
@@ -37,7 +37,7 @@ const activityConfig = {
       color: "text-purple-600",
     },
   ],
-  EMPLOYEE: [
+  employee: [
     {
       title: "New order created",
       description: "Office supplies order for Marketing team",
@@ -60,7 +60,7 @@ const activityConfig = {
       color: "text-green-600",
     },
   ],
-  ADMIN: [
+  admin: [
     {
       title: "New user registered",
       description: "Sarah Johnson joined the platform",

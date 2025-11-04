@@ -21,18 +21,24 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 
+type UserRole = "user" | "employee" | "admin";
+
 interface MobileNavProps {
   user: {
     id: string;
     name: string;
     email: string;
-    role: "USER" | "EMPLOYEE" | "ADMIN";
+    role: string;
     image?: string | null;
   };
 }
 
-const getRoleNavItems = (t: any) => ({
-  USER: [
+const getRoleNavItems = (t: any): Record<UserRole, Array<{
+  title: string;
+  href: string;
+  icon: any;
+}>> => ({
+  "user": [
     {
       title: t("sidebar.userProfile"),
       href: "/dashboard/profile",
@@ -54,7 +60,7 @@ const getRoleNavItems = (t: any) => ({
       icon: Gift,
     },
   ],
-  EMPLOYEE: [
+  "employee": [
     {
       title: "Create Order",
       href: "/dashboard/create-order",
@@ -71,7 +77,7 @@ const getRoleNavItems = (t: any) => ({
       icon: MessageSquare,
     },
   ],
-  ADMIN: [
+  "admin": [
     {
       title: "Users",
       href: "/dashboard/users",
@@ -100,7 +106,7 @@ export function MobileNav({ user }: MobileNavProps) {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("dashboard");
-  const navItems = getRoleNavItems(t)[user.role];
+  const navItems = getRoleNavItems(t)[user.role as UserRole];
 
   return (
     <>

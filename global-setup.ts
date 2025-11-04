@@ -2,19 +2,19 @@ import { chromium, expect, FullConfig } from '@playwright/test';
 
 const users = [
   {
-    role: 'USER',
+    role: 'user',
     email: 'test-1@lawhub.pl',
     password: 'Qazwsx12@',
     name: 'User'
   },
   {
-    role: 'EMPLOYEE',
+    role: 'employee',
     email: 'test-2@lawhub.pl',
     password: 'Qazwsx12@',
     name: 'Employee'
   },
   {
-    role: 'ADMIN',
+    role: 'admin',
     email: 'test-3@lawhub.pl',
     password: 'Qazwsx12@',
     name: 'Admin'

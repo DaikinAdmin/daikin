@@ -19,7 +19,7 @@ The seed file creates three test users with different roles:
 - **Name:** Employee
 - **Email:** test-2@lawhub.pl
 - **Password:** Qazwsx12@
-- **Role:** EMPLOYEE
+- **Role:** employee
 - **DaikinCoins:** 50
 - **Location:** Krakow, Second Street 2, 30-001
 - **Phone:** +48987654321
@@ -28,7 +28,7 @@ The seed file creates three test users with different roles:
 - **Name:** Admin
 - **Email:** test-3@lawhub.pl
 - **Password:** Qazwsx12@
-- **Role:** ADMIN
+- **Role:** admin
 - **DaikinCoins:** 1000
 - **Location:** Gdansk, Admin Avenue 3, 80-001
 - **Phone:** +48555666777

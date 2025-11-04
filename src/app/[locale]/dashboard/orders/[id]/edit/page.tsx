@@ -73,9 +73,9 @@ export default function EditOrderPage() {
   const [isProductDialogOpen, setIsProductDialogOpen] = useState(false);
   const [editingProductIndex, setEditingProductIndex] = useState<number | null>(null);
 
-  // Redirect USER role to view page
+  // Redirect user role to view page
   useEffect(() => {
-    if (userRole === "USER") {
+    if (userRole === "user") {
       router.replace(`/dashboard/orders/${orderId}`);
     }
   }, [userRole, orderId, router]);

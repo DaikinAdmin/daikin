@@ -216,9 +216,9 @@ export default function EditUserPage() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="USER">User</SelectItem>
-                <SelectItem value="EMPLOYEE">Employee</SelectItem>
-                <SelectItem value="ADMIN">Admin</SelectItem>
+                <SelectItem value="user">User</SelectItem>
+                <SelectItem value="employee">Employee</SelectItem>
+                <SelectItem value="admin">Admin</SelectItem>
               </SelectContent>
             </Select>
           </div>

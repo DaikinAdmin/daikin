@@ -120,7 +120,7 @@ export default function ViewOrderPage() {
           </Button>
           <h1 className="text-3xl font-bold">{t("orderDetails")}</h1>
         </div>
-        {(userRole === "ADMIN" || userRole === "EMPLOYEE") && (
+        {(userRole === "admin" || userRole === "employee") && (
           <Button onClick={() => router.push(`/dashboard/orders/${orderId}/edit`)}>
             <Pencil className="mr-2 h-4 w-4" />
             {t("editOrder")}
@@ -145,7 +145,7 @@ export default function ViewOrderPage() {
             </div>
           </div>
 
-          {(userRole === "ADMIN" || userRole === "EMPLOYEE") && order.customerPhoneNumber && (
+          {(userRole === "admin" || userRole === "employee") && order.customerPhoneNumber && (
             <div>
               <p className="text-sm font-medium text-muted-foreground">{t("phoneNumber")}</p>
               <p className="text-lg">{order.customerPhoneNumber}</p>
