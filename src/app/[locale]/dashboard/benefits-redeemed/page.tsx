@@ -19,7 +19,10 @@ import { useTranslations } from "next-intl";
 
 type RedeemedBenefit = {
   id: string;
-  userId: string;
+  user: {
+    email: string;
+    name: string;
+  };
   redeemedAt: string;
   comment: string | null;
   benefitDescription: {
@@ -154,7 +157,7 @@ export default function BenefitsRedeemedPage() {
                     <TableCell className="font-medium">
                       {item.benefitDescription.title}
                     </TableCell>
-                    <TableCell>{item.userId}</TableCell>
+                    <TableCell>{item.user.email}</TableCell>
                     <TableCell>{item.benefitDescription.daikinCoins}</TableCell>
                     <TableCell>
                       {new Date(item.redeemedAt).toLocaleDateString()}

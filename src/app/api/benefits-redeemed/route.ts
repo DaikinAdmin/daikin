@@ -23,8 +23,18 @@ export const GET = async (req: Request) => {
         const search = searchParams.get("search") || "";
 
         const redeemedBenefits = await prisma.benefits.findMany({
-            include: {
+            select: {
+                id: true,
                 benefitDescription: true,
+                redeemedAt: true,
+                comment: true,
+                userId: true,
+                user: {
+                    select: {
+                        email: true,
+                        name: true,
+                    },
+                }
             },
             orderBy: {
                 redeemedAt: 'desc',

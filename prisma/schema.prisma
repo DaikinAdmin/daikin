@@ -168,7 +168,7 @@ model Benefits {
   comment              String?
   benefitDescriptionId String
   benefitDescription   BenefitDescription @relation(fields: [benefitDescriptionId], references: [id])
-  User                 User[]
+  user                 User @relation(fields: [userId], references: [id])
 
   @@map("benefits")
 }
