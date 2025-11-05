@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
-import { Role } from "@prisma/client";
 
 // PUT - Update service status (Admin and Employee only)
 export const PUT = async (

@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
-import { Role } from "@prisma/client";
 
 // GET all redeemed benefits (Admin only)
 export const GET = async (req: Request) => {

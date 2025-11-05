@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
-import { Role } from "@prisma/client";
 
 // GET all benefits (Admin only)
 export const GET = async (req: Request) => {

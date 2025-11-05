@@ -1,4 +1,3 @@
-import { Role } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 export function useUserRole() {

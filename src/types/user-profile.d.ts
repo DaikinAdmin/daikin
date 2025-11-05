@@ -1,11 +1,10 @@
-import { Role, UserDetails } from "@prisma/client";
-
+import { UserDetails } from "@prisma/client";
 
 export interface UserProfileType {
     id: string,
     name: string,
     email: string,
-    role: Role,
+    role: string,
     image: string,
     twoFactorEnabled: boolean,
     userDetails: UserDetailsType | null
