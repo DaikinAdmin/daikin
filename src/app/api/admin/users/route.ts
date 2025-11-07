@@ -67,33 +67,7 @@ export const POST = async (req: Request) => {
                 role: role || 'user',
                 name: name,
             }
-        })
-
-        // const hashedPassword = await bcrypt.hash("P@ssw0rd", 10);
-
-        // // Create user with account
-        // const user = await prisma.user.create({
-        //     data: {
-        //         name,
-        //         email,
-        //         role: role || "user",
-        //         Account: {
-        //             create: {
-        //                 accountId: email,
-        //                 providerId: "credential",
-        //                 password: hashedPassword,
-        //             },
-        //         },
-        //         userDetails: {
-        //             create: {
-        //                 daikinCoins: 0,
-        //             },
-        //         },
-        //     },
-        //     include: {
-        //         userDetails: true,
-        //     },
-        // });
+        });
 
         return NextResponse.json(response.user, { status: 201 });
     } catch (error) {
