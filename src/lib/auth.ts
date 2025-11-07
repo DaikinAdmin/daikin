@@ -39,7 +39,7 @@ export const auth = betterAuth({
     resetPasswordTokenExpiresIn: 3600 * 24 * 3,
     sendResetPassword: async ({ user, url, token }: { user: any; url: string; token: string }, request?: any) => {
       await email.sendMail({
-        from: "Lawhub <test@lawhub.pl>",
+        from: process.env.MAIL_FROM,
         to: user.email,
         subject: "Reset your password",
         html: `Click the link to reset your password: ${url}`,
@@ -51,7 +51,7 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }: { user: any; url: string }) => {
       await email.sendMail({
-        from: "Lawhub <test@lawhub.pl>",
+        from: process.env.MAIL_FROM,
         to: user.email,
         subject: "Email Verification",
         html: `Click the link to verify your email: ${url}`,
@@ -72,7 +72,7 @@ export const auth = betterAuth({
       otpOptions: {
         async sendOTP({ user, otp }) {
           await email.sendMail({
-            from: "Lawhub <test@lawhub.pl>",
+            from: process.env.MAIL_FROM,
             to: user.email,
             subject: "Two Factor",
             html: `Your OTP is ${otp}`,
