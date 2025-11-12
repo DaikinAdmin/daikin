@@ -49,21 +49,32 @@ export default function Header() {
   return (
     <>
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3" locale={locale}>
-              <div className="w-8 h-8 sm:w-10 sm:h-10 relative">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 relative">
                 <Image 
                   src="/daikin_logo.png" 
-                  alt="AMM Salon Logo" 
+                  alt="Daikin AMM Project Salon Partnerski Logo" 
                   fill
                   className="object-contain"
                   priority
                 />
+                <div className="absolute bottom-8 sm:bottom-12 left-0 right-0 flex justify-center items-center gap-1.5">
+                  <p className="text-[#003D7A] font-semibold text-xs sm:text-sm px-2 ml-6 py-0.5 rounded" style={{ fontFamily: 'Montserrat' }}>
+                    salon partnerski
+                  </p>
+                  <Image 
+                    src="/amm.png" 
+                    alt="AMM" 
+                    width={80}
+                    height={80}
+                    className="w-12 h-12 sm:w-16 sm:h-16 object-contain flex-shrink-0"
+                  />
+                </div>
               </div>
-              <span className="text-lg sm:text-2xl font-bold text-[#003D7A]">{t('logo')}</span>
             </Link>
           </div>
 

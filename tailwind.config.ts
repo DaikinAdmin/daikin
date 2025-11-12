@@ -13,7 +13,6 @@ export default {
   			sans: [
   				'Myriad Pro',
   				'Source Sans 3',
-  				'system-ui',
   				'Segoe UI',
   				'Roboto',
   				'sans-serif'
@@ -38,7 +37,7 @@ export default {
   				foreground: '#ffffff'
   			},
   			secondary: {
-  				DEFAULT: '#54C3F1', // DaikinLightBlue
+  				DEFAULT: '#4D4D4D', // DaikinLightBlue
   				foreground: '#000000'
   			},
   			white: '#ffffff',
