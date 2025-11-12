@@ -264,7 +264,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/mykhailo.tymoshenko/Documents/Projects/my/daikin/prisma/client",
+      "value": "C:\\Users\\ds228\\Desktop\\PA.PL\\daikin\\prisma\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -273,7 +273,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       },
       {
@@ -282,7 +282,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/mykhailo.tymoshenko/Documents/Projects/my/daikin/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\ds228\\Desktop\\PA.PL\\daikin\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
