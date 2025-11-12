@@ -48,8 +48,27 @@ export default {
   			'caring-light-blue-grey': '#F1F4F7',
   			'caring-blue': '#BEDCF4',
   			'caring-light-blue': '#E3F0FB',
+			'caring-orange': '#F9DDC0',
+			'caring-light-orange': '#FCEFE1',
+			'caring-yellow': '#F6EAC5',
+			'caring-light-yellow': '#FBF5E2',
+			'caring-green': '#C8DDC7',
+			'caring-light-green': '#EEF4EE',
+			'caring-berry': '#DABFC9',
+			'caring-light-berry': '#F0EAED',
+			'caring-brown': '#E7D8C6',
+			'caring-light-brown': '#F6F0E9',
+			'caring-grey': '#D8D6D6',
+			'caring-light-grey': '#ECEAEA',
+			'accent-blue-grey': '#728992',
+			'accent-orange': '#EE740B',
+			'accent-yellow': '#EAB500',
+			'accent-green': '#50915D',
+			'accent-berry': '#966498',
+			'accent-brown': '#977362', 
+
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
+  				DEFAULT: 'hsl(var(--muted))', 
   				foreground: 'hsl(var(--muted-foreground))'
   			},
   			accent: {
