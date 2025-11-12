@@ -16,6 +16,7 @@ import {
   Menu,
   X,
   Wrench,
+  Layers,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
@@ -89,13 +90,28 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       icon: ShoppingBag,
     },
     {
+      title: "Services",
+      href: "/dashboard/services",
+      icon: Wrench,
+    },
+    {
       title: "Events",
       href: "/dashboard/events",
       icon: Calendar,
     },
     {
+      title: "Categories",
+      href: "/dashboard/categories",
+      icon: Layers,
+    },
+    {
       title: "Benefits",
       href: "/dashboard/benefits",
+      icon: Gift,
+    },
+    {
+      title: "Benefits Redeemed",
+      href: "/dashboard/benefits-redeemed",
       icon: Gift,
     },
   ],

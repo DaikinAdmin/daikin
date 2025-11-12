@@ -14,10 +14,10 @@ import {
   Settings,
   LogOut,
   Wrench,
+  Layers,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { redirect } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
 import { useUserRole } from "@/hooks/use-user-role";
 
@@ -87,6 +87,11 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       title: "Events",
       href: "/dashboard/events",
       icon: Calendar,
+    },
+    {
+      title: "Categories",
+      href: "/dashboard/categories",
+      icon: Layers,
     },
     {
       title: "Benefits",

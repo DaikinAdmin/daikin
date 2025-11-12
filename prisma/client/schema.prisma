@@ -141,6 +141,7 @@ model OrderProduct {
   totalPrice         Float
   orderId            String
   order              Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  Product            Product @relation(fields: [productId], references: [id])
 
   @@map("order_product")
 }
@@ -182,4 +183,85 @@ model Service {
   updatedAt             DateTime      @updatedAt
   order                 Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
   user                  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("service")
+}
+
+model Category {
+  id              String                @id @default(cuid())
+  name            String
+  slug            String                @unique
+  products        Product[]
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  isActive        Boolean               @default(true)
+  categoryDetails CategoryTranslation[]
+
+  @@map("category")
+}
+
+model CategoryTranslation {
+  id         String   @id @default(cuid())
+  categoryId String
+  locale     String
+  name       String
+  isActive   Boolean  @default(true)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+  @@map("category_translation")
+}
+
+model Product {
+  id             String               @id @default(cuid())
+  price          Float?
+  img            String?
+  articleId      String               @unique
+  categoryId     String
+  isActive       Boolean              @default(true)
+  category       Category             @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  orderProducts  OrderProduct[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  productDetails ProductTranslation[]
+  features       Feature[]
+
+  @@map("product")
+}
+
+model ProductTranslation {
+  id          String  @id @default(cuid())
+  productId   String
+  locale      String
+  name        String
+  description String
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, locale])
+  @@map("product_translation")
+}
+
+model Feature {
+  id             String               @id @default(cuid())
+  name           String
+  img            String?
+  isActive       Boolean              @default(true)
+  featureDetails FeatureTranslation[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  products       Product[]
+
+  @@map("feature")
+}
+
+model FeatureTranslation {
+  id        String  @id @default(cuid())
+  featureId String
+  locale    String
+  name      String
+  isActive  Boolean @default(true)
+  feature   Feature @relation(fields: [featureId], references: [id], onDelete: Cascade)
+
+  @@unique([featureId, locale])
+  @@map("feature_translation")
 }
