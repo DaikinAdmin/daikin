@@ -29,7 +29,7 @@ const myriadPro = localFont({
     },
   ],
   variable: "--font-myriad-pro",
-  fallback: ["Source Sans 3", "system-ui", "sans-serif"],
+  fallback: ["Source Sans 3", "sans-serif"],
   display: "swap",
 });
 

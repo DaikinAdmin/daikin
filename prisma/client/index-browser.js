@@ -248,6 +248,59 @@ exports.Prisma.ServiceScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isActive: 'isActive'
+};
+
+exports.Prisma.CategoryTranslationScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  locale: 'locale',
+  name: 'name',
+  isActive: 'isActive'
+};
+
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  price: 'price',
+  img: 'img',
+  articleId: 'articleId',
+  categoryId: 'categoryId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductTranslationScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  locale: 'locale',
+  name: 'name',
+  description: 'description'
+};
+
+exports.Prisma.FeatureScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  img: 'img',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeatureTranslationScalarFieldEnum = {
+  id: 'id',
+  featureId: 'featureId',
+  locale: 'locale',
+  name: 'name',
+  isActive: 'isActive'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -279,7 +332,13 @@ exports.Prisma.ModelName = {
   OrderProduct: 'OrderProduct',
   BenefitDescription: 'BenefitDescription',
   Benefits: 'Benefits',
-  Service: 'Service'
+  Service: 'Service',
+  Category: 'Category',
+  CategoryTranslation: 'CategoryTranslation',
+  Product: 'Product',
+  ProductTranslation: 'ProductTranslation',
+  Feature: 'Feature',
+  FeatureTranslation: 'FeatureTranslation'
 };
 
 /**

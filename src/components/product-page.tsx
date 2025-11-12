@@ -1,5 +1,6 @@
 import { ProductPageProps } from "@/types/product";
 import { useTranslations } from "next-intl";
+import { Button } from "./ui/button";
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -103,12 +104,12 @@ export default function ProductTemplatePage({
 
                     {/* Actions */}
                     <div className="flex gap-3">
-                      <button className="px-4 py-2 bg-[#003D7A] text-white rounded-lg hover:bg-[#0052CC] transition-colors font-medium flex-1">
+                      <Button className="px-4 py-2 rounded-full transition-colors font-medium flex-1" variant={"secondary"}>
                         {t("learnMore")}
-                      </button>
-                      <button className="px-4 py-2 border-2 border-[#003D7A] text-[#003D7A] rounded-lg hover:bg-[#F5F8FF] transition-colors font-medium flex-1">
+                      </Button>
+                      <Button className="px-4 py-2 rounded-full transition-colors font-medium flex-1" variant={"default"}>
                         {t("getQuote")}
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>

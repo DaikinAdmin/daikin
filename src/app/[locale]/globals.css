@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Myriad Pro', 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Myriad Pro', 'Source Sans 3', 'Segoe UI', Roboto, sans-serif;
 }
 
 @layer base {
