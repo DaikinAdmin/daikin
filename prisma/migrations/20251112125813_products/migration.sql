@@ -5,13 +5,13 @@
 
 */
 -- DropForeignKey
-ALTER TABLE "auth"."Service" DROP CONSTRAINT "Service_orderId_fkey";
+ALTER TABLE "public"."Service" DROP CONSTRAINT "Service_orderId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "auth"."Service" DROP CONSTRAINT "Service_userId_fkey";
+ALTER TABLE "public"."Service" DROP CONSTRAINT "Service_userId_fkey";
 
 -- DropTable
-DROP TABLE "auth"."Service";
+DROP TABLE "public"."Service";
 
 -- CreateTable
 CREATE TABLE "service" (
