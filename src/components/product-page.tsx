@@ -1,6 +1,5 @@
 import { ProductPageProps } from "@/types/product";
 import { useTranslations } from "next-intl";
-import { use } from "react";
 
 export default function ProductTemplatePage({
   heroTitle,

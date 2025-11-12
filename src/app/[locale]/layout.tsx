@@ -1,21 +1,48 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Source_Sans_3 } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+// Google Font - Source Sans 3 as fallback
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans",
+  display: "swap",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+// Myriad Pro fonts (if you have the font files)
+const myriadPro = localFont({
+  src: [
+    {
+      path: "./fonts/MyriadPro-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/MyriadPro-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-myriad-pro",
+  fallback: ["Source Sans 3", "system-ui", "sans-serif"],
+  display: "swap",
 });
+
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "AMM Salon - Daikin HVAC Solutions in Poland",
@@ -49,7 +76,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${myriadPro.variable} ${sourceSans.variable} antialiased font-sans`}>
         <NextIntlClientProvider>
           {children}
         </NextIntlClientProvider>

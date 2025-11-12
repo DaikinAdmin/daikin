@@ -9,6 +9,18 @@ export default {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: [
+  				'Myriad Pro',
+  				'Source Sans 3',
+  				'system-ui',
+  				'Segoe UI',
+  				'Roboto',
+  				'sans-serif'
+  			],
+  			'myriad-light': ['Myriad Pro Light', 'Source Sans 3', 'sans-serif'],
+  			'myriad-regular': ['Myriad Pro Regular', 'Source Sans 3', 'sans-serif']
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -20,14 +32,22 @@ export default {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
   			},
+  			// Daikin Corporate Colors
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: '#0097E0', // DaikinBlue
+  				foreground: '#ffffff'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: '#54C3F1', // DaikinLightBlue
+  				foreground: '#000000'
   			},
+  			white: '#ffffff',
+  			black: '#000000',
+  			// Daikin Supporting Colors
+  			'caring-blue-grey': '#CDDAE2',
+  			'caring-light-blue-grey': '#F1F4F7',
+  			'caring-blue': '#BEDCF4',
+  			'caring-light-blue': '#E3F0FB',
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
   				foreground: 'hsl(var(--muted-foreground))'
