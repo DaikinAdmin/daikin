@@ -15,6 +15,8 @@ import {
   LogOut,
   Wrench,
   Layers,
+  Sparkles,
+  Package,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -92,6 +94,16 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       title: "Categories",
       href: "/dashboard/categories",
       icon: Layers,
+    },
+    {
+      title: "Products",
+      href: "/dashboard/products",
+      icon: Package,
+    },
+    {
+      title: "Features",
+      href: "/dashboard/features",
+      icon: Sparkles,
     },
     {
       title: "Benefits",
