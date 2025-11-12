@@ -17,7 +17,7 @@ export default function AirConditioningPage({
 
   const iconMap = { Wind, Zap, Snowflake, Thermometer };
 
-  // Creating product bject
+  // Creating product object
   function createProduct(id: string, iconName: string) {
     return {
       id,

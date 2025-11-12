@@ -1300,5 +1300,10 @@
       "getStarted": "Get Started",
       "contact": "Call Us Now"
     }
+  },
+  "productPage": {
+    "features": "Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote"
   }
 }

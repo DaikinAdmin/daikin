@@ -1300,5 +1300,10 @@
       "getStarted": "Zacznij teraz",
       "contact": "Zadzwoń do nas"
     }
+  },
+  "productPage": {
+    "features": "Funkcje",
+    "learnMore": "Dowiedz się więcej",
+    "getQuote": "Otrzymaj wycenę"
   }
 }
