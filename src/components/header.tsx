@@ -56,24 +56,12 @@ export default function Header() {
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3" locale={locale}>
               <div className="w-48 h-48 sm:w-56 sm:h-56 relative">
                 <Image 
-                  src="/daikin_logo.png" 
+                  src="/daikin_logo_pl.png"
                   alt="Daikin AMM Project Salon Partnerski Logo" 
                   fill
                   className="object-contain"
                   priority
                 />
-                <div className="absolute bottom-8 sm:bottom-12 left-0 right-0 flex justify-center items-center gap-1.5">
-                  <p className="text-[#003D7A] font-semibold text-xs sm:text-sm px-2 ml-6 py-0.5 rounded" style={{ fontFamily: 'Montserrat' }}>
-                    salon partnerski
-                  </p>
-                  <Image 
-                    src="/amm.png" 
-                    alt="AMM" 
-                    width={80}
-                    height={80}
-                    className="w-12 h-12 sm:w-16 sm:h-16 object-contain flex-shrink-0"
-                  />
-                </div>
               </div>
             </Link>
           </div>

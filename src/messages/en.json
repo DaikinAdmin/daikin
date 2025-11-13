@@ -101,7 +101,9 @@
     },
     "products": {
       "title": "Featured Daikin Products",
-      "subtitle": "Discover our innovative HVAC solutions designed to perfect the air in your space"
+      "subtitle": "Discover our innovative HVAC solutions designed to perfect the air in your space",
+      "learnMore": "Learn More",
+      "getQuote": "Get Quote"
     },
     "features": {
       "title": "Why Choose Daikin?",

@@ -101,7 +101,9 @@
     },
     "products": {
       "title": "Polecane produkty Daikin",
-      "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC zaprojektowane do doskonalenia powietrza w Twojej przestrzeni"
+      "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC zaprojektowane do doskonalenia powietrza w Twojej przestrzeni",
+      "learnMore": "Szczegóły",
+      "getQuote": "Uzyskaj ofertę"
     },
     "features": {
       "title": "Dlaczego Daikin?",

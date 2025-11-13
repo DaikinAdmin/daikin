@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 export default function Footer() {
   const t = useTranslations('footer');
   return (
-    <footer className="bg-[#003D7A] text-white">
+    <footer className="bg-amm text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -164,7 +164,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-blue-700 mt-12 pt-8">
+        <div className="border-t border-blue-100 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-blue-100 text-sm mb-4 md:mb-0">
               {t('copyright')}
