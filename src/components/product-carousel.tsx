@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Icon } from "@iconify-icon/react";
+import DaikinIcon from "./daikin-icon";
 import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "./ui/arrows";
 
 const productKeys = ["daikinFit", "vrv", "thermostat", "aurora", "rebel"];
 const productIcons = [
-  "hugeicons:temperature",
-  "hugeicons:slow-winds",
-  "hugeicons:thermometer-warm",
-  "hugeicons:nuclear-power",
-  "hugeicons:eco-power",
+  "temperature",
+  "slow-winds",
+  "thermometer-warm",
+  "nuclear-power",
+  "eco-power",
 ];
 
 export default function ProductCarousel() {
@@ -158,12 +158,12 @@ export default function ProductCarousel() {
               : "bg-white border-gray-300 group-hover:border-black"
           }`}
                 >
-                  <Icon
-                    icon={ProductIcon}
-                    className={`transition-colors duration-200 text-icon ${
+                  <DaikinIcon
+                    name={ProductIcon}
+                    className={`${
                       isActive
-                        ? "text-primary"
-                        : "text-gray-600 group-hover:text-black"
+                        ? "stroke-primary"
+                        : "stroke-amm"
                     }`}
                   />
                 </div>
@@ -175,9 +175,7 @@ export default function ProductCarousel() {
             isActive ? "text-primary" : "text-gray-700 group-hover:text-black"
           }`}
                 >
-                  {t(`products.${productKey}.name`).length > 15
-                    ? `${t(`products.${productKey}.name`).substring(0, 15)}...`
-                    : t(`products.${productKey}.name`)}
+                  {t(`products.${productKey}.name`)}
                 </p>
               </button>
             );

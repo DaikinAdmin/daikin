@@ -1,24 +1,25 @@
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import ProductCarousel from '@/components/product-carousel';
-import { HeroCarousel } from '@/components/hero-carousel';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import ProductCarousel from "@/components/product-carousel";
+import { HeroCarousel } from "@/components/hero-carousel";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { use } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Home({
-  params
+  params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations('home');
+  const t = useTranslations("home");
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Carousel Section */}
       <HeroCarousel />
 
@@ -26,7 +27,7 @@ export default function Home({
       <ProductCarousel />
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
@@ -70,30 +71,91 @@ export default function Home({
             </div>
           </div>
         </div>
+      </section> */}
+
+      <section className="py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <h2 className="text-h1">{t("features.title")}</h2>
+            <p className="text-subtitle mx-auto">{t("features.subtitle")}</p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-12 items-start">
+            {/* LEFT COLUMN — big image */}
+            <div className="w-full md:w-[70%]">
+              <img
+                src="/whychoose_1.png"
+                alt="Big image"
+                className="w-full object-cover"
+              />
+              <p className="mt-3 text-h3">Efektywność energetyczna</p>
+              <p className="mt-3 text-main-text">
+                Wiodące w branży oceny SEER i innowacyjna technologia inwertera
+                dla maksymalnych oszczędności energii
+              </p>
+            </div>
+
+            {/* RIGHT COLUMN — two small images */}
+            <div className="w-full md:w-[30%] flex flex-col gap-8">
+              {/* Small Image 1 */}
+              <div>
+                <img
+                  src="/whychoose_2.png"
+                  alt="Small image 1"
+                  className="w-full first-line:object-cover"
+                />
+                <p className="mt-3 text-h3">Inteligentna technologia</p>
+                <p className="mt-4 text-main-text">
+                  Zaawansowane sterowanie i integracja IoT dla inteligentnego
+                  zarządzania komfortem.
+                </p>
+              </div>
+
+              {/* Small Image 2 */}
+              <div>
+                <img
+                  src="/whychoose_3.png"
+                  alt="Small image 2"
+                  className="w-full mt-6 object-cover"
+                />
+                <p className="mt-3 text-h3">Niezawodność</p>
+                <p className="mt-4 text-main-text">
+                  Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową
+                  jakością wykonania.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            {t('cta.title')}
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-            {t('cta.subtitle')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white text-[#003D7A] rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
-            >
-              {t('cta.consultation')}
-            </Link>
-            <Link
-              href="/dashboard"
-              className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#003D7A] transition-colors font-semibold text-lg"
-            >
-              {t('cta.dashboard')}
-            </Link>
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* TEXT LEFT */}
+            <div className="md:text-left max-w-3xl">
+              <h2 className="text-h1 mb-4">
+                {t("cta.title")}
+              </h2>
+              <p className="text-subtitle opacity-90">{t("cta.subtitle")}</p>
+            </div>
+
+            {/* BUTTON RIGHT */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                    className="px-20 py-2 rounded-full transition-colors font-medium flex-1"
+                    variant={"default"}
+                  >
+                    {t("cta.consultation")}
+                  </Button>
+
+              {/* <Link
+                href="/dashboard"
+                className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#003D7A] transition-colors font-semibold text-lg"
+              >
+                {t("cta.dashboard")}
+              </Link> */}
+            </div>
           </div>
         </div>
       </section>

@@ -48,7 +48,7 @@ export default function Header() {
 
   return (
     <>
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white text-header shadow-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
@@ -71,7 +71,7 @@ export default function Header() {
             {/* O nas */}
             <Link
               href="/about"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.about')}
@@ -79,7 +79,7 @@ export default function Header() {
 
             {/* Produkty */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
                 {t('nav.products')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
@@ -109,7 +109,7 @@ export default function Header() {
 
             {/* Usługi */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
                 {t('nav.services')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
@@ -130,7 +130,7 @@ export default function Header() {
             {/* Wiadomości */}
             <Link
               href="/news"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.news')}
@@ -139,7 +139,7 @@ export default function Header() {
             {/* Twoja wiedza */}
             <Link
               href="/knowledge"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.knowledge')}
@@ -148,7 +148,7 @@ export default function Header() {
             {/* Realizację */}
             <Link
               href="/realizations"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.realizations')}
@@ -156,7 +156,7 @@ export default function Header() {
 
             {/* Twoje konto */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
                 {t('nav.account')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>

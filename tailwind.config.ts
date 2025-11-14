@@ -13,10 +13,11 @@ export default {
         "main-text": ["16px", { lineHeight: "32px", fontWeight: "500" }],
         "h1": ["36px", { lineHeight: "64px", fontWeight: "400" }],
         "h2": ["32px", { lineHeight: "48px", fontWeight: "400" }],
-		"h3": ["24px", { lineHeight: "40px", fontWeight: "400" }],
-		"subtitle": ["20px", { lineHeight: "30px", fontWeight: "500" }],
-		"button": ["16px", {fontWeight: "600" }],
-    "icon": ["60px", {fontWeight: "100"}],
+		    "h3": ["24px", { lineHeight: "40px", fontWeight: "400" }],
+		    "subtitle": ["20px", { lineHeight: "30px", fontWeight: "500" }],
+		    "button": ["16px", {fontWeight: "600" }],
+        "icon": ["60px", {fontWeight: "100"}],
+        "header": ["16px", {lineHeight: "30px", fontWeight: "500"}]
       },
       fontFamily: {
         sans: ["var(--font-montserrat)", "ui-sans-serif", "system-ui"],
