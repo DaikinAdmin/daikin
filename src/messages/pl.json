@@ -1419,5 +1419,13 @@
     "features": "Kluczowe cechy",
     "learnMore": "Szczegóły",
     "getQuote": "Uzyskaj ofertę"
+  },
+  "whyChoose" :{
+    "cta": {
+      "title": "Gotowy na czyste powietrze?",
+      "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+      "consultation": "Uzyskaj ofertę",
+      "dashboard": "Panel dostępu"
+    }
   }
 }

@@ -5,6 +5,7 @@ import { Wind, Zap, Snowflake, Thermometer } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ProductTemplatePage from "@/components/product-page";
+import WhyChooseSection from "@/components/why-choose";
 
 export default function AirConditioningPage({
   params,
@@ -76,6 +77,33 @@ export default function AirConditioningPage({
         benefits={benefits}
         iconMap={iconMap}
       />
+      <WhyChooseSection
+                  title="Dlaczego warto wybrać"
+                  subtitle="Poznaj nasze innowacyjne rozwiązania"
+                  leftItem={{
+                    id: "left1",
+                    image: "/whychoose_1.png",
+                    title: "Efektywność energetyczna",
+                    description:
+                      "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+                  }}
+                  rightItems={[
+                    {
+                      id: "right1",
+                      image: "/whychoose_2.png",
+                      title: "Inteligentna technologia",
+                      description:
+                        "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+                    },
+                    {
+                      id: "right2",
+                      image: "/whychoose_3.png",
+                      title: "Niezawodność",
+                      description:
+                        "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+                    },
+                  ]}
+                />
       <Footer />
     </>
   );

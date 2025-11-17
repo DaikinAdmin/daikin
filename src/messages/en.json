@@ -1419,5 +1419,13 @@
     "features": "Key Features",
     "learnMore": "Learn More",
     "getQuote": "Get Quote"
+  },
+  "whyChoose" :{
+    "cta": {
+        "title": "Ready to Perfect Your Air?",
+      "subtitle": "Contact our experts today to find the perfect Daikin solution for your space.",
+      "consultation": "Get Free Consultation",
+      "dashboard": "Access Dashboard"
+      }
   }
 }

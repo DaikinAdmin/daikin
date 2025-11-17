@@ -44,7 +44,7 @@ export default function ProductCarousel() {
 
   return (
     <section className="py-16 bg-gradient-to-br bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h2 className="text-3xl lg:text-h1 font-normal text-black mb-2">
             {t("home.products.title")}
@@ -98,7 +98,7 @@ export default function ProductCarousel() {
                 {/* Features */}
                 <div className="mb-6">
                   <p className="text-h3 text-black mb-3">Key Features:</p>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {Array.isArray(
                       t.raw(`products.${currentProductKey}.features`)
                     ) &&
@@ -138,7 +138,7 @@ export default function ProductCarousel() {
         </div>
 
         {/* Product Grid Preview */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-8 justify-items-center">
+        <div className="lg:mt-12 grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 justify-items-center">
           {productKeys.map((productKey, index) => {
             const ProductIcon = productIcons[index];
             const isActive = index === currentIndex;
@@ -149,9 +149,8 @@ export default function ProductCarousel() {
                 onClick={() => setCurrentIndex(index)}
                 className="flex flex-col items-center group"
               >
-                {/* Іконка в колі */}
                 <div
-                  className={`w-28 h-28 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200
+                  className={`w-14 h-14 md:w-28 md:h-28 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200
           ${
             isActive
               ? "border-primary"

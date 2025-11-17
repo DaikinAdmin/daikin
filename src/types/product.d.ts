@@ -27,3 +27,17 @@ export interface ProductPageProps {
   iconMap: Record<string, LucideIcon>;
   children?: ReactNode;
 }
+
+export interface WhyChooseItem {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+}
+
+export interface WhyChooseProps {
+  title: string;
+  subtitle: string;
+  leftItem: WhyChooseItem;
+  rightItems: WhyChooseItem[];
+}

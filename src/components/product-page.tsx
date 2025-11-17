@@ -1,6 +1,6 @@
 import { ProductPageProps } from "@/types/product";
 import { useTranslations } from "next-intl";
-import { Button } from "./ui/button";
+import { Button } from "./ui/button"; 
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -17,147 +17,78 @@ export default function ProductTemplatePage({
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#003D7A] to-[#0052CC] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6">{heroTitle}</h1>
-          <p className="text-xl lg:text-2xl mb-8 max-w-4xl mx-auto opacity-90">
+      <section className="bg-primary text-white py-20">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-h2 lg:text-h1 mb-6">{heroTitle}</h1>
+          <p className="text-subtitle lg:text-subtitle mb-8 max-w-4xl mx-auto opacity-90">
             {heroSubtitle}
           </p>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-gradient-to-br from-[#F5F8FF] to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
+      <section className="py-16">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <h2 className="text-h1 text-black mb-2">
               {productsTitle}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-subtitle text-amm max-w-3xl">
               {productsSubtitle}
             </p>
           </div>
 
-          <div
-            className={`grid gap-8 
-    ${
-      products.length === 1
-        ? "grid-cols-1"
-        : products.length === 2
-        ? "grid-cols-1 sm:grid-cols-2"
-        : products.length === 3
-        ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-        : "grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2"
-    }`}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {products.map((product) => {
               const Icon = iconMap[product.iconName];
               return (
                 <div
                   key={product.id}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                  className="bg-white overflow-hidden flex flex-col h-full"
                 >
                   {/* Product Image */}
-                  <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100">
+                  <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 bg-[#003D7A] rounded-full flex items-center justify-center mb-4 mx-auto">
+                      <div className="w-24 h-24 bg-amm rounded-full flex items-center justify-center mb-4 mx-auto">
                         {Icon && <Icon className="h-12 w-12 text-white" />}
                       </div>
                     </div>
                     <div className="absolute top-4 left-4">
-                      <span className="bg-[#003D7A] text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-amm text-white px-5 py-1 rounded-full text-main-text">
                         {product.category}
                       </span>
                     </div>
                   </div>
 
                   {/* Product Details */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-[#003D7A] mb-3">
+                  <div className="py-6 flex flex-col flex-grow">
+                    <h3 className="text-h2 text-black mb-3">
                       {product.name}
                     </h3>
-                    <p className="text-gray-700 mb-4">{product.description}</p>
+                    <p className="text-main-text text-amm text-justify mb-4">{product.description}</p>
 
                     {/* Product Features */}
                     {product.features && product.features.length > 0 && (
                       <div className="mb-4">
-                        <h4 className="font-semibold text-[#003D7A] mb-2">
+                        <h4 className="text-black text-h3 mb-2">
                           {t("features")}
                         </h4>
-                        <div className="grid grid-cols-1 gap-2">
-                          {product.features.map((f, i) => (
+                        <div className="grid grid-cols-1 gap-4">
+                          {product.features.slice(0, 3).map((f, i) => (
                             <div key={i} className="flex items-center">
-                              <div className="w-2 h-2 bg-[#0052CC] rounded-full mr-2"></div>
-                              <span className="text-gray-700 text-sm">{f}</span>
+                              <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                              <span className="text-main-text text-amm text-sm">{f}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     )}
 
-                    {/* Price */}
-                    <div className="mt-auto mb-4">
-                      <span className="text-xl font-bold text-[#003D7A]">
-                        {product.price}
-                      </span>
-                    </div>
-
                     {/* Actions */}
-                    <div className="flex gap-3">
-                      <Button className="px-4 py-2 rounded-full transition-colors font-medium flex-1" variant={"secondary"}>
-                        {t("learnMore")}
-                      </Button>
-                      <Button className="px-4 py-2 rounded-full transition-colors font-medium flex-1" variant={"default"}>
+                      <Button className="px-4 py-2 rounded-full max-w-64 transition-colors font-medium" variant={"default"}>
                         {t("getQuote")}
                       </Button>
-                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
-              {featuresTitle}
-            </h2>
-          </div>
-
-          <div
-            className={`grid gap-8 
-    grid-cols-1
-    sm:grid-cols-1
-    md:${
-      benefits.length === 3
-        ? "grid-cols-3"
-        : benefits.length > 3
-        ? "grid-cols-2"
-        : "grid-cols-1"
-    }
-    lg:${
-      benefits.length >= 4
-        ? "grid-cols-4"
-        : benefits.length === 3
-        ? "grid-cols-3"
-        : "grid-cols-2"
-    }`}
-          >
-            {benefits.map((item) => {
-              const Icon = iconMap[item.iconName];
-              return (
-                <div key={item.id} className="text-center">
-                  <div className="w-16 h-16 bg-[#003D7A] rounded-full flex items-center justify-center mb-4 mx-auto">
-                    {Icon && <Icon className="h-8 w-8 text-white" />}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#003D7A] mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600">{item.description}</p>
                 </div>
               );
             })}

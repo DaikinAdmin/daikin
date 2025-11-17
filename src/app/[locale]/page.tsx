@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import { Button } from "@/components/ui/button";
+import WhyChooseSection from "@/components/why-choose";
 
 export default function Home({
   params,
@@ -73,92 +74,33 @@ export default function Home({
         </div>
       </section> */}
 
-      <section className="py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-h1">{t("features.title")}</h2>
-            <p className="text-subtitle mx-auto">{t("features.subtitle")}</p>
-          </div>
-          <div className="flex flex-col md:flex-row gap-12 items-start">
-            {/* LEFT COLUMN — big image */}
-            <div className="w-full md:w-[70%]">
-              <img
-                src="/whychoose_1.png"
-                alt="Big image"
-                className="w-full object-cover"
-              />
-              <p className="mt-3 text-h3">Efektywność energetyczna</p>
-              <p className="mt-3 text-main-text">
-                Wiodące w branży oceny SEER i innowacyjna technologia inwertera
-                dla maksymalnych oszczędności energii
-              </p>
-            </div>
-
-            {/* RIGHT COLUMN — two small images */}
-            <div className="w-full md:w-[30%] flex flex-col gap-8">
-              {/* Small Image 1 */}
-              <div>
-                <img
-                  src="/whychoose_2.png"
-                  alt="Small image 1"
-                  className="w-full first-line:object-cover"
-                />
-                <p className="mt-3 text-h3">Inteligentna technologia</p>
-                <p className="mt-4 text-main-text">
-                  Zaawansowane sterowanie i integracja IoT dla inteligentnego
-                  zarządzania komfortem.
-                </p>
-              </div>
-
-              {/* Small Image 2 */}
-              <div>
-                <img
-                  src="/whychoose_3.png"
-                  alt="Small image 2"
-                  className="w-full mt-6 object-cover"
-                />
-                <p className="mt-3 text-h3">Niezawodność</p>
-                <p className="mt-4 text-main-text">
-                  Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową
-                  jakością wykonania.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            {/* TEXT LEFT */}
-            <div className="md:text-left max-w-3xl">
-              <h2 className="text-h1 mb-4">
-                {t("cta.title")}
-              </h2>
-              <p className="text-subtitle opacity-90">{t("cta.subtitle")}</p>
-            </div>
-
-            {/* BUTTON RIGHT */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                    className="px-20 py-2 rounded-full transition-colors font-medium flex-1"
-                    variant={"default"}
-                  >
-                    {t("cta.consultation")}
-                  </Button>
-
-              {/* <Link
-                href="/dashboard"
-                className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#003D7A] transition-colors font-semibold text-lg"
-              >
-                {t("cta.dashboard")}
-              </Link> */}
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhyChooseSection
+        title="Dlaczego warto wybrać"
+        subtitle="Poznaj nasze innowacyjne rozwiązania"
+        leftItem={{
+          id: "left1",
+          image: "/whychoose_1.png",
+          title: "Efektywność energetyczna",
+          description:
+            "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+        }}
+        rightItems={[
+          {
+            id: "right1",
+            image: "/whychoose_2.png",
+            title: "Inteligentna technologia",
+            description:
+              "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+          },
+          {
+            id: "right2",
+            image: "/whychoose_3.png",
+            title: "Niezawodność",
+            description:
+              "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+          },
+        ]}
+      />
 
       <Footer />
     </div>
