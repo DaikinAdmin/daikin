@@ -1,6 +1,7 @@
 import { ProductPageProps } from "@/types/product";
 import { useTranslations } from "next-intl";
-import { Button } from "./ui/button"; 
+import { Button } from "./ui/button";
+import { Link, useRouter } from "@/i18n/navigation"
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -30,9 +31,7 @@ export default function ProductTemplatePage({
       <section className="py-16">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-h1 text-black mb-2">
-              {productsTitle}
-            </h2>
+            <h2 className="text-h1 text-black mb-2">{productsTitle}</h2>
             <p className="text-subtitle text-amm max-w-3xl">
               {productsSubtitle}
             </p>
@@ -62,10 +61,10 @@ export default function ProductTemplatePage({
 
                   {/* Product Details */}
                   <div className="py-6 flex flex-col flex-grow">
-                    <h3 className="text-h2 text-black mb-3">
-                      {product.name}
-                    </h3>
-                    <p className="text-main-text text-amm text-justify mb-4">{product.description}</p>
+                    <h3 className="text-h2 text-black mb-3">{product.name}</h3>
+                    <p className="text-main-text text-amm text-justify mb-4">
+                      {product.description}
+                    </p>
 
                     {/* Product Features */}
                     {product.features && product.features.length > 0 && (
@@ -77,7 +76,9 @@ export default function ProductTemplatePage({
                           {product.features.slice(0, 3).map((f, i) => (
                             <div key={i} className="flex items-center">
                               <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
-                              <span className="text-main-text text-amm text-sm">{f}</span>
+                              <span className="text-main-text text-amm text-sm">
+                                {f}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -85,9 +86,14 @@ export default function ProductTemplatePage({
                     )}
 
                     {/* Actions */}
-                      <Button className="px-4 py-2 rounded-full max-w-64 transition-colors font-medium" variant={"default"}>
+                    <Button
+                      className="px-4 py-2 rounded-full max-w-64 transition-colors font-medium"
+                      variant={"default"}
+                    >
+                      <Link href={`/products/air-conditioning/${product.id}`}>
                         {t("getQuote")}
-                      </Button>
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               );

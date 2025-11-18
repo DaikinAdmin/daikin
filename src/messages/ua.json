@@ -1427,5 +1427,63 @@
       "consultation": "Безкоштовна консультація",
       "dashboard": "Доступ до панелі"
     }
+  },
+  "product": {
+    "emura": {
+      "name": "Emura",
+      "soundPressure": "do 19dBA",
+      "label": "najwyższa efektywność energetyczna A+++ ",
+      "power": "do 5,8 / 5,0",
+      "size": "305 x 900 x 212 mm",
+      "description": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej.",
+      "features": [
+        {
+          "title": "Jakość powietrza",
+          "icon": "temperature",
+          "description": "Opatentowana technologia oczyszczania powietrza firmy Daikin wychwytuje wirusy, alergeny (takie jak pyłki i alergeny grzybów) oraz uciążliwe zapachy z powietrza i rozkłada je na bezpieczne atomy i cząsteczki wody"
+        },
+        {
+          "title": "Inteligenty czujnik temperatury",
+          "icon": "slow-winds",
+          "description": "Wykorzystując czujnik matrycowy, skanuje pomieszczenie pod kątem obecności i temperatury powietrza, a następnie wysyła sygnał do jednostki, aby skierowała strumień powietrza z dala od ludzi lub w stronę obszarów o nierównomiernej temperaturze"
+        },
+        {
+          "title": "Heat boost",
+          "icon": "thermometer-warm",
+          "description": "Zadaną temperaturę osiągniesz o 14% szybciej niż przy użyciu zwykłej klimatyzacji. Ogrzewanie pomieszczenia będzie szybsze, gdy tylko zajdzie taka potrzeba"
+        },
+        {
+          "title": "Efekt Coandy",
+          "icon": "nuclear-power",
+          "description": "Dostępne zarówno w wersji do ogrzewania, jak i chłodzenia, specjalnie zaprojektowane klapy / prowadnice skupiają i optymalizują przepływ powietrza, aby zapewnić maksymalny zasięg nawet w większych pomieszczeniach"
+        }
+      ],
+      "images": [
+        {
+          "color": "#D9D9D9",
+          "imgs": [
+            "/path/to/image1_gray.png",
+            "/path/to/image2_gray.png",
+            "/path/to/image3_gray.png"
+          ]
+        },
+        {
+          "color": "#000000",
+          "imgs": [
+            "/path/to/image1_black.png",
+            "/path/to/image2_black.png",
+            "/path/to/image3_black.png"
+          ]
+        },
+        {
+          "color": "#FFFFFF",
+          "imgs": [
+            "/path/to/image1_white.png",
+            "/path/to/image2_white.png",
+            "/path/to/image3_white.png"
+          ]
+        }
+      ]
+    }
   }
 }
