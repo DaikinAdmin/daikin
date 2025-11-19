@@ -4,116 +4,103 @@ import { useTranslations } from "next-intl";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useState } from "react";
-
-type ProductImage = {
-  color: string;
-  imgs: string[];
-};
-
-type ProductFeature = {
-  title: string;
-  icon: string;
-  description: string;
-};
-
-type ProductDetails = {
-  name: string;
-  description: string;
-  soundPressure: string;
-  label: string;
-  power: string;
-  size: string;
-  features: ProductFeature[];
-  images: ProductImage[];
-};
+import { Button } from "@/components/ui/button";
+import DaikinIcon from "@/components/daikin-icon";
+import { EmblaFadeCarousel } from "@/components/ui/emblaFadeCarousel";
+import { EmblaCardCarousel } from "@/components/ui/emblaCardCarousel";
 
 export default function EmuraPage() {
   const t = useTranslations("product.emura");
 
-  // Дані продукту через next-intl
-  const product: ProductDetails = {
-    name: t("name"),
-    description: t("description"),
-    soundPressure: t("soundPressure"),
-    label: t("label"),
-    power: t("power"),
-    size: t("size"),
-    features: t.raw("features") as ProductFeature[],
-    images: t.raw("images") as ProductImage[],
-  };
+  const images = t.raw("images") as { color: string; imgs: string[] }[];
+  const specs = t.raw("specs") as { title: string; subtitle: string }[];
+  const features = t.raw("features") as {
+    title: string;
+    icon: string;
+    description: string;
+  }[];
+  const includes = (
+    t.raw("includes") as { title: string; subtitle: string; image: string }[]
+  ).map((item) => ({
+    img: item.image,
+    title: item.title,
+    subtitle: item.subtitle,
+  }));
 
-  const [selectedColor, setSelectedColor] = useState<ProductImage>(product.images[0]);
-  const [selectedImgIndex, setSelectedImgIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(images[0]);
 
   return (
     <>
       <Header />
 
-      <main className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col gap-12">
-        {/* Верхній блок: Фото + Назва/Кольори/Характеристики */}
+      <main className="max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col gap-8">
         <div className="flex flex-col md:flex-row gap-12">
-          {/* Ліва частина — Image Viewer */}
           <div className="w-full md:w-1/2 flex flex-col items-center">
-            <div className="w-full aspect-square bg-gray-50 flex items-center justify-center">
-              <img
-                src={selectedColor.imgs[selectedImgIndex]}
-                alt={`${product.name} image`}
-                className="object-cover w-full h-full"
-              />
-            </div>
+            <EmblaFadeCarousel images={selectedColor.imgs} />
           </div>
 
-          {/* Права частина — Назва, кольори, основні характеристики */}
-          <div className="w-full md:w-1/2 flex flex-col gap-4">
-            {/* Назва + селектор кольорів */}
+          <div className="w-full md:w-6/12 flex flex-col gap-4">
             <div className="flex items-center justify-between">
-              <h1 className="text-h1 font-bold">{product.name}</h1>
+              <h1 className="text-h1">{t("name")}</h1>
               <div className="flex gap-2">
-                {product.images.map((c: ProductImage) => (
+                {images.map((c) => (
                   <button
                     key={c.color}
-                    className={`w-10 h-10 rounded-full border-2 ${
-                      selectedColor.color === c.color ? "border-primary" : "border-gray-300"
+                    className={`w-14 h-14 rounded-full border-2 ${
+                      selectedColor.color === c.color
+                        ? "border-primary"
+                        : "border-gray-300"
                     }`}
                     style={{ backgroundColor: c.color }}
                     onClick={() => {
                       setSelectedColor(c);
-                      setSelectedImgIndex(0);
                     }}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Основні характеристики */}
-            <div className="grid grid-cols-2 gap-4 mt-4 text-sm text-main-text">
-              <div>
-                <span className="font-semibold">Sound Pressure: </span>{product.soundPressure}
-              </div>
-              <div>
-                <span className="font-semibold">Label: </span>{product.label}
-              </div>
-              <div>
-                <span className="font-semibold">Power: </span>{product.power}
-              </div>
-              <div>
-                <span className="font-semibold">Size: </span>{product.size}
-              </div>
+            <div className="grid gap-7 mt-8 text-sm text-main-text">
+              {specs.map((item, i) => (
+                <div key={i} className="flex flex-col">
+                  <span className="text-subtitle text-amm">{item.title}</span>
+                  <span className="text-h3 text-black">{item.subtitle}</span>
+                </div>
+              ))}
+              <Button
+                className="px-4 py-2 rounded-full w-full"
+                variant={"default"}
+              >
+                {t("getQuote")}
+              </Button>
             </div>
           </div>
         </div>
 
-        {/* Опис на всю ширину */}
-        <div className="text-main-text mb-6">{product.description}</div>
+        <div className="text-main-text mb-6 flex flex-col gap-2">
+          <span className="text-h1">{t("description.title")}</span>
+          <span className="text-subtitle text-amm leading-10">
+            {t("description.subtitle")}
+          </span>
+        </div>
 
-        {/* Features у дві колонки */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {product.features.map((f: ProductFeature, i: number) => (
-            <div key={i} className="flex flex-col gap-2">
-              <h4 className="font-semibold">{f.title}</h4>
-              <p className="text-sm">{f.description}</p>
+        <span className="text-h1">{t("featuresTitle")}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-32">
+          {features.map((f, i) => (
+            <div key={i} className="flex flex-col gap-4">
+              <span className="text-h3 ">{f.title}</span>
+              <div
+                className={`w-14 h-14 md:w-28 md:h-28 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200`}
+              >
+                <DaikinIcon name={f.icon} className={"stroke-amm"} />
+              </div>
+              <p className="text-subtitle leading-10">{f.description}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-16">
+          <h2 className="text-h1 mb-6">{t("includesTitle")}</h2>
+          <EmblaCardCarousel items={includes} />
         </div>
       </main>
 

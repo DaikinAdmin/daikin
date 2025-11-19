@@ -192,81 +192,92 @@
   },
   "airConditioning": {
     "hero": {
-      "title": "Системи Кондиціонування",
-      "subtitle": "Відчуйте ідеальний комфорт з інноваційними рішеннями кондиціонування від Daikin. Енергоефективні, надійні та розроблені для вашого дому."
+      "title": "Air Conditioning Systems",
+      "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
     },
     "products": {
-      "title": "Наша Лінійка Кондиціонерів",
-      "subtitle": "Відкрийте преміум рішення для охолодження для кожного простору",
+      "title": "Nasza Gama Klimatyzacji",
+      "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni",
       "aurora": {
-        "name": "Серія Daikin Aurora",
-        "category": "Настінний Кондиціонер",
-        "description": "Елегантний та стильний настінний блок з розширеною фільтрацією та шепітливо тихою роботою. Ідеально підходить для спалень та вітальень.",
+        "name": "Seria Daikin Aurora",
+        "category": "Klimatyzacja Ścienna",
+        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--29a1876a-44ae-4780-96f4-de6733b763f1/00-cold-packshot-ftxz-n-1-1-front.jpg?preferwebp=true&quality=90&width=751",
+        "description": "Elegancka i stylowa jednostka naścienna z zaawansowaną filtracją i szepczącą cichą pracą. Idealna do sypialni i salonów.",
         "features": [
-          "21 SEER2",
-          "Розширена Фільтрація",
-          "Шепітлива Тиша 19 дБ",
-          "Wi-Fi Керування",
-          "Інверторна Технологія"
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:ai-editing"
+          },
+          {
+            "title": "Zaawansowana Filtracja",
+            "icon": "hugeicons:eco-power"
+          },
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:approximately-equal"
+          }
         ],
-        "price": "Починаючи від $2,800"
+        "price": "Od 2800 zł"
       },
       "emura": {
         "name": "Daikin Emura",
-        "category": "Преміум Настінний",
-        "description": "Нагороджений дизайн зустрічає передові технології. Серія Emura пропонує неперевершений стиль та продуктивність для сучасних домівок.",
+        "category": "Premium Naścienna",
+        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?preferwebp=true&width=751&quality=90",
+        "description": "Nagradzany design spotyka się z najnowszą technologią. Seria Emura oferuje niezrównany styl i wydajność dla nowoczesnych domów.",
         "features": [
-          "26 SEER2",
-          "3D Потік Повітря",
-          "Фільтр Іонів Срібла",
-          "Сумісний з Alexa та Google",
-          "Датчик Руху"
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:ai-editing"
+          },
+          {
+            "title": "Zaawansowana Filtracja",
+            "icon": "hugeicons:eco-power"
+          },
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:approximately-equal"
+          }
         ],
-        "price": "Починаючи від $3,200"
-      },
-      "stylish": {
-        "name": "Daikin Stylish",
-        "category": "Дизайнерська Серія",
-        "description": "Сучасний дизайн з потужною продуктивністю. Серія Stylish органічно вписується в будь-який інтер'єр, забезпечуючи чудовий комфорт.",
-        "features": [
-          "20 SEER2",
-          "Flash Streamer",
-          "Потік Коанда",
-          "Керування Додатком",
-          "Енергоефективний"
-        ],
-        "price": "Починаючи від $2,600"
+        "price": "Od 3200 zł"
       },
       "perfera": {
         "name": "Daikin Perfera",
-        "category": "Високопродуктивний Кондиціонер",
-        "description": "Максимальна продуктивність з інтелектуальними функціями комфорту. Ідеально підходить для більших приміщень та вимогливих застосувань.",
+        "category": "High-Performance AC",
+        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--1aae3569-f5c8-4fd5-a212-2b57abbba0e2/00-packshot-ftxm-a-1-1-front-cold.jpg?preferwebp=true&width=751&quality=90",
+        "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
         "features": [
-          "24 SEER2",
-          "Інтелектуальний Датчик Ока",
-          "Багатозонна Здатність",
-          "Холодоагент R-32",
-          "Ультра-Тихий"
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:ai-editing"
+          },
+          {
+            "title": "Zaawansowana Filtracja",
+            "icon": "hugeicons:eco-power"
+          },
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:approximately-equal"
+          }
         ],
-        "price": "Починаючи від $3,400"
+        "price": "Starting from $3,400"
       }
     },
-    "features": "Ключові Особливості",
-    "learnMore": "Дізнатися Більше",
-    "getQuote": "Отримати Пропозицію",
+    "features": "Key Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
     "whyChoose": {
-      "title": "Чому Обрати Кондиціонери Daikin?",
+      "title": "Why Choose Daikin Air Conditioning?",
       "efficiency": {
-        "title": "Відмінна Ефективність",
-        "description": "Провідні в галузі рейтинги SEER, які знижують витрати на енергію, забезпечуючи комфорт цілий рік."
+        "title": "Superior Efficiency",
+        "description": "Industry-leading SEER ratings that reduce energy costs while keeping you comfortable year-round."
       },
       "comfort": {
-        "title": "Ідеальний Комфорт",
-        "description": "Передова технологія контролю клімату забезпечує постійну температуру та вологість у всьому вашому просторі."
+        "title": "Perfect Comfort",
+        "description": "Advanced climate control technology ensures consistent temperature and humidity levels throughout your space."
       },
       "air": {
-        "title": "Чисте Повітря",
-        "description": "Багатоступеневі системи фільтрації видаляють алергени, пил та запахи для здоровішої якості повітря в приміщенні."
+        "title": "Clean Air",
+        "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality."
       }
     }
   },
@@ -1431,11 +1442,29 @@
   "product": {
     "emura": {
       "name": "Emura",
-      "soundPressure": "do 19dBA",
-      "label": "najwyższa efektywność energetyczna A+++ ",
-      "power": "do 5,8 / 5,0",
-      "size": "305 x 900 x 212 mm",
-      "description": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej.",
+      "specs": [
+        {
+          "title": "Ciśnienie akustyczne",
+          "subtitle": "do 19dBA"
+        },
+        {
+          "title": "Etykieta energetyczna chłodzenia i ogrzewania",
+          "subtitle": "najwyższa efektywność energetyczna A+++"
+        },
+        {
+          "title": "Moc grzewcza i chłodnicza (kW)",
+          "subtitle": "do 5,8 / 5,0"
+        },
+        {
+          "title": "Wymiary jednostki",
+          "subtitle": "305 x 900 x 212 mm"
+        }
+      ],
+      "description": {
+        "title": "Dlaczego warto wybrać Daikin Emura?",
+        "subtitle": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej."
+      },
+      "featuresTitle": "Cechy produktu",
       "features": [
         {
           "title": "Jakość powietrza",
@@ -1462,28 +1491,57 @@
         {
           "color": "#D9D9D9",
           "imgs": [
-            "/path/to/image1_gray.png",
-            "/path/to/image2_gray.png",
-            "/path/to/image3_gray.png"
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--ac3846f8-9063-4c12-8eaa-2d71b0e822f3/01-cold-packshot-ftxj-as-1-1-left.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9273885f-631b-4179-903c-045eb4fa5fbb/02-cold-packshot-ftxj-as-1-1-right.jpg?quality=90&width=751&preferwebp=true"
           ]
         },
         {
           "color": "#000000",
           "imgs": [
-            "/path/to/image1_black.png",
-            "/path/to/image2_black.png",
-            "/path/to/image3_black.png"
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--e2851bf8-980e-46f8-b1ae-a54f3e11b5e3/00-packshot-ftxj-ab-1-1-front.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--14362693-f252-49b9-b033-728c97892fa6/01-packshot-ftxj-ab-1-1-left.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--4f41b6ef-2716-497a-a517-9b384b4a1521/02-packshot-ftxj-ab-1-1-right.jpg?quality=90&width=751&preferwebp=true"
           ]
         },
         {
           "color": "#FFFFFF",
           "imgs": [
-            "/path/to/image1_white.png",
-            "/path/to/image2_white.png",
-            "/path/to/image3_white.png"
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3b5c980f-34eb-4c3d-a96b-f2be7c37c15f/00-cold-packshot-ftxj-aw-1-1-front.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3f336b21-f641-4e9d-a37f-008365cb5bab/01-cold-packshot-ftxj-aw-1-1-left.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d58f16cf-e356-47f5-928d-972fa09685dd/02-cold-packshot-ftxj-aw-1-1-right.jpg?quality=90&width=751&preferwebp=true"
           ]
         }
-      ]
+      ],
+      "includesTitle": "Co jest w zestawie",
+      "includes": [
+        {
+          "title" : "Jednostka wewnętrzna",
+          "subtitle" : "Ikonicznie zaprojektowana jednostka naścienna.",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+        },
+        {
+          "title" : "Jednostka zewnętrzna",
+          "subtitle" : "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        },
+        {
+          "title" : "Interfejs użytkownika",
+          "subtitle" : "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        },
+        {
+          "title" : "Serwis",
+          "subtitle" : "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
+        },
+        {
+          "title" : "Aplikacja Onecta",
+          "subtitle" : "Zawsze pod kontrolą, gdziekolwiek jesteś",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        }
+      ],
+      "getQuote": "Uzyskaj ofertę"
     }
   }
 }

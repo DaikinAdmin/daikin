@@ -1,17 +1,15 @@
 import { ProductPageProps } from "@/types/product";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
-import { Link, useRouter } from "@/i18n/navigation"
+import { Link, useRouter } from "@/i18n/navigation";
+import { Icon } from "@iconify/react";
 
 export default function ProductTemplatePage({
   heroTitle,
   heroSubtitle,
   productsTitle,
   productsSubtitle,
-  featuresTitle,
   products,
-  benefits,
-  iconMap,
   children,
 }: ProductPageProps) {
   const t = useTranslations("productPage");
@@ -39,19 +37,21 @@ export default function ProductTemplatePage({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {products.map((product) => {
-              const Icon = iconMap[product.iconName];
               return (
                 <div
                   key={product.id}
                   className="bg-white overflow-hidden flex flex-col h-full"
                 >
                   {/* Product Image */}
-                  <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 bg-amm rounded-full flex items-center justify-center mb-4 mx-auto">
-                        {Icon && <Icon className="h-12 w-12 text-white" />}
-                      </div>
-                    </div>
+                  <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                    {/* Product Image */}
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+
+                    {/* Category Badge */}
                     <div className="absolute top-4 left-4">
                       <span className="bg-amm text-white px-5 py-1 rounded-full text-main-text">
                         {product.category}
@@ -65,19 +65,19 @@ export default function ProductTemplatePage({
                     <p className="text-main-text text-amm text-justify mb-4">
                       {product.description}
                     </p>
-
-                    {/* Product Features */}
                     {product.features && product.features.length > 0 && (
                       <div className="mb-4">
                         <h4 className="text-black text-h3 mb-2">
                           {t("features")}
                         </h4>
                         <div className="grid grid-cols-1 gap-4">
-                          {product.features.slice(0, 3).map((f, i) => (
-                            <div key={i} className="flex items-center">
-                              <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                          {product.features.map((f, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                              <div className="flex items-center justify-center">
+                                <Icon icon={f.icon} className="text-primary text-2xl" />
+                              </div>
                               <span className="text-main-text text-amm text-sm">
-                                {f}
+                                {f.title}
                               </span>
                             </div>
                           ))}
@@ -87,7 +87,7 @@ export default function ProductTemplatePage({
 
                     {/* Actions */}
                     <Button
-                      className="px-4 py-2 rounded-full max-w-64 transition-colors font-medium"
+                      className="px-4 py-2 mt-3 rounded-full max-w-64 transition-colors font-medium"
                       variant={"default"}
                     >
                       <Link href={`/products/air-conditioning/${product.id}`}>
