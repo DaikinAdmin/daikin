@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
+import { title } from "process";
 
 // GET single product
 export const GET = async (
@@ -168,6 +169,8 @@ export const PUT = async (
                         locale: t.locale,
                         name: t.name,
                         description: t.description,
+                        title: t.title,
+                        subtitle: t.subtitle,
                     })),
                 });
             }

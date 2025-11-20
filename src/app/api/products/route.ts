@@ -24,7 +24,8 @@ export const GET = async (req: Request) => {
                                     some: {
                                         OR: [
                                             { name: { contains: search, mode: "insensitive" } },
-                                            { description: { contains: search, mode: "insensitive" } },
+                                            { title: { contains: search, mode: "insensitive" } },
+                                            { subtitle: { contains: search, mode: "insensitive" } },
                                         ],
                                     },
                                 },
@@ -59,6 +60,9 @@ export const GET = async (req: Request) => {
                                 : { where: { isActive: true } },
                         },
                     },
+                    specs: true,
+                    img: true,
+                    items: true,
                 },
                 orderBy: {
                     createdAt: "desc",
@@ -95,11 +99,15 @@ export const POST = async (req: Request) => {
             const {
                 articleId,
                 price,
-                img,
                 categoryId,
+                slug,
+                energyClass,
                 isActive,
                 translations,
                 featureIds,
+                specs,
+                images,
+                items,
             } = await req.json();
 
             if (!articleId || !categoryId) {
@@ -119,6 +127,20 @@ export const POST = async (req: Request) => {
                     { error: "Product with this articleId already exists" },
                     { status: 409 }
                 );
+            }
+
+            // Check if slug already exists (if provided)
+            if (slug) {
+                const existingSlug = await prisma.product.findUnique({
+                    where: { slug },
+                });
+
+                if (existingSlug) {
+                    return NextResponse.json(
+                        { error: "Product with this slug already exists" },
+                        { status: 409 }
+                    );
+                }
             }
 
             // Verify category exists
@@ -151,21 +173,51 @@ export const POST = async (req: Request) => {
                 data: {
                     articleId,
                     price: price ? parseFloat(price) : null,
-                    img: img || null,
                     categoryId,
+                    slug: slug || articleId.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                    energyClass: energyClass || null,
                     isActive: isActive !== undefined ? isActive : true,
                     productDetails: translations
                         ? {
                               create: translations.map((t: any) => ({
                                   locale: t.locale,
                                   name: t.name,
-                                  description: t.description,
+                                  title: t.title,
+                                  subtitle: t.subtitle || null,
                               })),
                           }
                         : undefined,
                     features: featureIds
                         ? {
                               connect: featureIds.map((id: string) => ({ id })),
+                          }
+                        : undefined,
+                    specs: specs
+                        ? {
+                              create: specs.map((s: any) => ({
+                                  title: s.title,
+                                  subtitle: s.subtitle || null,
+                              })),
+                          }
+                        : undefined,
+                    img: images
+                        ? {
+                              create: images.map((img: any) => ({
+                                  color: img.color || null,
+                                  imgs: img.imgs || [],
+                                  url: img.url || [],
+                              })),
+                          }
+                        : undefined,
+                    items: items
+                        ? {
+                              create: items.map((item: any) => ({
+                                  locale: item.locale,
+                                  title: item.title,
+                                  subtitle: item.subtitle || null,
+                                  img: item.img || null,
+                                  isActive: item.isActive !== undefined ? item.isActive : true,
+                              })),
                           }
                         : undefined,
                 },
@@ -181,6 +233,9 @@ export const POST = async (req: Request) => {
                             featureDetails: true,
                         },
                     },
+                    specs: true,
+                    img: true,
+                    items: true,
                 },
             });
 

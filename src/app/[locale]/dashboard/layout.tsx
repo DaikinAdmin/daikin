@@ -34,7 +34,7 @@ export default function DashboardLayout({
         <Header />
       </div>
       
-      <div className="flex pt-16">
+      <div className="flex pt-[140px]">
         {/* Sidebar - positioned below header, hidden on mobile */}
         <Sidebar/>
         

@@ -23,7 +23,8 @@ export const GET = async (req: Request) => {
                                     some: {
                                         OR: [
                                             { name: { contains: search, mode: "insensitive" } },
-                                            { description: { contains: search, mode: "insensitive" } },
+                                            { title: { contains: search, mode: "insensitive" } },
+                                            { subtitle: { contains: search, mode: "insensitive" } },
                                         ],
                                     },
                                 },
@@ -50,6 +51,7 @@ export const GET = async (req: Request) => {
                             },
                         },
                     },
+                    img: true, // Include product images
                 },
                 orderBy: {
                     createdAt: "desc",
@@ -58,14 +60,15 @@ export const GET = async (req: Request) => {
 
             // Transform data to simplify locale-specific fields
             const transformedProducts = products
-                .filter((product) => product.category?.isActive)
-                .map((product) => ({
+                .filter((product: any) => product.category?.isActive)
+                .map((product: any) => ({
                     id: product.id,
                     articleId: product.articleId,
                     price: product.price,
-                    img: product.img,
+                    img: product.img?.[0]?.imgs?.[0] || null, // Get first image URL
                     name: product.productDetails[0]?.name || "",
-                    description: product.productDetails[0]?.description || "",
+                    title: product.productDetails[0]?.title || "",
+                    subtitle: product.productDetails[0]?.subtitle || "",
                     category: product.category
                         ? {
                               id: product.category.id,

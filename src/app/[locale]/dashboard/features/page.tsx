@@ -32,6 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 type FeatureTranslation = {
   locale: string;
   name: string;
+  desc: string;
   isActive: boolean;
 };
 
@@ -40,6 +41,7 @@ type Feature = {
   name: string;
   img: string | null;
   isActive: boolean;
+  preview?: boolean;
   createdAt: string;
   updatedAt: string;
   featureDetails: FeatureTranslation[];
@@ -66,10 +68,11 @@ export default function FeaturesManagementPage() {
     name: "",
     img: "",
     isActive: true,
+    preview: false,
     translations: [
-      { locale: "en", name: "", isActive: true },
-      { locale: "pl", name: "", isActive: true },
-      { locale: "ua", name: "", isActive: true },
+      { locale: "en", name: "", desc: "", isActive: true },
+      { locale: "pl", name: "", desc: "", isActive: true },
+      { locale: "ua", name: "", desc: "", isActive: true },
     ],
   });
 
@@ -140,16 +143,18 @@ export default function FeaturesManagementPage() {
         name: feature.name,
         img: feature.img || "",
         isActive: feature.isActive,
+        preview: feature.preview || false,
         translations: feature.featureDetails.length > 0
           ? feature.featureDetails.map(t => ({
               locale: t.locale,
               name: t.name,
+              desc: t.desc || "",
               isActive: t.isActive,
             }))
           : [
-              { locale: "en", name: "", isActive: true },
-              { locale: "pl", name: "", isActive: true },
-              { locale: "ua", name: "", isActive: true },
+              { locale: "en", name: "", desc: "", isActive: true },
+              { locale: "pl", name: "", desc: "", isActive: true },
+              { locale: "ua", name: "", desc: "", isActive: true },
             ],
       });
     } else {
@@ -158,10 +163,11 @@ export default function FeaturesManagementPage() {
         name: "",
         img: "",
         isActive: true,
+        preview: false,
         translations: [
-          { locale: "en", name: "", isActive: true },
-          { locale: "pl", name: "", isActive: true },
-          { locale: "ua", name: "", isActive: true },
+          { locale: "en", name: "", desc: "", isActive: true },
+          { locale: "pl", name: "", desc: "", isActive: true },
+          { locale: "ua", name: "", desc: "", isActive: true },
         ],
       });
     }
@@ -403,6 +409,15 @@ export default function FeaturesManagementPage() {
                   />
                   <Label htmlFor="isActive">{t("isActive")}</Label>
                 </div>
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="preview"
+                    name="preview"
+                    checked={formData.preview}
+                    onCheckedChange={(checked) => setFormData({ ...formData, preview: checked })}
+                  />
+                  <Label htmlFor="preview">{t("preview")}</Label>
+                </div>
               </div>
 
               {/* Translations */}
@@ -429,6 +444,21 @@ export default function FeaturesManagementPage() {
                             setFormData({ ...formData, translations: newTranslations });
                           }}
                           placeholder={t("translationPlaceholder")}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor={`translation-${translation.locale}-desc`}>
+                          {t("translatedDescription")}
+                        </Label>
+                        <Input
+                          id={`translation-${translation.locale}-desc`}
+                          value={translation.desc}
+                          onChange={(e) => {
+                            const newTranslations = [...formData.translations];
+                            newTranslations[index].desc = e.target.value;
+                            setFormData({ ...formData, translations: newTranslations });
+                          }}
+                          placeholder={t("descriptionPlaceholder")}
                         />
                       </div>
                       <div className="flex items-center space-x-2">

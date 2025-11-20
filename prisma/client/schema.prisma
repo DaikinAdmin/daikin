@@ -216,6 +216,7 @@ model Product {
   price          Float?
   articleId      String               @unique
   categoryId     String
+  slug           String               @unique
   energyClass    String?
   isActive       Boolean              @default(true)
   category       Category             @relation(fields: [categoryId], references: [id], onDelete: Cascade)
@@ -226,6 +227,7 @@ model Product {
   features       Feature[]
   img            ProductImages[]
   specs          ProductSpecs[]
+  items          ProductItems[]
 
   @@map("product")
 }
@@ -233,6 +235,7 @@ model Product {
 model ProductSpecs {
   id        String  @id @default(cuid())
   productId String
+  locale    String
   title     String
   subtitle  String?
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
@@ -262,6 +265,19 @@ model ProductTranslation {
 
   @@unique([productId, locale])
   @@map("product_translation")
+}
+
+model ProductItems {
+  id        String  @id @default(cuid())
+  productId String
+  locale    String
+  title     String
+  subtitle  String?
+  img       String?
+  isActive  Boolean @default(true)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_items")
 }
 
 model Feature {
