@@ -83,11 +83,11 @@ export function HeroCarousel() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
+    <section className="relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.5))] -z-10"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-10">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
@@ -156,7 +156,7 @@ export function HeroCarousel() {
                         </div>
 
                         {/* Right Content - Icon/Visual */}
-                        <div className="relative flex items-center justify-center lg:justify-end">
+                        <div className="relative flex items-center justify-center lg:justify-end lg:mr-10">
                           <div className="relative">
                             {/* Main Icon Circle */}
                             <div className="relative w-64 h-64 lg:w-80 lg:h-80">

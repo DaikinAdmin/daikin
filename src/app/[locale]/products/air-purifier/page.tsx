@@ -1,81 +1,77 @@
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
-import { Wind, Shield, Leaf, Sparkles } from 'lucide-react';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { use } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 import ProductTemplatePage from "@/components/product-page";
+import WhyChooseSection from "@/components/why-choose";
 
-export default function AirPurifierPage({
-  params
+export default function AirConditioningPage({
+  params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations('airPurifier');
+  const t = useTranslations("airConditioning");
+  const allProductsRaw = t.raw("products") as Record<string, any>;
 
-  const iconMap = { Wind, Shield, Leaf, Sparkles };
-  
-    // Creating product object
-    function createProduct(id: string, iconName: string) {
-      return {
-        id,
-        iconName,
-        image: `/images/${id}.jpg`,
-        category: t(`products.${id}.category`),
-        name: t(`products.${id}.name`),
-        description: t(`products.${id}.description`),
-        price: t(`products.${id}.price`),
-        features: Array.isArray(t.raw(`products.${id}.features`))
-          ? (t.raw(`products.${id}.features`) as string[])
-          : [],
-      };
-    }
-  
-    // Products
-    const products = [
-      createProduct("mc55w", "Wind"),
-      createProduct("mc70l", "Shield"),
-      createProduct("mcz70w", "Sparkles"),
-    ];
-  
-    // Features
-    const benefits = [
-      {
-        id: "streamer",
-        iconName: "Shield",
-        title: t("technology.streamer.title"),
-        description: t("technology.streamer.description"),
-      },
-      {
-        id: "hepa",
-        iconName: "Leaf",
-        title: t("technology.hepa.title"),
-        description: t("technology.hepa.description"),
-      },
-      {
-        id: "humidifying",
-        iconName: "Sparkles",
-        title: t("technology.humidifying.title"),
-        description: t("technology.humidifying.description"),
-      },
-    ];
-  
-    return (
-      <>
-        <Header />
-        <ProductTemplatePage
-          heroTitle={t("hero.title")}
-          heroSubtitle={t("hero.subtitle")}
-          productsTitle={t("products.title")}
-          productsSubtitle={t("products.subtitle")}
-          featuresTitle={t("technology.title")}
-          products={products}
-          benefits={benefits}
-          iconMap={iconMap}
-        />
-        <Footer />
-      </>
-    );
-  }
+  const products = Object.keys(allProductsRaw)
+  .filter((key) => typeof allProductsRaw[key] === "object" && allProductsRaw[key].name)
+  .map((id) => {
+    const productData = allProductsRaw[id];
+    return {
+      id,
+      image: productData.image,
+      category: productData.category,
+      name: productData.name,
+      description: productData.description,
+      price: productData.price,
+      features: Array.isArray(productData.features)
+        ? (productData.features as { title: string; icon: string }[])
+        : [],
+    };
+  });
+
+
+  return (
+    <>
+      <Header />
+      <ProductTemplatePage
+        heroTitle={t("hero.title")}
+        heroSubtitle={t("hero.subtitle")}
+        productsTitle={t("products.title")}
+        productsSubtitle={t("products.subtitle")}
+        products={products}
+      />
+      <WhyChooseSection
+                  title="Dlaczego warto wybrać"
+                  subtitle="Poznaj nasze innowacyjne rozwiązania"
+                  leftItem={{
+                    id: "left1",
+                    image: "/whychoose_1.png",
+                    title: "Efektywność energetyczna",
+                    description:
+                      "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+                  }}
+                  rightItems={[
+                    {
+                      id: "right1",
+                      image: "/whychoose_2.png",
+                      title: "Inteligentna technologia",
+                      description:
+                        "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+                    },
+                    {
+                      id: "right2",
+                      image: "/whychoose_3.png",
+                      title: "Niezawodność",
+                      description:
+                        "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+                    },
+                  ]}
+                />
+      <Footer />
+    </>
+  );
+}

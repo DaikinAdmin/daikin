@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Montserrat } from "next/font/google";
 import { Source_Sans_3 } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
@@ -11,6 +12,13 @@ import { setRequestLocale } from "next-intl/server";
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-source-sans",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -76,7 +84,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${myriadPro.variable} ${sourceSans.variable} antialiased font-sans`}>
+      <body className={`${montserrat.variable} antialiased font-sans`}>
         <NextIntlClientProvider>
           {children}
         </NextIntlClientProvider>
