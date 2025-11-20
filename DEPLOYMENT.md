@@ -13,22 +13,15 @@ This guide will help you deploy the daikin application on your VPS using Docker 
 
 SSH into your VPS and run:
 
+### Method 1: Official Docker Installation Script (Recommended)
+
 ```bash
 # Update system packages
 sudo apt update && sudo apt upgrade -y
 
-# Install required packages
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-
-# Add Docker's official GPG key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-# Add Docker repository
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Install Docker
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+# Download and run Docker's official installation script
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 
 # Start and enable Docker
 sudo systemctl start docker
@@ -37,7 +30,76 @@ sudo systemctl enable docker
 # Add your user to docker group (optional, to run docker without sudo)
 sudo usermod -aG docker $USER
 
+# Clean up
+rm get-docker.sh
+
 # Log out and log back in for group changes to take effect
+```
+
+### Method 2: Manual Installation (if Method 1 fails)
+
+```bash
+# Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Remove old versions if they exist
+sudo apt remove -y docker docker-engine docker.io containerd runc
+
+# Install required packages
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
+
+# Add Docker's official GPG key
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# Set up the repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Update package index
+sudo apt update
+
+# Install Docker Engine
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Start and enable Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add your user to docker group
+sudo usermod -aG docker $USER
+
+# Log out and log back in for group changes to take effect
+```
+
+### Method 3: For Debian/Other Distributions
+
+If you're using Debian or another distribution, replace the repository URL:
+
+```bash
+# For Debian
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+### Verify Installation
+
+```bash
+# Check Docker version
+docker --version
+
+# Check Docker Compose version
+docker compose version
+
+# Test Docker installation
+sudo docker run hello-world
 ```
 
 ## Step 2: Clone Your Repository
