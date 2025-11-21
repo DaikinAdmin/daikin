@@ -46,6 +46,7 @@ type ProductTranslation = {
 
 type ProductSpec = {
   id?: string;
+  locale: string;
   title: string;
   subtitle: string;
 };

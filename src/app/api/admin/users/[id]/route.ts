@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
-import bcrypt from "bcryptjs";
 
 // GET single user (Admin only)
 export const GET = async (
@@ -61,7 +60,7 @@ export const PUT = async (
     try {
         const { id } = await params;
         const body = await req.json();
-        const { role, email, emailVerified, twoFactorEnabled, userDetails, resetPassword } = body;
+        const { role, email, emailVerified, twoFactorEnabled, userDetails, resetPassword, currentPassword, newPassword } = body;
 
         // Check if user exists
         const existingUser = await prisma.user.findUnique({
@@ -124,15 +123,14 @@ export const PUT = async (
 
         // Reset password if requested
         if (resetPassword) {
-            const hashedPassword = await bcrypt.hash("P@ssw0rd", 10);
-            await prisma.account.updateMany({
-                where: {
-                    userId: id,
-                    providerId: "credential",
+            const data = await auth.api.changePassword({
+                body: {
+                    newPassword: newPassword, // required
+                    currentPassword: currentPassword, // required
+                    revokeOtherSessions: true,
                 },
-                data: {
-                    password: hashedPassword,
-                },
+                // This endpoint requires session cookies.
+                headers: await headers(),
             });
         }
 

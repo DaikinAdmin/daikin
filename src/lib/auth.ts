@@ -11,9 +11,11 @@ import { nextCookies } from "better-auth/next-js";
 import {
   twoFactor, admin as adminPlugin,
   customSession,
+  openAPI,
 } from "better-auth/plugins";
 import { validator } from "validation-better-auth";
 import { ac, admin, employee, user } from "@/lib/permissions"
+import { roleSignupPlugin } from "./role-signup-plugin";
 
 export const auth = betterAuth({
   user: {
@@ -27,6 +29,21 @@ export const auth = betterAuth({
     }
   },
   appName: "daikin-coins",
+  trustedOrigins: [
+    "http://localhost:3000",
+    "http://217.60.20.130", // VPS IP for temporary access
+    process.env.BASE_URL || "",
+    process.env.BETTER_AUTH_URL || "",
+    process.env.NEXT_PUBLIC_APP_URL || "",
+  ].filter(Boolean), // Remove empty strings
+  advanced: {
+    disableCSRFCheck: false,
+    // Only use secure cookies when actually using HTTPS
+    useSecureCookies: process.env.NODE_ENV === "production" && process.env.BETTER_AUTH_URL?.startsWith("https"),
+    generateSessionId: () => {
+      return crypto.randomUUID();
+    },
+  },
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
@@ -68,6 +85,7 @@ export const auth = betterAuth({
     }
   },
   plugins: [
+    roleSignupPlugin(),
     twoFactor({
       otpOptions: {
         async sendOTP({ user, otp }) {
@@ -99,8 +117,12 @@ export const auth = betterAuth({
         admin,
         user,
         employee
-      }
+      },
+      allowedRoles: ["user", "employee", "admin"],
+      adminRoles: ["admin"],
+      adminUserIds: [process.env.ADMIN_USER || ""]
     }),
+    openAPI(),
     customSession(async ({user, session}) => {
       const response = await prisma.user.findUnique({
                 where: { id: session.userId },
