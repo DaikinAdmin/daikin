@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # PostgreSQL Database
   postgres:
@@ -32,7 +30,7 @@ services:
     container_name: daikin-app
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3030:3000"
     environment:
       # Database
       DATABASE_URL: postgresql://daikin:${DB_PASSWORD}@postgres:5432/daikin?schema=public&connection_limit=20&pool_timeout=30&connect_timeout=10&socket_timeout=60
@@ -41,7 +39,7 @@ services:
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
       BETTER_AUTH_URL: ${BETTER_AUTH_URL}
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}
-      ADMIN_USER_ID: ${ADMIN_USER_ID}
+      ADMIN_USER_ID: ${ADMIN_USER_ID:-}
       
       # Mail
       MAIL_HOST: ${MAIL_HOST}
@@ -56,12 +54,12 @@ services:
       postgres:
         condition: service_healthy
     networks:
-      - lawhub-network
+      - daikin-network
     volumes:
       - ./prisma:/app/prisma
 
 networks:
-  lawhub-network:
+  daikin-network:
     driver: bridge
 
 volumes:

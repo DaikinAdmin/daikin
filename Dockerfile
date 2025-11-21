@@ -21,6 +21,7 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Copy prisma folder
 COPY prisma ./prisma
+COPY prisma.config.mjs ./prisma.config.mjs
 
 # Copy the rest of the application
 COPY . .
@@ -28,6 +29,7 @@ COPY . .
 # Set environment variables for build
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+ENV DATABASE_URL="postgresql://daikin:aJY1c0TLKzMEA9kjel5wDuHc+mXRN/cNHX9dG7VJYxI=@postgres:5432/daikin?schema=public&connection_limit=20&pool_timeout=30&connect_timeout=10&socket_timeout=60"
 
 # Generate Prisma Client for both native and Debian
 RUN npx prisma generate
@@ -73,29 +75,29 @@ RUN groupadd --system --gid 1001 nodejs
 RUN useradd --system --uid 1001 --gid nodejs nextjs
 
 # Copy necessary files from builder
-COPY --from=builder /app/src/public ./public
+COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Copy Prisma files (already generated in builder stage)
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+# # Copy Prisma files (already generated in builder stage)
+# COPY --from=builder /app/prisma ./prisma
+# COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+# COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
-# Copy tsx and all its dependencies (for seed scripts)
-COPY --from=builder /app/node_modules/tsx ./node_modules/tsx
-COPY --from=builder /app/node_modules/get-tsconfig ./node_modules/get-tsconfig
-COPY --from=builder /app/node_modules/resolve-pkg-maps ./node_modules/resolve-pkg-maps
-COPY --from=builder /app/node_modules/esbuild ./node_modules/esbuild
-COPY --from=builder /app/node_modules/@esbuild ./node_modules/@esbuild
+# # Copy tsx and all its dependencies (for seed scripts)
+# COPY --from=builder /app/node_modules/tsx ./node_modules/tsx
+# COPY --from=builder /app/node_modules/get-tsconfig ./node_modules/get-tsconfig
+# COPY --from=builder /app/node_modules/resolve-pkg-maps ./node_modules/resolve-pkg-maps
+# COPY --from=builder /app/node_modules/esbuild ./node_modules/esbuild
+# COPY --from=builder /app/node_modules/@esbuild ./node_modules/@esbuild
 
 # Copy Playwright for browser automation
-COPY --from=builder /app/node_modules/playwright-core ./node_modules/playwright-core
-COPY --from=builder /app/node_modules/@playwright ./node_modules/@playwright
+# COPY --from=builder /app/node_modules/playwright-core ./node_modules/playwright-core
+# COPY --from=builder /app/node_modules/@playwright ./node_modules/@playwright
 
 # Install Playwright browsers as root
-ENV PLAYWRIGHT_BROWSERS_PATH=/home/nextjs/.cache/ms-playwright
-RUN npx playwright install --with-deps chromium
+# ENV PLAYWRIGHT_BROWSERS_PATH=/home/nextjs/.cache/ms-playwright
+# RUN npx playwright install --with-deps chromium
 
 # Create home directory for nextjs user and set permissions
 RUN mkdir -p /home/nextjs/.cache && \

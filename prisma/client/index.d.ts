@@ -17545,7 +17545,7 @@ export namespace Prisma {
     id: string | null
     price: number | null
     articleId: string | null
-    categoryId: string | null
+    categorySlug: string | null
     slug: string | null
     energyClass: string | null
     isActive: boolean | null
@@ -17557,7 +17557,7 @@ export namespace Prisma {
     id: string | null
     price: number | null
     articleId: string | null
-    categoryId: string | null
+    categorySlug: string | null
     slug: string | null
     energyClass: string | null
     isActive: boolean | null
@@ -17569,7 +17569,7 @@ export namespace Prisma {
     id: number
     price: number
     articleId: number
-    categoryId: number
+    categorySlug: number
     slug: number
     energyClass: number
     isActive: number
@@ -17591,7 +17591,7 @@ export namespace Prisma {
     id?: true
     price?: true
     articleId?: true
-    categoryId?: true
+    categorySlug?: true
     slug?: true
     energyClass?: true
     isActive?: true
@@ -17603,7 +17603,7 @@ export namespace Prisma {
     id?: true
     price?: true
     articleId?: true
-    categoryId?: true
+    categorySlug?: true
     slug?: true
     energyClass?: true
     isActive?: true
@@ -17615,7 +17615,7 @@ export namespace Prisma {
     id?: true
     price?: true
     articleId?: true
-    categoryId?: true
+    categorySlug?: true
     slug?: true
     energyClass?: true
     isActive?: true
@@ -17714,7 +17714,7 @@ export namespace Prisma {
     id: string
     price: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass: string | null
     isActive: boolean
@@ -17745,7 +17745,7 @@ export namespace Prisma {
     id?: boolean
     price?: boolean
     articleId?: boolean
-    categoryId?: boolean
+    categorySlug?: boolean
     slug?: boolean
     energyClass?: boolean
     isActive?: boolean
@@ -17765,7 +17765,7 @@ export namespace Prisma {
     id?: boolean
     price?: boolean
     articleId?: boolean
-    categoryId?: boolean
+    categorySlug?: boolean
     slug?: boolean
     energyClass?: boolean
     isActive?: boolean
@@ -17778,7 +17778,7 @@ export namespace Prisma {
     id?: boolean
     price?: boolean
     articleId?: boolean
-    categoryId?: boolean
+    categorySlug?: boolean
     slug?: boolean
     energyClass?: boolean
     isActive?: boolean
@@ -17791,7 +17791,7 @@ export namespace Prisma {
     id?: boolean
     price?: boolean
     articleId?: boolean
-    categoryId?: boolean
+    categorySlug?: boolean
     slug?: boolean
     energyClass?: boolean
     isActive?: boolean
@@ -17799,7 +17799,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "articleId" | "categoryId" | "slug" | "energyClass" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "articleId" | "categorySlug" | "slug" | "energyClass" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     orderProducts?: boolean | Product$orderProductsArgs<ExtArgs>
@@ -17832,7 +17832,7 @@ export namespace Prisma {
       id: string
       price: number | null
       articleId: string
-      categoryId: string
+      categorySlug: string
       slug: string
       energyClass: string | null
       isActive: boolean
@@ -18271,7 +18271,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Product", 'String'>
     readonly price: FieldRef<"Product", 'Float'>
     readonly articleId: FieldRef<"Product", 'String'>
-    readonly categoryId: FieldRef<"Product", 'String'>
+    readonly categorySlug: FieldRef<"Product", 'String'>
     readonly slug: FieldRef<"Product", 'String'>
     readonly energyClass: FieldRef<"Product", 'String'>
     readonly isActive: FieldRef<"Product", 'Boolean'>
@@ -25495,7 +25495,7 @@ export namespace Prisma {
     id: 'id',
     price: 'price',
     articleId: 'articleId',
-    categoryId: 'categoryId',
+    categorySlug: 'categorySlug',
     slug: 'slug',
     energyClass: 'energyClass',
     isActive: 'isActive',
@@ -26650,7 +26650,7 @@ export namespace Prisma {
     id?: StringFilter<"Product"> | string
     price?: FloatNullableFilter<"Product"> | number | null
     articleId?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
+    categorySlug?: StringFilter<"Product"> | string
     slug?: StringFilter<"Product"> | string
     energyClass?: StringNullableFilter<"Product"> | string | null
     isActive?: BoolFilter<"Product"> | boolean
@@ -26669,7 +26669,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrderInput | SortOrder
     articleId?: SortOrder
-    categoryId?: SortOrder
+    categorySlug?: SortOrder
     slug?: SortOrder
     energyClass?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -26692,7 +26692,7 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     price?: FloatNullableFilter<"Product"> | number | null
-    categoryId?: StringFilter<"Product"> | string
+    categorySlug?: StringFilter<"Product"> | string
     energyClass?: StringNullableFilter<"Product"> | string | null
     isActive?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
@@ -26710,7 +26710,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrderInput | SortOrder
     articleId?: SortOrder
-    categoryId?: SortOrder
+    categorySlug?: SortOrder
     slug?: SortOrder
     energyClass?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -26730,7 +26730,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Product"> | string
     price?: FloatNullableWithAggregatesFilter<"Product"> | number | null
     articleId?: StringWithAggregatesFilter<"Product"> | string
-    categoryId?: StringWithAggregatesFilter<"Product"> | string
+    categorySlug?: StringWithAggregatesFilter<"Product"> | string
     slug?: StringWithAggregatesFilter<"Product"> | string
     energyClass?: StringNullableWithAggregatesFilter<"Product"> | string | null
     isActive?: BoolWithAggregatesFilter<"Product"> | boolean
@@ -28173,7 +28173,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -28209,7 +28209,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -28227,7 +28227,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -28250,7 +28250,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -29510,7 +29510,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrder
     articleId?: SortOrder
-    categoryId?: SortOrder
+    categorySlug?: SortOrder
     slug?: SortOrder
     energyClass?: SortOrder
     isActive?: SortOrder
@@ -29526,7 +29526,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrder
     articleId?: SortOrder
-    categoryId?: SortOrder
+    categorySlug?: SortOrder
     slug?: SortOrder
     energyClass?: SortOrder
     isActive?: SortOrder
@@ -29538,7 +29538,7 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrder
     articleId?: SortOrder
-    categoryId?: SortOrder
+    categorySlug?: SortOrder
     slug?: SortOrder
     energyClass?: SortOrder
     isActive?: SortOrder
@@ -32032,7 +32032,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -32123,7 +32123,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -32607,7 +32607,7 @@ export namespace Prisma {
     id?: StringFilter<"Product"> | string
     price?: FloatNullableFilter<"Product"> | number | null
     articleId?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
+    categorySlug?: StringFilter<"Product"> | string
     slug?: StringFilter<"Product"> | string
     energyClass?: StringNullableFilter<"Product"> | string | null
     isActive?: BoolFilter<"Product"> | boolean
@@ -33090,7 +33090,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -33140,7 +33140,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -33174,7 +33174,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -33224,7 +33224,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -33258,7 +33258,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -33308,7 +33308,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -33342,7 +33342,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -33392,7 +33392,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -33452,7 +33452,7 @@ export namespace Prisma {
     id?: string
     price?: number | null
     articleId: string
-    categoryId: string
+    categorySlug: string
     slug: string
     energyClass?: string | null
     isActive?: boolean
@@ -34219,7 +34219,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -34236,7 +34236,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     articleId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    categorySlug?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     energyClass?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean

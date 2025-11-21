@@ -24,7 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Plus, Loader2, Pencil, Trash2, Search } from "lucide-react";
+import { Plus, Loader2, Pencil, Trash2, Search, Upload } from "lucide-react";
 import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -113,9 +113,17 @@ export default function ProductsManagementPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [isBulkUploadDialogOpen, setIsBulkUploadDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [bulkUploadResult, setBulkUploadResult] = useState<{
+    created: number;
+    updated: number;
+    failed: number;
+    errors: { articleId: string; error: string }[];
+  } | null>(null);
 
   const [formData, setFormData] = useState({
     articleId: "",
@@ -356,6 +364,111 @@ export default function ProductsManagementPage() {
     }
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type === "application/json") {
+      setSelectedFile(file);
+    } else {
+      alert(t("invalidFileType"));
+      setSelectedFile(null);
+    }
+  };
+
+  const handleBulkUpload = async () => {
+    if (!selectedFile) {
+      alert(t("noFileSelected"));
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const fileContent = await selectedFile.text();
+      const products = JSON.parse(fileContent);
+
+      const response = await fetch("/api/products/bulk-upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ products }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setBulkUploadResult(result);
+        setSelectedFile(null);
+        await fetchProducts(searchQuery, selectedCategory);
+      } else {
+        const error = await response.json();
+        alert(error.error || "Failed to upload products");
+      }
+    } catch (error) {
+      console.error("Error uploading products:", error);
+      alert("Failed to parse or upload JSON file");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCloseBulkUploadDialog = () => {
+    setIsBulkUploadDialogOpen(false);
+    setSelectedFile(null);
+    setBulkUploadResult(null);
+  };
+
+  const downloadSampleJSON = () => {
+    const sample = [
+      {
+        articleId: "SAMPLE-001",
+        price: 1299.99,
+        categorySlug: "air-conditioning",
+        slug: "sample-product-001",
+        energyClass: "A",
+        isActive: true,
+        featureIds: [],
+        translations: [
+          {
+            locale: "en",
+            name: "Sample Product",
+            title: "High-Efficiency Air Conditioner",
+            subtitle: "Perfect for small to medium rooms"
+          }
+        ],
+        specs: [
+          {
+            locale: "en",
+            title: "Cooling Capacity",
+            subtitle: "3.5 kW"
+          }
+        ],
+        images: [
+          {
+            color: "White",
+            imgs: ["/images/product-1.jpg"],
+            url: ["/products/sample-001"]
+          }
+        ],
+        items: [
+          {
+            locale: "en",
+            title: "Indoor Unit",
+            subtitle: "Wall-mounted",
+            img: "/images/indoor-unit.jpg",
+            isActive: true
+          }
+        ]
+      }
+    ];
+
+    const blob = new Blob([JSON.stringify(sample, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "products-sample.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   if (userRole !== "admin") {
     return null;
   }
@@ -372,10 +485,16 @@ export default function ProductsManagementPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">{t("title")}</h1>
-        <Button data-testid="create-product" onClick={() => handleOpenDialog()}>
-          <Plus className="mr-2 h-4 w-4" />
-          {t("addNewProduct")}
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => setIsBulkUploadDialogOpen(true)}>
+            <Upload className="mr-2 h-4 w-4" />
+            {t("bulkUpload")}
+          </Button>
+          <Button data-testid="create-product" onClick={() => handleOpenDialog()}>
+            <Plus className="mr-2 h-4 w-4" />
+            {t("addNewProduct")}
+          </Button>
+        </div>
       </div>
 
       {/* Search and Filter Bar */}
@@ -645,6 +764,128 @@ export default function ProductsManagementPage() {
             >
               {isSubmitting ? t("deleting") : t("deleteProduct")}
             </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Bulk Upload Dialog */}
+      <Dialog open={isBulkUploadDialogOpen} onOpenChange={setIsBulkUploadDialogOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{t("bulkUploadTitle")}</DialogTitle>
+            <DialogDescription>
+              {t("bulkUploadDescription")}
+            </DialogDescription>
+          </DialogHeader>
+          
+          {!bulkUploadResult ? (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="file-upload">{t("selectFile")}</Label>
+                <Input
+                  id="file-upload"
+                  type="file"
+                  accept=".json"
+                  onChange={handleFileChange}
+                  disabled={isSubmitting}
+                />
+                {selectedFile && (
+                  <p className="text-sm text-muted-foreground">
+                    Selected: {selectedFile.name}
+                  </p>
+                )}
+              </div>
+
+              <div className="bg-muted p-4 rounded-lg">
+                <p className="text-sm font-medium mb-2">{t("bulkUploadHelp")}</p>
+                <Button
+                  variant="link"
+                  onClick={downloadSampleJSON}
+                  className="h-auto p-0 text-sm"
+                >
+                  {t("downloadSample")}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h3 className="font-semibold">{t("bulkUploadResults")}</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-green-50 dark:bg-green-950 p-3 rounded-lg">
+                    <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                      {bulkUploadResult.created}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("productsCreated")}</p>
+                  </div>
+                  <div className="bg-blue-50 dark:bg-blue-950 p-3 rounded-lg">
+                    <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      {bulkUploadResult.updated}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("productsUpdated")}</p>
+                  </div>
+                  <div className="bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+                    <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                      {bulkUploadResult.failed}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("productsFailed")}</p>
+                  </div>
+                </div>
+              </div>
+
+              {bulkUploadResult.errors.length > 0 && (
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-sm">{t("viewErrors")}</h4>
+                  <div className="max-h-60 overflow-y-auto border rounded-lg p-3 space-y-2">
+                    {bulkUploadResult.errors.map((error, index) => (
+                      <div
+                        key={index}
+                        className="bg-red-50 dark:bg-red-950/50 p-2 rounded text-sm"
+                      >
+                        <p className="font-medium text-red-900 dark:text-red-200">
+                          {error.articleId}
+                        </p>
+                        <p className="text-red-700 dark:text-red-300">{error.error}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          <DialogFooter>
+            {!bulkUploadResult ? (
+              <>
+                <Button
+                  variant="outline"
+                  onClick={handleCloseBulkUploadDialog}
+                  disabled={isSubmitting}
+                >
+                  {t("cancel")}
+                </Button>
+                <Button
+                  onClick={handleBulkUpload}
+                  disabled={!selectedFile || isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      {t("uploading")}
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="mr-2 h-4 w-4" />
+                      {t("uploadFile")}
+                    </>
+                  )}
+                </Button>
+              </>
+            ) : (
+              <Button onClick={handleCloseBulkUploadDialog}>
+                {t("closeResults")}
+              </Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </Dialog>

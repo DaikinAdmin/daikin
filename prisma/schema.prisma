@@ -215,11 +215,11 @@ model Product {
   id             String               @id @default(cuid())
   price          Float?
   articleId      String               @unique
-  categoryId     String
+  categorySlug     String
   slug           String               @unique
   energyClass    String?
   isActive       Boolean              @default(true)
-  category       Category             @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category       Category             @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
   orderProducts  OrderProduct[]
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
