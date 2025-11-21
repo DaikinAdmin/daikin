@@ -64,7 +64,6 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.mjs ./prisma.config.mjs
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
 # # Copy tsx and all its dependencies (for seed scripts)
 # COPY --from=builder /app/node_modules/tsx ./node_modules/tsx
