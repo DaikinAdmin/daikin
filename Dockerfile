@@ -37,42 +37,23 @@ RUN npx prisma generate
 # Build the application
 RUN npm run build
 
-# Stage 3: Runner (using Debian for Playwright support)
-FROM node:24-slim AS runner
+# Stage 3: Runner (using Alpine for smaller image)
+FROM node:24-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Install system dependencies for Playwright
-RUN apt-get update && apt-get install -y \
-    # Playwright dependencies
-    libnss3 \
-    libnspr4 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libdrm2 \
-    libdbus-1-3 \
-    libxkbcommon0 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxfixes3 \
-    libxrandr2 \
-    libgbm1 \
-    libasound2 \
-    libpango-1.0-0 \
-    libcairo2 \
-    # Additional utilities
+# Install system dependencies using Alpine's package manager
+RUN apk add --no-cache \
     wget \
     ca-certificates \
-    fonts-liberation \
-    # Cleanup
-    && rm -rf /var/lib/apt/lists/*
+    fontconfig \
+    ttf-dejavu
 
 # Create a non-root user
-RUN groupadd --system --gid 1001 nodejs
-RUN useradd --system --uid 1001 --gid nodejs nextjs
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 --ingroup nodejs nextjs
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public

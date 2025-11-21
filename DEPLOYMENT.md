@@ -219,10 +219,10 @@ Add this configuration:
 ```nginx
 server {
     listen 80;
-    server_name your-domain.com www.your-domain.com;
+    server_name daikinkobierzyce.pl www.daikinkobierzyce.pl;
 
     location / {
-        proxy_pass http://localhost:3000;
+        proxy_pass http://localhost:3030;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -251,7 +251,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 
 # Get SSL certificate (replace with your domain)
-sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+sudo certbot --nginx -d daikinkobierzyce.pl -d www.daikinkobierzyce.pl
 
 # Certbot will automatically configure SSL and set up auto-renewal
 ```
