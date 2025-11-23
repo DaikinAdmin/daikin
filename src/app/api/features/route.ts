@@ -12,6 +12,12 @@ export const GET = async (req: Request) => {
             const search = searchParams.get("search") || "";
             const locale = searchParams.get("locale");
             const includeInactive = searchParams.get("includeInactive") === "true";
+            const previewParam = searchParams.get("preview");
+            
+            // Filter by preview flag if specified
+            const previewFilter = previewParam !== null 
+                ? { preview: previewParam === "true" }
+                : {};
 
             const features = await prisma.feature.findMany({
                 where: {
@@ -28,6 +34,7 @@ export const GET = async (req: Request) => {
                         ],
                     }),
                     ...(!includeInactive && { isActive: true }),
+                    ...previewFilter,
                 },
                 include: {
                     featureDetails: locale
@@ -71,7 +78,7 @@ export const POST = async (req: Request) => {
 
     return withPrisma(async () => {
         try {
-            const { name, img, isActive, translations } = await req.json();
+            const { name, img, isActive, preview, translations } = await req.json();
 
             if (!name) {
                 return NextResponse.json(
@@ -85,11 +92,13 @@ export const POST = async (req: Request) => {
                     name,
                     img: img || null,
                     isActive: isActive !== undefined ? isActive : true,
+                    preview: preview !== undefined ? preview : false,
                     featureDetails: translations
                         ? {
                               create: translations.map((t: any) => ({
                                   locale: t.locale,
                                   name: t.name,
+                                  desc: t.desc || null,
                                   isActive: t.isActive !== undefined ? t.isActive : true,
                               })),
                           }

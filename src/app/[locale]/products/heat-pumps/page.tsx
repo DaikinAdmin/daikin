@@ -1,87 +1,77 @@
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
-import { Thermometer, Leaf, TrendingUp, Shield } from 'lucide-react';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import ProductTemplatePage from '@/components/product-page';
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { use } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import ProductTemplatePage from "@/components/product-page";
+import WhyChooseSection from "@/components/why-choose";
 
-export default function HeatPumpsPage({
-  params
+export default function AirConditioningPage({
+  params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations('heatPumps');
+  const t = useTranslations("airConditioning");
+  const allProductsRaw = t.raw("products") as Record<string, any>;
 
-  const iconMap = { Thermometer, Leaf, TrendingUp, Shield };
-    
-      // Creating product object
-      function createProduct(id: string, iconName: string) {
-        return {
-          id,
-          iconName,
-          image: `/images/${id}.jpg`,
-          category: t(`products.${id}.category`),
-          name: t(`products.${id}.name`),
-          description: t(`products.${id}.description`),
-          price: t(`products.${id}.price`),
-          features: Array.isArray(t.raw(`products.${id}.features`))
-            ? (t.raw(`products.${id}.features`) as string[])
-            : [],
-        };
-      }
-    
-      // Products
-      const products = [
-        createProduct("daikinFit", "Thermometer"),
-        createProduct("altherma", "Leaf"),
-        createProduct("althermaH", "TrendingUp"),
-      ];
-    
-      // Features
-      const benefits = [
-        {
-          id: "eco",
-          iconName: "Leaf",
-          title: t("benefits.eco.title"),
-          description: t("benefits.eco.description"),
-        },
-        {
-          id: "efficiency",
-          iconName: "TrendingUp",
-          title: t("benefits.efficiency.title"),
-          description: t("benefits.efficiency.description"),
-        },
-        {
-          id: "versatile",
-          iconName: "Thermometer",
-          title: t("benefits.versatile.title"),
-          description: t("benefits.versatile.description"),
-        },
-        {
-          id: "reliable",
-          iconName: "Shield",
-          title: t("benefits.reliable.title"),
-          description: t("benefits.reliable.description"),
-        },
-      ];
-    
-      return (
-        <>
-          <Header />
-          <ProductTemplatePage
-            heroTitle={t("hero.title")}
-            heroSubtitle={t("hero.subtitle")}
-            productsTitle={t("products.title")}
-            productsSubtitle={t("products.subtitle")}
-            featuresTitle={t("benefits.title")}
-            products={products}
-            benefits={benefits}
-            iconMap={iconMap}
-          />
-          <Footer />
-        </>
-      );
-    }
+  const products = Object.keys(allProductsRaw)
+  .filter((key) => typeof allProductsRaw[key] === "object" && allProductsRaw[key].name)
+  .map((id) => {
+    const productData = allProductsRaw[id];
+    return {
+      id,
+      image: productData.image,
+      category: productData.category,
+      name: productData.name,
+      description: productData.description,
+      price: productData.price,
+      features: Array.isArray(productData.features)
+        ? (productData.features as { title: string; icon: string }[])
+        : [],
+    };
+  });
+
+
+  return (
+    <>
+      <Header />
+      <ProductTemplatePage
+        heroTitle={t("hero.title")}
+        heroSubtitle={t("hero.subtitle")}
+        productsTitle={t("products.title")}
+        productsSubtitle={t("products.subtitle")}
+        products={products}
+      />
+      <WhyChooseSection
+                  title="Dlaczego warto wybrać"
+                  subtitle="Poznaj nasze innowacyjne rozwiązania"
+                  leftItem={{
+                    id: "left1",
+                    image: "/whychoose_1.png",
+                    title: "Efektywność energetyczna",
+                    description:
+                      "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+                  }}
+                  rightItems={[
+                    {
+                      id: "right1",
+                      image: "/whychoose_2.png",
+                      title: "Inteligentna technologia",
+                      description:
+                        "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+                    },
+                    {
+                      id: "right2",
+                      image: "/whychoose_3.png",
+                      title: "Niezawodność",
+                      description:
+                        "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+                    },
+                  ]}
+                />
+      <Footer />
+    </>
+  );
+}

@@ -1,10 +1,10 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
-import { Wind, Zap, Snowflake, Thermometer } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ProductTemplatePage from "@/components/product-page";
+import WhyChooseSection from "@/components/why-choose";
 
 export default function AirConditioningPage({
   params,
@@ -14,54 +14,25 @@ export default function AirConditioningPage({
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("airConditioning");
+  const allProductsRaw = t.raw("products") as Record<string, any>;
 
-  const iconMap = { Wind, Zap, Snowflake, Thermometer };
-
-  // Creating product object
-  function createProduct(id: string, iconName: string) {
+  const products = Object.keys(allProductsRaw)
+  .filter((key) => typeof allProductsRaw[key] === "object" && allProductsRaw[key].name)
+  .map((id) => {
+    const productData = allProductsRaw[id];
     return {
       id,
-      iconName,
-      image: `/images/${id}.jpg`,
-      category: t(`products.${id}.category`),
-      name: t(`products.${id}.name`),
-      description: t(`products.${id}.description`),
-      price: t(`products.${id}.price`),
-      features: Array.isArray(t.raw(`products.${id}.features`))
-        ? (t.raw(`products.${id}.features`) as string[])
+      image: productData.image,
+      category: productData.category,
+      name: productData.name,
+      description: productData.description,
+      price: productData.price,
+      features: Array.isArray(productData.features)
+        ? (productData.features as { title: string; icon: string }[])
         : [],
     };
-  }
+  });
 
-  // Products
-  const products = [
-    createProduct("aurora", "Wind"),
-    createProduct("emura", "Snowflake"),
-    createProduct("stylish", "Thermometer"),
-    createProduct("perfera", "Zap"),
-  ];
-
-  // Features
-  const benefits = [
-    {
-      id: "efficiency",
-      iconName: "Zap",
-      title: t("whyChoose.efficiency.title"),
-      description: t("whyChoose.efficiency.description"),
-    },
-    {
-      id: "comfort",
-      iconName: "Snowflake",
-      title: t("whyChoose.comfort.title"),
-      description: t("whyChoose.comfort.description"),
-    },
-    {
-      id: "air",
-      iconName: "Wind",
-      title: t("whyChoose.air.title"),
-      description: t("whyChoose.air.description"),
-    },
-  ];
 
   return (
     <>
@@ -71,11 +42,35 @@ export default function AirConditioningPage({
         heroSubtitle={t("hero.subtitle")}
         productsTitle={t("products.title")}
         productsSubtitle={t("products.subtitle")}
-        featuresTitle={t("whyChoose.title")}
         products={products}
-        benefits={benefits}
-        iconMap={iconMap}
       />
+      <WhyChooseSection
+                  title="Dlaczego warto wybrać"
+                  subtitle="Poznaj nasze innowacyjne rozwiązania"
+                  leftItem={{
+                    id: "left1",
+                    image: "/whychoose_1.png",
+                    title: "Efektywność energetyczna",
+                    description:
+                      "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+                  }}
+                  rightItems={[
+                    {
+                      id: "right1",
+                      image: "/whychoose_2.png",
+                      title: "Inteligentna technologia",
+                      description:
+                        "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+                    },
+                    {
+                      id: "right2",
+                      image: "/whychoose_3.png",
+                      title: "Niezawodność",
+                      description:
+                        "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+                    },
+                  ]}
+                />
       <Footer />
     </>
   );

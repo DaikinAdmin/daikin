@@ -1,0 +1,115 @@
+[
+  {
+    "articleId": "SAMPLE-001",
+    "price": 1299.99,
+    "categorySlug": "air-conditioning",
+    "slug": "sample-product-001",
+    "energyClass": "A",
+    "isActive": true,
+    "featureIds": [],
+    "translations": [
+      {
+        "locale": "en",
+        "name": "Sample Product",
+        "title": "High-Efficiency Air Conditioner",
+        "subtitle": "Perfect for small to medium rooms"
+      },
+      {
+        "locale": "pl",
+        "name": "Przykładowy produkt",
+        "title": "Wysokowydajna klimatyzacja",
+        "subtitle": "Idealny do małych i średnich pomieszczeń"
+      },
+      {
+        "locale": "ua",
+        "name": "Зразковий продукт",
+        "title": "Високоефективний кондиціонер",
+        "subtitle": "Ідеально підходить для малих та середніх приміщень"
+      }
+    ],
+    "specs": [
+      {
+        "locale": "en",
+        "title": "Cooling Capacity",
+        "subtitle": "3.5 kW"
+      },
+      {
+        "locale": "en",
+        "title": "Heating Capacity",
+        "subtitle": "4.0 kW"
+      },
+      {
+        "locale": "en",
+        "title": "Energy Efficiency",
+        "subtitle": "A+++"
+      }
+    ],
+    "images": [
+      {
+        "color": "White",
+        "imgs": ["/images/product-1.jpg", "/images/product-1-side.jpg"],
+        "url": ["/products/sample-001", "/products/sample-001/gallery"]
+      },
+      {
+        "color": "Black",
+        "imgs": ["/images/product-1-black.jpg"],
+        "url": ["/products/sample-001/black"]
+      }
+    ],
+    "items": [
+      {
+        "locale": "en",
+        "title": "Indoor Unit",
+        "subtitle": "Wall-mounted",
+        "img": "/images/indoor-unit.jpg",
+        "isActive": true
+      },
+      {
+        "locale": "en",
+        "title": "Outdoor Unit",
+        "subtitle": "Compact design",
+        "img": "/images/outdoor-unit.jpg",
+        "isActive": true
+      },
+      {
+        "locale": "en",
+        "title": "Remote Control",
+        "subtitle": "Smart WiFi enabled",
+        "img": "/images/remote.jpg",
+        "isActive": true
+      }
+    ]
+  },
+  {
+    "articleId": "SAMPLE-002",
+    "price": 899.99,
+    "categorySlug": "air-conditioning",
+    "slug": "budget-air-conditioner",
+    "energyClass": "B",
+    "isActive": true,
+    "featureIds": [],
+    "translations": [
+      {
+        "locale": "en",
+        "name": "Budget Air Conditioner",
+        "title": "Affordable Cooling Solution",
+        "subtitle": "Great value for money"
+      }
+    ],
+    "specs": [
+      {
+        "locale": "en",
+        "title": "Cooling Capacity",
+        "subtitle": "2.5 kW"
+      }
+    ],
+    "images": [
+      {
+        "color": "White",
+        "imgs": ["/images/budget-ac.jpg"],
+        "url": ["/products/budget-air-conditioner"]
+      }
+    ],
+    "items": []
+  }
+]

@@ -48,32 +48,20 @@ export default function Header() {
 
   return (
     <>
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8">
+    <header className="bg-white text-header shadow-sm border-b border-gray-200 sticky top-0 z-50">
+      <div className="max-w-[90rem] mx-auto px-3 sm:px-4 lg:px-8 py-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3" locale={locale}>
               <div className="w-48 h-48 sm:w-56 sm:h-56 relative">
                 <Image 
-                  src="/daikin_logo.png" 
+                  src="/daikin_logo_pl.png"
                   alt="Daikin AMM Project Salon Partnerski Logo" 
                   fill
                   className="object-contain"
                   priority
                 />
-                <div className="absolute bottom-8 sm:bottom-12 left-0 right-0 flex justify-center items-center gap-1.5">
-                  <p className="text-[#003D7A] font-semibold text-xs sm:text-sm px-2 ml-6 py-0.5 rounded" style={{ fontFamily: 'Montserrat' }}>
-                    salon partnerski
-                  </p>
-                  <Image 
-                    src="/amm.png" 
-                    alt="AMM" 
-                    width={80}
-                    height={80}
-                    className="w-12 h-12 sm:w-16 sm:h-16 object-contain flex-shrink-0"
-                  />
-                </div>
               </div>
             </Link>
           </div>
@@ -83,7 +71,7 @@ export default function Header() {
             {/* O nas */}
             <Link
               href="/about"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.about')}
@@ -91,7 +79,7 @@ export default function Header() {
 
             {/* Produkty */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
                 {t('nav.products')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
@@ -121,7 +109,7 @@ export default function Header() {
 
             {/* Usługi */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
                 {t('nav.services')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
@@ -142,7 +130,7 @@ export default function Header() {
             {/* Wiadomości */}
             <Link
               href="/news"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.news')}
@@ -151,7 +139,7 @@ export default function Header() {
             {/* Twoja wiedza */}
             <Link
               href="/knowledge"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.knowledge')}
@@ -160,7 +148,7 @@ export default function Header() {
             {/* Realizację */}
             <Link
               href="/realizations"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
+              className="px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors"
               locale={locale}
             >
               {t('nav.realizations')}
@@ -168,7 +156,7 @@ export default function Header() {
 
             {/* Twoje konto */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
+              <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-[#003D7A] hover:bg-gray-50 rounded-md transition-colors">
                 {t('nav.account')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>

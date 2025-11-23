@@ -1,17 +1,67 @@
-# docker-compose.yml
-version: "3.9"
 services:
-  db:
-    container_name: DAIKIN_AMM_SALON_DB
-    image: postgres:17-alpine
-    restart: always
-    ports:
-      - 5433:5433
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: daikin-postgres
+    restart: unless-stopped
+    command: postgres -c max_connections=100 -c shared_buffers=256MB
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_DB=OAUTH
+      POSTGRES_USER: daikin
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-daikin_secure_password}
+      POSTGRES_DB: daikin
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"  # Changed to 5434 to avoid conflict with local PostgreSQL
+    networks:
+      - daikin-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U daikin -d daikin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Next.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: daikin-app
+    restart: unless-stopped
+    ports:
+      - "3030:3000"
+    environment:
+      # Database
+      DATABASE_URL: ${DATABASE_URL}
+      
+      # Auth
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}
+      ADMIN_USER_ID: ${ADMIN_USER_ID:-}
+      
+      # Mail
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      
+      # Environment
+      ENV: ${ENV:-production}
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - daikin-network
+    volumes:
+      - ./prisma:/app/prisma
+
+networks:
+  daikin-network:
+    driver: bridge
+
 volumes:
-  postgres-data:
+  postgres_data:
+    driver: local

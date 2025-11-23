@@ -7,7 +7,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 enum ServiceStatus {
@@ -215,18 +214,42 @@ model CategoryTranslation {
 model Product {
   id             String               @id @default(cuid())
   price          Float?
-  img            String?
   articleId      String               @unique
-  categoryId     String
+  categorySlug     String
+  slug           String               @unique
+  energyClass    String?
   isActive       Boolean              @default(true)
-  category       Category             @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category       Category             @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
   orderProducts  OrderProduct[]
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
   productDetails ProductTranslation[]
   features       Feature[]
+  img            ProductImages[]
+  specs          ProductSpecs[]
+  items          ProductItems[]
 
   @@map("product")
+}
+model ProductSpecs {
+  id        String   @id @default(cuid())
+  productId String
+  locale    String
+  title     String
+  subtitle  String?
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_specs")
+}
+model ProductImages {
+  id        String   @id @default(cuid())
+  productId String
+  color     String?
+  imgs      String[]
+  url       String[]
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_images")
 }
 
 model ProductTranslation {
@@ -234,11 +257,25 @@ model ProductTranslation {
   productId   String
   locale      String
   name        String
-  description String
+  title       String
+  subtitle    String?
   product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@unique([productId, locale])
   @@map("product_translation")
+}
+
+model ProductItems {
+  id        String   @id @default(cuid())
+  productId String
+  locale    String
+  title      String
+  subtitle   String?
+  img        String?
+  isActive   Boolean  @default(true)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_items")
 }
 
 model Feature {
@@ -246,6 +283,7 @@ model Feature {
   name           String
   img            String?
   isActive       Boolean              @default(true)
+  preview        Boolean?
   featureDetails FeatureTranslation[]
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
@@ -259,6 +297,7 @@ model FeatureTranslation {
   featureId String
   locale    String
   name      String
+  desc      String?
   isActive  Boolean @default(true)
   feature   Feature @relation(fields: [featureId], references: [id], onDelete: Cascade)
 

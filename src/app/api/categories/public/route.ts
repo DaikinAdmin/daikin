@@ -31,7 +31,7 @@ export const GET = async (req: Request) => {
             });
 
             // Transform data to simplify locale-specific fields
-            const transformedCategories = categories.map((category) => ({
+            const transformedCategories = categories.map((category: any) => ({
                 id: category.id,
                 slug: category.slug,
                 name: category.categoryDetails[0]?.name || category.name,

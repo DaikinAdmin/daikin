@@ -1,24 +1,26 @@
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import ProductCarousel from '@/components/product-carousel';
-import { HeroCarousel } from '@/components/hero-carousel';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import ProductCarousel from "@/components/product-carousel";
+import { HeroCarousel } from "@/components/hero-carousel";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { use } from "react";
+import { Button } from "@/components/ui/button";
+import WhyChooseSection from "@/components/why-choose";
 
 export default function Home({
-  params
+  params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations('home');
+  const t = useTranslations("home");
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Carousel Section */}
       <HeroCarousel />
 
@@ -26,7 +28,7 @@ export default function Home({
       <ProductCarousel />
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
@@ -70,33 +72,35 @@ export default function Home({
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* CTA Section */}
-      <section className="py-16 bg-[#003D7A] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            {t('cta.title')}
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-            {t('cta.subtitle')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white text-[#003D7A] rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
-            >
-              {t('cta.consultation')}
-            </Link>
-            <Link
-              href="/dashboard"
-              className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#003D7A] transition-colors font-semibold text-lg"
-            >
-              {t('cta.dashboard')}
-            </Link>
-          </div>
-        </div>
-      </section>
+      <WhyChooseSection
+        title="Dlaczego warto wybrać"
+        subtitle="Poznaj nasze innowacyjne rozwiązania"
+        leftItem={{
+          id: "left1",
+          image: "/whychoose_1.png",
+          title: "Efektywność energetyczna",
+          description:
+            "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+        }}
+        rightItems={[
+          {
+            id: "right1",
+            image: "/whychoose_2.png",
+            title: "Inteligentna technologia",
+            description:
+              "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+          },
+          {
+            id: "right2",
+            image: "/whychoose_3.png",
+            title: "Niezawodność",
+            description:
+              "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+          },
+        ]}
+      />
 
       <Footer />
     </div>

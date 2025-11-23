@@ -24,22 +24,47 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Plus, Loader2, Pencil, Trash2, Search, X } from "lucide-react";
+import { Plus, Loader2, Pencil, Trash2, Search, Upload } from "lucide-react";
 import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { NativeSelect } from "@/components/ui/native-select";
+import { Spinner } from "@/components/ui/spinner";
+import { MainInfoTab } from "@/components/dashboard/products/main-info-tab";
+import { ProductDetailsTab } from "@/components/dashboard/products/product-details-tab";
+import { FeaturesTab } from "@/components/dashboard/products/features-tab";
+import { SpecificationsTab } from "@/components/dashboard/products/specifications-tab";
+import { ProductImagesTab } from "@/components/dashboard/products/product-images-tab";
+import { ProductItemsTab } from "@/components/dashboard/products/product-items-tab";
 
 type ProductTranslation = {
   locale: string;
   name: string;
-  description: string;
+  title: string;
+  subtitle: string;
+};
+
+type ProductSpec = {
+  id?: string;
+  locale: string;
+  title: string;
+  subtitle: string;
+};
+
+type ProductImage = {
+  id?: string;
+  color: string;
+  imgs: string[];
+  url: string[];
+};
+
+type ProductItem = {
+  id?: string;
+  locale: string;
+  title: string;
+  subtitle: string;
+  img: string;
+  isActive: boolean;
 };
 
 type Category = {
@@ -52,20 +77,25 @@ type Feature = {
   id: string;
   name: string;
   img: string | null;
+  preview: boolean | null;
 };
 
 type Product = {
   id: string;
   articleId: string;
   price: number | null;
-  img: string | null;
+  img: ProductImage[]; // Relation name in Prisma schema
   categoryId: string;
+  slug: string | null;
+  energyClass: string | null;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
   productDetails: ProductTranslation[];
   category: Category;
   features: Feature[];
+  specs: ProductSpec[];
+  items: ProductItem[];
 };
 
 export default function ProductsManagementPage() {
@@ -75,28 +105,39 @@ export default function ProductsManagementPage() {
   
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [allFeatures, setAllFeatures] = useState<Feature[]>([]);
+  const [previewFeatures, setPreviewFeatures] = useState<Feature[]>([]);
+  const [regularFeatures, setRegularFeatures] = useState<Feature[]>([]);
   const [loading, setLoading] = useState(true);
+  const [featuresLoading, setFeaturesLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [isBulkUploadDialogOpen, setIsBulkUploadDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [bulkUploadResult, setBulkUploadResult] = useState<{
+    created: number;
+    updated: number;
+    failed: number;
+    errors: { articleId: string; error: string }[];
+  } | null>(null);
 
   const [formData, setFormData] = useState({
     articleId: "",
     price: "",
-    img: "",
     categoryId: "",
+    slug: "",
+    energyClass: "None",
     isActive: true,
+    previewFeatureIds: [] as string[],
     featureIds: [] as string[],
-    translations: [
-      { locale: "en", name: "", description: "" },
-      { locale: "pl", name: "", description: "" },
-      { locale: "ua", name: "", description: "" },
-    ],
+    translations: [] as ProductTranslation[],
+    specs: [] as ProductSpec[],
+    images: [] as ProductImage[],
+    items: [] as ProductItem[],
   });
 
   // Redirect non-admin users
@@ -119,14 +160,25 @@ export default function ProductsManagementPage() {
   };
 
   const fetchFeatures = async () => {
+    setFeaturesLoading(true);
     try {
-      const response = await fetch("/api/features");
-      if (response.ok) {
-        const data = await response.json();
-        setAllFeatures(data.filter((f: Feature & { isActive: boolean }) => f.isActive));
+      // Fetch preview features
+      const previewResponse = await fetch("/api/features?preview=true");
+      if (previewResponse.ok) {
+        const previewData = await previewResponse.json();
+        setPreviewFeatures(previewData.filter((f: Feature & { isActive: boolean }) => f.isActive));
+      }
+
+      // Fetch regular features
+      const regularResponse = await fetch("/api/features?preview=false");
+      if (regularResponse.ok) {
+        const regularData = await regularResponse.json();
+        setRegularFeatures(regularData.filter((f: Feature & { isActive: boolean }) => f.isActive));
       }
     } catch (error) {
       console.error("Error fetching features:", error);
+    } finally {
+      setFeaturesLoading(false);
     }
   };
 
@@ -188,39 +240,39 @@ export default function ProductsManagementPage() {
   const handleOpenDialog = (product?: Product) => {
     if (product) {
       setEditingProduct(product);
+      // Separate preview and regular features
+      const preview = product.features.filter(f => f.preview === true).map(f => f.id);
+      const regular = product.features.filter(f => f.preview === false || f.preview === null).map(f => f.id);
+      
       setFormData({
         articleId: product.articleId,
         price: product.price ? product.price.toString() : "",
-        img: product.img || "",
         categoryId: product.categoryId,
+        slug: product.slug || "",
+        energyClass: product.energyClass || "None",
         isActive: product.isActive,
-        featureIds: product.features.map(f => f.id),
-        translations: product.productDetails.length > 0
-          ? product.productDetails.map(t => ({
-              locale: t.locale,
-              name: t.name,
-              description: t.description,
-            }))
-          : [
-              { locale: "en", name: "", description: "" },
-              { locale: "pl", name: "", description: "" },
-              { locale: "ua", name: "", description: "" },
-            ],
+        previewFeatureIds: preview,
+        featureIds: regular,
+        translations: product.productDetails || [],
+        specs: product.specs || [],
+        images: product.img || [], // 'img' is the relation name in Prisma schema
+        items: product.items || [],
       });
     } else {
       setEditingProduct(null);
       setFormData({
         articleId: "",
         price: "",
-        img: "",
         categoryId: "",
+        slug: "",
+        energyClass: "None",
         isActive: true,
+        previewFeatureIds: [],
         featureIds: [],
-        translations: [
-          { locale: "en", name: "", description: "" },
-          { locale: "pl", name: "", description: "" },
-          { locale: "ua", name: "", description: "" },
-        ],
+        translations: [],
+        specs: [],
+        images: [],
+        items: [],
       });
     }
     setIsDialogOpen(true);
@@ -251,13 +303,24 @@ export default function ProductsManagementPage() {
       
       const method = editingProduct ? "PUT" : "POST";
 
+      // Combine preview and regular features
+      const allFeatureIds = [...formData.previewFeatureIds, ...formData.featureIds];
+
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          articleId: formData.articleId,
           price: formData.price ? parseFloat(formData.price) : null,
-          img: formData.img || null,
+          categoryId: formData.categoryId,
+          slug: formData.slug,
+          energyClass: formData.energyClass === "None" ? null : formData.energyClass,
+          isActive: formData.isActive,
+          featureIds: allFeatureIds,
+          translations: formData.translations,
+          specs: formData.specs,
+          images: formData.images,
+          items: formData.items,
         }),
       });
 
@@ -301,6 +364,111 @@ export default function ProductsManagementPage() {
     }
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type === "application/json") {
+      setSelectedFile(file);
+    } else {
+      alert(t("invalidFileType"));
+      setSelectedFile(null);
+    }
+  };
+
+  const handleBulkUpload = async () => {
+    if (!selectedFile) {
+      alert(t("noFileSelected"));
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const fileContent = await selectedFile.text();
+      const products = JSON.parse(fileContent);
+
+      const response = await fetch("/api/products/bulk-upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ products }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setBulkUploadResult(result);
+        setSelectedFile(null);
+        await fetchProducts(searchQuery, selectedCategory);
+      } else {
+        const error = await response.json();
+        alert(error.error || "Failed to upload products");
+      }
+    } catch (error) {
+      console.error("Error uploading products:", error);
+      alert("Failed to parse or upload JSON file");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCloseBulkUploadDialog = () => {
+    setIsBulkUploadDialogOpen(false);
+    setSelectedFile(null);
+    setBulkUploadResult(null);
+  };
+
+  const downloadSampleJSON = () => {
+    const sample = [
+      {
+        articleId: "SAMPLE-001",
+        price: 1299.99,
+        categorySlug: "air-conditioning",
+        slug: "sample-product-001",
+        energyClass: "A",
+        isActive: true,
+        featureIds: [],
+        translations: [
+          {
+            locale: "en",
+            name: "Sample Product",
+            title: "High-Efficiency Air Conditioner",
+            subtitle: "Perfect for small to medium rooms"
+          }
+        ],
+        specs: [
+          {
+            locale: "en",
+            title: "Cooling Capacity",
+            subtitle: "3.5 kW"
+          }
+        ],
+        images: [
+          {
+            color: "White",
+            imgs: ["/images/product-1.jpg"],
+            url: ["/products/sample-001"]
+          }
+        ],
+        items: [
+          {
+            locale: "en",
+            title: "Indoor Unit",
+            subtitle: "Wall-mounted",
+            img: "/images/indoor-unit.jpg",
+            isActive: true
+          }
+        ]
+      }
+    ];
+
+    const blob = new Blob([JSON.stringify(sample, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "products-sample.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   if (userRole !== "admin") {
     return null;
   }
@@ -317,10 +485,16 @@ export default function ProductsManagementPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">{t("title")}</h1>
-        <Button data-testid="create-product" onClick={() => handleOpenDialog()}>
-          <Plus className="mr-2 h-4 w-4" />
-          {t("addNewProduct")}
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => setIsBulkUploadDialogOpen(true)}>
+            <Upload className="mr-2 h-4 w-4" />
+            {t("bulkUpload")}
+          </Button>
+          <Button data-testid="create-product" onClick={() => handleOpenDialog()}>
+            <Plus className="mr-2 h-4 w-4" />
+            {t("addNewProduct")}
+          </Button>
+        </div>
       </div>
 
       {/* Search and Filter Bar */}
@@ -334,19 +508,18 @@ export default function ProductsManagementPage() {
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               className="flex-1"
             />
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-full sm:w-[200px]">
-                <SelectValue placeholder={t("filterByCategory")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t("allCategories")}</SelectItem>
-                {categories.map((category) => (
-                  <SelectItem key={category.id} value={category.id}>
-                    {category.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <NativeSelect
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full sm:w-[200px]"
+            >
+              <option value="">{t("allCategories")}</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </NativeSelect>
             <Button onClick={handleSearch} variant="secondary">
               <Search className="h-4 w-4 mr-2" />
               {t("search")}
@@ -450,156 +623,104 @@ export default function ProductsManagementPage() {
 
       {/* Create/Edit Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <DialogTitle>
               {editingProduct ? t("editProduct") : t("createNewProduct")}
             </DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit}>
-            <div className="space-y-6 py-4">
-              {/* Base Information */}
-              <div className="space-y-4">
-                <h3 className="font-semibold">{t("baseInformation")}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="articleId">{t("articleId")}</Label>
-                    <Input
-                      id="articleId"
-                      name="articleId"
-                      value={formData.articleId}
-                      onChange={(e) => setFormData({ ...formData, articleId: e.target.value })}
-                      required
-                      placeholder="AC-2000"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="price">{t("price")}</Label>
-                    <Input
-                      id="price"
-                      name="price"
-                      type="number"
-                      step="0.01"
-                      value={formData.price}
-                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                      placeholder="1999.99"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="img">{t("imageUrl")}</Label>
-                  <Input
-                    id="img"
-                    name="img"
-                    value={formData.img}
-                    onChange={(e) => setFormData({ ...formData, img: e.target.value })}
-                    placeholder="/images/product.jpg"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="categoryId">{t("category")}</Label>
-                  <Select value={formData.categoryId} onValueChange={(value) => setFormData({ ...formData, categoryId: value })}>
-                    <SelectTrigger>
-                      <SelectValue placeholder={t("selectCategory")} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map((category) => (
-                        <SelectItem key={category.id} value={category.id}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Switch
-                    id="isActive"
-                    name="isActive"
-                    checked={formData.isActive}
-                    onCheckedChange={(checked) => setFormData({ ...formData, isActive: checked })}
-                  />
-                  <Label htmlFor="isActive">{t("isActive")}</Label>
-                </div>
-              </div>
+          <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+            <Tabs defaultValue="main-info" className="flex-1 overflow-hidden flex flex-col">
+              <TabsList className="grid w-full grid-cols-7">
+                <TabsTrigger value="main-info" data-testid="tab-main-info">
+                  {t("mainInformation")}
+                </TabsTrigger>
+                <TabsTrigger value="details" data-testid="tab-details">
+                  {t("productDetails")}
+                </TabsTrigger>
+                <TabsTrigger value="preview-features" data-testid="tab-preview-features">
+                  {t("previewFeatures")}
+                </TabsTrigger>
+                <TabsTrigger value="features" data-testid="tab-features">
+                  {t("features")}
+                </TabsTrigger>
+                <TabsTrigger value="specifications" data-testid="tab-specifications">
+                  {t("specifications")}
+                </TabsTrigger>
+                <TabsTrigger value="images" data-testid="tab-images">
+                  {t("productImages")}
+                </TabsTrigger>
+                <TabsTrigger value="items" data-testid="tab-items">
+                  {t("productItems")}
+                </TabsTrigger>
+              </TabsList>
 
-              {/* Features Selection */}
-              <div className="space-y-4">
-                <h3 className="font-semibold">{t("features")}</h3>
-                <div className="border rounded-lg p-4 max-h-[200px] overflow-y-auto">
-                  {allFeatures.length === 0 ? (
-                    <p className="text-sm text-muted-foreground">{t("noFeaturesAvailable")}</p>
-                  ) : (
-                    <div className="space-y-2">
-                      {allFeatures.map((feature) => (
-                        <div key={feature.id} className="flex items-center space-x-2">
-                          <input
-                            type="checkbox"
-                            id={`feature-${feature.id}`}
-                            checked={formData.featureIds.includes(feature.id)}
-                            onChange={() => toggleFeature(feature.id)}
-                            className="rounded border-gray-300"
-                          />
-                          <Label htmlFor={`feature-${feature.id}`} className="font-normal cursor-pointer">
-                            {feature.name}
-                          </Label>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  {formData.featureIds.length} {t("featuresSelected")}
-                </p>
-              </div>
+              <div className="flex-1 overflow-y-auto py-4">
+                <TabsContent value="main-info" className="mt-0">
+                  <MainInfoTab
+                    formData={formData}
+                    onChange={(field, value) => setFormData({ ...formData, [field]: value })}
+                    categories={categories}
+                    t={t}
+                  />
+                </TabsContent>
 
-              {/* Translations */}
-              <div className="space-y-4">
-                <h3 className="font-semibold">{t("translations")}</h3>
-                <Tabs defaultValue="en" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="en">English</TabsTrigger>
-                    <TabsTrigger value="pl">Polski</TabsTrigger>
-                    <TabsTrigger value="ua">Українська</TabsTrigger>
-                  </TabsList>
-                  {formData.translations.map((translation, index) => (
-                    <TabsContent key={translation.locale} value={translation.locale} className="space-y-4">
-                      <div className="space-y-2">
-                        <Label htmlFor={`translation-${translation.locale}-name`}>
-                          {t("productName")}
-                        </Label>
-                        <Input
-                          id={`translation-${translation.locale}-name`}
-                          value={translation.name}
-                          onChange={(e) => {
-                            const newTranslations = [...formData.translations];
-                            newTranslations[index].name = e.target.value;
-                            setFormData({ ...formData, translations: newTranslations });
-                          }}
-                          placeholder={t("productNamePlaceholder")}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor={`translation-${translation.locale}-description`}>
-                          {t("description")}
-                        </Label>
-                        <textarea
-                          id={`translation-${translation.locale}-description`}
-                          value={translation.description}
-                          onChange={(e) => {
-                            const newTranslations = [...formData.translations];
-                            newTranslations[index].description = e.target.value;
-                            setFormData({ ...formData, translations: newTranslations });
-                          }}
-                          className="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          placeholder={t("descriptionPlaceholder")}
-                        />
-                      </div>
-                    </TabsContent>
-                  ))}
-                </Tabs>
+                <TabsContent value="details" className="mt-0">
+                  <ProductDetailsTab
+                    translations={formData.translations}
+                    onChange={(translations) => setFormData({ ...formData, translations })}
+                    t={t}
+                  />
+                </TabsContent>
+
+                <TabsContent value="preview-features" className="mt-0">
+                  <FeaturesTab
+                    preview={true}
+                    availableFeatures={previewFeatures}
+                    selectedFeatureIds={formData.previewFeatureIds}
+                    onChange={(ids) => setFormData({ ...formData, previewFeatureIds: ids })}
+                    loading={featuresLoading}
+                    t={t}
+                  />
+                </TabsContent>
+
+                <TabsContent value="features" className="mt-0">
+                  <FeaturesTab
+                    preview={false}
+                    availableFeatures={regularFeatures}
+                    selectedFeatureIds={formData.featureIds}
+                    onChange={(ids) => setFormData({ ...formData, featureIds: ids })}
+                    loading={featuresLoading}
+                    t={t}
+                  />
+                </TabsContent>
+
+                <TabsContent value="specifications" className="mt-0">
+                  <SpecificationsTab
+                    specs={formData.specs}
+                    onChange={(specs) => setFormData({ ...formData, specs })}
+                    t={t}
+                  />
+                </TabsContent>
+
+                <TabsContent value="images" className="mt-0">
+                  <ProductImagesTab
+                    images={formData.images}
+                    onChange={(images) => setFormData({ ...formData, images })}
+                    t={t}
+                  />
+                </TabsContent>
+
+                <TabsContent value="items" className="mt-0">
+                  <ProductItemsTab
+                    items={formData.items}
+                    onChange={(items) => setFormData({ ...formData, items })}
+                    t={t}
+                  />
+                </TabsContent>
               </div>
-            </div>
-            <DialogFooter>
+            </Tabs>
+            <DialogFooter className="mt-4">
               <Button
                 type="button"
                 variant="outline"
@@ -643,6 +764,128 @@ export default function ProductsManagementPage() {
             >
               {isSubmitting ? t("deleting") : t("deleteProduct")}
             </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Bulk Upload Dialog */}
+      <Dialog open={isBulkUploadDialogOpen} onOpenChange={setIsBulkUploadDialogOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{t("bulkUploadTitle")}</DialogTitle>
+            <DialogDescription>
+              {t("bulkUploadDescription")}
+            </DialogDescription>
+          </DialogHeader>
+          
+          {!bulkUploadResult ? (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="file-upload">{t("selectFile")}</Label>
+                <Input
+                  id="file-upload"
+                  type="file"
+                  accept=".json"
+                  onChange={handleFileChange}
+                  disabled={isSubmitting}
+                />
+                {selectedFile && (
+                  <p className="text-sm text-muted-foreground">
+                    Selected: {selectedFile.name}
+                  </p>
+                )}
+              </div>
+
+              <div className="bg-muted p-4 rounded-lg">
+                <p className="text-sm font-medium mb-2">{t("bulkUploadHelp")}</p>
+                <Button
+                  variant="link"
+                  onClick={downloadSampleJSON}
+                  className="h-auto p-0 text-sm"
+                >
+                  {t("downloadSample")}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h3 className="font-semibold">{t("bulkUploadResults")}</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-green-50 dark:bg-green-950 p-3 rounded-lg">
+                    <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                      {bulkUploadResult.created}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("productsCreated")}</p>
+                  </div>
+                  <div className="bg-blue-50 dark:bg-blue-950 p-3 rounded-lg">
+                    <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      {bulkUploadResult.updated}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("productsUpdated")}</p>
+                  </div>
+                  <div className="bg-red-50 dark:bg-red-950 p-3 rounded-lg">
+                    <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                      {bulkUploadResult.failed}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("productsFailed")}</p>
+                  </div>
+                </div>
+              </div>
+
+              {bulkUploadResult.errors.length > 0 && (
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-sm">{t("viewErrors")}</h4>
+                  <div className="max-h-60 overflow-y-auto border rounded-lg p-3 space-y-2">
+                    {bulkUploadResult.errors.map((error, index) => (
+                      <div
+                        key={index}
+                        className="bg-red-50 dark:bg-red-950/50 p-2 rounded text-sm"
+                      >
+                        <p className="font-medium text-red-900 dark:text-red-200">
+                          {error.articleId}
+                        </p>
+                        <p className="text-red-700 dark:text-red-300">{error.error}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          <DialogFooter>
+            {!bulkUploadResult ? (
+              <>
+                <Button
+                  variant="outline"
+                  onClick={handleCloseBulkUploadDialog}
+                  disabled={isSubmitting}
+                >
+                  {t("cancel")}
+                </Button>
+                <Button
+                  onClick={handleBulkUpload}
+                  disabled={!selectedFile || isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      {t("uploading")}
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="mr-2 h-4 w-4" />
+                      {t("uploadFile")}
+                    </>
+                  )}
+                </Button>
+              </>
+            ) : (
+              <Button onClick={handleCloseBulkUploadDialog}>
+                {t("closeResults")}
+              </Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </Dialog>

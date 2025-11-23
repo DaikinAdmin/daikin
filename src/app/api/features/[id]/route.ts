@@ -83,7 +83,7 @@ export const PUT = async (
     return withPrisma(async () => {
         try {
             const { id } = await params;
-            const { name, img, isActive, translations } = await req.json();
+            const { name, img, isActive, preview, translations } = await req.json();
 
             // Update feature
             const feature = await prisma.feature.update({
@@ -92,6 +92,7 @@ export const PUT = async (
                     ...(name !== undefined && { name }),
                     ...(img !== undefined && { img }),
                     ...(isActive !== undefined && { isActive }),
+                    ...(preview !== undefined && { preview }),
                 },
             });
 
@@ -107,6 +108,7 @@ export const PUT = async (
                         featureId: id,
                         locale: t.locale,
                         name: t.name,
+                        desc: t.desc || null,
                         isActive: t.isActive !== undefined ? t.isActive : true,
                     })),
                 });

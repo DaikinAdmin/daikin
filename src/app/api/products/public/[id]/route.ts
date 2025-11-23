@@ -37,6 +37,7 @@ export const GET = async (
                             },
                         },
                     },
+                    img: true, // Relation name is 'img' which maps to ProductImages table
                 },
             });
 
@@ -52,9 +53,11 @@ export const GET = async (
                 id: product.id,
                 articleId: product.articleId,
                 price: product.price,
-                img: product.img,
+                img: product.img?.[0]?.imgs?.[0] || null, // Get first image URL from first ProductImages entry
+                images: product.img || [], // Include full images array
                 name: product.productDetails[0]?.name || "",
-                description: product.productDetails[0]?.description || "",
+                title: product.productDetails[0]?.title || "",
+                subtitle: product.productDetails[0]?.subtitle || "",
                 category: product.category
                     ? {
                           id: product.category.id,

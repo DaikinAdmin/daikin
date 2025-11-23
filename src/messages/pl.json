@@ -101,7 +101,9 @@
     },
     "products": {
       "title": "Polecane produkty Daikin",
-      "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC zaprojektowane do doskonalenia powietrza w Twojej przestrzeni"
+      "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC zaprojektowane do doskonalenia powietrza w Twojej przestrzeni",
+      "learnMore": "Szczegóły",
+      "getQuote": "Uzyskaj ofertę"
     },
     "features": {
       "title": "Dlaczego Daikin?",
@@ -120,9 +122,9 @@
       }
     },
     "cta": {
-      "title": "Gotowy na doskonałe powietrze?",
-      "subtitle": "Skontaktuj się z naszymi ekspertami już dziś, aby znaleźć idealne rozwiązanie Daikin dla Twojej przestrzeni.",
-      "consultation": "Bezpłatna konsultacja",
+      "title": "Gotowy na czyste powietrze?",
+      "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+      "consultation": "Uzyskaj ofertę",
       "dashboard": "Panel dostępu"
     }
   },
@@ -190,8 +192,8 @@
   },
   "airConditioning": {
     "hero": {
-      "title": "Systemy Klimatyzacji",
-      "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
+      "title": "Air Conditioning Systems",
+      "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
     },
     "products": {
       "title": "Nasza Gama Klimatyzacji",
@@ -199,72 +201,83 @@
       "aurora": {
         "name": "Seria Daikin Aurora",
         "category": "Klimatyzacja Ścienna",
+        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--29a1876a-44ae-4780-96f4-de6733b763f1/00-cold-packshot-ftxz-n-1-1-front.jpg?preferwebp=true&quality=90&width=751",
         "description": "Elegancka i stylowa jednostka naścienna z zaawansowaną filtracją i szepczącą cichą pracą. Idealna do sypialni i salonów.",
         "features": [
-          "21 SEER2",
-          "Zaawansowana Filtracja",
-          "Szeptanie-Cicha 19 dB",
-          "Sterowanie Wi-Fi",
-          "Technologia Inwertera"
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:ai-editing"
+          },
+          {
+            "title": "Zaawansowana Filtracja",
+            "icon": "hugeicons:eco-power"
+          },
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:approximately-equal"
+          }
         ],
         "price": "Od 2800 zł"
       },
       "emura": {
         "name": "Daikin Emura",
         "category": "Premium Naścienna",
+        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?preferwebp=true&width=751&quality=90",
         "description": "Nagradzany design spotyka się z najnowszą technologią. Seria Emura oferuje niezrównany styl i wydajność dla nowoczesnych domów.",
         "features": [
-          "26 SEER2",
-          "Przepływ Powietrza 3D",
-          "Filtr Jonów Srebra",
-          "Kompatybilny z Alexa & Google",
-          "Czujnik Ruchu"
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:ai-editing"
+          },
+          {
+            "title": "Zaawansowana Filtracja",
+            "icon": "hugeicons:eco-power"
+          },
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:approximately-equal"
+          }
         ],
         "price": "Od 3200 zł"
       },
-      "stylish": {
-        "name": "Daikin Stylish",
-        "category": "Seria Designerska",
-        "description": "Współczesny design z potężną wydajnością. Seria Stylish płynnie wtapia się w każdy wystrój wnętrza, zapewniając doskonały komfort.",
-        "features": [
-          "20 SEER2",
-          "Flash Streamer",
-          "Przepływ Coanda",
-          "Sterowanie Aplikacją",
-          "Energooszczędny"
-        ],
-        "price": "Od 2600 zł"
-      },
       "perfera": {
         "name": "Daikin Perfera",
-        "category": "Wysokowydajna Klimatyzacja",
-        "description": "Najwyższa wydajność z inteligentnymi funkcjami komfortu. Idealna dla większych pomieszczeń i wymagających zastosowań.",
+        "category": "High-Performance AC",
+        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--1aae3569-f5c8-4fd5-a212-2b57abbba0e2/00-packshot-ftxm-a-1-1-front-cold.jpg?preferwebp=true&width=751&quality=90",
+        "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
         "features": [
-          "24 SEER2",
-          "Inteligentny Czujnik Oka",
-          "Zdolność Wielostrefowa",
-          "Czynnik Chłodniczy R-32",
-          "Ultra-Cicha"
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:ai-editing"
+          },
+          {
+            "title": "Zaawansowana Filtracja",
+            "icon": "hugeicons:eco-power"
+          },
+          {
+            "title": "21 SEER2",
+            "icon": "hugeicons:approximately-equal"
+          }
         ],
-        "price": "Od 3400 zł"
+        "price": "Starting from $3,400"
       }
     },
-    "features": "Kluczowe Cechy",
-    "learnMore": "Dowiedz się więcej",
-    "getQuote": "Otrzymaj Wycenę",
+    "features": "Key Features",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
     "whyChoose": {
-      "title": "Dlaczego Wybrać Klimatyzację Daikin?",
+      "title": "Why Choose Daikin Air Conditioning?",
       "efficiency": {
-        "title": "Doskonała Wydajność",
-        "description": "Wiodące w branży oceny SEER, które obniżają koszty energii, zapewniając komfort przez cały rok."
+        "title": "Superior Efficiency",
+        "description": "Industry-leading SEER ratings that reduce energy costs while keeping you comfortable year-round."
       },
       "comfort": {
-        "title": "Doskonały Komfort",
-        "description": "Zaawansowana technologia kontroli klimatu zapewnia stałą temperaturę i wilgotność w całej przestrzeni."
+        "title": "Perfect Comfort",
+        "description": "Advanced climate control technology ensures consistent temperature and humidity levels throughout your space."
       },
       "air": {
-        "title": "Czyste Powietrze",
-        "description": "Wieloetapowe systemy filtracji usuwają alergeny, kurz i zapachy dla zdrowszej jakości powietrza wewnętrznego."
+        "title": "Clean Air",
+        "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality."
       }
     }
   },
@@ -760,6 +773,7 @@
       "imageHelp": "Ścieżka do ikony lub obrazu cechy (np. /icons/energy.svg)",
       "productsCount": "Produkty",
       "isActive": "Aktywna",
+      "preview": "Podgląd",
       "actions": "Akcje",
       "search": "Szukaj",
       "searchPlaceholder": "Szukaj po nazwie...",
@@ -769,7 +783,9 @@
       "baseInformation": "Podstawowe informacje",
       "translations": "Tłumaczenia",
       "translatedName": "Przetłumaczona nazwa",
+      "translatedDescription": "Przetłumaczony opis",
       "translationPlaceholder": "Wprowadź tłumaczenie dla tego języka...",
+      "descriptionPlaceholder": "Wprowadź opis dla tego języka...",
       "translationActive": "Tłumaczenie aktywne",
       "cancel": "Anuluj",
       "save": "Zapisz zmiany",
@@ -802,6 +818,7 @@
       "features": "Cechy",
       "featuresCount": "cech",
       "featuresSelected": "wybranych cech",
+      "previewFeaturesSelected": "wybranych funkcji podglądu",
       "noFeaturesAvailable": "Brak dostępnych cech. Najpierw utwórz cechy.",
       "isActive": "Aktywny",
       "actions": "Akcje",
@@ -822,7 +839,91 @@
       "createProduct": "Utwórz produkt",
       "productCreated": "Produkt utworzony pomyślnie",
       "productUpdated": "Produkt zaktualizowany pomyślnie",
-      "productDeleted": "Produkt usunięty pomyślnie"
+      "productDeleted": "Produkt usunięty pomyślnie",
+      "mainInformation": "Główne informacje",
+      "productDetails": "Szczegóły produktu",
+      "previewFeatures": "Funkcje podglądu",
+      "specifications": "Specyfikacje",
+      "productImages": "Zdjęcia",
+      "productItems": "Elementy",
+      "slug": "Slug",
+      "slugPlaceholder": "automatycznie-generowane-z-id-artykułu",
+      "energyClass": "Klasa energetyczna",
+      "selectEnergyClass": "Wybierz klasę energetyczną...",
+      "energyClassNone": "Brak",
+      "locale": "Język",
+      "selectLocale": "Wybierz język...",
+      "fieldTitle": "Tytuł",
+      "titlePlaceholder": "Wprowadź tytuł...",
+      "subtitle": "Podtytuł",
+      "subtitlePlaceholder": "Wprowadź podtytuł (opcjonalnie)...",
+      "add": "Dodaj",
+      "edit": "Edytuj",
+      "remove": "Usuń",
+      "noTranslations": "Nie dodano jeszcze tłumaczeń",
+      "noSpecs": "Nie dodano jeszcze specyfikacji",
+      "noImages": "Nie dodano jeszcze zdjęć",
+      "noItems": "Nie dodano jeszcze elementów",
+      "specKey": "Klucz",
+      "specValue": "Wartość",
+      "imageAlt": "Tekst alternatywny",
+      "imageAltPlaceholder": "Wprowadź tekst alternatywny...",
+      "itemName": "Nazwa elementu",
+      "itemNamePlaceholder": "Wprowadź nazwę elementu...",
+      "itemTitlePlaceholder": "Wprowadź tytuł elementu...",
+      "itemQuantity": "Ilość",
+      "selectFeatures": "Wybierz funkcje",
+      "searchFeatures": "Szukaj funkcji...",
+      "slugHelp": "Identyfikator przyjazny dla adresów URL (automatycznie generowany z ID artykułu, jeśli pusty)",
+      "energyClasses": {
+        "None": "Brak",
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D",
+        "E": "E",
+        "F": "F"
+      },
+      "addTranslation": "Dodaj tłumaczenie",
+      "editTranslation": "Edytuj tłumaczenie",
+      "selectAll": "Zaznacz wszystkie",
+      "deselectAll": "Odznacz wszystkie",
+      "noPreviewFeatures": "Brak dostępnych funkcji podglądu",
+      "noFeatures": "Brak dostępnych funkcji",
+      "addSpec": "Dodaj specyfikację",
+      "editSpec": "Edytuj specyfikację",
+      "specTitlePlaceholder": "np. Moc chłodzenia",
+      "specSubtitlePlaceholder": "np. 3,5 kW (opcjonalnie)",
+      "addImage": "Dodaj zestaw zdjęć",
+      "editImage": "Edytuj zestaw zdjęć",
+      "color": "Kolor",
+      "colorPlaceholder": "np. Biały, Czarny, Srebrny",
+      "images": "Zdjęcia",
+      "urls": "Adresy URL",
+      "addItem": "Dodaj element",
+      "editItem": "Edytuj element",
+      "image": "Obraz",
+      "itemSubtitlePlaceholder": "Wprowadź podtytuł elementu (opcjonalnie)...",
+      "update": "Aktualizuj",
+      "confirmDelete": "Czy na pewno chcesz usunąć ten element?",
+      "bulkUpload": "Import zbiorczy",
+      "bulkUploadTitle": "Zbiorczy import produktów",
+      "bulkUploadDescription": "Prześlij plik JSON zawierający tablicę produktów. Każdy produkt powinien mieć articleId, categorySlug i inne opcjonalne pola.",
+      "selectFile": "Wybierz plik JSON",
+      "uploadFile": "Prześlij plik",
+      "uploading": "Przesyłanie...",
+      "bulkUploadSuccess": "Zbiorczy import zakończony",
+      "bulkUploadResults": "Wyniki przesyłania",
+      "productsCreated": "Utworzone produkty",
+      "productsUpdated": "Zaktualizowane produkty",
+      "productsFailed": "Nieudane produkty",
+      "viewErrors": "Zobacz błędy",
+      "closeResults": "Zamknij",
+      "noFileSelected": "Nie wybrano pliku",
+      "invalidFileType": "Nieprawidłowy typ pliku. Proszę wybrać plik JSON.",
+      "sampleFormat": "Przykładowy format",
+      "downloadSample": "Pobierz przykład",
+      "bulkUploadHelp": "Prześlij plik JSON z tablicą produktów. Każdy produkt musi mieć articleId i categorySlug. Inne pola są opcjonalne."
     },
     "benefitsRedeemed": {
       "title": "Zrealizowane benefity",
@@ -1417,5 +1518,118 @@
     "features": "Kluczowe cechy",
     "learnMore": "Szczegóły",
     "getQuote": "Uzyskaj ofertę"
+  },
+  "whyChoose": {
+    "cta": {
+      "title": "Gotowy na czyste powietrze?",
+      "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+      "consultation": "Uzyskaj ofertę",
+      "dashboard": "Panel dostępu"
+    }
+  },
+  "product": {
+    "emura": {
+      "name": "Emura",
+      "specs": [
+        {
+          "title": "Ciśnienie akustyczne",
+          "subtitle": "do 19dBA"
+        },
+        {
+          "title": "Etykieta energetyczna chłodzenia i ogrzewania",
+          "subtitle": "najwyższa efektywność energetyczna A+++"
+        },
+        {
+          "title": "Moc grzewcza i chłodnicza (kW)",
+          "subtitle": "do 5,8 / 5,0"
+        },
+        {
+          "title": "Wymiary jednostki",
+          "subtitle": "305 x 900 x 212 mm"
+        }
+      ],
+      "description": {
+        "title": "Dlaczego warto wybrać Daikin Emura?",
+        "subtitle": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej."
+      },
+      "featuresTitle": "Cechy produktu",
+      "features": [
+        {
+          "title": "Jakość powietrza",
+          "icon": "temperature",
+          "description": "Opatentowana technologia oczyszczania powietrza firmy Daikin wychwytuje wirusy, alergeny (takie jak pyłki i alergeny grzybów) oraz uciążliwe zapachy z powietrza i rozkłada je na bezpieczne atomy i cząsteczki wody"
+        },
+        {
+          "title": "Inteligenty czujnik temperatury",
+          "icon": "slow-winds",
+          "description": "Wykorzystując czujnik matrycowy, skanuje pomieszczenie pod kątem obecności i temperatury powietrza, a następnie wysyła sygnał do jednostki, aby skierowała strumień powietrza z dala od ludzi lub w stronę obszarów o nierównomiernej temperaturze"
+        },
+        {
+          "title": "Heat boost",
+          "icon": "thermometer-warm",
+          "description": "Zadaną temperaturę osiągniesz o 14% szybciej niż przy użyciu zwykłej klimatyzacji. Ogrzewanie pomieszczenia będzie szybsze, gdy tylko zajdzie taka potrzeba"
+        },
+        {
+          "title": "Efekt Coandy",
+          "icon": "nuclear-power",
+          "description": "Dostępne zarówno w wersji do ogrzewania, jak i chłodzenia, specjalnie zaprojektowane klapy / prowadnice skupiają i optymalizują przepływ powietrza, aby zapewnić maksymalny zasięg nawet w większych pomieszczeniach"
+        }
+      ],
+      "images": [
+        {
+          "color": "#D9D9D9",
+          "imgs": [
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--ac3846f8-9063-4c12-8eaa-2d71b0e822f3/01-cold-packshot-ftxj-as-1-1-left.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9273885f-631b-4179-903c-045eb4fa5fbb/02-cold-packshot-ftxj-as-1-1-right.jpg?quality=90&width=751&preferwebp=true"
+          ]
+        },
+        {
+          "color": "#000000",
+          "imgs": [
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--e2851bf8-980e-46f8-b1ae-a54f3e11b5e3/00-packshot-ftxj-ab-1-1-front.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--14362693-f252-49b9-b033-728c97892fa6/01-packshot-ftxj-ab-1-1-left.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--4f41b6ef-2716-497a-a517-9b384b4a1521/02-packshot-ftxj-ab-1-1-right.jpg?quality=90&width=751&preferwebp=true"
+          ]
+        },
+        {
+          "color": "#FFFFFF",
+          "imgs": [
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3b5c980f-34eb-4c3d-a96b-f2be7c37c15f/00-cold-packshot-ftxj-aw-1-1-front.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3f336b21-f641-4e9d-a37f-008365cb5bab/01-cold-packshot-ftxj-aw-1-1-left.jpg?quality=90&width=751&preferwebp=true",
+            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d58f16cf-e356-47f5-928d-972fa09685dd/02-cold-packshot-ftxj-aw-1-1-right.jpg?quality=90&width=751&preferwebp=true"
+          ]
+        }
+      ],
+      "includesTitle": "Co jest w zestawie",
+      "includes": [
+        {
+          "title" : "Jednostka wewnętrzna",
+          "subtitle" : "Ikonicznie zaprojektowana jednostka naścienna.",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+        },
+        {
+          "title" : "Jednostka zewnętrzna",
+          "subtitle" : "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        },
+        {
+          "title" : "Interfejs użytkownika",
+          "subtitle" : "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        },
+        {
+          "title" : "Serwis",
+          "subtitle" : "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
+        },
+        {
+          "title" : "Aplikacja Onecta",
+          "subtitle" : "Zawsze pod kontrolą, gdziekolwiek jesteś",
+          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        }
+      ],
+      "getQuote": "Uzyskaj ofertę"
+    }
   }
 }

@@ -29,7 +29,9 @@ export const authClient = createAuthClient({
                 user,
                 employee
             },
-            allowedRoles: ["user", "employee"]
+            allowedRoles: ["user", "employee", "admin"],
+            adminRoles: ["admin"],
+            adminUserIds: [process.env.ADMIN_USER_ID || ""]
         }),
         bearer(),
         customSessionClient<typeof auth>()

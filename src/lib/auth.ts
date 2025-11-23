@@ -11,9 +11,11 @@ import { nextCookies } from "better-auth/next-js";
 import {
   twoFactor, admin as adminPlugin,
   customSession,
+  openAPI,
 } from "better-auth/plugins";
 import { validator } from "validation-better-auth";
 import { ac, admin, employee, user } from "@/lib/permissions"
+import { roleSignupPlugin } from "./role-signup-plugin";
 
 export const auth = betterAuth({
   user: {
@@ -27,6 +29,21 @@ export const auth = betterAuth({
     }
   },
   appName: "daikin-coins",
+  trustedOrigins: [
+    "http://localhost:3000",
+    "http://217.60.20.130", // VPS IP for temporary access
+    process.env.BASE_URL || "",
+    process.env.BETTER_AUTH_URL || "",
+    process.env.NEXT_PUBLIC_APP_URL || "",
+  ].filter(Boolean), // Remove empty strings
+  advanced: {
+    disableCSRFCheck: false,
+    // Only use secure cookies when actually using HTTPS
+    useSecureCookies: process.env.NODE_ENV === "production" && process.env.BETTER_AUTH_URL?.startsWith("https"),
+    generateSessionId: () => {
+      return crypto.randomUUID();
+    },
+  },
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
@@ -39,7 +56,7 @@ export const auth = betterAuth({
     resetPasswordTokenExpiresIn: 3600 * 24 * 3,
     sendResetPassword: async ({ user, url, token }: { user: any; url: string; token: string }, request?: any) => {
       await email.sendMail({
-        from: process.env.MAIL_FROM,
+        from: process.env.MAIL_USER,
         to: user.email,
         subject: "Reset your password",
         html: `Click the link to reset your password: ${url}`,
@@ -51,7 +68,7 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }: { user: any; url: string }) => {
       await email.sendMail({
-        from: process.env.MAIL_FROM,
+        from: process.env.MAIL_USER,
         to: user.email,
         subject: "Email Verification",
         html: `Click the link to verify your email: ${url}`,
@@ -68,11 +85,12 @@ export const auth = betterAuth({
     }
   },
   plugins: [
+    roleSignupPlugin(),
     twoFactor({
       otpOptions: {
         async sendOTP({ user, otp }) {
           await email.sendMail({
-            from: process.env.MAIL_FROM,
+            from: process.env.MAIL_USER,
             to: user.email,
             subject: "Two Factor",
             html: `Your OTP is ${otp}`,
@@ -99,8 +117,12 @@ export const auth = betterAuth({
         admin,
         user,
         employee
-      }
+      },
+      allowedRoles: ["user", "employee", "admin"],
+      adminRoles: ["admin"],
+      adminUserIds: [process.env.ADMIN_USER || ""]
     }),
+    openAPI(),
     customSession(async ({user, session}) => {
       const response = await prisma.user.findUnique({
                 where: { id: session.userId },

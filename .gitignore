@@ -1,5 +1,6 @@
 .next/
 .env
+.env.*
 .vscode/
 .idea/
 .auth/
@@ -15,3 +16,5 @@ node_modules/
 
 .auth/
 *.pem
+
+.DS_Store

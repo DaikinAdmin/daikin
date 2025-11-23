@@ -1,20 +1,16 @@
 import { auth } from '@/lib/auth';
 import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
 async function main() {
   console.log('🌱 Starting database seeding...');
 
-  // Hash the password
-  const hashedPassword = await bcrypt.hash('Qazwsx12@', 10);
-
   // Create User 1 - Regular User
   const user1 = await auth.api.signUpEmail({
     body: {
       name: 'User',
-      email: 'user-1@ammproject.com',
+      email: 'm.tymoshenko@ammproject.com',
       role: "user",
       password: 'Qazwsx12@'
     }
@@ -37,7 +33,7 @@ async function main() {
   const user2 = await auth.api.signUpEmail({
     body: {
       name: 'Employee',
-      email: 'user-2@ammproject.com',
+      email: 'm.sokolowska@ammproject.com',
       role: "employee",
       password: 'Qazwsx12@'
     }
@@ -60,7 +56,7 @@ async function main() {
   const user3 = await auth.api.signUpEmail({
     body: {
       name: 'Admin',
-      email: 'user-3@ammproject.com',
+      email: 'daikin.admin@ammproject.com',
       role: "admin",
       password: 'Qazwsx12@'
     }
