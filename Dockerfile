@@ -80,10 +80,12 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 # ENV PLAYWRIGHT_BROWSERS_PATH=/home/nextjs/.cache/ms-playwright
 # RUN npx playwright install --with-deps chromium
 
-# Create home directory for nextjs user and set permissions
-RUN mkdir -p /home/nextjs/.cache && \
+# Create upload directory and home directory for nextjs user
+RUN mkdir -p /uploads && \
+    mkdir -p /home/nextjs/.cache && \
     chown -R nextjs:nodejs /home/nextjs && \
-    chown -R nextjs:nodejs /app
+    chown -R nextjs:nodejs /app && \
+    chown -R nextjs:nodejs /uploads
 
 USER nextjs
 

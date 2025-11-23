@@ -83,7 +83,7 @@ export const PUT = async (
     return withPrisma(async () => {
         try {
             const { id } = await params;
-            const { name, img, isActive, preview, translations } = await req.json();
+            const { name, img, isActive, preview, translations } = await req.json(); // img: string URL from image service
 
             // Update feature
             const feature = await prisma.feature.update({

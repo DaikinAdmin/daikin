@@ -87,7 +87,7 @@ export const PUT = async (
             const {
                 articleId,
                 price,
-                img,
+                img, // Image URLs from image upload service
                 categoryId,
                 isActive,
                 translations,

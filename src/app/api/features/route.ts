@@ -63,6 +63,9 @@ export const GET = async (req: Request) => {
 };
 
 // POST create new feature (Admin only)
+// Image Upload: Use POST /api/images/upload to upload feature icons first,
+// then include the returned URL in the img field.
+// Folder recommendation: 'features'
 export const POST = async (req: Request) => {
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -78,7 +81,7 @@ export const POST = async (req: Request) => {
 
     return withPrisma(async () => {
         try {
-            const { name, img, isActive, preview, translations } = await req.json();
+            const { name, img, isActive, preview, translations } = await req.json(); // img: string URL from image service
 
             if (!name) {
                 return NextResponse.json(

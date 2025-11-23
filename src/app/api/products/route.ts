@@ -81,6 +81,9 @@ export const GET = async (req: Request) => {
 };
 
 // POST create new product (Admin only)
+// Image Upload: Use POST /api/images/upload to upload product images first,
+// then include the returned URLs in the images array.
+// Folder recommendation: 'products'
 export const POST = async (req: Request) => {
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -106,8 +109,8 @@ export const POST = async (req: Request) => {
                 translations,
                 featureIds,
                 specs,
-                images,
-                items,
+                images, // Array of image objects: [{ color, imgs: [url1, url2], url: [url1, url2] }]
+                items, // Array with img field: [{ locale, title, subtitle, img: 'url', isActive }]
             } = await req.json();
 
             if (!articleId || !categoryId) {

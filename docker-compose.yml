@@ -47,6 +47,10 @@ services:
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
       
+      # Image Upload Service
+      UPLOAD_DIR: /uploads
+      IMAGE_SERVICE_URL: ${IMAGE_SERVICE_URL:-http://localhost:3030}
+      
       # Environment
       ENV: ${ENV:-production}
       NODE_ENV: production
@@ -57,6 +61,7 @@ services:
       - daikin-network
     volumes:
       - ./prisma:/app/prisma
+      - upload_data:/uploads
 
 networks:
   daikin-network:
@@ -64,4 +69,6 @@ networks:
 
 volumes:
   postgres_data:
+    driver: local
+  upload_data:
     driver: local
