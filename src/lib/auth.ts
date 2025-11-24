@@ -18,6 +18,7 @@ import { ac, admin, employee, user } from "@/lib/permissions"
 import { roleSignupPlugin } from "./role-signup-plugin";
 
 export const auth = betterAuth({
+  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
   user: {
     additionalFields: {
       role: {
@@ -31,6 +32,7 @@ export const auth = betterAuth({
   appName: "daikin-coins",
   trustedOrigins: [
     "http://localhost:3000",
+    "http://localhost:3030",
     "http://217.60.20.130", // VPS IP for temporary access
     process.env.BASE_URL || "",
     process.env.BETTER_AUTH_URL || "",
