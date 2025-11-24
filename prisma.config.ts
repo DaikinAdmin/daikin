@@ -1,6 +1,13 @@
 import type { PrismaConfig } from "prisma";
-import { env } from "prisma/config";
-import 'dotenv/config'
+
+// Helper function to get environment variables
+const env = (key: string): string => {
+  const value = process.env[key];
+  if (!value) {
+    throw new Error(`Missing environment variable: ${key}`);
+  }
+  return value;
+};
 
 export default {
   schema: 'prisma/schema.prisma',
@@ -14,4 +21,4 @@ export default {
   // seed: {
   //   command: 'ts-node --compiler-options {"module":"CommonJS"} prisma/seed.ts'
   // }
-} satisfies PrismaConfig;;
+} satisfies PrismaConfig;
