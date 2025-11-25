@@ -923,7 +923,14 @@
       "urls": "URLs",
       "urlsPlaceholder": "Enter URLs (comma separated)",
       "imagePath": "Image Path",
-      "imagePathPlaceholder": "/images/product-item.jpg"
+      "imagePathPlaceholder": "/images/product-item.jpg",
+      "uploadImages": "Upload Images",
+      "uploadImage": "Upload Image",
+      "errorNotImage": "Please select an image file (JPG, PNG, WEBP)",
+      "errorFileSize": "File size must be less than 1MB",
+      "errorMaxFiles": "Maximum {max} images allowed",
+      "maxFilesReached": "Maximum of {max} images reached",
+      "preview": "Preview"
     },
     "benefitsRedeemed": {
       "title": "Benefits Redeemed",

@@ -928,7 +928,14 @@
       "invalidFileType": "Nieprawidłowy typ pliku. Proszę wybrać plik JSON.",
       "sampleFormat": "Przykładowy format",
       "downloadSample": "Pobierz przykład",
-      "bulkUploadHelp": "Prześlij plik JSON z tablicą produktów. Każdy produkt musi mieć articleId i categorySlug. Inne pola są opcjonalne."
+      "bulkUploadHelp": "Prześlij plik JSON z tablicą produktów. Każdy produkt musi mieć articleId i categorySlug. Inne pola są opcjonalne.",
+      "uploadImages": "Prześlij obrazy",
+      "uploadImage": "Prześlij obraz",
+      "errorNotImage": "Proszę wybrać plik obrazu (JPG, PNG, WEBP)",
+      "errorFileSize": "Rozmiar pliku musi być mniejszy niż 1MB",
+      "errorMaxFiles": "Maksymalnie {max} obrazów dozwolonych",
+      "maxFilesReached": "Osiągnięto maksymalną liczbę {max} obrazów",
+      "preview": "Podgląd"
     },
     "benefitsRedeemed": {
       "title": "Zrealizowane benefity",

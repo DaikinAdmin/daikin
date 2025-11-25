@@ -928,7 +928,14 @@
       "invalidFileType": "Неправильний тип файлу. Будь ласка, виберіть JSON-файл.",
       "sampleFormat": "Приклад формату",
       "downloadSample": "Завантажити приклад",
-      "bulkUploadHelp": "Завантажте JSON-файл з масивом продуктів. Кожен продукт повинен мати articleId та categorySlug. Інші поля необов'язкові."
+      "bulkUploadHelp": "Завантажте JSON-файл з масивом продуктів. Кожен продукт повинен мати articleId та categorySlug. Інші поля необов'язкові.",
+      "uploadImages": "Завантажити зображення",
+      "uploadImage": "Завантажити зображення",
+      "errorNotImage": "Будь ласка, оберіть файл зображення (JPG, PNG, WEBP)",
+      "errorFileSize": "Розмір файлу має бути менше 1MB",
+      "errorMaxFiles": "Максимум {max} зображень дозволено",
+      "maxFilesReached": "Досягнуто максимум {max} зображень",
+      "preview": "Попередній перегляд"
     },
     "benefitsRedeemed": {
       "title": "Реалізовані пільги",
