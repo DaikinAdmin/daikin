@@ -173,7 +173,7 @@ export function MobileNav({ user }: MobileNavProps) {
             </button>
           </div>
           <div className="flex items-center space-x-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#faf9f9d2] flex-shrink-0">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-grey-light flex-shrink-0">
               <User className="h-5 w-5 text-primary" />
             </div>
             <div className="flex-1 min-w-0">
@@ -181,7 +181,7 @@ export function MobileNav({ user }: MobileNavProps) {
                 {user.name}
               </p>
               <p className="text-xs text-gray-500 truncate">{user.email}</p>
-              <span className="inline-flex items-center px-2 py-0.5 mt-1 rounded-full text-xs font-medium bg-[#faf9f9d2] text-primary">
+              <span className="inline-flex items-center px-2 py-0.5 mt-1 rounded-full text-xs font-medium bg-grey-light text-primary">
                 {user.role}
               </span>
             </div>

@@ -76,8 +76,9 @@ export default {
         "accent-green": "#50915D",
         "accent-berry": "#966498",
         "accent-brown": "#977362",
-        amm: "#4D4D4D",
+        "amm": "#4D4D4D",
         "container": "#f0f9ff",
+        "grey-light":"#faf9f9d2",
 
         muted: {
           DEFAULT: "hsl(var(--muted))",
