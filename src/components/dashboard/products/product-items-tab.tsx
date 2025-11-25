@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2, Upload, Loader2, Image as ImageIcon, X } from "lucide-react";
+import { uploadImage } from "@/lib/image-upload";
 
 type ProductItem = {
   id?: string;
@@ -29,16 +31,57 @@ const LOCALES = [
   { value: "ua", label: "Українська" },
 ];
 
+const MAX_FILE_SIZE = 1024 * 1024; // 1MB in bytes
+
 export function ProductItemsTab({
   items,
   onChange,
   t,
   disabled = false,
 }: ProductItemsTabProps) {
+  const [uploadingIndex, setUploadingIndex] = useState<number | null>(null);
+  const [errors, setErrors] = useState<Record<number, string>>({});
+
   const handleChange = (index: number, field: keyof Omit<ProductItem, 'locale' | 'id'>, value: string | boolean) => {
     const updated = [...items];
     updated[index] = { ...updated[index], [field]: value };
     onChange(updated);
+  };
+
+  const handleImageUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file
+    if (!file.type.startsWith('image/')) {
+      setErrors({ ...errors, [index]: t('errorNotImage') || 'File must be an image' });
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setErrors({ ...errors, [index]: t('errorFileSize') || 'File size must be less than 1MB' });
+      return;
+    }
+
+    setUploadingIndex(index);
+    setErrors({ ...errors, [index]: '' });
+
+    try {
+      const result = await uploadImage(file, { folder: 'productItems' });
+      handleChange(index, 'img', result.url);
+      
+      // Clear the file input
+      e.target.value = '';
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Upload failed';
+      setErrors({ ...errors, [index]: errorMessage });
+    } finally {
+      setUploadingIndex(null);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    handleChange(index, 'img', '');
   };
 
   const addItem = (locale: string) => {
@@ -123,16 +166,68 @@ export function ProductItemsTab({
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor={`item-${globalIndex}-img`}>
-                          {t("imageUrl")}
+                          {t("image")}
                         </Label>
-                        <Input
-                          id={`item-${globalIndex}-img`}
-                          data-testid={`input-item-${locale.value}-${localIndex}-img`}
-                          value={item.img}
-                          onChange={(e) => handleChange(globalIndex, "img", e.target.value)}
-                          disabled={disabled}
-                          placeholder="/images/item.jpg"
-                        />
+                        
+                        {errors[globalIndex] && (
+                          <div className="p-2 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">
+                            {errors[globalIndex]}
+                          </div>
+                        )}
+
+                        {item.img ? (
+                          <div className="relative w-full aspect-video border rounded-lg overflow-hidden bg-muted group">
+                            <img
+                              src={item.img}
+                              alt="Item preview"
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                target.nextElementSibling?.classList.remove('hidden');
+                              }}
+                            />
+                            <div className="hidden items-center justify-center w-full h-full bg-muted">
+                              <ImageIcon className="h-12 w-12 text-muted-foreground" />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => removeImage(globalIndex)}
+                              disabled={disabled || uploadingIndex === globalIndex}
+                              className="absolute top-2 right-2 p-2 bg-destructive text-destructive-foreground rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <X className="h-4 w-4" />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleImageUpload(globalIndex, e)}
+                              disabled={disabled || uploadingIndex === globalIndex}
+                              className="hidden"
+                              id={`item-${globalIndex}-img-input`}
+                              data-testid={`input-item-${locale.value}-${localIndex}-img`}
+                            />
+                            <Label
+                              htmlFor={`item-${globalIndex}-img-input`}
+                              className="flex items-center justify-center gap-2 px-4 py-8 border-2 border-dashed rounded-md cursor-pointer hover:bg-accent transition-colors w-full"
+                            >
+                              {uploadingIndex === globalIndex ? (
+                                <>
+                                  <Loader2 className="h-5 w-5 animate-spin" />
+                                  <span>{t('uploading')}</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Upload className="h-5 w-5" />
+                                  <span>{t('uploadImage')} (Max 1MB)</span>
+                                </>
+                              )}
+                            </Label>
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center space-x-2" data-testid={`switch-item-${locale.value}-${localIndex}-isActive`}>
                         <Switch

@@ -43,6 +43,9 @@ export const GET = async (
                                 : { where: { isActive: true } },
                         },
                     },
+                    specs: true,
+                    img: true,
+                    items: true,
                 },
             });
 
@@ -190,6 +193,9 @@ export const PUT = async (
                             featureDetails: true,
                         },
                     },
+                    specs: true,
+                    img: true,
+                    items: true,
                 },
             });
 
