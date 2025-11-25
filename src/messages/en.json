@@ -196,20 +196,20 @@
       "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
     },
     "products": {
-      "title": "Nasza Gama Klimatyzacji",
-      "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni",
+      "title": "Our Air Conditioning Range",
+      "subtitle": "Discover premium cooling solutions for every space",
       "aurora": {
-        "name": "Seria Daikin Aurora",
-        "category": "Klimatyzacja Ścienna",
+        "name": "Daikin Aurora Series",
+        "category": "Wall-Mounted Air Conditioning",
         "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--29a1876a-44ae-4780-96f4-de6733b763f1/00-cold-packshot-ftxz-n-1-1-front.jpg?preferwebp=true&quality=90&width=751",
-        "description": "Elegancka i stylowa jednostka naścienna z zaawansowaną filtracją i szepczącą cichą pracą. Idealna do sypialni i salonów.",
+        "description": "Elegant and stylish wall-mounted unit with advanced filtration and whisper-quiet operation. Ideal for bedrooms and living rooms.",
         "features": [
           {
             "title": "21 SEER2",
             "icon": "hugeicons:ai-editing"
           },
           {
-            "title": "Zaawansowana Filtracja",
+            "title": "Advanced Filtration",
             "icon": "hugeicons:eco-power"
           },
           {
@@ -217,20 +217,20 @@
             "icon": "hugeicons:approximately-equal"
           }
         ],
-        "price": "Od 2800 zł"
+        "price": "From 2800 PLN"
       },
       "emura": {
         "name": "Daikin Emura",
-        "category": "Premium Naścienna",
+        "category": "Premium Wall-Mounted",
         "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Nagradzany design spotyka się z najnowszą technologią. Seria Emura oferuje niezrównany styl i wydajność dla nowoczesnych domów.",
+        "description": "Award-winning design meets cutting-edge technology. The Emura series offers unmatched style and performance for modern homes.",
         "features": [
           {
             "title": "21 SEER2",
             "icon": "hugeicons:ai-editing"
           },
           {
-            "title": "Zaawansowana Filtracja",
+            "title": "Advanced Filtration",
             "icon": "hugeicons:eco-power"
           },
           {
@@ -238,7 +238,7 @@
             "icon": "hugeicons:approximately-equal"
           }
         ],
-        "price": "Od 3200 zł"
+        "price": "From 3200 PLN"
       },
       "perfera": {
         "name": "Daikin Perfera",
@@ -251,7 +251,7 @@
             "icon": "hugeicons:ai-editing"
           },
           {
-            "title": "Zaawansowana Filtracja",
+            "title": "Advanced Filtration",
             "icon": "hugeicons:eco-power"
           },
           {
@@ -1423,90 +1423,60 @@
       "title": "About AMM Salon",
       "subtitle": "Your trusted partner in climate control solutions for over 15 years"
     },
-    "overview": {
-      "title": "Who We Are",
-      "paragraph1": "AMM Salon is a leading authorized Daikin dealer and installer, specializing in premium air conditioning, heating, and ventilation solutions. Since 2009, we have been dedicated to providing our customers with the highest quality climate control systems.",
-      "paragraph2": "As an official Daikin partner, we offer the complete range of their innovative products, from residential air conditioners to commercial HVAC systems. Our team of certified technicians ensures professional installation, maintenance, and support for every project.",
-      "paragraph3": "We pride ourselves on our commitment to excellence, customer satisfaction, and staying at the forefront of HVAC technology. Our mission is to create comfortable, energy-efficient indoor environments that enhance the quality of life for our customers."
+    "section": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide everything we do"
+    },
+    "intro": {
+      "aboutUs": {
+        "title": "About Us",
+        "subtitle": "AMM Salon is a leading authorized Daikin dealer and installer, specializing in premium air conditioning, heating, and ventilation solutions. Since 2009, we have been dedicated to providing our customers with the highest quality climate control systems."
+      },
+      "daikin": {
+        "title": "Daikin Partner",
+        "subtitle": "As an official Daikin partner, we offer the complete range of their innovative products, from residential air conditioners to commercial HVAC systems. Our team of certified technicians ensures professional installation, maintenance, and support for every project."
+      }
     },
     "stats": {
-      "experience": "15+",
-      "experienceLabel": "Years of Experience",
-      "projects": "5000+",
-      "projectsLabel": "Completed Projects",
-      "clients": "98%",
-      "clientsLabel": "Satisfied Clients",
-      "satisfaction": "24/7",
-      "satisfactionLabel": "Customer Support"
-    },
-    "values": {
-      "title": "Our Core Values",
-      "subtitle": "The principles that guide everything we do",
-      "quality": {
-        "title": "Quality First",
-        "description": "We only work with premium Daikin products and ensure every installation meets the highest industry standards."
-      },
-      "customer": {
-        "title": "Customer Focus",
-        "description": "Your satisfaction is our priority. We provide personalized solutions tailored to your specific needs and budget."
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "We stay updated with the latest HVAC technologies to offer you the most efficient and advanced climate control solutions."
+      "items": {
+        "1": {
+          "title": "5000+",
+          "subtitle": "Satisfied Clients"
+        },
+        "2": {
+          "title": "15+",
+          "subtitle": "Years Experience"
+        },
+        "3": {
+          "title": "24/7",
+          "subtitle": "Support Available"
+        },
+        "4": {
+          "title": "100%",
+          "subtitle": "Quality Guarantee"
+        }
       }
     },
-    "services": {
-      "title": "Our Services",
-      "subtitle": "Comprehensive HVAC solutions for residential and commercial needs",
-      "installation": {
-        "title": "Professional Installation",
-        "description": "Expert installation of air conditioning, heating systems, and heat pumps with precision and care."
+    "grid": {
+      "item1": {
+        "title": "Expert Installation",
+        "subtitle": "Precision installation by certified professionals ensuring optimal performance."
       },
-      "maintenance": {
-        "title": "Regular Maintenance",
-        "description": "Scheduled maintenance services to keep your systems running efficiently and extend their lifespan."
+      "item2": {
+        "title": "Maintenance",
+        "subtitle": "Regular service to keep your system running at peak performance and efficiency."
       },
-      "consultation": {
-        "title": "Free Consultation",
-        "description": "Expert advice on choosing the right climate control solution for your home or business."
-      },
-      "warranty": {
-        "title": "Warranty Service",
-        "description": "Comprehensive warranty coverage and support for all Daikin products we install."
-      },
-      "repair": {
-        "title": "Emergency Repairs",
-        "description": "Fast and reliable repair services available 24/7 to keep your comfort uninterrupted."
-      },
-      "modernization": {
-        "title": "System Upgrades",
-        "description": "Modernization services to upgrade your existing HVAC systems for better efficiency."
-      }
-    },
-    "whyUs": {
-      "title": "Why Choose AMM Salon?",
-      "certified": {
-        "title": "Certified Daikin Partner",
-        "description": "As an authorized Daikin dealer, we have access to the latest products, training, and support."
-      },
-      "experience": {
-        "title": "15+ Years Experience",
-        "description": "Over a decade and a half of expertise in HVAC installation, maintenance, and repair."
-      },
-      "warranty": {
-        "title": "Extended Warranty",
-        "description": "All our installations come with comprehensive warranty coverage for your peace of mind."
-      },
-      "support": {
-        "title": "24/7 Support",
-        "description": "Round-the-clock customer support for emergency repairs and technical assistance."
+      "cta": {
+        "text": "Get a Quote",
+        "link": "/contact"
       }
     },
     "cta": {
-      "title": "Ready to Experience Perfect Climate Control?",
-      "subtitle": "Contact us today for a free consultation and discover how we can improve your indoor comfort",
-      "getStarted": "Get Started",
-      "contact": "Call Us Now"
+      "title": "Ready for perfect climate control?",
+      "subtitle": "Contact us today for a free consultation and discover how we can improve your indoor comfort."
+    },
+    "bottom": {
+      "alt": "Daikin HVAC System Installation"
     }
   },
   "productPage": {
@@ -1527,47 +1497,47 @@
       "name": "Emura",
       "specs": [
         {
-          "title": "Ciśnienie akustyczne",
-          "subtitle": "do 19dBA"
+          "title": "Sound pressure",
+          "subtitle": "up to 19 dBA"
         },
         {
-          "title": "Etykieta energetyczna chłodzenia i ogrzewania",
-          "subtitle": "najwyższa efektywność energetyczna A+++"
+          "title": "Cooling & heating energy label",
+          "subtitle": "top energy efficiency A+++"
         },
         {
-          "title": "Moc grzewcza i chłodnicza (kW)",
-          "subtitle": "do 5,8 / 5,0"
+          "title": "Heating & cooling capacity (kW)",
+          "subtitle": "up to 5.8 / 5.0"
         },
         {
-          "title": "Wymiary jednostki",
+          "title": "Unit dimensions",
           "subtitle": "305 x 900 x 212 mm"
         }
       ],
       "description": {
-        "title": "Dlaczego warto wybrać Daikin Emura?",
-        "subtitle": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej."
+        "title": "Why choose Daikin Emura?",
+        "subtitle": "Daikin Emura combines elegant design with advanced technology, delivering exceptional comfort and outstanding performance. The purification system removes fine particles and odors from the air while intelligent sensors adapt operation to room conditions, directing a gentle, even airflow without uncomfortable drafts. The design also enables faster heating when needed and whisper-quiet operation keeps the unit almost unnoticeable. Seasonal efficiency provides realistic information about air-to-air heat pump performance across the full heating or cooling season—rated from A+++ to D. Daikin Emura achieves the highest energy efficiency label."
       },
-      "featuresTitle": "Cechy produktu",
+      "featuresTitle": "Product Features",
       "features": [
         {
-          "title": "Jakość powietrza",
-          "icon": "temperature",
-          "description": "Opatentowana technologia oczyszczania powietrza firmy Daikin wychwytuje wirusy, alergeny (takie jak pyłki i alergeny grzybów) oraz uciążliwe zapachy z powietrza i rozkłada je na bezpieczne atomy i cząsteczki wody"
+          "title": "Air Quality",
+          "icon": "streamer",
+          "description": "Daikin's patented air purification technology captures viruses, allergens (such as pollen and fungal allergens) and unpleasant odors, breaking them down into harmless atoms and water molecules. The multi-stage purification system combines electrostatic, photocatalytic and streamer processes to remove ultrafine particles and volatile organic compounds that ordinary filters often miss. Continuous operation maintains a healthier indoor environment, reducing allergy symptoms and persistent smells while requiring only periodic maintenance to keep peak performance."
         },
         {
-          "title": "Inteligenty czujnik temperatury",
-          "icon": "slow-winds",
-          "description": "Wykorzystując czujnik matrycowy, skanuje pomieszczenie pod kątem obecności i temperatury powietrza, a następnie wysyła sygnał do jednostki, aby skierowała strumień powietrza z dala od ludzi lub w stronę obszarów o nierównomiernej temperaturze"
+          "title": "Intelligent Temperature Sensor",
+          "icon": "grid_eye_sensor",
+          "description": "A high-resolution matrix sensor continuously scans the room for occupants and temperature variations, then intelligently directs airflow away from people or toward colder/warmer zones to even out comfort. It adapts fan speed and louver position in real time, minimizing drafts while keeping the target temperature stable, and works together with adaptive algorithms to reduce energy use over time. The result is more uniform comfort across the space with fewer manual adjustments required from users."
         },
         {
-          "title": "Heat boost",
-          "icon": "thermometer-warm",
-          "description": "Zadaną temperaturę osiągniesz o 14% szybciej niż przy użyciu zwykłej klimatyzacji. Ogrzewanie pomieszczenia będzie szybsze, gdy tylko zajdzie taka potrzeba"
+          "title": "Heat Boost",
+          "icon": "heat_boost",
+          "description": "Heat Boost accelerates warm-up by optimizing compressor output, fan control and refrigerant flow so rooms reach the set temperature up to 14% faster than conventional units. This mode intelligently prioritizes rapid comfort while balancing efficiency, temporarily increasing power only as long as needed and reverting to energy‑saving operation once the target is reached. It's ideal for cold mornings or when quick recovery is required after doors open, delivering fast warmth without sacrificing long‑term reliability."
         },
         {
-          "title": "Efekt Coandy",
-          "icon": "nuclear-power",
-          "description": "Dostępne zarówno w wersji do ogrzewania, jak i chłodzenia, specjalnie zaprojektowane klapy / prowadnice skupiają i optymalizują przepływ powietrza, aby zapewnić maksymalny zasięg nawet w większych pomieszczeniach"
+          "title": "Coanda Effect",
+          "icon": "coanda_effect_cooling",
+          "description": "Carefully engineered louvres exploit the Coanda effect to guide and extend the airflow along ceilings and walls, achieving greater reach and more even temperature distribution even in large rooms. During heating the flow hugs the ceiling to deliver warm air deep into the room, while in cooling it is adjusted to avoid uncomfortable drafts around occupants. The result is efficient room coverage, improved comfort with fewer hot/cold spots, and quieter operation due to smoother airflow paths."
         }
       ],
       "images": [
@@ -1596,35 +1566,62 @@
           ]
         }
       ],
-      "includesTitle": "Co jest w zestawie",
+      "includesTitle": "What's Included",
       "includes": [
         {
-          "title" : "Jednostka wewnętrzna",
-          "subtitle" : "Ikonicznie zaprojektowana jednostka naścienna.",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+          "title": "Indoor Unit",
+          "subtitle": "Iconically designed wall-mounted unit",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
         },
         {
-          "title" : "Jednostka zewnętrzna",
-          "subtitle" : "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Outdoor Unit",
+          "subtitle": "Fits your roof, wall or garden for maximum versatility",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Interfejs użytkownika",
-          "subtitle" : "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "User Interface",
+          "subtitle": "Intuitive remote controller gives you full control",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Serwis",
-          "subtitle" : "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Service",
+          "subtitle": "Peace of mind with warranty and service package",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Aplikacja Onecta",
-          "subtitle" : "Zawsze pod kontrolą, gdziekolwiek jesteś",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Onecta App",
+          "subtitle": "Always in control wherever you are",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         }
       ],
-      "getQuote": "Uzyskaj ofertę"
+      "getQuote": "Get Quote",
+      "tabs": {
+        "features": "Features",
+        "specs": "Specifications",
+        "description": "Description"
+      }
+    }
+  },
+  "colors": {
+    "white": {
+      "hex": "#ffffff",
+      "label": "White"
+    },
+    "black": {
+      "hex": "#000000",
+      "label": "Black"
+    },
+    "red": {
+      "hex": "#ff0000",
+      "label": "Red"
+    },
+    "blue": {
+      "hex": "#0000ff", 
+      "label": "Blue"
+    },
+    "gray": {
+      "hex": "#D9D9D9",
+      "label": "Gray"
     }
   }
 }

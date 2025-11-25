@@ -114,7 +114,7 @@
       },
       "reliability": {
         "title": "Надійність",
-        "description": "Перевірена продуктивність з комплексними гарантіями та виняткову якістю збірки."
+        "description": "Перевірена продуктивність з комплексними гарантіями та виняткову якість збірки."
       },
       "smart": {
         "title": "Розумні технології",
@@ -196,20 +196,20 @@
       "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
     },
     "products": {
-      "title": "Nasza Gama Klimatyzacji",
-      "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni",
+      "title": "Наша лінійка кондиціонерів",
+      "subtitle": "Відкрийте преміальні рішення для охолодження для будь-якого простору",
       "aurora": {
-        "name": "Seria Daikin Aurora",
-        "category": "Klimatyzacja Ścienna",
+        "name": "Серія Daikin Aurora",
+        "category": "Настінна кондиціонерна система",
         "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--29a1876a-44ae-4780-96f4-de6733b763f1/00-cold-packshot-ftxz-n-1-1-front.jpg?preferwebp=true&quality=90&width=751",
-        "description": "Elegancka i stylowa jednostka naścienna z zaawansowaną filtracją i szepczącą cichą pracą. Idealna do sypialni i salonów.",
+        "description": "Елегантний та стильний настінний блок з розширеною фільтрацією та надзвичайно тихою роботою. Ідеально для спалень та віталень.",
         "features": [
           {
             "title": "21 SEER2",
             "icon": "hugeicons:ai-editing"
           },
           {
-            "title": "Zaawansowana Filtracja",
+            "title": "Розширена фільтрація",
             "icon": "hugeicons:eco-power"
           },
           {
@@ -217,20 +217,20 @@
             "icon": "hugeicons:approximately-equal"
           }
         ],
-        "price": "Od 2800 zł"
+        "price": "Від 2800 PLN"
       },
       "emura": {
         "name": "Daikin Emura",
-        "category": "Premium Naścienna",
+        "category": "Преміум настінна",
         "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Nagradzany design spotyka się z najnowszą technologią. Seria Emura oferuje niezrównany styl i wydajność dla nowoczesnych domów.",
+        "description": "Нагороджений дизайн поєднується з передовими технологіями. Серія Emura забезпечує неперевершений стиль і продуктивність для сучасних домів.",
         "features": [
           {
             "title": "21 SEER2",
             "icon": "hugeicons:ai-editing"
           },
           {
-            "title": "Zaawansowana Filtracja",
+            "title": "Розширена фільтрація",
             "icon": "hugeicons:eco-power"
           },
           {
@@ -238,20 +238,20 @@
             "icon": "hugeicons:approximately-equal"
           }
         ],
-        "price": "Od 3200 zł"
+        "price": "Від 3200 PLN"
       },
       "perfera": {
         "name": "Daikin Perfera",
-        "category": "High-Performance AC",
+        "category": "Високопродуктивний кондиціонер",
         "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--1aae3569-f5c8-4fd5-a212-2b57abbba0e2/00-packshot-ftxm-a-1-1-front-cold.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
+        "description": "Найвища продуктивність з інтелектуальними функціями комфорту. Ідеально підходить для великих кімнат та вимогливих застосувань.",
         "features": [
           {
             "title": "21 SEER2",
             "icon": "hugeicons:ai-editing"
           },
           {
-            "title": "Zaawansowana Filtracja",
+            "title": "Розширена фільтрація",
             "icon": "hugeicons:eco-power"
           },
           {
@@ -259,7 +259,7 @@
             "icon": "hugeicons:approximately-equal"
           }
         ],
-        "price": "Starting from $3,400"
+        "price": "Від $3,400"
       }
     },
     "features": "Key Features",
@@ -1428,90 +1428,60 @@
       "title": "Про AMM Salon",
       "subtitle": "Ваш надійний партнер у кліматичних рішеннях понад 15 років"
     },
-    "overview": {
-      "title": "Хто ми",
-      "paragraph1": "AMM Salon - це провідний авторизований дилер і встановлювач Daikin, що спеціалізується на преміальних рішеннях для кондиціонування, опалення та вентиляції. З 2009 року ми забезпечуємо наших клієнтів найвищою якістю систем контролю клімату.",
-      "paragraph2": "Як офіційний партнер Daikin, ми пропонуємо повний спектр їхніх інноваційних продуктів, від побутових кондиціонерів до комерційних систем HVAC. Наша команда сертифікованих техніків забезпечує професійну установку, обслуговування та підтримку для кожного проекту.",
-      "paragraph3": "Ми пишаємося нашою відданістю досконалості, задоволенню клієнтів та перебуванню на передовій технологій HVAC. Наша місія - створювати комфортні, енергоефективні внутрішні середовища, які покращують якість життя наших клієнтів."
+    "section": {
+      "title": "Наші цінності",
+      "subtitle": "Принципи, які керують усім, що ми робимо"
+    },
+    "intro": {
+      "aboutUs": {
+        "title": "Про нас",
+        "subtitle": "AMM Salon - це провідний авторизований дилер і встановлювач Daikin, що спеціалізується на преміальних рішеннях для кондиціонування, опалення та вентиляції. З 2009 року ми забезпечуємо наших клієнтів найвищою якістю систем контролю клімату."
+      },
+      "daikin": {
+        "title": "Партнер Daikin",
+        "subtitle": "Як офіційний партнер Daikin, ми пропонуємо повний спектр їхніх інноваційних продуктів, від побутових кондиціонерів до комерційних систем HVAC. Наша команда сертифікованих техніків забезпечує професійну установку, обслуговування та підтримку для кожного проекту."
+      }
     },
     "stats": {
-      "experience": "15+",
-      "experienceLabel": "Років досвіду",
-      "projects": "5000+",
-      "projectsLabel": "Завершених проектів",
-      "clients": "98%",
-      "clientsLabel": "Задоволених клієнтів",
-      "satisfaction": "24/7",
-      "satisfactionLabel": "Підтримка клієнтів"
-    },
-    "values": {
-      "title": "Наші цінності",
-      "subtitle": "Принципи, які керують усім, що ми робимо",
-      "quality": {
-        "title": "Якість перш за все",
-        "description": "Ми працюємо тільки з преміальними продуктами Daikin і забезпечуємо відповідність кожної установки найвищим галузевим стандартам."
-      },
-      "customer": {
-        "title": "Фокус на клієнті",
-        "description": "Ваше задоволення - наш пріоритет. Ми надаємо персоналізовані рішення, адаптовані до ваших конкретних потреб та бюджету."
-      },
-      "innovation": {
-        "title": "Інновації",
-        "description": "Ми стежимо за останніми технологіями HVAC, щоб запропонувати вам найефективніші та найсучасніші рішення для контролю клімату."
+      "items": {
+        "1": {
+          "title": "5000+",
+          "subtitle": "Задоволених Клієнтів"
+        },
+        "2": {
+          "title": "15+",
+          "subtitle": "Років Досвіду"
+        },
+        "3": {
+          "title": "24/7",
+          "subtitle": "Підтримка"
+        },
+        "4": {
+          "title": "100%",
+          "subtitle": "Гарантія Якості"
+        }
       }
     },
-    "services": {
-      "title": "Наші послуги",
-      "subtitle": "Комплексні рішення HVAC для житлових та комерційних потреб",
-      "installation": {
-        "title": "Професійна установка",
-        "description": "Експертна установка кондиціонерів, систем опалення та теплових насосів з точністю та турботою."
+    "grid": {
+      "item1": {
+        "title": "Професійний Монтаж",
+        "subtitle": "Точна установка сертифікованими професіоналами для оптимальної роботи."
       },
-      "maintenance": {
-        "title": "Регулярне обслуговування",
-        "description": "Планові послуги з обслуговування для підтримки ефективності ваших систем та продовження їх терміну служби."
+      "item2": {
+        "title": "Обслуговування",
+        "subtitle": "Регулярний сервіс для підтримки вашої системи в ідеальному стані."
       },
-      "consultation": {
-        "title": "Безкоштовна консультація",
-        "description": "Експертні поради щодо вибору правильного кліматичного рішення для вашого дому чи бізнесу."
-      },
-      "warranty": {
-        "title": "Гарантійне обслуговування",
-        "description": "Комплексне гарантійне покриття та підтримка для всіх встановлюваних нами продуктів Daikin."
-      },
-      "repair": {
-        "title": "Аварійний ремонт",
-        "description": "Швидкі та надійні послуги з ремонту доступні 24/7 для забезпечення безперервного комфорту."
-      },
-      "modernization": {
-        "title": "Модернізація систем",
-        "description": "Послуги з модернізації для оновлення існуючих систем HVAC для кращої ефективності."
-      }
-    },
-    "whyUs": {
-      "title": "Чому AMM Salon?",
-      "certified": {
-        "title": "Сертифікований партнер Daikin",
-        "description": "Як авторизований дилер Daikin, ми маємо доступ до найновіших продуктів, навчання та підтримки."
-      },
-      "experience": {
-        "title": "Понад 15 років досвіду",
-        "description": "Понад півтора десятиліття експертизи в установці, обслуговуванні та ремонті HVAC."
-      },
-      "warranty": {
-        "title": "Розширена гарантія",
-        "description": "Усі наші установки мають комплексне гарантійне покриття для вашого спокою."
-      },
-      "support": {
-        "title": "Підтримка 24/7",
-        "description": "Цілодобова підтримка клієнтів для аварійного ремонту та технічної допомоги."
+      "cta": {
+        "text": "Отримати Пропозицію",
+        "link": "/contact"
       }
     },
     "cta": {
-      "title": "Готові до досконалого контролю клімату?",
-      "subtitle": "Зв'яжіться з нами сьогодні для безкоштовної консультації та дізнайтеся, як ми можемо покращити ваш внутрішній комфорт",
-      "getStarted": "Почати зараз",
-      "contact": "Зателефонуйте нам"
+      "title": "Готові до ідеального клімат‑контролю?",
+      "subtitle": "Зв'яжіться з нами вже сьогодні, щоб отримати безкоштовну консультацію та дізнатися, як ми можемо покращити ваш комфорт у приміщенні."
+    },
+    "bottom": {
+      "alt": "Встановлення системи HVAC Daikin"
     }
   },
   "productPage": {
@@ -1532,47 +1502,47 @@
       "name": "Emura",
       "specs": [
         {
-          "title": "Ciśnienie akustyczne",
-          "subtitle": "do 19dBA"
+          "title": "Рівень звукового тиску",
+          "subtitle": "до 19 dBA"
         },
         {
-          "title": "Etykieta energetyczna chłodzenia i ogrzewania",
-          "subtitle": "najwyższa efektywność energetyczna A+++"
+          "title": "Енергетична етикетка охолодження та обігріву",
+          "subtitle": "найвища енергоефективність A+++"
         },
         {
-          "title": "Moc grzewcza i chłodnicza (kW)",
-          "subtitle": "do 5,8 / 5,0"
+          "title": "Нагрівальна та охолоджувальна потужність (кВт)",
+          "subtitle": "до 5,8 / 5,0"
         },
         {
-          "title": "Wymiary jednostki",
-          "subtitle": "305 x 900 x 212 mm"
+          "title": "Габарити блоку",
+          "subtitle": "305 x 900 x 212 мм"
         }
       ],
       "description": {
-        "title": "Dlaczego warto wybrać Daikin Emura?",
-        "subtitle": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej."
+        "title": "Чому варто обрати Daikin Emura?",
+        "subtitle": "Daikin Emura поєднує елегантний дизайн з передовими технологіями, забезпечуючи найвищий комфорт і виняткову якість роботи. Система очищення видаляє з повітря дрібні частинки та запахи, а інтелектуальні датчики адаптують роботу пристрою до умов у приміщенні, спрямовуючи м'який рівномірний потік без неприємних протягів. Конструкція також дозволяє швидше прогріти приміщення у разі потреби, а тихий режим роботи робить кондиціонер майже непомітним. Сезонний коефіцієнт ефективності дає реалістичні дані про продуктивність теплового насоса повітря‑повітря протягом усього сезону. Маркування охоплює класи від A+++ до D. Daikin Emura отримав найвищу енергетичну етикетку."
       },
-      "featuresTitle": "Cechy produktu",
+      "featuresTitle": "Особливості продукту",
       "features": [
         {
-          "title": "Jakość powietrza",
-          "icon": "temperature",
-          "description": "Opatentowana technologia oczyszczania powietrza firmy Daikin wychwytuje wirusy, alergeny (takie jak pyłki i alergeny grzybów) oraz uciążliwe zapachy z powietrza i rozkłada je na bezpieczne atomy i cząsteczki wody"
+          "title": "Якість повітря",
+          "icon": "streamer",
+          "description": "Запатентована технологія очищення повітря Daikin захоплює віруси, алергени (пилок, грибкові алергени) та неприємні запахи і розкладає їх на безпечні молекули. Багатоступенева система поєднує електростатичну, фотокаталітичну та streamer‑обробку для видалення ультрадрібних частинок і летких органічних сполук, які часто проходять через звичайні фільтри. Постійна робота забезпечує здоровіше повітря в приміщенні, зменшуючи симптоми алергії та стійкі запахи, при цьому потребуючи лише періодичного обслуговування для збереження максимальної ефективності."
         },
         {
-          "title": "Inteligenty czujnik temperatury",
-          "icon": "slow-winds",
-          "description": "Wykorzystując czujnik matrycowy, skanuje pomieszczenie pod kątem obecności i temperatury powietrza, a następnie wysyła sygnał do jednostki, aby skierowała strumień powietrza z dala od ludzi lub w stronę obszarów o nierównomiernej temperaturze"
+          "title": "Інтелектуальний датчик температури",
+          "icon": "grid_eye_sensor",
+          "description": "Високоточний матричний датчик постійно сканує приміщення на наявність людей і температурні варіації, після чого інтелектуально спрямовує потік повітря подалі від людей або до холодніших/тепліших зон, вирівнюючи комфорт. Він адаптує швидкість вентилятора та положення жалюзі в реальному часі, мінімізуючи протяги та підтримуючи стабільну температуру, а також працює разом з адаптивними алгоритмами для зниження споживання енергії з часом. Результат — більш рівномірний комфорт по всьому приміщенню без необхідності частих ручних налаштувань."
         },
         {
-          "title": "Heat boost",
-          "icon": "thermometer-warm",
-          "description": "Zadaną temperaturę osiągniesz o 14% szybciej niż przy użyciu zwykłej klimatyzacji. Ogrzewanie pomieszczenia będzie szybsze, gdy tylko zajdzie taka potrzeba"
+          "title": "Heat Boost",
+          "icon": "heat_boost",
+          "description": "Режим Heat Boost прискорює прогрів, оптимізуючи роботу компресора, вентилятора та потік хладагента, тому приміщення досягає заданої температури до 14% швидше, ніж звичайні моделі. Цей режим тимчасово підвищує потужність лише на необхідний період, потім повертається до енергоощадного режиму, забезпечуючи баланс швидкої реакції та економії. Ідеально підходить для холодних ранків або швидкого відновлення комфорту після відкриття дверей, даючи швидке тепло без шкоди для довговічності."
         },
         {
-          "title": "Efekt Coandy",
-          "icon": "nuclear-power",
-          "description": "Dostępne zarówno w wersji do ogrzewania, jak i chłodzenia, specjalnie zaprojektowane klapy / prowadnice skupiają i optymalizują przepływ powietrza, aby zapewnić maksymalny zasięg nawet w większych pomieszczeniach"
+          "title": "Ефект Коанди",
+          "icon": "coanda_effect_cooling",
+          "description": "Ретельно спроєктовані жалюзі використовують ефект Коанди, спрямовуючи і продовжуючи потік повітря уздовж стелі та стін, що забезпечує більшу дальність і рівномірніший розподіл температури навіть у великих кімнатах. Під час нагріву потік прилипає до стелі, доставляючи тепле повітря глибше в простір, а під час охолодження він налаштовується так, щоб уникнути неприємних протягів біля людей. Це дає ефективне покриття кімнати, кращий комфорт з менше гарячих/холодних зон та тихішу роботу завдяки більш плавним шляхам потоку повітря."
         }
       ],
       "images": [
@@ -1601,35 +1571,47 @@
           ]
         }
       ],
-      "includesTitle": "Co jest w zestawie",
+      "includesTitle": "Що входить до комплекту",
       "includes": [
         {
-          "title" : "Jednostka wewnętrzna",
-          "subtitle" : "Ikonicznie zaprojektowana jednostka naścienna.",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+          "title": "Внутрішній блок",
+          "subtitle": "Знаковий настінний дизайн",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
         },
         {
-          "title" : "Jednostka zewnętrzna",
-          "subtitle" : "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Зовнішній блок",
+          "subtitle": "Монтаж на даху, стіні або в саду — максимальна універсальність",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Interfejs użytkownika",
-          "subtitle" : "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Інтерфейс користувача",
+          "subtitle": "Інтуїтивний пульт дистанційного керування для повного контролю",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Serwis",
-          "subtitle" : "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Сервіс",
+          "subtitle": "Спокій завдяки гарантії та сервісному пакету",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Aplikacja Onecta",
-          "subtitle" : "Zawsze pod kontrolą, gdziekolwiek jesteś",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Додаток Onecta",
+          "subtitle": "Контроль звідки завгодно",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         }
       ],
-      "getQuote": "Uzyskaj ofertę"
+      "getQuote": "Отримати пропозицію",
+      "tabs": {
+        "features": "Особливості",
+        "specs": "Характеристики",
+        "description": "Опис"
+      }
     }
+  },
+  "colors": {
+    "white": { "hex": "#ffffff", "label": "Білий" },
+    "black": { "hex": "#000000", "label": "Чорний" },
+    "red": { "hex": "#ff0000", "label": "Червоний" },
+    "blue": { "hex": "#0000ff", "label": "Синій" },
+    "gray": { "hex": "#D9D9D9", "label": "Сірий" }
   }
 }

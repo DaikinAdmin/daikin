@@ -11,13 +11,22 @@ export default {
     extend: {
       fontSize: {
         "main-text": ["16px", { lineHeight: "32px", fontWeight: "500" }],
-        "h1": ["36px", { lineHeight: "64px", fontWeight: "400" }],
-        "h2": ["32px", { lineHeight: "48px", fontWeight: "400" }],
-		    "h3": ["24px", { lineHeight: "40px", fontWeight: "400" }],
-		    "subtitle": ["20px", { lineHeight: "30px", fontWeight: "500" }],
-		    "button": ["16px", {fontWeight: "600" }],
-        "icon": ["60px", {fontWeight: "100"}],
-        "header": ["16px", {lineHeight: "30px", fontWeight: "500"}]
+        h1: ["36px", { lineHeight: "64px", fontWeight: "400" }],
+        h2: ["32px", { lineHeight: "48px", fontWeight: "400" }],
+        h3: ["24px", { lineHeight: "40px", fontWeight: "400" }],
+        subtitle: ["20px", { lineHeight: "45px", fontWeight: "500" }],
+        button: ["16px", { fontWeight: "600" }],
+        icon: ["60px", { fontWeight: "100" }],
+        header: ["16px", { lineHeight: "30px", fontWeight: "500" }],
+        "main-text-mobile": ["14px", { lineHeight: "32px", fontWeight: "500" }],
+        "h1-mobile": ["24px", { lineHeight: "36px", fontWeight: "400" }],
+        "h2-mobile": ["20px", { lineHeight: "32px", fontWeight: "400" }],
+        "h3-mobile": ["16px", { lineHeight: "28px", fontWeight: "400" }],
+        "subtitle-mobile": ["14px", { lineHeight: "21px", fontWeight: "400" }],
+        "xs-mobile": ["10px", { lineHeight: "17px", fontWeight: "500" }],
+        "s-mobile": ["12px", { lineHeight: "20px", fontWeight: "500" }],
+        "button-m-mobile": ["14px", { lineHeight:"24px", fontWeight: "600" }],
+        "button-s-mobile": ["12px", { lineHeight:"18px", fontWeight: "600" }],
       },
       fontFamily: {
         sans: ["var(--font-montserrat)", "ui-sans-serif", "system-ui"],
@@ -67,7 +76,9 @@ export default {
         "accent-green": "#50915D",
         "accent-berry": "#966498",
         "accent-brown": "#977362",
-		"amm": "#4D4D4D",
+        "amm": "#4D4D4D",
+        "container": "#f0f9ff",
+        "grey-light":"#faf9f9d2",
 
         muted: {
           DEFAULT: "hsl(var(--muted))",

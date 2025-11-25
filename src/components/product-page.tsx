@@ -18,8 +18,8 @@ export default function ProductTemplatePage({
       {/* Hero Section */}
       <section className="bg-primary text-white py-20">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-h2 lg:text-h1 mb-6">{heroTitle}</h1>
-          <p className="text-subtitle lg:text-subtitle mb-8 max-w-4xl mx-auto opacity-90">
+          <h1 className="text-h1-mobile md:text-h1 mb-6">{heroTitle}</h1>
+          <p className="text-subtitle-mobile md:text-subtitle mb-8 max-w-4xl mx-auto opacity-90">
             {heroSubtitle}
           </p>
         </div>
@@ -27,10 +27,10 @@ export default function ProductTemplatePage({
 
       {/* Products Grid */}
       <section className="py-16">
-        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-h1 text-black mb-2">{productsTitle}</h2>
-            <p className="text-subtitle text-amm max-w-3xl">
+            <h2 className="text-h1-mobile md:text-h1 text-black mb-2">{productsTitle}</h2>
+            <p className="text-subtitle-mobile md:text-subtitle text-amm max-w-3xl">
               {productsSubtitle}
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function ProductTemplatePage({
 
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="bg-amm text-white px-5 py-1 rounded-full text-main-text">
+                      <span className="bg-amm text-white px-5 py-1 rounded-full text-main-text-mobile md:text-main-text">
                         {product.category}
                       </span>
                     </div>
@@ -61,13 +61,13 @@ export default function ProductTemplatePage({
 
                   {/* Product Details */}
                   <div className="py-6 flex flex-col flex-grow">
-                    <h3 className="text-h2 text-black mb-3">{product.name}</h3>
+                    <h3 className="text-h2-mobile md:text-h2 text-black mb-3">{product.name}</h3>
                     <p className="text-main-text text-amm text-justify mb-4">
                       {product.description}
                     </p>
                     {product.features && product.features.length > 0 && (
                       <div className="mb-4">
-                        <h4 className="text-black text-h3 mb-2">
+                        <h4 className="text-black text-h3-mobile md:text-h3 mb-2">
                           {t("features")}
                         </h4>
                         <div className="grid grid-cols-1 gap-4">
@@ -87,7 +87,7 @@ export default function ProductTemplatePage({
 
                     {/* Actions */}
                     <Button
-                      className="px-4 py-2 mt-3 rounded-full max-w-64 transition-colors font-medium"
+                      className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
                       variant={"default"}
                     >
                       <Link href={`/products/air-conditioning/${product.id}`}>
