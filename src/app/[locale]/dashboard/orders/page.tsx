@@ -164,7 +164,7 @@ export default function OrdersPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">{t("title")}</h1>
+        <h1 className="text-h2-mobile md:text-h2">{t("title")}</h1>
         {(userRole === "admin" || userRole === "employee") && (
           <Button onClick={handleNewOrder}>
             <Plus className="mr-2 h-4 w-4" />
@@ -188,7 +188,7 @@ export default function OrdersPage() {
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               className="flex-1"
             />
-            <Button onClick={handleSearch} variant="secondary">
+            <Button onClick={handleSearch} className="rounded-full px-6" variant="secondary">
               <Search className="h-4 w-4 mr-2" />
               {t("search")}
             </Button>

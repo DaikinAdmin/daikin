@@ -101,7 +101,7 @@
     },
     "products": {
       "title": "Polecane produkty Daikin",
-      "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC zaprojektowane do doskonalenia powietrza w Twojej przestrzeni",
+      "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC",
       "learnMore": "Szczegóły",
       "getQuote": "Uzyskaj ofertę"
     },
@@ -154,7 +154,7 @@
       "price": "Skontaktuj się w sprawie ceny"
     },
     "thermostat": {
-      "name": "Inteligentny termostat Daikin One+",
+      "name": "Termostat Daikin One+",
       "category": "Inteligentne sterowanie",
       "description": "Zaawansowany inteligentny termostat z łącznością WiFi i inteligentnym zarządzaniem komfortem.",
       "features": [
@@ -192,8 +192,8 @@
   },
   "airConditioning": {
     "hero": {
-      "title": "Air Conditioning Systems",
-      "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
+      "title": "Systemy klimatyzacyjne",
+      "subtitle": "Doświadcz doskonałego komfortu dzięki innowacyjnym rozwiązaniom klimatyzacyjnym Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
     },
     "products": {
       "title": "Nasza Gama Klimatyzacji",
@@ -242,9 +242,9 @@
       },
       "perfera": {
         "name": "Daikin Perfera",
-        "category": "High-Performance AC",
+        "category": "Wysokowydajna klimatyzacja",
         "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--1aae3569-f5c8-4fd5-a212-2b57abbba0e2/00-packshot-ftxm-a-1-1-front-cold.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
+        "description": "Najwyższa wydajność z inteligentnymi funkcjami komfortu. Idealna do większych pomieszczeń i wymagających zastosowań.",
         "features": [
           {
             "title": "21 SEER2",
@@ -259,25 +259,25 @@
             "icon": "hugeicons:approximately-equal"
           }
         ],
-        "price": "Starting from $3,400"
+        "price": "Od $3,400"
       }
     },
-    "features": "Key Features",
-    "learnMore": "Learn More",
-    "getQuote": "Get Quote",
+    "features": "Kluczowe cechy",
+    "learnMore": "Dowiedz się więcej",
+    "getQuote": "Uzyskaj ofertę",
     "whyChoose": {
-      "title": "Why Choose Daikin Air Conditioning?",
+      "title": "Dlaczego warto wybrać klimatyzację Daikin?",
       "efficiency": {
-        "title": "Superior Efficiency",
-        "description": "Industry-leading SEER ratings that reduce energy costs while keeping you comfortable year-round."
+        "title": "Najwyższa efektywność",
+        "description": "Wiodące w branży współczynniki SEER obniżają koszty energii, zapewniając komfort przez cały rok."
       },
       "comfort": {
-        "title": "Perfect Comfort",
-        "description": "Advanced climate control technology ensures consistent temperature and humidity levels throughout your space."
+        "title": "Doskonały komfort",
+        "description": "Zaawansowana technologia sterowania klimatem zapewnia stałą temperaturę i wilgotność w całej przestrzeni."
       },
       "air": {
-        "title": "Clean Air",
-        "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality."
+        "title": "Czyste powietrze",
+        "description": "Wielostopniowe systemy filtracji usuwają alergeny, kurz i zapachy, poprawiając jakość powietrza w pomieszczeniach."
       }
     }
   },
@@ -1340,90 +1340,60 @@
       "title": "O AMM Salon",
       "subtitle": "Twój zaufany partner w rozwiązaniach klimatyzacyjnych od ponad 15 lat"
     },
-    "overview": {
-      "title": "Kim jesteśmy",
-      "paragraph1": "AMM Salon to wiodący autoryzowany dealer i instalator Daikin, specjalizujący się w wysokiej jakości rozwiązaniach klimatyzacyjnych, grzewczych i wentylacyjnych. Od 2009 roku dostarczamy naszym klientom najwyższej jakości systemy kontroli klimatu.",
-      "paragraph2": "Jako oficjalny partner Daikin, oferujemy pełną gamę ich innowacyjnych produktów, od domowych klimatyzatorów po komercyjne systemy HVAC. Nasz zespół certyfikowanych techników zapewnia profesjonalną instalację, konserwację i wsparcie dla każdego projektu.",
-      "paragraph3": "Jesteśmy dumni z naszego zaangażowania w doskonałość, satysfakcję klienta i bycie na czele technologii HVAC. Naszą misją jest tworzenie komfortowych, energooszczędnych środowisk wewnętrznych, które poprawiają jakość życia naszych klientów."
+    "section": {
+      "title": "Nasze wartości",
+      "subtitle": "Zasady, które kierują wszystkim, co robimy"
+    },
+    "intro": {
+      "aboutUs": {
+        "title": "O nas",
+        "subtitle": "AMM Salon to wiodący autoryzowany dealer i instalator Daikin, specjalizujący się w wysokiej jakości rozwiązaniach klimatyzacyjnych, grzewczych i wentylacyjnych. Od 2009 roku dostarczamy naszym klientom najwyższej jakości systemy kontroli klimatu."
+      },
+      "daikin": {
+        "title": "Daikin",
+        "subtitle": "Jako oficjalny partner Daikin, oferujemy pełną gamę ich innowacyjnych produktów, od domowych klimatyzatorów po komercyjne systemy HVAC. Nasz zespół certyfikowanych techników zapewnia profesjonalną instalację, konserwację i wsparcie dla każdego projektu."
+      }
     },
     "stats": {
-      "experience": "15+",
-      "experienceLabel": "Lat doświadczenia",
-      "projects": "5000+",
-      "projectsLabel": "Zrealizowanych projektów",
-      "clients": "98%",
-      "clientsLabel": "Zadowolonych klientów",
-      "satisfaction": "24/7",
-      "satisfactionLabel": "Wsparcie klienta"
-    },
-    "values": {
-      "title": "Nasze wartości",
-      "subtitle": "Zasady, które kierują wszystkim, co robimy",
-      "quality": {
-        "title": "Jakość przede wszystkim",
-        "description": "Pracujemy tylko z produktami premium Daikin i zapewniamy, że każda instalacja spełnia najwyższe standardy branżowe."
-      },
-      "customer": {
-        "title": "Fokus na kliencie",
-        "description": "Twoja satysfakcja jest naszym priorytetem. Zapewniamy spersonalizowane rozwiązania dostosowane do Twoich konkretnych potrzeb i budżetu."
-      },
-      "innovation": {
-        "title": "Innowacja",
-        "description": "Śledzimy najnowsze technologie HVAC, aby zaoferować Ci najbardziej wydajne i zaawansowane rozwiązania kontroli klimatu."
+      "items": {
+        "1": {
+          "title": "5000+",
+          "subtitle": "Zadowolonych Klientów"
+        },
+        "2": {
+          "title": "15+",
+          "subtitle": "Lat Doświadczenia"
+        },
+        "3": {
+          "title": "24/7",
+          "subtitle": "Wsparcie Techniczne"
+        },
+        "4": {
+          "title": "100%",
+          "subtitle": "Gwarancja Jakości"
+        }
       }
     },
-    "services": {
-      "title": "Nasze usługi",
-      "subtitle": "Kompleksowe rozwiązania HVAC dla potrzeb mieszkaniowych i komercyjnych",
-      "installation": {
-        "title": "Profesjonalna instalacja",
-        "description": "Fachowa instalacja klimatyzacji, systemów grzewczych i pomp ciepła z precyzją i troską."
+    "grid": {
+      "item1": {
+        "title": "Profesjonalny Montaż",
+        "subtitle": "Precyzyjna instalacja przez certyfikowanych profesjonalistów zapewniająca optymalną wydajność."
       },
-      "maintenance": {
-        "title": "Regularna konserwacja",
-        "description": "Usługi konserwacji zgodnie z harmonogramem, aby utrzymać wydajność systemów i przedłużyć ich żywotność."
+      "item2": {
+        "title": "Serwis i Konserwacja",
+        "subtitle": "Regularny serwis utrzymujący Twój system w szczytowej formie i wydajności."
       },
-      "consultation": {
-        "title": "Bezpłatna konsultacja",
-        "description": "Eksperckie doradztwo w wyborze odpowiedniego rozwiązania klimatyzacyjnego dla Twojego domu lub firmy."
-      },
-      "warranty": {
-        "title": "Serwis gwarancyjny",
-        "description": "Kompleksowa gwarancja i wsparcie dla wszystkich instalowanych przez nas produktów Daikin."
-      },
-      "repair": {
-        "title": "Naprawy awaryjne",
-        "description": "Szybkie i niezawodne usługi naprawcze dostępne 24/7, aby zapewnić nieprzerwany komfort."
-      },
-      "modernization": {
-        "title": "Modernizacja systemów",
-        "description": "Usługi modernizacji istniejących systemów HVAC dla lepszej wydajności."
-      }
-    },
-    "whyUs": {
-      "title": "Dlaczego AMM Salon?",
-      "certified": {
-        "title": "Certyfikowany partner Daikin",
-        "description": "Jako autoryzowany dealer Daikin, mamy dostęp do najnowszych produktów, szkoleń i wsparcia."
-      },
-      "experience": {
-        "title": "Ponad 15 lat doświadczenia",
-        "description": "Ponad półtorej dekady ekspertyzy w instalacji, konserwacji i naprawie HVAC."
-      },
-      "warranty": {
-        "title": "Przedłużona gwarancja",
-        "description": "Wszystkie nasze instalacje objęte są kompleksową gwarancją dla Twojego spokoju ducha."
-      },
-      "support": {
-        "title": "Wsparcie 24/7",
-        "description": "Całodobowe wsparcie klienta dla napraw awaryjnych i pomocy technicznej."
+      "cta": {
+        "text": "Uzyskaj Wycenę",
+        "link": "/contact"
       }
     },
     "cta": {
       "title": "Gotowy na doskonałą kontrolę klimatu?",
-      "subtitle": "Skontaktuj się z nami już dziś, aby uzyskać bezpłatną konsultację i odkryj, jak możemy poprawić Twój komfort w pomieszczeniach",
-      "getStarted": "Zacznij teraz",
-      "contact": "Zadzwoń do nas"
+      "subtitle": "Skontaktuj się z nami już dziś, aby uzyskać bezpłatną konsultację i odkryj, jak możemy poprawić Twój komfort w pomieszczeniach."
+    },
+    "bottom": {
+      "alt": "Instalacja systemu HVAC Daikin"
     }
   },
   "productPage": {
@@ -1468,23 +1438,23 @@
       "features": [
         {
           "title": "Jakość powietrza",
-          "icon": "temperature",
-          "description": "Opatentowana technologia oczyszczania powietrza firmy Daikin wychwytuje wirusy, alergeny (takie jak pyłki i alergeny grzybów) oraz uciążliwe zapachy z powietrza i rozkłada je na bezpieczne atomy i cząsteczki wody"
+          "icon": "streamer",
+          "description": "Zapewnia oczyszczanie powietrza i usuwa drobne zanieczyszczenia. Wielostopniowy system filtracji łączy procesy elektrostatyczne, fotokatalityczne i streamer, aby wychwytywać ultradrobne cząstki oraz lotne związki organiczne, które często przechodzą przez zwykłe filtry. Ciągła praca urządzenia utrzymuje zdrowsze powietrze w pomieszczeniu, redukując objawy alergii i nieprzyjemne zapachy, przy czym konserwacja ogranicza się do okresowych przeglądów dla zachowania najwyższej wydajności."
         },
         {
           "title": "Inteligenty czujnik temperatury",
-          "icon": "slow-winds",
-          "description": "Wykorzystując czujnik matrycowy, skanuje pomieszczenie pod kątem obecności i temperatury powietrza, a następnie wysyła sygnał do jednostki, aby skierowała strumień powietrza z dala od ludzi lub w stronę obszarów o nierównomiernej temperaturze"
+          "icon": "grid_eye_sensor",
+          "description": "Matrycowy czujnik o wysokiej rozdzielczości nieustannie skanuje obecność osób i wahania temperatury w pomieszczeniu, a następnie inteligentnie kieruje przepływ powietrza z dala od ludzi lub w stronę chłodniejszych/cieplejszych stref, wyrównując komfort. Automatycznie dopasowuje prędkość wentylatora i pozycję lameli w czasie rzeczywistym, redukując przeciągi i utrzymując stabilną temperaturę, a jednocześnie współpracuje z algorytmami adaptacyjnymi, aby z czasem zmniejszać zużycie energii. Efekt to bardziej równomierny komfort w całej przestrzeni bez potrzeby częstych ręcznych ustawień."
         },
         {
           "title": "Heat boost",
-          "icon": "thermometer-warm",
-          "description": "Zadaną temperaturę osiągniesz o 14% szybciej niż przy użyciu zwykłej klimatyzacji. Ogrzewanie pomieszczenia będzie szybsze, gdy tylko zajdzie taka potrzeba"
+          "icon": "heat_boost",
+          "description": "Tryb Heat Boost przyspiesza nagrzewanie poprzez optymalizację pracy sprężarki, wentylatora i przepływu czynnika chłodniczego, dzięki czemu pomieszczenie osiąga ustawioną temperaturę nawet do 14% szybciej niż standardowe urządzenia. Tryb ten inteligentnie zwiększa moc tylko na czas niezbędny do szybkiego uzyskania komfortu, po czym wraca do trybu oszczędnego, zapewniając kompromis między szybkością działania a efektywnością. To idealne rozwiązanie na chłodne poranki lub szybkie przywrócenie komfortu po otwarciu drzwi, oferując natychmiastowe ciepło bez negatywnego wpływu na trwałość systemu."
         },
         {
           "title": "Efekt Coandy",
-          "icon": "nuclear-power",
-          "description": "Dostępne zarówno w wersji do ogrzewania, jak i chłodzenia, specjalnie zaprojektowane klapy / prowadnice skupiają i optymalizują przepływ powietrza, aby zapewnić maksymalny zasięg nawet w większych pomieszczeniach"
+          "icon": "coanda_effect_cooling",
+          "description": "Specjalnie zaprojektowane lamele wykorzystują efekt Coandy do prowadzenia i przedłużenia strumienia powietrza wzdłuż sufitu i ścian, co daje większy zasięg i bardziej równomierne rozłożenie temperatury, nawet w dużych pomieszczeniach. Podczas ogrzewania strumień „przylega” do sufitu, dostarczając ciepłe powietrze głębiej do wnętrza, a podczas chłodzenia jest regulowany tak, aby unikać nieprzyjemnych przeciągów przy osobach. Efekt to efektywne pokrycie pomieszczenia, lepszy komfort z mniejszą ilością gorących/zimnych stref oraz cichsza praca dzięki łagodniejszym strumieniom powietrza."
         }
       ],
       "images": [
@@ -1516,32 +1486,59 @@
       "includesTitle": "Co jest w zestawie",
       "includes": [
         {
-          "title" : "Jednostka wewnętrzna",
-          "subtitle" : "Ikonicznie zaprojektowana jednostka naścienna.",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+          "title": "Jednostka wewnętrzna",
+          "subtitle": "Ikonicznie zaprojektowana jednostka naścienna.",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
         },
         {
-          "title" : "Jednostka zewnętrzna",
-          "subtitle" : "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Jednostka zewnętrzna",
+          "subtitle": "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Interfejs użytkownika",
-          "subtitle" : "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Interfejs użytkownika",
+          "subtitle": "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Serwis",
-          "subtitle" : "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Serwis",
+          "subtitle": "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
         },
         {
-          "title" : "Aplikacja Onecta",
-          "subtitle" : "Zawsze pod kontrolą, gdziekolwiek jesteś",
-          "image" : "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+          "title": "Aplikacja Onecta",
+          "subtitle": "Zawsze pod kontrolą, gdziekolwiek jesteś",
+          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
         }
       ],
-      "getQuote": "Uzyskaj ofertę"
+      "getQuote": "Uzyskaj ofertę",
+      "tabs": {
+        "features": "Cechy",
+        "specs": "Specyfikacja",
+        "description": "Opis"
+      }
+    }
+  },
+  "colors": {
+    "white": {
+      "hex": "#ffffff",
+      "label": "Biały"
+    },
+    "black": {
+      "hex": "#000000",
+      "label": "Czarny"
+    },
+    "red": {
+      "hex": "#ff0000",
+      "label": "Czerwony"
+    },
+    "blue": {
+      "hex": "#0000ff",
+      "label": "Niebieski"
+    },
+    "gray": {
+      "hex": "#D9D9D9",
+      "label": "Srebrny"
     }
   }
 }

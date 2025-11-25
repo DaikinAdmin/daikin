@@ -42,7 +42,6 @@ export default function LanguageSwitcher() {
           <span className="text-lg" aria-hidden="true">
             {currentLang.flag}
           </span>
-          <span className="hidden sm:inline-block">{currentLang.name}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

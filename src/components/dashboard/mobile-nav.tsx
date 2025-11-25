@@ -141,7 +141,7 @@ export function MobileNav({ user }: MobileNavProps) {
       {/* Mobile Menu Button - Only visible on mobile, fixed on bottom right */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden fixed bottom-6 right-6 z-50 p-4 rounded-full bg-[#003D7A] hover:bg-[#0052CC] shadow-lg text-white transition-colors"
+        className="md:hidden fixed bottom-6 right-6 z-50 p-4 rounded-full bg-primary hover:bg-opacity-80 shadow-lg text-white transition-colors"
       >
         <Menu className="h-6 w-6" />
       </button>
@@ -173,15 +173,15 @@ export function MobileNav({ user }: MobileNavProps) {
             </button>
           </div>
           <div className="flex items-center space-x-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5F8FF] flex-shrink-0">
-              <User className="h-5 w-5 text-[#003D7A]" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#faf9f9d2] flex-shrink-0">
+              <User className="h-5 w-5 text-primary" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 truncate">
                 {user.name}
               </p>
               <p className="text-xs text-gray-500 truncate">{user.email}</p>
-              <span className="inline-flex items-center px-2 py-0.5 mt-1 rounded-full text-xs font-medium bg-[#F5F8FF] text-[#003D7A]">
+              <span className="inline-flex items-center px-2 py-0.5 mt-1 rounded-full text-xs font-medium bg-[#faf9f9d2] text-primary">
                 {user.role}
               </span>
             </div>
@@ -202,8 +202,8 @@ export function MobileNav({ user }: MobileNavProps) {
                 className={cn(
                   "flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-[#F5F8FF] text-[#003D7A]"
-                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    ? "text-primary"
+                    : "hover:text-primary"
                 )}
                 locale={locale}
               >

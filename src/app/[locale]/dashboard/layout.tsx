@@ -48,7 +48,7 @@ export default function DashboardLayout({
         }} />
         
         {/* Main content area with left margin to account for fixed sidebar on desktop */}
-        <main className="flex-1 md:ml-64 p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 md:ml-64 p-4 sm:p-6 lg:p-8 mt-14">
           {children}
         </main>
       </div>
