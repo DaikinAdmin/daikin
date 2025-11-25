@@ -7,8 +7,21 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { useTranslations } from "next-intl";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -29,8 +42,19 @@ const profileSchema = z.object({
   street: z.string().optional(),
   apartmentNumber: z.string().optional(),
   city: z.string().optional(),
-  postalCode: z.string().regex(postalCodeRegex, "Postal code must be in format XX-XXX").optional().or(z.literal("")),
-  phoneNumber: z.string().regex(phoneNumberRegex, "Phone number must be 9 digits and cannot start with 0").optional().or(z.literal("")),
+  postalCode: z
+    .string()
+    .regex(postalCodeRegex, "Postal code must be in format XX-XXX")
+    .optional()
+    .or(z.literal("")),
+  phoneNumber: z
+    .string()
+    .regex(
+      phoneNumberRegex,
+      "Phone number must be 9 digits and cannot start with 0"
+    )
+    .optional()
+    .or(z.literal("")),
 });
 
 type ProfileFormData = z.infer<typeof profileSchema>;
@@ -43,14 +67,14 @@ export default function ProfilePage() {
   const [error, setError] = useState("");
   const [twoFactorDialogOpen, setTwoFactorDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { 
-    error: twoFactorError, 
-    success: twoFactorSuccess, 
-    loading: twoFactorLoading, 
-    setLoading: setTwoFactorLoading, 
-    setSuccess: setTwoFactorSuccess, 
-    setError: setTwoFactorError, 
-    resetState 
+  const {
+    error: twoFactorError,
+    success: twoFactorSuccess,
+    loading: twoFactorLoading,
+    setLoading: setTwoFactorLoading,
+    setSuccess: setTwoFactorSuccess,
+    setError: setTwoFactorError,
+    resetState,
   } = useAuthState();
 
   const profileForm = useForm<ProfileFormData>({
@@ -85,14 +109,14 @@ export default function ProfilePage() {
       const response = await fetch("/api/user/profile");
       if (response.ok) {
         const data = await response.json();
-        
+
         // Extract data from userDetails if it exists
         const userDetails = data.userDetails || {};
-        
+
         profileForm.reset({
           name: data.name || "",
-          dateOfBirth: userDetails.dateOfBirth 
-            ? new Date(userDetails.dateOfBirth).toISOString().split("T")[0] 
+          dateOfBirth: userDetails.dateOfBirth
+            ? new Date(userDetails.dateOfBirth).toISOString().split("T")[0]
             : "",
           street: userDetails.street || "",
           apartmentNumber: userDetails.apartmentNumber || "",
@@ -199,8 +223,12 @@ export default function ProfilePage() {
     return (
       <div className="space-y-4 sm:space-y-6 max-w-4xl mx-auto px-4 sm:px-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t("title")}</h1>
-          <p className="mt-2 text-sm sm:text-base text-gray-600">{t("subtitle")}</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            {t("title")}
+          </h1>
+          <p className="mt-2 text-sm sm:text-base text-gray-600">
+            {t("subtitle")}
+          </p>
         </div>
         <div className="text-center py-12">Loading profile...</div>
       </div>
@@ -210,16 +238,23 @@ export default function ProfilePage() {
   return (
     <div className="space-y-4 sm:space-y-6 max-w-4xl mx-auto px-4 sm:px-6">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t("title")}</h1>
-        <p className="mt-2 text-sm sm:text-base text-gray-600">{t("subtitle")}</p>
+        <h1 className="text-h1-mobile md:text-h1">{t("title")}</h1>
+        <p className="mt-2 text-subtitle-mobile md:text-subtitle text-amm">
+          {t("subtitle")}
+        </p>
       </div>
 
       <Form {...profileForm}>
-        <form onSubmit={profileForm.handleSubmit(onProfileSubmit)} className="space-y-4 sm:space-y-6">
+        <form
+          onSubmit={profileForm.handleSubmit(onProfileSubmit)}
+          className="space-y-4 sm:space-y-6"
+        >
           {/* Personal Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg sm:text-xl">{t("personalInfo")}</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">
+                {t("personalInfo")}
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -228,9 +263,15 @@ export default function ProfilePage() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm sm:text-base">{t("name")}</FormLabel>
+                      <FormLabel className="text-sm sm:text-base">
+                        {t("name")}
+                      </FormLabel>
                       <FormControl>
-                        <Input {...field} required className="text-sm sm:text-base" />
+                        <Input
+                          {...field}
+                          required
+                          className="text-sm sm:text-base"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -238,7 +279,9 @@ export default function ProfilePage() {
                 />
 
                 <FormItem>
-                  <FormLabel className="text-sm sm:text-base">{t("email")}</FormLabel>
+                  <FormLabel className="text-sm sm:text-base">
+                    {t("email")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -260,7 +303,11 @@ export default function ProfilePage() {
                       {t("dateOfBirth")}
                     </FormLabel>
                     <FormControl>
-                      <Input type="date" {...field} className="text-sm sm:text-base" />
+                      <Input
+                        type="date"
+                        {...field}
+                        className="text-sm sm:text-base"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -272,7 +319,9 @@ export default function ProfilePage() {
           {/* Address Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg sm:text-xl">{t("address")}</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">
+                {t("address")}
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <FormField
@@ -280,12 +329,14 @@ export default function ProfilePage() {
                 name="phoneNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm sm:text-base">{t("phoneNumber")}</FormLabel>
+                    <FormLabel className="text-sm sm:text-base">
+                      {t("phoneNumber")}
+                    </FormLabel>
                     <FormControl>
-                      <Input 
-                        placeholder={t("phoneNumberPlaceholder")} 
-                        {...field} 
-                        className="text-sm sm:text-base" 
+                      <Input
+                        placeholder={t("phoneNumberPlaceholder")}
+                        {...field}
+                        className="text-sm sm:text-base"
                         maxLength={9}
                       />
                     </FormControl>
@@ -300,7 +351,9 @@ export default function ProfilePage() {
                   name="street"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm sm:text-base">{t("street")}</FormLabel>
+                      <FormLabel className="text-sm sm:text-base">
+                        {t("street")}
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} className="text-sm sm:text-base" />
                       </FormControl>
@@ -314,7 +367,9 @@ export default function ProfilePage() {
                   name="apartmentNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm sm:text-base">{t("apartmentNumber")}</FormLabel>
+                      <FormLabel className="text-sm sm:text-base">
+                        {t("apartmentNumber")}
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} className="text-sm sm:text-base" />
                       </FormControl>
@@ -330,7 +385,9 @@ export default function ProfilePage() {
                   name="city"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm sm:text-base">{t("city")}</FormLabel>
+                      <FormLabel className="text-sm sm:text-base">
+                        {t("city")}
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} className="text-sm sm:text-base" />
                       </FormControl>
@@ -344,9 +401,15 @@ export default function ProfilePage() {
                   name="postalCode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm sm:text-base">{t("postalCode")}</FormLabel>
+                      <FormLabel className="text-sm sm:text-base">
+                        {t("postalCode")}
+                      </FormLabel>
                       <FormControl>
-                        <Input placeholder={t("postalCodePlaceholder")} {...field} className="text-sm sm:text-base" />
+                        <Input
+                          placeholder={t("postalCodePlaceholder")}
+                          {...field}
+                          className="text-sm sm:text-base"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -359,14 +422,20 @@ export default function ProfilePage() {
           {/* Security Settings */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg sm:text-xl">{t("security")}</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">
+                {t("security")}
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {/* 2FA Toggle */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg gap-3 sm:gap-0">
                 <div className="flex-1">
-                  <h3 className="font-medium text-sm sm:text-base">{t("twoFactor")}</h3>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">{t("twoFactorDescription")}</p>
+                  <h3 className="font-medium text-sm sm:text-base">
+                    {t("twoFactor")}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                    {t("twoFactorDescription")}
+                  </p>
                 </div>
                 <Switch
                   checked={session.user.twoFactorEnabled || false}
@@ -381,7 +450,9 @@ export default function ProfilePage() {
                     <Lock className="h-4 w-4" />
                     {t("changePassword")}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">{t("changePasswordDescription")}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                    {t("changePasswordDescription")}
+                  </p>
                 </div>
                 <Button
                   type="button"
@@ -400,12 +471,15 @@ export default function ProfilePage() {
           {error && <FormError message={error} />}
 
           {/* Submit Button */}
-          <Button 
-            type="submit" 
-            disabled={profileForm.formState.isSubmitting} 
-            className="w-full sm:w-auto text-sm sm:text-base"
+          <Button
+            type="submit"
+            disabled={profileForm.formState.isSubmitting}
+            className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
+            variant={"default"}
           >
-            {profileForm.formState.isSubmitting ? t("saving") : t("saveChanges")}
+            {profileForm.formState.isSubmitting
+              ? t("saving")
+              : t("saveChanges")}
           </Button>
         </form>
       </Form>
@@ -414,18 +488,33 @@ export default function ProfilePage() {
       <Dialog open={twoFactorDialogOpen} onOpenChange={setTwoFactorDialogOpen}>
         <DialogContent className="sm:max-w-[425px] max-w-[90vw]">
           <DialogHeader>
-            <DialogTitle className="text-lg sm:text-xl">Confirm selection</DialogTitle>
-            <DialogDescription className="text-sm">Please enter your password to confirm selection</DialogDescription>
+            <DialogTitle className="text-lg sm:text-xl">
+              Confirm selection
+            </DialogTitle>
+            <DialogDescription className="text-sm">
+              Please enter your password to confirm selection
+            </DialogDescription>
             <Form {...twoFactorForm}>
-              <form onSubmit={twoFactorForm.handleSubmit(onTwoFactorSubmit)} className="space-y-4 pt-4">
+              <form
+                onSubmit={twoFactorForm.handleSubmit(onTwoFactorSubmit)}
+                className="space-y-4 pt-4"
+              >
                 <FormField
                   control={twoFactorForm.control}
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm sm:text-base">Password</FormLabel>
+                      <FormLabel className="text-sm sm:text-base">
+                        Password
+                      </FormLabel>
                       <FormControl>
-                        <Input disabled={twoFactorLoading} type="password" placeholder="********" {...field} className="text-sm sm:text-base" />
+                        <Input
+                          disabled={twoFactorLoading}
+                          type="password"
+                          placeholder="********"
+                          {...field}
+                          className="text-sm sm:text-base"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -433,7 +522,11 @@ export default function ProfilePage() {
                 />
                 <FormSuccess message={twoFactorSuccess} />
                 <FormError message={twoFactorError} />
-                <Button type="submit" className="w-full mt-4 text-sm sm:text-base" disabled={twoFactorLoading}>
+                <Button
+                  type="submit"
+                  className="w-full mt-4 text-sm sm:text-base"
+                  disabled={twoFactorLoading}
+                >
                   Submit
                 </Button>
               </form>

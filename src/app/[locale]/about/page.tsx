@@ -1,340 +1,253 @@
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { use } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { FadeIn } from "@/components/fade-in";
 
 export default function AboutPage({
-  params
+  params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations('about');
+  const t = useTranslations("about");
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#003D7A] to-[#0052A3] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              {t('hero.title')}
+
+      {/* Hero + Grid Section */}
+      <section className="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Row 1: image left, text right */}
+          <FadeIn className="relative w-full h-72 md:h-96 overflow-hidden order-1">
+            <Image
+              src="/whychoose_1.png"
+              alt="Daikin installation"
+              fill
+              className="object-cover"
+            />
+          </FadeIn>
+
+          <FadeIn delay={200} className="space-y-4 order-2 px-4 md:px-0">
+            <h1 className="text-h1-mobile md:text-h1 text-left">
+              {t("intro.aboutUs.title")}
             </h1>
-            <p className="text-xl lg:text-2xl max-w-3xl mx-auto opacity-90">
-              {t('hero.subtitle')}
+            <p className="text-subtitle-mobile md:text-subtitle text-amm text-left">
+              {t("intro.aboutUs.subtitle")}
             </p>
-          </div>
+          </FadeIn>
+
+          {/* Row 2: text left, image right (mirrored) */}
+          <FadeIn delay={200} className="space-y-4 order-4 md:order-3 px-4 md:px-0">
+            <h2 className="text-h2-mobile md:text-h2 text-left">
+              {t("intro.daikin.title")}
+            </h2>
+            <p className="text-subtitle-mobile md:text-subtitle text-amm text-left">
+              {t("intro.daikin.subtitle")}
+            </p>
+          </FadeIn>
+
+          <FadeIn className="relative w-full h-72 md:h-96 overflow-hidden order-3 md:order-4">
+            <Image
+              src="/whychoose_2.png"
+              alt="Daikin service"
+              fill
+              className="object-cover"
+            />
+          </FadeIn>
         </div>
       </section>
 
-      {/* Company Overview */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-6">
-                {t('overview.title')}
-              </h2>
-              <div className="space-y-4 text-gray-700 text-lg">
-                <p>{t('overview.paragraph1')}</p>
-                <p>{t('overview.paragraph2')}</p>
-                <p>{t('overview.paragraph3')}</p>
-              </div>
-            </div>
-            <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
+      {/* Stats Icons Row */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:mt-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <FadeIn className="flex flex-col items-center gap-4 mx-4">
+            <div className="rounded-full flex items-center justify-center">
               <Image
-                src="/daikin_logo.png"
-                alt="AMM Salon Office"
-                fill
-                className="object-contain p-8 bg-gray-50"
+                src="/icons/hugeicons_chatting-01.svg"
+                alt="Icon"
+                width={120}
+                height={120}
               />
             </div>
-          </div>
+            <div>
+              <h3 className="text-h1-mobile md:text-h1">
+                {t("stats.items.1.title")}
+              </h3>
+              <p className="text-main-text-mobile md:text-main-text text-amm">
+                {t("stats.items.1.subtitle")}
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={100} className="flex flex-col items-center gap-4">
+            <div className="rounded-full flex items-center justify-center">
+              <Image
+                src="/icons/hugeicons_chatting-01.svg"
+                alt="Icon"
+                width={120}
+                height={120}
+              />
+            </div>
+            <div>
+              <h3 className="text-h1-mobile md:text-h1">
+                {t("stats.items.2.title")}
+              </h3>
+              <p className="text-main-text-mobile md:text-main-text text-amm">
+                {t("stats.items.2.subtitle")}
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200} className="flex flex-col items-center gap-4">
+            <div className="rounded-full flex items-center justify-center">
+              <Image
+                src="/icons/hugeicons_chatting-01.svg"
+                alt="Icon"
+                width={120}
+                height={120}
+              />
+            </div>
+            <div>
+              <h3 className="text-h1-mobile md:text-h1">
+                {t("stats.items.3.title")}
+              </h3>
+              <p className="text-main-text-mobile md:text-main-text text-amm">
+                {t("stats.items.3.subtitle")}
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={300} className="flex flex-col items-center gap-4">
+            <div className="rounded-full flex items-center justify-center">
+              <Image
+                src="/icons/hugeicons_chatting-01.svg"
+                alt="Icon"
+                width={120}
+                height={120}
+              />
+            </div>
+            <div>
+              <h3 className="text-h1-mobile md:text-h1">
+                {t("stats.items.4.title")}
+              </h3>
+              <p className="text-main-text-mobile md:text-main-text text-amm">
+                {t("stats.items.4.subtitle")}
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-[#003D7A] mb-2">
-                {t('stats.experience')}
-              </div>
-              <div className="text-gray-600 text-lg">
-                {t('stats.experienceLabel')}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-[#003D7A] mb-2">
-                {t('stats.projects')}
-              </div>
-              <div className="text-gray-600 text-lg">
-                {t('stats.projectsLabel')}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-[#003D7A] mb-2">
-                {t('stats.clients')}
-              </div>
-              <div className="text-gray-600 text-lg">
-                {t('stats.clientsLabel')}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-[#003D7A] mb-2">
-                {t('stats.satisfaction')}
-              </div>
-              <div className="text-gray-600 text-lg">
-                {t('stats.satisfactionLabel')}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
-              {t('values.title')}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('values.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-[#003D7A] transition-colors">
-              <div className="w-16 h-16 bg-[#F5F8FF] rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#003D7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#003D7A] mb-4">
-                {t('values.quality.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('values.quality.description')}
-              </p>
-            </div>
-
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-[#003D7A] transition-colors">
-              <div className="w-16 h-16 bg-[#F5F8FF] rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#003D7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#003D7A] mb-4">
-                {t('values.customer.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('values.customer.description')}
-              </p>
-            </div>
-
-            <div className="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-[#003D7A] transition-colors">
-              <div className="w-16 h-16 bg-[#F5F8FF] rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#003D7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#003D7A] mb-4">
-                {t('values.innovation.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('values.innovation.description')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Services */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
-              {t('services.title')}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('services.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold text-[#003D7A] mb-3">
-                {t('services.installation.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('services.installation.description')}
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold text-[#003D7A] mb-3">
-                {t('services.maintenance.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('services.maintenance.description')}
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold text-[#003D7A] mb-3">
-                {t('services.consultation.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('services.consultation.description')}
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold text-[#003D7A] mb-3">
-                {t('services.warranty.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('services.warranty.description')}
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold text-[#003D7A] mb-3">
-                {t('services.repair.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('services.repair.description')}
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold text-[#003D7A] mb-3">
-                {t('services.modernization.title')}
-              </h3>
-              <p className="text-gray-600">
-                {t('services.modernization.description')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#003D7A] mb-4">
-              {t('whyUs.title')}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#003D7A] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-[#003D7A] mb-2">
-                  {t('whyUs.certified.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('whyUs.certified.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#003D7A] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-[#003D7A] mb-2">
-                  {t('whyUs.experience.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('whyUs.experience.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#003D7A] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-[#003D7A] mb-2">
-                  {t('whyUs.warranty.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('whyUs.warranty.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#003D7A] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-[#003D7A] mb-2">
-                  {t('whyUs.support.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('whyUs.support.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-[#003D7A] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            {t('cta.title')}
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-            {t('cta.subtitle')}
+      {/* Two-column content section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <FadeIn className="mb-10 text-left">
+          <h2 className="text-h1-mobile md:text-h1">{t("section.title")}</h2>
+          <p className="text-subtitle-mobile md:text-subtitle text-amm mt-2">
+            {t("section.subtitle")}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/dashboard"
-              className="px-8 py-4 bg-white text-[#003D7A] rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg inline-block"
-            >
-              {t('cta.getStarted')}
-            </Link>
-            <a
-              href="tel:+48123456789"
-              className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[#003D7A] transition-colors font-semibold text-lg inline-block"
-            >
-              {t('cta.contact')}
-            </a>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Left column: two image cards stacked */}
+          <div className="space-y-8">
+            {/* Card 1 */}
+            <FadeIn delay={100} className="flex flex-col gap-4">
+              <div className="relative w-full h-72 md:h-96 overflow-hidden">
+                <Image
+                  src="/whychoose_1.png"
+                  alt={t("intro.aboutUs.title")}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="px-2 md:px-0">
+                <h3 className="text-h3-mobile md:text-h3 text-left">
+                  {t("intro.aboutUs.title")}
+                </h3>
+                <p className="text-main-text-mobile md:text-main-text text-amm text-left mt-2">
+                  {t("intro.aboutUs.subtitle")}
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Card 2 */}
+            <FadeIn delay={200} className="flex flex-col gap-4">
+              <div className="relative w-full h-72 md:h-96 overflow-hidden">
+                <Image
+                  src="/whychoose_2.png"
+                  alt={t("intro.daikin.title")}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="px-2 md:px-0">
+                <h3 className="text-h3-mobile md:text-h3 text-left">
+                  {t("intro.daikin.title")}
+                </h3>
+                <p className="text-main-text-mobile md:text-main-text text-amm text-left mt-2">
+                  {t("intro.daikin.subtitle")}
+                </p>
+              </div>
+            </FadeIn>
           </div>
+
+          {/* Right column: image + text + CTA */}
+          <FadeIn delay={300} className="flex flex-col gap-6 lg:pl-8">
+            <div className="relative w-full h-72 md:h-96 overflow-hidden">
+              <Image
+                src="/whychoose_3.png"
+                alt={t("grid.item1.title")}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="text-h3-mobile md:text-h3 text-left">
+                {t("grid.item1.title")}
+              </h3>
+              <p className="text-main-text-mobile md:text-main-text text-amm text-left mt-2">
+                {t("grid.item1.subtitle")}
+              </p>
+            </div>
+
+            {/* CTA section */}
+            <div className="mt-4 flex flex-col items-start gap-4">
+              <h4 className="text-h2-mobile md:text-h2 text-left">
+                {t("cta.title")}
+              </h4>
+              <p className="text-subtitle-mobile md:text-subtitle text-amm text-left max-w-xl">
+                {t("cta.subtitle")}
+              </p>
+              <Button
+                className="px-12 py-4 md:px-20 md:py-2 rounded-full transition-colors font-medium"
+                variant="accent"
+                asChild
+              >
+                <Link href="/contact">{t("grid.cta.text")}</Link>
+              </Button>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Bottom full-width image */}
+      <section className="w-full py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn className="relative w-full h-[300px] md:h-[450px] overflow-hidden mx-auto">
+            <Image
+              src="/whychoose_2.png"
+              alt="Daikin systems"
+              fill
+              className="object-cover"
+            />
+          </FadeIn>
         </div>
       </section>
 

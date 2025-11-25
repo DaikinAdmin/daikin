@@ -87,7 +87,7 @@ export function HeroCarousel() {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.5))] -z-10"></div>
       
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-10">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
@@ -116,12 +116,12 @@ export function HeroCarousel() {
                           </div>
 
                           {/* Title */}
-                          <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                          <h1 className="text-h1-mobile lg:text-6xl font-bold leading-tight">
                             {t(`slides.${slide.key}.title`)}
                           </h1>
 
                           {/* Description */}
-                          <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl">
+                          <p className="text-subtitle-mobile lg:text-xl text-white/90 leading-relaxed max-w-xl">
                             {t(`slides.${slide.key}.description`)}
                           </p>
 
