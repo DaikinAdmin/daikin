@@ -94,7 +94,7 @@ export const PUT = async (
                 categoryId,
                 isActive,
                 translations,
-                featureIds,
+                featureSlugs, // Array of feature slugs
             } = await req.json();
 
             // Check if articleId is being changed and if it already exists
@@ -128,18 +128,25 @@ export const PUT = async (
                 }
             }
 
-            // Verify features exist if provided
-            if (featureIds && featureIds.length > 0) {
+            // Resolve feature IDs from slugs if provided
+            let featureIds: string[] = [];
+            
+            if (featureSlugs && featureSlugs.length > 0) {
                 const features = await prisma.feature.findMany({
-                    where: { id: { in: featureIds } },
+                    where: { slug: { in: featureSlugs } },
+                    select: { id: true, slug: true },
                 });
 
-                if (features.length !== featureIds.length) {
+                if (features.length !== featureSlugs.length) {
+                    const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
+                    const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
                     return NextResponse.json(
-                        { error: "One or more features not found" },
+                        { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
                         { status: 404 }
                     );
                 }
+                
+                featureIds = features.map((f: { id: string; slug: string }) => f.id);
             }
 
             // Update product
@@ -151,7 +158,7 @@ export const PUT = async (
                     ...(img !== undefined && { img }),
                     ...(categoryId !== undefined && { categoryId }),
                     ...(isActive !== undefined && { isActive }),
-                    ...(featureIds !== undefined && {
+                    ...(featureSlugs !== undefined && featureIds.length > 0 && {
                         features: {
                             set: featureIds.map((fId: string) => ({ id: fId })),
                         },

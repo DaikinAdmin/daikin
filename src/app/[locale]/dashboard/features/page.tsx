@@ -28,27 +28,9 @@ import { Plus, Loader2, Pencil, Trash2, Search } from "lucide-react";
 import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Feature } from "@/types/feature";
+import { generateSlug } from "@/utils/slug";
 
-type FeatureTranslation = {
-  locale: string;
-  name: string;
-  desc: string;
-  isActive: boolean;
-};
-
-type Feature = {
-  id: string;
-  name: string;
-  img: string | null;
-  isActive: boolean;
-  preview?: boolean;
-  createdAt: string;
-  updatedAt: string;
-  featureDetails: FeatureTranslation[];
-  _count?: {
-    products: number;
-  };
-};
 
 export default function FeaturesManagementPage() {
   const t = useTranslations("dashboard.features");
@@ -66,6 +48,7 @@ export default function FeaturesManagementPage() {
 
   const [formData, setFormData] = useState({
     name: "",
+    slug: "",
     img: "",
     isActive: true,
     preview: false,
@@ -141,6 +124,7 @@ export default function FeaturesManagementPage() {
       setEditingFeature(feature);
       setFormData({
         name: feature.name,
+        slug: feature.slug,
         img: feature.img || "",
         isActive: feature.isActive,
         preview: feature.preview || false,
@@ -161,6 +145,7 @@ export default function FeaturesManagementPage() {
       setEditingFeature(null);
       setFormData({
         name: "",
+        slug: "",
         img: "",
         isActive: true,
         preview: false,
@@ -302,6 +287,7 @@ export default function FeaturesManagementPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>{t("name")}</TableHead>
+                <TableHead>{t("slug")}</TableHead>
                 <TableHead>{t("image")}</TableHead>
                 <TableHead>{t("productsCount")}</TableHead>
                 <TableHead>{t("isActive")}</TableHead>
@@ -311,7 +297,7 @@ export default function FeaturesManagementPage() {
             <TableBody>
               {features.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center text-muted-foreground">
+                  <TableCell colSpan={6} className="text-center text-muted-foreground">
                     {t("noFeaturesFound")}
                   </TableCell>
                 </TableRow>
@@ -319,6 +305,7 @@ export default function FeaturesManagementPage() {
                 features.map((feature) => (
                   <TableRow key={feature.id} data-testid="feature-row">
                     <TableCell className="font-medium">{feature.name}</TableCell>
+                    <TableCell className="text-muted-foreground">{feature.slug}</TableCell>
                     <TableCell className="text-muted-foreground">
                       {feature.img ? (
                         <span className="text-xs truncate max-w-[200px] block">
@@ -385,9 +372,28 @@ export default function FeaturesManagementPage() {
                     id="name"
                     name="name"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) => {
+                      const name = e.target.value;
+                      setFormData({ 
+                        ...formData, 
+                        name,
+                        slug: editingFeature ? formData.slug : generateSlug(name)
+                      });
+                    }}
                     required
                   />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="slug">{t("slug")}</Label>
+                  <Input
+                    id="slug"
+                    name="slug"
+                    value={formData.slug}
+                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                    placeholder="feature-slug"
+                    required
+                  />
+                  <p className="text-xs text-muted-foreground">{t("slugHelp")}</p>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="img">{t("imageUrl")}</Label>

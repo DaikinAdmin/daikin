@@ -29,13 +29,14 @@ import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NativeSelect } from "@/components/ui/native-select";
-import { Spinner } from "@/components/ui/spinner";
+import { generateSlug } from "@/utils/slug";
 import { MainInfoTab } from "@/components/dashboard/products/main-info-tab";
 import { ProductDetailsTab } from "@/components/dashboard/products/product-details-tab";
 import { FeaturesTab } from "@/components/dashboard/products/features-tab";
 import { SpecificationsTab } from "@/components/dashboard/products/specifications-tab";
 import { ProductImagesTab } from "@/components/dashboard/products/product-images-tab";
 import { ProductItemsTab } from "@/components/dashboard/products/product-items-tab";
+import { ProductItem } from "@/types/product-items";
 
 type ProductTranslation = {
   locale: string;
@@ -56,15 +57,6 @@ type ProductImage = {
   color: string;
   imgs: string[];
   url: string[];
-};
-
-type ProductItem = {
-  id?: string;
-  locale: string;
-  title: string;
-  subtitle: string;
-  img: string;
-  isActive: boolean;
 };
 
 type Category = {

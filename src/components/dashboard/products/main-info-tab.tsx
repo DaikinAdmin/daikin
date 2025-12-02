@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { NativeSelect } from "@/components/ui/native-select";
+import { generateSlug } from "@/utils/slug";
 
 type MainInfoTabProps = {
   formData: {
@@ -31,11 +32,7 @@ export function MainInfoTab({
 }: MainInfoTabProps) {
   const handleSlugGeneration = () => {
     if (!formData.slug && formData.articleId) {
-      const generatedSlug = formData.articleId
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-      onChange("slug", generatedSlug);
+      onChange("slug", generateSlug(formData.articleId));
     }
   };
 

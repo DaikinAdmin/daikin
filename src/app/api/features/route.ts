@@ -81,18 +81,31 @@ export const POST = async (req: Request) => {
 
     return withPrisma(async () => {
         try {
-            const { name, img, isActive, preview, translations } = await req.json(); // img: string URL from image service
+            const { name, slug, img, isActive, preview, translations } = await req.json(); // img: string URL from image service
 
-            if (!name) {
+            if (!name || !slug) {
                 return NextResponse.json(
-                    { error: "Missing required field: name" },
+                    { error: "Missing required fields: name and slug" },
                     { status: 400 }
+                );
+            }
+
+            // Check if slug already exists
+            const existingSlug = await prisma.feature.findUnique({
+                where: { slug },
+            });
+
+            if (existingSlug) {
+                return NextResponse.json(
+                    { error: "Feature with this slug already exists" },
+                    { status: 409 }
                 );
             }
 
             const feature = await prisma.feature.create({
                 data: {
                     name,
+                    slug,
                     img: img || null,
                     isActive: isActive !== undefined ? isActive : true,
                     preview: preview !== undefined ? preview : false,

@@ -107,7 +107,7 @@ export const POST = async (req: Request) => {
                 energyClass,
                 isActive,
                 translations,
-                featureIds,
+                featureSlugs, // Array of feature slugs
                 specs,
                 images, // Array of image objects: [{ color, imgs: [url1, url2], url: [url1, url2] }]
                 items, // Array with img field: [{ locale, title, subtitle, img: 'url', isActive }]
@@ -158,18 +158,25 @@ export const POST = async (req: Request) => {
                 );
             }
 
-            // Verify features exist if provided
-            if (featureIds && featureIds.length > 0) {
+            // Resolve feature IDs from slugs if provided
+            let featureIds: string[] = [];
+            
+            if (featureSlugs && featureSlugs.length > 0) {
                 const features = await prisma.feature.findMany({
-                    where: { id: { in: featureIds } },
+                    where: { slug: { in: featureSlugs } },
+                    select: { id: true, slug: true },
                 });
 
-                if (features.length !== featureIds.length) {
+                if (features.length !== featureSlugs.length) {
+                    const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
+                    const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
                     return NextResponse.json(
-                        { error: "One or more features not found" },
+                        { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
                         { status: 404 }
                     );
                 }
+                
+                featureIds = features.map((f: { id: string; slug: string }) => f.id);
             }
 
             const product = await prisma.product.create({
@@ -190,7 +197,7 @@ export const POST = async (req: Request) => {
                               })),
                           }
                         : undefined,
-                    features: featureIds
+                    features: featureIds.length > 0
                         ? {
                               connect: featureIds.map((id: string) => ({ id })),
                           }
