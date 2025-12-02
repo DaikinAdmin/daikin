@@ -25,7 +25,7 @@ export default function InstallationCarousel() {
     <div className="overflow-hidden" ref={emblaRef}>
       <div className="flex gap-6">
         {installCategories.map((category) => (
-          <div key={category} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33%] min-w-0 pl-4">
+          <div key={category} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33%] min-w-0">
             <div className="flex flex-col h-full">
               <div className="relative h-[300px] w-full mb-6 overflow-hidden">
                 <Image

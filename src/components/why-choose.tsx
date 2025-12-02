@@ -49,8 +49,8 @@ export default function WhyChooseSection({
                         className="w-full h-96 object-cover"
                       />
                       <div className="mt-4 flex flex-col">
-                        <p className="text-h3-mobile md:text-h3">{item.title}</p>
-                        <p className="mt-2 text-main-text">{item.description}</p>
+                        <p className="text-h2-mobile md:text-h3">{item.title}</p>
+                        <p className="mt-2 text-main-text-mobile md:text-main-text">{item.description}</p>
                       </div>
                     </div>
                   </div>
@@ -69,8 +69,8 @@ export default function WhyChooseSection({
                 className="w-full object-cover"
               />
               <div className="mt-auto flex flex-col">
-                <p className="mt-3 text-h3">{leftItem.title}</p>
-                <p className="mt-3 text-main-text">{leftItem.description}</p>
+                <p className="mt-3 text-h3-mobile md:text-h3">{leftItem.title}</p>
+                <p className="mt-3 text-main-text-mobile md:text-main-text">{leftItem.description}</p>
               </div>
             </div>
 
@@ -84,8 +84,8 @@ export default function WhyChooseSection({
                     className="w-full object-cover"
                   />
                   <div className="mt-auto flex flex-col">
-                    <p className="mt-3 text-h3">{item.title}</p>
-                    <p className="mt-4 text-main-text">{item.description}</p>
+                    <p className="mt-3 text-h2-mobile md:text-h3">{item.title}</p>
+                    <p className="mt-4 text-main-text-mobile md:text-main-text">{item.description}</p>
                   </div>
                 </div>
               ))}

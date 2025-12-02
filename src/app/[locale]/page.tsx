@@ -21,7 +21,7 @@ export default function Home({
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Carousel Section */}
+            {/* Hero Carousel Section */}
       <HeroCarousel />
 
       {/* Product Carousel */}
