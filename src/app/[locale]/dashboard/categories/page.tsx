@@ -28,6 +28,7 @@ import { Plus, Loader2, Pencil, Trash2, Search } from "lucide-react";
 import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { generateSlug } from "@/utils/slug";
 
 type CategoryTranslation = {
   locale: string;
@@ -131,15 +132,6 @@ export default function CategoriesManagementPage() {
       console.error("Error updating category:", error);
       alert("Failed to update category");
     }
-  };
-
-  const generateSlug = (name: string) => {
-    return name
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
   };
 
   const handleOpenDialog = (category?: Category) => {

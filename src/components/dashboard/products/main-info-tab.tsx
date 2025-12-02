@@ -4,18 +4,19 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { NativeSelect } from "@/components/ui/native-select";
+import { generateSlug } from "@/utils/slug";
 
 type MainInfoTabProps = {
   formData: {
     articleId: string;
     price: string;
-    categoryId: string;
+    categorySlug: string;
     slug: string;
     energyClass: string;
     isActive: boolean;
   };
   onChange: (field: string, value: any) => void;
-  categories: Array<{ id: string; name: string }>;
+  categories: Array<{ id: string; name: string; slug: string }>;
   t: (key: string) => string;
   disabled?: boolean;
 };
@@ -31,11 +32,7 @@ export function MainInfoTab({
 }: MainInfoTabProps) {
   const handleSlugGeneration = () => {
     if (!formData.slug && formData.articleId) {
-      const generatedSlug = formData.articleId
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-      onChange("slug", generatedSlug);
+      onChange("slug", generateSlug(formData.articleId));
     }
   };
 
@@ -82,14 +79,14 @@ export function MainInfoTab({
         <NativeSelect
           id="category"
           data-testid="select-category"
-          value={formData.categoryId}
-          onChange={(e) => onChange("categoryId", e.target.value)}
+          value={formData.categorySlug}
+          onChange={(e) => onChange("categorySlug", e.target.value)}
           required
           disabled={disabled}
         >
           <option value="">{t("selectCategory")}</option>
           {categories.map((category) => (
-            <option key={category.id} value={category.id}>
+            <option key={category.id} value={category.slug}>
               {category.name}
             </option>
           ))}

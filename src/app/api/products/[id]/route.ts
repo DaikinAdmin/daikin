@@ -43,6 +43,17 @@ export const GET = async (
                                 : { where: { isActive: true } },
                         },
                     },
+                    specs: true,
+                    img: true,
+                    items: {
+                        include: {
+                            productItemDetails: locale
+                                ? {
+                                      where: { locale, isActive: true },
+                                  }
+                                : { where: { isActive: true } },
+                        },
+                    },
                 },
             });
 
@@ -87,11 +98,11 @@ export const PUT = async (
             const {
                 articleId,
                 price,
-                img,
-                categoryId,
+                img, // Image URLs from image upload service
+                categorySlug,
                 isActive,
                 translations,
-                featureIds,
+                featureSlugs, // Array of feature slugs
             } = await req.json();
 
             // Check if articleId is being changed and if it already exists
@@ -111,32 +122,39 @@ export const PUT = async (
                 }
             }
 
-            // Verify category exists if being changed
-            if (categoryId) {
+            // Resolve category slug if being changed
+            if (categorySlug) {
                 const category = await prisma.category.findUnique({
-                    where: { id: categoryId },
+                    where: { slug: categorySlug },
                 });
 
                 if (!category) {
                     return NextResponse.json(
-                        { error: "Category not found" },
+                        { error: `Category not found for slug: ${categorySlug}` },
                         { status: 404 }
                     );
                 }
             }
 
-            // Verify features exist if provided
-            if (featureIds && featureIds.length > 0) {
+            // Resolve feature IDs from slugs if provided
+            let featureIds: string[] = [];
+            
+            if (featureSlugs && featureSlugs.length > 0) {
                 const features = await prisma.feature.findMany({
-                    where: { id: { in: featureIds } },
+                    where: { slug: { in: featureSlugs } },
+                    select: { id: true, slug: true },
                 });
 
-                if (features.length !== featureIds.length) {
+                if (features.length !== featureSlugs.length) {
+                    const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
+                    const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
                     return NextResponse.json(
-                        { error: "One or more features not found" },
+                        { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
                         { status: 404 }
                     );
                 }
+                
+                featureIds = features.map((f: { id: string; slug: string }) => f.id);
             }
 
             // Update product
@@ -146,9 +164,9 @@ export const PUT = async (
                     ...(articleId !== undefined && { articleId }),
                     ...(price !== undefined && { price: price ? parseFloat(price) : null }),
                     ...(img !== undefined && { img }),
-                    ...(categoryId !== undefined && { categoryId }),
+                    ...(categorySlug !== undefined && { categorySlug }),
                     ...(isActive !== undefined && { isActive }),
-                    ...(featureIds !== undefined && {
+                    ...(featureSlugs !== undefined && featureIds.length > 0 && {
                         features: {
                             set: featureIds.map((fId: string) => ({ id: fId })),
                         },
@@ -188,6 +206,13 @@ export const PUT = async (
                     features: {
                         include: {
                             featureDetails: true,
+                        },
+                    },
+                    specs: true,
+                    img: true,
+                    items: {
+                        include: {
+                            productItemDetails: true,
                         },
                     },
                 },

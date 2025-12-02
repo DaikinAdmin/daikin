@@ -305,16 +305,25 @@ exports.Prisma.ProductTranslationScalarFieldEnum = {
 exports.Prisma.ProductItemsScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
+  title: 'title',
+  slug: 'slug',
+  img: 'img',
+  isActive: 'isActive'
+};
+
+exports.Prisma.ProductItemsTranslationScalarFieldEnum = {
+  id: 'id',
+  productItemId: 'productItemId',
   locale: 'locale',
   title: 'title',
   subtitle: 'subtitle',
-  img: 'img',
   isActive: 'isActive'
 };
 
 exports.Prisma.FeatureScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  slug: 'slug',
   img: 'img',
   isActive: 'isActive',
   preview: 'preview',
@@ -370,6 +379,7 @@ exports.Prisma.ModelName = {
   ProductImages: 'ProductImages',
   ProductTranslation: 'ProductTranslation',
   ProductItems: 'ProductItems',
+  ProductItemsTranslation: 'ProductItemsTranslation',
   Feature: 'Feature',
   FeatureTranslation: 'FeatureTranslation'
 };

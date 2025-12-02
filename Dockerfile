@@ -22,6 +22,7 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy prisma folder
 COPY prisma ./prisma
 COPY prisma.config.mjs ./prisma.config.mjs
+COPY prisma.config.ts ./prisma.config.ts
 
 # Copy the rest of the application
 COPY . .
@@ -63,6 +64,7 @@ COPY --from=builder /app/.next/static ./.next/static
 # Copy Prisma files and config (needed for migrations)
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.mjs ./prisma.config.mjs
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
 # # Copy tsx and all its dependencies (for seed scripts)
@@ -80,10 +82,12 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 # ENV PLAYWRIGHT_BROWSERS_PATH=/home/nextjs/.cache/ms-playwright
 # RUN npx playwright install --with-deps chromium
 
-# Create home directory for nextjs user and set permissions
-RUN mkdir -p /home/nextjs/.cache && \
+# Create upload directory and home directory for nextjs user
+RUN mkdir -p /uploads && \
+    mkdir -p /home/nextjs/.cache && \
     chown -R nextjs:nodejs /home/nextjs && \
-    chown -R nextjs:nodejs /app
+    chown -R nextjs:nodejs /app && \
+    chown -R nextjs:nodejs /uploads
 
 USER nextjs
 
