@@ -62,7 +62,7 @@ export default function ProductTemplatePage({
                   {/* Product Details */}
                   <div className="py-6 flex flex-col flex-grow">
                     <h3 className="text-h2-mobile md:text-h2 text-black mb-3">{product.name}</h3>
-                    <p className="text-main-text text-amm text-justify mb-4">
+                    <p className="text-main-text text-amm mb-4">
                       {product.description}
                     </p>
                     {product.features && product.features.length > 0 && (
