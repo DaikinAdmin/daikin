@@ -100,10 +100,10 @@ export default function InstallationPage({
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto py-12 md:py-20">
-          <div className="container mx-auto px-4 flex flex-col items-start">
+          <div className="container mx-auto flex flex-col items-start">
             <FadeIn>
               <h1 className="text-h1-mobile md:text-h1 mb-4">
                 {t('hero.title')}
@@ -118,7 +118,7 @@ export default function InstallationPage({
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="py-8 pb-32 max-w-[90rem] mx-auto px-4">
+        <section className="py-8 pb-32 max-w-[90rem] mx-auto">
           <div className="mb-12">
             <FadeIn>
               <h2 className="text-h1-mobile lg:text-h1 mb-4">{t('whyChoose.title')}</h2>
@@ -140,7 +140,7 @@ export default function InstallationPage({
 
         {/* Process Section */}
         <section className="py-16">
-          <div className="max-w-[90rem] mx-auto px-4">
+          <div className="max-w-[90rem] mx-auto">
             <div className="mb-12">
               <FadeIn>
                 <h2 className="text-h1-mobile lg:text-h1 mb-4">{t('process.title')}</h2>
@@ -169,7 +169,7 @@ export default function InstallationPage({
         </section>
 
         {/* What We Install Section */}
-        <section className="py-16 max-w-7xl mx-auto px-4">
+        <section className="py-16 max-w-7xl mx-auto">
           <div className="mb-12">
             <FadeIn>
               <h2 className="text-h1-mobile lg:text-h1 mb-4">{t('whatWeInstall.title')}</h2>

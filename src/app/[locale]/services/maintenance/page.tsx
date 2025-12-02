@@ -95,8 +95,8 @@ export default function MaintenancePage({
 
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto py-12 md:py-20 px-4">
-          <div className="container mx-auto px-4 flex flex-col items-start">
+        <section className="max-w-7xl mx-auto py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto flex flex-col items-start">
             <FadeIn>
               <h1 className="text-h1-mobile md:text-h1 mb-4">
                 {t("hero.title")}
@@ -112,7 +112,7 @@ export default function MaintenancePage({
 
         {/* Grid Section */}
         <section className="w-full ">
-          <div className="py-8 pb-32 max-w-7xl mx-auto px-8">
+          <div className="py-8 pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
               {/* Left Column */}
               <div className="flex flex-col gap-8">

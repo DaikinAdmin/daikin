@@ -54,13 +54,17 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3" locale={locale}>
-              <div className="w-48 h-48 sm:w-56 sm:h-56 relative">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 relative select-none">
                 <Image 
                   src="/daikin_logo_pl.png"
                   alt="Daikin AMM Project Salon Partnerski Logo" 
                   fill
-                  className="object-contain"
+                  className="object-contain select-none"
                   priority
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  onContextMenu={(e) => e.preventDefault()}
+                  onMouseDown={(e) => e.preventDefault()}
                 />
               </div>
             </Link>
@@ -232,15 +236,15 @@ export default function Header() {
         />
         
         {/* Menu Content */}
-        <div className="absolute inset-0 bg-white overflow-y-auto shadow-lg">
+        <div className="absolute inset-0 bg-white overflow-y-auto shadow-lg mt-14">
           <div className="flex flex-col min-h-full">
             {/* User Profile Section - Top Priority */}
             {session?.user && (
-              <div className="px-4 py-4 bg-gradient-to-r from-[#003D7A] to-[#0052a3] text-white">
+              <div className="px-4 py-4 bg-primary text-white">
                 <div className="flex items-center space-x-3 mb-4">
                   <Avatar className="h-12 w-12 sm:h-14 sm:w-14 ring-2 ring-white">
                     <AvatarImage src={session.user.image || undefined} alt={session.user.name || "User"} />
-                    <AvatarFallback className="text-base bg-white text-[#003D7A]">{getInitials(session.user.name)}</AvatarFallback>
+                    <AvatarFallback className="text-base bg-white text-primary">{getInitials(session.user.name)}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
                     <p className="text-base sm:text-lg font-semibold truncate">{session.user.name}</p>
@@ -250,7 +254,7 @@ export default function Header() {
                 <div className="flex gap-2">
                   <Link
                     href="/dashboard"
-                    className="flex-1 px-3 py-2.5 text-sm sm:text-base bg-white text-[#003D7A] rounded-lg hover:bg-blue-50 transition-colors font-medium text-center"
+                    className="flex-1 px-3 py-2.5 text-sm sm:text-base bg-white text-primary rounded-lg hover:bg-blue-50 transition-colors font-medium text-center"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -273,7 +277,7 @@ export default function Header() {
               {/* O nas */}
               <Link
                 href="/about"
-                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="block px-4 py-3.5 text-h2-mobile hover:text-primary hover:bg-blue-50 rounded-lg font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 locale={locale}
               >
@@ -282,13 +286,13 @@ export default function Header() {
 
               {/* Produkty */}
               <div className="space-y-1">
-                <div className="px-4 py-2 text-base sm:text-lg text-gray-900 font-semibold">
+                <div className="px-4 py-2 text-h2-mobile">
                   {t('nav.products')}
                 </div>
                 <div className="pl-4 space-y-1">
                   <Link
                     href="/products/air-conditioning"
-                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -296,7 +300,7 @@ export default function Header() {
                   </Link>
                   <Link
                     href="/products/heat-pumps"
-                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -304,7 +308,7 @@ export default function Header() {
                   </Link>
                   <Link
                     href="/products/air-purifier"
-                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -312,7 +316,7 @@ export default function Header() {
                   </Link>
                   <Link
                     href="/products/other"
-                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -323,13 +327,13 @@ export default function Header() {
 
               {/* Usługi */}
               <div className="space-y-1">
-                <div className="px-4 py-2 text-base sm:text-lg text-gray-900 font-semibold">
+                <div className="px-4 py-2 text-h2-mobile">
                   {t('nav.services')}
                 </div>
                 <div className="pl-4 space-y-1">
                   <Link
                     href="/services/installation"
-                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -337,7 +341,7 @@ export default function Header() {
                   </Link>
                   <Link
                     href="/services/maintenance"
-                    className="block px-4 py-2.5 text-sm sm:text-base text-gray-600 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg transition-colors"
+                    className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -349,7 +353,7 @@ export default function Header() {
               {/* Wiadomości */}
               <Link
                 href="/news"
-                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 locale={locale}
               >
@@ -359,7 +363,7 @@ export default function Header() {
               {/* Twoja wiedza */}
               {/* <Link
                 href="/knowledge"
-                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 locale={locale}
               >
@@ -369,7 +373,7 @@ export default function Header() {
               {/* Realizację */}
               {/* <Link
                 href="/realizations"
-                className="block px-4 py-3.5 text-base sm:text-lg text-gray-700 hover:text-[#003D7A] hover:bg-blue-50 rounded-lg font-medium transition-colors"
+                className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 locale={locale}
               >
@@ -395,7 +399,7 @@ export default function Header() {
                 <div className="space-y-2">
                   <Link
                     href="/signin"
-                    className="block px-4 py-3 bg-[#003D7A] text-white rounded-lg hover:bg-[#002952] transition-colors font-medium text-center text-base"
+                    className="block px-4 py-3 bg-primary text-white rounded-full hover:bg-caring-blue transition-colors text-center"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
@@ -403,7 +407,7 @@ export default function Header() {
                   </Link>
                   <Link
                     href="/signup"
-                    className="block px-4 py-3 border-2 border-[#003D7A] text-[#003D7A] rounded-lg hover:bg-blue-50 transition-colors font-medium text-center text-base"
+                    className="block px-4 py-3 border-2 border-primary text-primary rounded-full hover:bg-blue-50 transition-colors font-medium text-center text-base"
                     onClick={() => setIsMenuOpen(false)}
                     locale={locale}
                   >
