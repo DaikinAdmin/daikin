@@ -17,6 +17,7 @@ import {
   Layers,
   Sparkles,
   Package,
+  ListChecks,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -99,6 +100,11 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       title: "Products",
       href: "/dashboard/products",
       icon: Package,
+    },
+    {
+      title: "Product Items",
+      href: "/dashboard/product-items",
+      icon: ListChecks,
     },
     {
       title: "Features",
