@@ -45,7 +45,15 @@ export const GET = async (
                     },
                     specs: true,
                     img: true,
-                    items: true,
+                    items: {
+                        include: {
+                            productItemDetails: locale
+                                ? {
+                                      where: { locale, isActive: true },
+                                  }
+                                : { where: { isActive: true } },
+                        },
+                    },
                 },
             });
 
@@ -91,7 +99,7 @@ export const PUT = async (
                 articleId,
                 price,
                 img, // Image URLs from image upload service
-                categoryId,
+                categorySlug,
                 isActive,
                 translations,
                 featureSlugs, // Array of feature slugs
@@ -114,15 +122,15 @@ export const PUT = async (
                 }
             }
 
-            // Verify category exists if being changed
-            if (categoryId) {
+            // Resolve category slug if being changed
+            if (categorySlug) {
                 const category = await prisma.category.findUnique({
-                    where: { id: categoryId },
+                    where: { slug: categorySlug },
                 });
 
                 if (!category) {
                     return NextResponse.json(
-                        { error: "Category not found" },
+                        { error: `Category not found for slug: ${categorySlug}` },
                         { status: 404 }
                     );
                 }
@@ -156,7 +164,7 @@ export const PUT = async (
                     ...(articleId !== undefined && { articleId }),
                     ...(price !== undefined && { price: price ? parseFloat(price) : null }),
                     ...(img !== undefined && { img }),
-                    ...(categoryId !== undefined && { categoryId }),
+                    ...(categorySlug !== undefined && { categorySlug }),
                     ...(isActive !== undefined && { isActive }),
                     ...(featureSlugs !== undefined && featureIds.length > 0 && {
                         features: {
@@ -202,7 +210,11 @@ export const PUT = async (
                     },
                     specs: true,
                     img: true,
-                    items: true,
+                    items: {
+                        include: {
+                            productItemDetails: true,
+                        },
+                    },
                 },
             });
 

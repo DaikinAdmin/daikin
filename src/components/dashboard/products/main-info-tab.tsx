@@ -10,13 +10,13 @@ type MainInfoTabProps = {
   formData: {
     articleId: string;
     price: string;
-    categoryId: string;
+    categorySlug: string;
     slug: string;
     energyClass: string;
     isActive: boolean;
   };
   onChange: (field: string, value: any) => void;
-  categories: Array<{ id: string; name: string }>;
+  categories: Array<{ id: string; name: string; slug: string }>;
   t: (key: string) => string;
   disabled?: boolean;
 };
@@ -79,14 +79,14 @@ export function MainInfoTab({
         <NativeSelect
           id="category"
           data-testid="select-category"
-          value={formData.categoryId}
-          onChange={(e) => onChange("categoryId", e.target.value)}
+          value={formData.categorySlug}
+          onChange={(e) => onChange("categorySlug", e.target.value)}
           required
           disabled={disabled}
         >
           <option value="">{t("selectCategory")}</option>
           {categories.map((category) => (
-            <option key={category.id} value={category.id}>
+            <option key={category.id} value={category.slug}>
               {category.name}
             </option>
           ))}

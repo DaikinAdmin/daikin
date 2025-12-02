@@ -11,8 +11,18 @@ export const GET = async (req: Request) => {
             const { searchParams } = new URL(req.url);
             const search = searchParams.get("search") || "";
             const locale = searchParams.get("locale");
-            const categoryId = searchParams.get("categoryId");
+            const categoryId = searchParams.get("categoryId"); // For backward compatibility
             const includeInactive = searchParams.get("includeInactive") === "true";
+
+            // If categoryId is provided, convert it to categorySlug
+            let categorySlug: string | null = null;
+            if (categoryId) {
+                const category = await prisma.category.findUnique({
+                    where: { id: categoryId },
+                    select: { slug: true },
+                });
+                categorySlug = category?.slug || null;
+            }
 
             const products = await prisma.product.findMany({
                 where: {
@@ -32,7 +42,7 @@ export const GET = async (req: Request) => {
                             },
                         ],
                     }),
-                    ...(categoryId && { categoryId }),
+                    ...(categorySlug && { categorySlug }),
                     ...(!includeInactive && { isActive: true }),
                 },
                 include: {
@@ -62,7 +72,15 @@ export const GET = async (req: Request) => {
                     },
                     specs: true,
                     img: true,
-                    items: true,
+                    items: {
+                        include: {
+                            productItemDetails: locale
+                                ? {
+                                      where: { locale, isActive: true },
+                                  }
+                                : { where: { isActive: true } },
+                        },
+                    },
                 },
                 orderBy: {
                     createdAt: "desc",
@@ -102,7 +120,7 @@ export const POST = async (req: Request) => {
             const {
                 articleId,
                 price,
-                categoryId,
+                categorySlug, // Changed from categoryId to categorySlug
                 slug,
                 energyClass,
                 isActive,
@@ -110,12 +128,12 @@ export const POST = async (req: Request) => {
                 featureSlugs, // Array of feature slugs
                 specs,
                 images, // Array of image objects: [{ color, imgs: [url1, url2], url: [url1, url2] }]
-                items, // Array with img field: [{ locale, title, subtitle, img: 'url', isActive }]
+                items, // Array with translations: [{ title, slug, img, isActive, translations: [{ locale, title, subtitle, isActive }] }]
             } = await req.json();
 
-            if (!articleId || !categoryId) {
+            if (!articleId || !categorySlug) {
                 return NextResponse.json(
-                    { error: "Missing required fields: articleId and categoryId" },
+                    { error: "Missing required fields: articleId and categorySlug" },
                     { status: 400 }
                 );
             }
@@ -146,14 +164,14 @@ export const POST = async (req: Request) => {
                 }
             }
 
-            // Verify category exists
+            // Verify category exists by slug
             const category = await prisma.category.findUnique({
-                where: { id: categoryId },
+                where: { slug: categorySlug },
             });
 
             if (!category) {
                 return NextResponse.json(
-                    { error: "Category not found" },
+                    { error: `Category not found for slug: ${categorySlug}` },
                     { status: 404 }
                 );
             }
@@ -183,7 +201,7 @@ export const POST = async (req: Request) => {
                 data: {
                     articleId,
                     price: price ? parseFloat(price) : null,
-                    categoryId,
+                    categorySlug: categorySlug,
                     slug: slug || articleId.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                     energyClass: energyClass || null,
                     isActive: isActive !== undefined ? isActive : true,
@@ -205,6 +223,7 @@ export const POST = async (req: Request) => {
                     specs: specs
                         ? {
                               create: specs.map((s: any) => ({
+                                  locale: s.locale,
                                   title: s.title,
                                   subtitle: s.subtitle || null,
                               })),
@@ -215,18 +234,26 @@ export const POST = async (req: Request) => {
                               create: images.map((img: any) => ({
                                   color: img.color || null,
                                   imgs: img.imgs || [],
-                                  url: img.url || [],
                               })),
                           }
                         : undefined,
                     items: items
                         ? {
                               create: items.map((item: any) => ({
-                                  locale: item.locale,
                                   title: item.title,
-                                  subtitle: item.subtitle || null,
+                                  slug: item.slug,
                                   img: item.img || null,
                                   isActive: item.isActive !== undefined ? item.isActive : true,
+                                  productItemDetails: item.translations
+                                      ? {
+                                            create: item.translations.map((t: any) => ({
+                                                locale: t.locale,
+                                                title: t.title,
+                                                subtitle: t.subtitle || null,
+                                                isActive: t.isActive !== undefined ? t.isActive : true,
+                                            })),
+                                        }
+                                      : undefined,
                               })),
                           }
                         : undefined,
@@ -245,7 +272,11 @@ export const POST = async (req: Request) => {
                     },
                     specs: true,
                     img: true,
-                    items: true,
+                    items: {
+                        include: {
+                            productItemDetails: true,
+                        },
+                    },
                 },
             });
 

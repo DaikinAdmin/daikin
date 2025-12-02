@@ -20,7 +20,6 @@ type ProductImage = {
   id?: string;
   color: string;
   imgs: string[];
-  url: string[];
 };
 
 type ProductImagesTabProps = {
@@ -43,7 +42,6 @@ export function ProductImagesTab({
   const [formData, setFormData] = useState<ProductImage>({
     color: "",
     imgs: [],
-    url: [],
   });
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
@@ -96,11 +94,10 @@ export function ProductImagesTab({
         setUploadProgress({ current: i + 1, total: files.length });
       }
 
-      // Add uploaded URLs to imgs and url arrays
+      // Add uploaded URLs to imgs array
       setFormData({
         ...formData,
         imgs: [...formData.imgs, ...uploadedUrls],
-        url: [...formData.url, ...uploadedUrls],
       });
 
       // Clear the file input
@@ -117,7 +114,7 @@ export function ProductImagesTab({
   const handleAdd = () => {
     if (formData.imgs.length > 0) {
       onChange([...images, formData]);
-      setFormData({ color: "", imgs: [], url: [] });
+      setFormData({ color: "", imgs: [] });
       setError(null);
     }
   };
@@ -134,7 +131,7 @@ export function ProductImagesTab({
       updated[editingIndex] = formData;
       onChange(updated);
       setEditingIndex(null);
-      setFormData({ color: "", imgs: [], url: [] });
+      setFormData({ color: "", imgs: [] });
       setError(null);
     }
   };
@@ -147,7 +144,7 @@ export function ProductImagesTab({
 
   const handleCancel = () => {
     setEditingIndex(null);
-    setFormData({ color: "", imgs: [], url: [] });
+    setFormData({ color: "", imgs: [] });
     setError(null);
   };
 
@@ -155,7 +152,6 @@ export function ProductImagesTab({
     setFormData({
       ...formData,
       imgs: formData.imgs.filter((_, i) => i !== index),
-      url: formData.url.filter((_, i) => i !== index),
     });
   };
 

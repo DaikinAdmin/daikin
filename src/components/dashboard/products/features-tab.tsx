@@ -6,14 +6,15 @@ import { Spinner } from "@/components/ui/spinner";
 type Feature = {
   id: string;
   name: string;
+  slug: string;
   img: string | null;
   preview: boolean | null;
 };
 
 type FeaturesTabProps = {
-  selectedFeatureIds: string[];
+  selectedFeatureIds: string[]; // Actually slugs now
   availableFeatures: Feature[];
-  onChange: (featureIds: string[]) => void;
+  onChange: (featureSlugs: string[]) => void;
   loading: boolean;
   t: (key: string) => string;
   disabled?: boolean;
@@ -29,16 +30,16 @@ export function FeaturesTab({
   disabled = false,
   preview = false,
 }: FeaturesTabProps) {
-  const handleToggle = (featureId: string, checked: boolean) => {
+  const handleToggle = (featureSlug: string, checked: boolean) => {
     if (checked) {
-      onChange([...selectedFeatureIds, featureId]);
+      onChange([...selectedFeatureIds, featureSlug]);
     } else {
-      onChange(selectedFeatureIds.filter((id) => id !== featureId));
+      onChange(selectedFeatureIds.filter((slug) => slug !== featureSlug));
     }
   };
 
   const handleSelectAll = () => {
-    onChange(availableFeatures.map((f) => f.id));
+    onChange(availableFeatures.map((f) => f.slug));
   };
 
   const handleDeselectAll = () => {
@@ -88,7 +89,7 @@ export function FeaturesTab({
         <div className="border rounded-lg p-4 max-h-[400px] overflow-y-auto">
           <div className="space-y-3">
             {availableFeatures.map((feature) => {
-              const isChecked = selectedFeatureIds.includes(feature.id);
+              const isChecked = selectedFeatureIds.includes(feature.slug);
               return (
                 <div
                   key={feature.id}
@@ -99,7 +100,7 @@ export function FeaturesTab({
                     type="checkbox"
                     id={`${testIdPrefix}-${feature.id}`}
                     checked={isChecked}
-                    onChange={(e) => handleToggle(feature.id, e.target.checked)}
+                    onChange={(e) => handleToggle(feature.slug, e.target.checked)}
                     disabled={disabled}
                     className="mt-1"
                     data-testid={`checkbox-${testIdPrefix}-${feature.id}`}

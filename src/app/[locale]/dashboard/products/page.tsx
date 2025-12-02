@@ -56,7 +56,6 @@ type ProductImage = {
   id?: string;
   color: string;
   imgs: string[];
-  url: string[];
 };
 
 type Category = {
@@ -68,6 +67,7 @@ type Category = {
 type Feature = {
   id: string;
   name: string;
+  slug: string;
   img: string | null;
   preview: boolean | null;
 };
@@ -77,7 +77,7 @@ type Product = {
   articleId: string;
   price: number | null;
   img: ProductImage[]; // Relation name in Prisma schema
-  categoryId: string;
+  categorySlug: string;
   slug: string | null;
   energyClass: string | null;
   isActive: boolean;
@@ -120,12 +120,12 @@ export default function ProductsManagementPage() {
   const [formData, setFormData] = useState({
     articleId: "",
     price: "",
-    categoryId: "",
+    categorySlug: "",
     slug: "",
     energyClass: "None",
     isActive: true,
-    previewFeatureIds: [] as string[],
-    featureIds: [] as string[],
+    previewFeatureSlugs: [] as string[],
+    featureSlugs: [] as string[],
     translations: [] as ProductTranslation[],
     specs: [] as ProductSpec[],
     images: [] as ProductImage[],
@@ -232,35 +232,45 @@ export default function ProductsManagementPage() {
   const handleOpenDialog = (product?: Product) => {
     if (product) {
       setEditingProduct(product);
-      // Separate preview and regular features
-      const preview = product.features.filter(f => f.preview === true).map(f => f.id);
-      const regular = product.features.filter(f => f.preview === false || f.preview === null).map(f => f.id);
+      // Separate preview and regular features and get their slugs
+      const preview = product.features.filter(f => f.preview === true).map(f => f.slug);
+      const regular = product.features.filter(f => f.preview === false || f.preview === null).map(f => f.slug);
+      
+      // Transform items: map productItemDetails to translations for frontend compatibility
+      const transformedItems = product.items?.map((item: any) => ({
+        id: item.id,
+        title: item.title,
+        slug: item.slug,
+        img: item.img || "",
+        isActive: item.isActive,
+        translations: item.productItemDetails || [],
+      })) || [];
       
       setFormData({
         articleId: product.articleId,
         price: product.price ? product.price.toString() : "",
-        categoryId: product.categoryId,
+        categorySlug: product.category.slug,
         slug: product.slug || "",
         energyClass: product.energyClass || "None",
         isActive: product.isActive,
-        previewFeatureIds: preview,
-        featureIds: regular,
+        previewFeatureSlugs: preview,
+        featureSlugs: regular,
         translations: product.productDetails || [],
         specs: product.specs || [],
         images: product.img || [], // 'img' is the relation name in Prisma schema
-        items: product.items || [],
+        items: transformedItems,
       });
     } else {
       setEditingProduct(null);
       setFormData({
         articleId: "",
         price: "",
-        categoryId: "",
+        categorySlug: "",
         slug: "",
         energyClass: "None",
         isActive: true,
-        previewFeatureIds: [],
-        featureIds: [],
+        previewFeatureSlugs: [],
+        featureSlugs: [],
         translations: [],
         specs: [],
         images: [],
@@ -275,15 +285,6 @@ export default function ProductsManagementPage() {
     setEditingProduct(null);
   };
 
-  const toggleFeature = (featureId: string) => {
-    setFormData(prev => ({
-      ...prev,
-      featureIds: prev.featureIds.includes(featureId)
-        ? prev.featureIds.filter(id => id !== featureId)
-        : [...prev.featureIds, featureId]
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -296,7 +297,7 @@ export default function ProductsManagementPage() {
       const method = editingProduct ? "PUT" : "POST";
 
       // Combine preview and regular features
-      const allFeatureIds = [...formData.previewFeatureIds, ...formData.featureIds];
+      const allFeatureSlugs = [...formData.previewFeatureSlugs, ...formData.featureSlugs];
 
       const response = await fetch(url, {
         method,
@@ -304,11 +305,11 @@ export default function ProductsManagementPage() {
         body: JSON.stringify({
           articleId: formData.articleId,
           price: formData.price ? parseFloat(formData.price) : null,
-          categoryId: formData.categoryId,
+          categorySlug: formData.categorySlug,
           slug: formData.slug,
           energyClass: formData.energyClass === "None" ? null : formData.energyClass,
           isActive: formData.isActive,
-          featureIds: allFeatureIds,
+          featureSlugs: allFeatureSlugs,
           translations: formData.translations,
           specs: formData.specs,
           images: formData.images,
@@ -669,8 +670,8 @@ export default function ProductsManagementPage() {
                   <FeaturesTab
                     preview={true}
                     availableFeatures={previewFeatures}
-                    selectedFeatureIds={formData.previewFeatureIds}
-                    onChange={(ids) => setFormData({ ...formData, previewFeatureIds: ids })}
+                    selectedFeatureIds={formData.previewFeatureSlugs}
+                    onChange={(ids) => setFormData({ ...formData, previewFeatureSlugs: ids })}
                     loading={featuresLoading}
                     t={t}
                   />
@@ -680,8 +681,8 @@ export default function ProductsManagementPage() {
                   <FeaturesTab
                     preview={false}
                     availableFeatures={regularFeatures}
-                    selectedFeatureIds={formData.featureIds}
-                    onChange={(ids) => setFormData({ ...formData, featureIds: ids })}
+                    selectedFeatureIds={formData.featureSlugs}
+                    onChange={(ids) => setFormData({ ...formData, featureSlugs: ids })}
                     loading={featuresLoading}
                     t={t}
                   />
