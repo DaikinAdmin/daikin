@@ -12,11 +12,12 @@ export const GET = async (req: Request) => {
             const search = searchParams.get("search") || "";
             const locale = searchParams.get("locale");
             const categoryId = searchParams.get("categoryId"); // For backward compatibility
+            const categorySlugParam = searchParams.get("categorySlug");
             const includeInactive = searchParams.get("includeInactive") === "true";
 
-            // If categoryId is provided, convert it to categorySlug
-            let categorySlug: string | null = null;
-            if (categoryId) {
+            // Determine categorySlug from either categoryId or direct categorySlug parameter
+            let categorySlug: string | null = categorySlugParam || null;
+            if (categoryId && !categorySlug) {
                 const category = await prisma.category.findUnique({
                     where: { id: categoryId },
                     select: { slug: true },

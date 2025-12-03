@@ -110,17 +110,19 @@ export const POST = async (req: Request) => {
                 daikinCoins: orderDaikinCoins,
                 products: {
                     create: products.map((product: any) => ({
-                        productId: product.productId,
-                        productDescription: product.productDescription,
+                        productSlug: product.productSlug,
                         warranty: product.warranty || null,
-                        price: product.price,
                         quantity: product.quantity || 1,
                         totalPrice: product.totalPrice,
                     })),
                 },
             },
             include: {
-                products: true,
+                products: {
+                    include: {
+                        product: true,
+                    },
+                },
             },
         });
 

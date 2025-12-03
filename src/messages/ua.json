@@ -580,6 +580,17 @@
       "cannotDeleteSelf": "Ви не можете видалити власний обліковий запис"
     },
     "orders": {
+      "productSlug": "Slug продукту",
+      "productName": "Назва продукту",
+      "category": "Категорія",
+      "product": "Продукт",
+      "selectCategory": "Виберіть категорію...",
+      "searchCategory": "Пошук категорії...",
+      "noCategoryFound": "Категорію не знайдено",
+      "selectProduct": "Виберіть продукт...",
+      "searchProduct": "Пошук продукту...",
+      "noProductFound": "Продукт не знайдено",
+      "loadingProducts": "Завантаження продуктів...",
       "title": "Управління замовленнями",
       "addNewOrder": "Додати нове замовлення",
       "createNewOrder": "Створити нове замовлення",

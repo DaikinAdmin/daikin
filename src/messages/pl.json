@@ -580,6 +580,17 @@
       "cannotDeleteSelf": "Nie możesz usunąć własnego konta"
     },
     "orders": {
+      "productSlug": "Slug produktu",
+      "productName": "Nazwa produktu",
+      "category": "Kategoria",
+      "product": "Produkt",
+      "selectCategory": "Wybierz kategorię...",
+      "searchCategory": "Szukaj kategorii...",
+      "noCategoryFound": "Nie znaleziono kategorii",
+      "selectProduct": "Wybierz produkt...",
+      "searchProduct": "Szukaj produktu...",
+      "noProductFound": "Nie znaleziono produktu",
+      "loadingProducts": "Ładowanie produktów...",
       "title": "Zarządzanie zamówieniami",
       "addNewOrder": "Dodaj nowe zamówienie",
       "createNewOrder": "Utwórz nowe zamówienie",

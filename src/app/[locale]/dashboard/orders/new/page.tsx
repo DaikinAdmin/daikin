@@ -42,12 +42,25 @@ import { cn } from "@/lib/utils";
 
 type Product = {
   id: string;
-  productId: string;
-  productDescription: string;
+  productSlug: string;
+  productName: string;
   warranty: string;
   price: number;
   quantity: number;
   totalPrice: number;
+};
+
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
+type ProductOption = {
+  slug: string;
+  articleId: string;
+  name: string;
+  price: number | null;
 };
 
 export default function NewOrderPage() {
@@ -73,6 +86,11 @@ export default function NewOrderPage() {
   });
 
   const [products, setProducts] = useState<Product[]>([]);
+  
+  // Categories and products state
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoryProducts, setCategoryProducts] = useState<ProductOption[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(false);
   
   // Email autocomplete state
   const [openEmailCombobox, setOpenEmailCombobox] = useState(false);
@@ -103,12 +121,59 @@ export default function NewOrderPage() {
   }, [emailSearchQuery]);
   
   const [newProduct, setNewProduct] = useState({
-    productId: "",
-    productDescription: "",
+    categorySlug: "",
+    productSlug: "",
+    productName: "",
     warranty: "",
     price: 0,
     quantity: 1,
   });
+
+  // Load categories on mount
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories");
+        if (response.ok) {
+          const data = await response.json();
+          setCategories(data);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Load products when category changes
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (!newProduct.categorySlug) {
+        setCategoryProducts([]);
+        return;
+      }
+
+      setLoadingProducts(true);
+      try {
+        const response = await fetch(`/api/products?categorySlug=${newProduct.categorySlug}&locale=en`);
+        if (response.ok) {
+          const data = await response.json();
+          const productOptions: ProductOption[] = data.map((p: any) => ({
+            slug: p.slug,
+            articleId: p.articleId,
+            name: p.productDetails?.[0]?.name || p.articleId,
+            price: p.price,
+          }));
+          setCategoryProducts(productOptions);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoadingProducts(false);
+      }
+    };
+    fetchProducts();
+  }, [newProduct.categorySlug]);
 
   const calculateProductTotal = () => {
     return newProduct.price * newProduct.quantity;
@@ -121,18 +186,24 @@ export default function NewOrderPage() {
   const handleAddProduct = () => {
     const product: Product = {
       id: Date.now().toString(),
-      ...newProduct,
+      productSlug: newProduct.productSlug,
+      productName: newProduct.productName,
+      warranty: newProduct.warranty,
+      price: newProduct.price,
+      quantity: newProduct.quantity,
       totalPrice: calculateProductTotal(),
     };
 
     setProducts([...products, product]);
     setNewProduct({
-      productId: "",
-      productDescription: "",
+      categorySlug: "",
+      productSlug: "",
+      productName: "",
       warranty: "",
       price: 0,
       quantity: 1,
     });
+    setCategoryProducts([]);
     setIsProductDialogOpen(false);
   };
 
@@ -157,7 +228,7 @@ export default function NewOrderPage() {
           dateOfPurchase: orderData.dateOfPurchase,
           nextDateOfService: orderData.nextDateOfService,
           daikinCoins: orderData.daikinCoins,
-          products: products.map(({ id, ...product }) => product),
+          products: products.map(({ id, productName, ...product }) => product),
         }),
       });
 
@@ -320,8 +391,8 @@ export default function NewOrderPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>{t("productId")}</TableHead>
-                  <TableHead>{t("productDescription")}</TableHead>
+                  <TableHead>{t("productSlug")}</TableHead>
+                  <TableHead>{t("productName")}</TableHead>
                   <TableHead>{t("warranty")}</TableHead>
                   <TableHead>{t("price")}</TableHead>
                   <TableHead>{t("quantity")}</TableHead>
@@ -332,8 +403,8 @@ export default function NewOrderPage() {
               <TableBody>
                 {products.map((product) => (
                   <TableRow key={product.id}>
-                    <TableCell className="font-medium">{product.productId}</TableCell>
-                    <TableCell>{product.productDescription}</TableCell>
+                    <TableCell className="font-medium">{product.productSlug}</TableCell>
+                    <TableCell>{product.productName}</TableCell>
                     <TableCell>{product.warranty || "N/A"}</TableCell>
                     <TableCell>{product.price.toFixed(2)} zł</TableCell>
                     <TableCell>{product.quantity}</TableCell>
@@ -395,30 +466,124 @@ export default function NewOrderPage() {
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
-              <Label htmlFor="productId">{t("productId")} *</Label>
-              <Input
-                id="productId"
-                value={newProduct.productId}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, productId: e.target.value })
-                }
-                required
-              />
+              <Label htmlFor="category">{t("category")} *</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    className="w-full justify-between"
+                  >
+                    {newProduct.categorySlug
+                      ? categories.find((c) => c.slug === newProduct.categorySlug)?.name
+                      : t("selectCategory")}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder={t("searchCategory")} />
+                    <CommandList>
+                      <CommandEmpty>{t("noCategoryFound")}</CommandEmpty>
+                      <CommandGroup>
+                        {categories.map((category) => (
+                          <CommandItem
+                            key={category.slug}
+                            value={category.slug}
+                            onSelect={(currentValue) => {
+                              setNewProduct({
+                                ...newProduct,
+                                categorySlug: currentValue,
+                                productSlug: "",
+                                productName: "",
+                                price: 0,
+                              });
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                newProduct.categorySlug === category.slug
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            {category.name}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="productDescription">{t("productDescription")} *</Label>
-              <Input
-                id="productDescription"
-                value={newProduct.productDescription}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    productDescription: e.target.value,
-                  })
-                }
-                required
-              />
+              <Label htmlFor="product">{t("product")} *</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    className="w-full justify-between"
+                    disabled={!newProduct.categorySlug || loadingProducts}
+                  >
+                    {loadingProducts ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        {t("loadingProducts")}
+                      </>
+                    ) : newProduct.productSlug ? (
+                      categoryProducts.find((p) => p.slug === newProduct.productSlug)?.name
+                    ) : (
+                      t("selectProduct")
+                    )}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder={t("searchProduct")} />
+                    <CommandList>
+                      <CommandEmpty>{t("noProductFound")}</CommandEmpty>
+                      <CommandGroup>
+                        {categoryProducts.map((product) => (
+                          <CommandItem
+                            key={product.slug}
+                            value={product.slug}
+                            onSelect={(currentValue) => {
+                              const selectedProduct = categoryProducts.find(
+                                (p) => p.slug === currentValue
+                              );
+                              setNewProduct({
+                                ...newProduct,
+                                productSlug: currentValue,
+                                productName: selectedProduct?.name || "",
+                                price: selectedProduct?.price || 0,
+                              });
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                newProduct.productSlug === product.slug
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            <div className="flex flex-col">
+                              <span>{product.name}</span>
+                              <span className="text-sm text-muted-foreground">
+                                {product.articleId} {product.price ? `- ${product.price.toFixed(2)} zł` : ""}
+                              </span>
+                            </div>
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
 
             <div className="grid gap-2">
@@ -429,7 +594,7 @@ export default function NewOrderPage() {
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, warranty: e.target.value })
                 }
-                placeholder="e.g., 2 years"
+                placeholder="e.g., 24 months"
               />
             </div>
 
@@ -490,8 +655,7 @@ export default function NewOrderPage() {
             <Button
               onClick={handleAddProduct}
               disabled={
-                !newProduct.productId ||
-                !newProduct.productDescription ||
+                !newProduct.productSlug ||
                 newProduct.price <= 0
               }
             >
