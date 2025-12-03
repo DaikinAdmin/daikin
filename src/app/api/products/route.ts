@@ -79,6 +79,15 @@ export const GET = async (req: Request) => {
                                       where: { locale, isActive: true },
                                   }
                                 : { where: { isActive: true } },
+                            lookupItem: {
+                                include: {
+                                    lookupItemDetails: locale
+                                        ? {
+                                              where: { locale, isActive: true },
+                                          }
+                                        : { where: { isActive: true } },
+                                },
+                            },
                         },
                     },
                 },
@@ -244,6 +253,7 @@ export const POST = async (req: Request) => {
                                   slug: item.slug,
                                   img: item.img || null,
                                   isActive: item.isActive !== undefined ? item.isActive : true,
+                                  lookupItemId: item.lookupItemId || null,
                                   productItemDetails: item.translations
                                       ? {
                                             create: item.translations.map((t: any) => ({
@@ -275,6 +285,11 @@ export const POST = async (req: Request) => {
                     items: {
                         include: {
                             productItemDetails: true,
+                            lookupItem: {
+                                include: {
+                                    lookupItemDetails: true,
+                                },
+                            },
                         },
                     },
                 },

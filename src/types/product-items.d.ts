@@ -11,5 +11,6 @@ export interface ProductItem {
   slug: string;
   img: string;
   isActive: boolean;
+  lookupItemId?: string | null;
   translations: ProductItemTranslation[];
 }

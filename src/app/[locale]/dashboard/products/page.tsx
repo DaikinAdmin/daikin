@@ -36,6 +36,7 @@ import { FeaturesTab } from "@/components/dashboard/products/features-tab";
 import { SpecificationsTab } from "@/components/dashboard/products/specifications-tab";
 import { ProductImagesTab } from "@/components/dashboard/products/product-images-tab";
 import { ProductItemsTab } from "@/components/dashboard/products/product-items-tab";
+import { ProductItemsWithLookup } from "@/components/dashboard/products/product-items-with-lookup";
 import { ProductItem } from "@/types/product-items";
 
 type ProductTranslation = {
@@ -705,7 +706,7 @@ export default function ProductsManagementPage() {
                 </TabsContent>
 
                 <TabsContent value="items" className="mt-0">
-                  <ProductItemsTab
+                  <ProductItemsWithLookup
                     items={formData.items}
                     onChange={(items) => setFormData({ ...formData, items })}
                     t={t}

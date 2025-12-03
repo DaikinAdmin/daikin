@@ -52,6 +52,15 @@ export const GET = async (
                                       where: { locale, isActive: true },
                                   }
                                 : { where: { isActive: true } },
+                            lookupItem: {
+                                include: {
+                                    lookupItemDetails: locale
+                                        ? {
+                                              where: { locale, isActive: true },
+                                          }
+                                        : { where: { isActive: true } },
+                                },
+                            },
                         },
                     },
                 },
@@ -213,6 +222,11 @@ export const PUT = async (
                     items: {
                         include: {
                             productItemDetails: true,
+                            lookupItem: {
+                                include: {
+                                    lookupItemDetails: true,
+                                },
+                            },
                         },
                     },
                 },

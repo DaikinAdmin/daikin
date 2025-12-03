@@ -213,12 +213,22 @@ export const POST = async (req: Request) => {
                     : undefined,
                   items: productData.items
                     ? {
-                        create: productData.items.map((item) => ({
-                          locale: item.locale,
+                        create: productData.items.map((item: any) => ({
                           title: item.title,
-                          subtitle: item.subtitle || null,
+                          slug: item.slug,
                           img: item.img || null,
                           isActive: item.isActive !== undefined ? item.isActive : true,
+                          lookupItemId: item.lookupItemId || null,
+                          productItemDetails: item.translations
+                            ? {
+                                create: item.translations.map((t: any) => ({
+                                  locale: t.locale,
+                                  title: t.title,
+                                  subtitle: t.subtitle || null,
+                                  isActive: t.isActive !== undefined ? t.isActive : true,
+                                })),
+                              }
+                            : undefined,
                         })),
                       }
                     : undefined,
@@ -272,12 +282,22 @@ export const POST = async (req: Request) => {
                   : undefined,
                 items: productData.items
                   ? {
-                      create: productData.items.map((item) => ({
-                        locale: item.locale,
+                      create: productData.items.map((item: any) => ({
                         title: item.title,
-                        subtitle: item.subtitle || null,
+                        slug: item.slug,
                         img: item.img || null,
                         isActive: item.isActive !== undefined ? item.isActive : true,
+                        lookupItemId: item.lookupItemId || null,
+                        productItemDetails: item.translations
+                          ? {
+                              create: item.translations.map((t: any) => ({
+                                locale: t.locale,
+                                title: t.title,
+                                subtitle: t.subtitle || null,
+                                isActive: t.isActive !== undefined ? t.isActive : true,
+                              })),
+                            }
+                          : undefined,
                       })),
                     }
                   : undefined,

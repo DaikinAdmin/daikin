@@ -1,4 +1,5 @@
 import type { PrismaConfig } from "prisma";
+import "dotenv/config";
 
 // Use DATABASE_URL from environment (Docker Compose provides it)
 const config: PrismaConfig = {

@@ -209,10 +209,8 @@ exports.Prisma.OrderScalarFieldEnum = {
 
 exports.Prisma.OrderProductScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
-  productDescription: 'productDescription',
+  productSlug: 'productSlug',
   warranty: 'warranty',
-  price: 'price',
   quantity: 'quantity',
   totalPrice: 'totalPrice',
   orderId: 'orderId'
@@ -259,7 +257,7 @@ exports.Prisma.CategoryScalarFieldEnum = {
 
 exports.Prisma.CategoryTranslationScalarFieldEnum = {
   id: 'id',
-  categoryId: 'categoryId',
+  categorySlug: 'categorySlug',
   locale: 'locale',
   name: 'name',
   isActive: 'isActive'
@@ -279,7 +277,7 @@ exports.Prisma.ProductScalarFieldEnum = {
 
 exports.Prisma.ProductSpecsScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
+  productSlug: 'productSlug',
   locale: 'locale',
   title: 'title',
   subtitle: 'subtitle'
@@ -287,15 +285,14 @@ exports.Prisma.ProductSpecsScalarFieldEnum = {
 
 exports.Prisma.ProductImagesScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
+  productSlug: 'productSlug',
   color: 'color',
-  imgs: 'imgs',
-  url: 'url'
+  imgs: 'imgs'
 };
 
 exports.Prisma.ProductTranslationScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
+  productSlug: 'productSlug',
   locale: 'locale',
   name: 'name',
   title: 'title',
@@ -304,16 +301,36 @@ exports.Prisma.ProductTranslationScalarFieldEnum = {
 
 exports.Prisma.ProductItemsScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
+  productSlug: 'productSlug',
   title: 'title',
   slug: 'slug',
   img: 'img',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  lookupItemId: 'lookupItemId'
+};
+
+exports.Prisma.ProductItemsLookupScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  img: 'img',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ProductItemsTranslationScalarFieldEnum = {
   id: 'id',
   productItemId: 'productItemId',
+  locale: 'locale',
+  title: 'title',
+  subtitle: 'subtitle',
+  isActive: 'isActive'
+};
+
+exports.Prisma.ProductItemsLookupTranslationScalarFieldEnum = {
+  id: 'id',
+  lookupItemId: 'lookupItemId',
   locale: 'locale',
   title: 'title',
   subtitle: 'subtitle',
@@ -379,7 +396,9 @@ exports.Prisma.ModelName = {
   ProductImages: 'ProductImages',
   ProductTranslation: 'ProductTranslation',
   ProductItems: 'ProductItems',
+  ProductItemsLookup: 'ProductItemsLookup',
   ProductItemsTranslation: 'ProductItemsTranslation',
+  ProductItemsLookupTranslation: 'ProductItemsLookupTranslation',
   Feature: 'Feature',
   FeatureTranslation: 'FeatureTranslation'
 };

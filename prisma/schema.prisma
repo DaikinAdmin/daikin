@@ -132,15 +132,13 @@ model Order {
 
 model OrderProduct {
   id                 String  @id @default(cuid())
-  productId          String
-  productDescription String
+  productSlug        String
   warranty           String?
-  price              Float
   quantity           Int     @default(1)
   totalPrice         Float
   orderId            String
   order              Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  Product            Product @relation(fields: [productId], references: [id])
+  product            Product @relation(fields: [productSlug], references: [slug])
 
   @@map("order_product")
 }
@@ -201,13 +199,12 @@ model Category {
 
 model CategoryTranslation {
   id         String   @id @default(cuid())
-  categoryId String
+  categorySlug String
   locale     String
   name       String
   isActive   Boolean  @default(true)
-  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-
-  @@unique([categoryId, locale])
+  category   Category @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
+  @@unique([categorySlug, locale])
   @@map("category_translation")
 }
 
@@ -233,60 +230,90 @@ model Product {
 }
 model ProductSpecs {
   id        String   @id @default(cuid())
-  productId String
+  productSlug String
   locale    String
   title     String
   subtitle  String?
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-
+  product   Product  @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
   @@map("product_specs")
 }
 model ProductImages {
   id        String   @id @default(cuid())
-  productId String
+  productSlug String
   color     String?
   imgs      String[]
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
 
   @@map("product_images")
 }
 
 model ProductTranslation {
   id          String  @id @default(cuid())
-  productId   String
+  productSlug   String
   locale      String
   name        String
   title       String
   subtitle    String?
-  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product     Product @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
 
-  @@unique([productId, locale])
+  @@unique([productSlug, locale])
   @@map("product_translation")
 }
 
 model ProductItems {
-  id        String   @id @default(cuid())
-  productId String
-  title      String
-  slug       String   @unique
-  img        String?
-  isActive   Boolean  @default(true)
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  id              String   @id @default(cuid())
+  productSlug     String
+  title           String
+  slug            String
+  img             String?
+  isActive        Boolean  @default(true)
+  lookupItemId    String?  // Reference to the lookup template item (null for custom items)
+  product         Product  @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
+  lookupItem      ProductItemsLookup? @relation(fields: [lookupItemId], references: [id], onDelete: SetNull)
   productItemDetails ProductItemsTranslation[]
+  
+  @@unique([productSlug, slug]) // Unique within a product
   @@map("product_items")
 }
 
+model ProductItemsLookup {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  img             String?
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  lookupItemDetails ProductItemsLookupTranslation[]
+  productItems    ProductItems[] // Track which products use this lookup item
+
+  @@map("product_items_lookup")
+}
+
 model ProductItemsTranslation {
-  id          String  @id @default(cuid())
-  productItemId String
-  locale      String
-  title       String
-  subtitle    String?
-  isActive    Boolean @default(true)
-  productItem ProductItems @relation(fields: [productItemId], references: [id], onDelete: Cascade)
+  id              String  @id @default(cuid())
+  productItemId   String
+  locale          String
+  title           String
+  subtitle        String?
+  isActive        Boolean @default(true)
+  productItem     ProductItems @relation(fields: [productItemId], references: [id], onDelete: Cascade)
 
   @@unique([productItemId, locale])
   @@map("product_items_translation")
+}
+
+model ProductItemsLookupTranslation {
+  id              String  @id @default(cuid())
+  lookupItemId    String
+  locale          String
+  title           String
+  subtitle        String?
+  isActive        Boolean @default(true)
+  lookupItem      ProductItemsLookup @relation(fields: [lookupItemId], references: [id], onDelete: Cascade)
+
+  @@unique([lookupItemId, locale])
+  @@map("product_items_lookup_translation")
 }
 
 model Feature {
