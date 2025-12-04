@@ -18,12 +18,17 @@ import { useUserRole } from "@/hooks/use-user-role";
 
 type OrderProduct = {
   id: string;
-  productId: string;
-  productDescription: string;
+  productSlug: string;
   warranty: string | null;
-  price: number;
   quantity: number;
   totalPrice: number;
+  product: {
+    articleId: string;
+    price: number | null;
+    productDetails: Array<{
+      name: string;
+    }>;
+  };
 };
 
 type OrderData = {
@@ -199,7 +204,7 @@ export default function ViewOrderPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>{t("productId")}</TableHead>
-                <TableHead>{t("productDescription")}</TableHead>
+                <TableHead>{t("productName")}</TableHead>
                 <TableHead>{t("warranty")}</TableHead>
                 <TableHead>{t("price")}</TableHead>
                 <TableHead>{t("quantity")}</TableHead>
@@ -209,10 +214,10 @@ export default function ViewOrderPage() {
             <TableBody>
               {order.products.map((product) => (
                 <TableRow key={product.id}>
-                  <TableCell className="font-medium">{product.productId}</TableCell>
-                  <TableCell>{product.productDescription}</TableCell>
+                  <TableCell className="font-medium">{product.product.articleId}</TableCell>
+                  <TableCell>{product.product.productDetails[0]?.name || product.productSlug}</TableCell>
                   <TableCell>{product.warranty || "N/A"}</TableCell>
-                  <TableCell>{product.price.toFixed(2)} zł</TableCell>
+                  <TableCell>{product.product.price?.toFixed(2) || "N/A"} zł</TableCell>
                   <TableCell>{product.quantity}</TableCell>
                   <TableCell className="font-semibold">
                     {product.totalPrice.toFixed(2)} zł

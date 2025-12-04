@@ -23,7 +23,18 @@ export const GET = async (
         const order = await prisma.order.findUnique({
             where: { id },
             include: {
-                products: true,
+                products: {
+                    include: {
+                        product: {
+                            include: {
+                                productDetails: {
+                                    where: { locale: 'en' },
+                                    take: 1,
+                                },
+                            },
+                        },
+                    },
+                },
             },
         });
 
@@ -163,10 +174,8 @@ export const PUT = async (
             await prisma.orderProduct.createMany({
                 data: products.map((product: any) => ({
                     orderId: id,
-                    productId: product.productId,
-                    productDescription: product.productDescription,
+                    productSlug: product.productSlug,
                     warranty: product.warranty || null,
-                    price: product.price,
                     quantity: product.quantity || 1,
                     totalPrice: product.totalPrice,
                 })),
@@ -176,7 +185,20 @@ export const PUT = async (
         // Fetch updated order with products
         const finalOrder = await prisma.order.findUnique({
             where: { id },
-            include: { products: true },
+            include: {
+                products: {
+                    include: {
+                        product: {
+                            include: {
+                                productDetails: {
+                                    where: { locale: 'en' },
+                                    take: 1,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
         });
 
         return NextResponse.json(finalOrder);
