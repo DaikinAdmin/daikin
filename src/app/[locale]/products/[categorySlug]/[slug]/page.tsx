@@ -82,11 +82,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
     );
   }
 
-  const images = product.img || [];
-  const features = product.features || [];
-  const specs = product.specs || [];
-  const items = product.items || [];
-
   return (
     <>
       <Header />
@@ -128,7 +123,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
 
                     {/* Кружки */}
                     <div className="flex gap-2">
-                      {images.map((c) => (
+                      {product.img.map((c) => (
                         <button
                           key={c.color}
                           className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full p-[3px] border-2 border-primary ${
@@ -159,7 +154,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
 
               {/* Характеристики */}
               <div className="hidden md:grid gap-4 text-sm text-main-text md:grid-cols-1 mt-4 md:mt-0">
-                {specs.map((item, i) => (
+                {product.specs.map((item, i) => (
                   <div key={i} className="flex flex-col">
                     <span className="text-subtitle-mobile md:text-subtitle text-amm">{item.title}</span>
                     <span className="text-h3-mobile md:text-h3 text-black">{item.subtitle}</span>
@@ -194,7 +189,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
             </TabsUnderlineList>
             <TabsUnderlineContent value="features">
               <div className="grid grid-cols-1 gap-y-8 pt-4">
-                {features.map((f, i) => (
+                {product.features.map((f, i) => (
                   <div key={i} className="flex flex-row gap-4 items-start">
                     <div
                       className={`w-20 h-20 shrink-0 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200`}
@@ -213,7 +208,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
             </TabsUnderlineContent>
             <TabsUnderlineContent value="specs">
               <div className="grid gap-7 text-sm text-main-text pt-4">
-                {specs.map((item, i) => (
+                {product.specs.map((item, i) => (
                   <div key={i} className="flex flex-col">
                     <span className="text-subtitle-mobile md:text-subtitle text-amm">{item.title}</span>
                     <span className="text-h3-mobile md:text-h3 text-black">{item.subtitle}</span>
@@ -236,7 +231,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         <div className="hidden md:block">
           <span className="text-h1-mobile md:text-h1">{t("featuresTitle")}</span>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-32 mt-6">
-            {features.map((f, i) => (
+            {product.features.map((f, i) => (
               <div key={i} className="flex flex-col gap-4">
                 <div
                   className={`w-14 h-14 md:w-28 md:h-28 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200`}
@@ -253,7 +248,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         {/* Включено */}
         <div className="mt-16">
           <h2 className="text-h1-mobile md:text-h1 mb-6">{t("includesTitle")}</h2>
-          <EmblaCardCarousel items={items} />
+          <EmblaCardCarousel items={product.items} />
         </div>
 
         {/* Опис */}

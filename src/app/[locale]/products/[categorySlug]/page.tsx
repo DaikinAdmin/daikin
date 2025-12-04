@@ -1,27 +1,61 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { use } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ProductTemplatePage from "@/components/product-page";
 import WhyChooseSection from "@/components/why-choose";
 import { Product } from "@/types/product";
+import { use, useEffect, useState } from "react";
 
-export default async function ProductsPage({
+export default function ProductsPage({
   params,
 }: {
   params: Promise<{ locale: string, categorySlug: string }>;
 }) {
-  const { locale, categorySlug } = await params;
+  const { locale, categorySlug } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("airConditioning");
 
-  // Fetch products from API
-  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/products?categorySlug=${categorySlug}&locale=${locale}`, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  });
-  
-  const products = response.ok ? await response.json() as Product[] : [];
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/products?categorySlug=${categorySlug}&locale=${locale}`
+        );
+        
+        if (response.ok) {
+          const data = await response.json();
+          setProducts(data);
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [categorySlug, locale]);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main className="max-w-7xl mx-auto px-2 md:px-4 lg:px-8 py-8">
+          <div className="flex items-center justify-center h-96">
+            <p className="text-xl">Loading...</p>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
 
   return (
