@@ -34,14 +34,14 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
       try {
         setLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/product/${slug}?locale=${locale}`
+          `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/products/${slug}?locale=${locale}`
         );
         
         if (response.ok) {
-          const data = await response.json();
+          const data = await response.json() as Product;
           setProduct(data);
-          if (data.images && data.images.length > 0) {
-            setSelectedColor(data.images[0]);
+          if (data.img && data.img.length > 0) {
+            setSelectedColor(data.img[0]);
           }
         }
       } catch (error) {

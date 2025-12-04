@@ -1,7 +1,7 @@
 import { ProductPageProps } from "@/types/product";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
 
 export default function ProductTemplatePage({
@@ -11,6 +11,7 @@ export default function ProductTemplatePage({
   productsSubtitle,
   products,
   children,
+  categorySlug
 }: ProductPageProps) {
   const t = useTranslations("productPage");
   return (
@@ -90,7 +91,7 @@ export default function ProductTemplatePage({
                       className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
                       variant={"default"}
                     >
-                      <Link href={`/products/air-conditioning/${product.id}`}>
+                      <Link href={`/products/${categorySlug}/${product.slug}`}>
                         {t("getQuote")}
                       </Link>
                     </Button>

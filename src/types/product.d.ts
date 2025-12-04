@@ -19,6 +19,7 @@ export interface ProductPageProps {
   productsTitle: string;
   productsSubtitle: string;
   products: Product[];
+  categorySlug: string
   children?: ReactNode;
 }
 
