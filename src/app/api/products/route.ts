@@ -71,7 +71,9 @@ export const GET = async (req: Request) => {
                                 : { where: { isActive: true } },
                         },
                     },
-                    specs: true,
+                    specs: {    
+                        where: { locale }
+                    },
                     img: true,
                     items: {
                         include: {
