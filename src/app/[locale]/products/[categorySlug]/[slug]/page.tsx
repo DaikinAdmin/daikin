@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { useState } from "react";
+import { use, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import DaikinIcon from "@/components/daikin-icon";
@@ -17,28 +17,75 @@ import {
   TabsUnderlineTrigger,
   TabsUnderlineContent,
 } from "@/components/ui/tabs-underline";
+import { Product } from "@/types/product";
 
-export default function EmuraPage() {
-  const t = useTranslations("product.emura");
+export default function ProductPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = use(params);
   const router = useRouter();
-
+  const t = useTranslations();
   const { getColorLabel } = useColorLabel();
-  const images = t.raw("images") as { color: string; imgs: string[] }[];
-  const specs = t.raw("specs") as { title: string; subtitle: string }[];
-  const features = t.raw("features") as {
-    title: string;
-    icon: string;
-    description: string;
-  }[];
-  const includes = (
-    t.raw("includes") as { title: string; subtitle: string; image: string }[]
-  ).map((item) => ({
-    img: item.image,
-    title: item.title,
-    subtitle: item.subtitle,
-  }));
 
-  const [selectedColor, setSelectedColor] = useState(images[0]);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedColor, setSelectedColor] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/product/${slug}?locale=${locale}`
+        );
+        
+        if (response.ok) {
+          const data = await response.json();
+          setProduct(data);
+          if (data.images && data.images.length > 0) {
+            setSelectedColor(data.images[0]);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [slug, locale]);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main className="max-w-7xl mx-auto px-2 md:px-4 lg:px-8 py-8">
+          <div className="flex items-center justify-center h-96">
+            <p className="text-xl">Loading...</p>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (!product) {
+    return (
+      <>
+        <Header />
+        <main className="max-w-7xl mx-auto px-2 md:px-4 lg:px-8 py-8">
+          <div className="flex items-center justify-center h-96">
+            <p className="text-xl">Product not found</p>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  const images = product.img || [];
+  const features = product.features || [];
+  const specs = product.specs || [];
+  const items = product.items || [];
 
   return (
     <>
@@ -152,12 +199,12 @@ export default function EmuraPage() {
                     <div
                       className={`w-20 h-20 shrink-0 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200`}
                     >
-                      <DaikinIcon name={f.icon} className="w-10 h-10" />
+                      <DaikinIcon name={f.img!} className="w-10 h-10" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-h3-mobile md:text-h3">{f.title}</span>
+                      <span className="text-h3-mobile md:text-h3">{f.featureDetails[0]?.name}</span>
                       <p className="text-subtitle-mobile md:text-subtitle">
-                        {f.description}
+                        {f.featureDetails[0]?.desc}
                       </p>
                     </div>
                   </div>
@@ -194,10 +241,10 @@ export default function EmuraPage() {
                 <div
                   className={`w-14 h-14 md:w-28 md:h-28 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200`}
                 >
-                  <DaikinIcon name={f.icon} />
+                  <DaikinIcon name={f.img!} />
                 </div>
-                <span className="text-h3-mobile md:text-h3 ">{f.title}</span>
-                <p className="text-main-text-mobile md:text-main-text text-amm leading-10">{f.description}</p>
+                <span className="text-h3-mobile md:text-h3 ">{f.featureDetails[0]?.name}</span>
+                <p className="text-main-text-mobile md:text-main-text text-amm leading-10">{f.featureDetails[0]?.desc}</p>
               </div>
             ))}
           </div>
@@ -206,7 +253,7 @@ export default function EmuraPage() {
         {/* Включено */}
         <div className="mt-16">
           <h2 className="text-h1-mobile md:text-h1 mb-6">{t("includesTitle")}</h2>
-          <EmblaCardCarousel items={includes} />
+          <EmblaCardCarousel items={items} />
         </div>
 
         {/* Опис */}

@@ -36,8 +36,8 @@ export const EmblaCardCarousel: React.FC<EmblaCardCarouselProps> = ({
                 src={item.img}
                 className="w-full h-auto object-cover"
               />
-              <span className="text-h2-mobile md:text-h2">{item.title}</span>
-              <span className="text-subtitle-mobile md:text-subtitle">{item.subtitle}</span>
+              <span className="text-h2-mobile md:text-h2">{item.productItemDetails[0].title}</span>
+              <span className="text-subtitle-mobile md:text-subtitle">{item.productItemDetails[0].subtitle}</span>
             </div>
           ))}
         </div>

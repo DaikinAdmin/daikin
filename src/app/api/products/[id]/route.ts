@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
-import { title } from "process";
 
 // GET single product
 export const GET = async (
@@ -17,7 +16,7 @@ export const GET = async (
             const locale = searchParams.get("locale");
 
             const product = await prisma.product.findUnique({
-                where: { id },
+                where: { slug: id },
                 include: {
                     productDetails: locale
                         ? {
@@ -107,6 +106,7 @@ export const PUT = async (
             const {
                 articleId,
                 price,
+                slug,
                 img, // Image URLs from image upload service
                 categorySlug,
                 isActive,
@@ -168,7 +168,7 @@ export const PUT = async (
 
             // Update product
             const product = await prisma.product.update({
-                where: { id },
+                where: { slug },
                 data: {
                     ...(articleId !== undefined && { articleId }),
                     ...(price !== undefined && { price: price ? parseFloat(price) : null }),
@@ -187,7 +187,7 @@ export const PUT = async (
             if (translations && Array.isArray(translations)) {
                 // Delete existing translations and create new ones
                 await prisma.productTranslation.deleteMany({
-                    where: { productId: id },
+                    where: { productSlug: slug },
                 });
 
                 await prisma.productTranslation.createMany({
@@ -204,7 +204,7 @@ export const PUT = async (
 
             // Fetch updated product with all relations
             const updatedProduct = await prisma.product.findUnique({
-                where: { id },
+                where: { slug },
                 include: {
                     productDetails: true,
                     category: {

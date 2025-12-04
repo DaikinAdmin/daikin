@@ -5,33 +5,23 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ProductTemplatePage from "@/components/product-page";
 import WhyChooseSection from "@/components/why-choose";
+import { Product } from "@/types/product";
 
-export default function AirConditioningPage({
+export default async function ProductsPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string, categorySlug: string }>;
 }) {
-  const { locale } = use(params);
+  const { locale, categorySlug } = await params;
   setRequestLocale(locale);
   const t = useTranslations("airConditioning");
-  const allProductsRaw = t.raw("products") as Record<string, any>;
 
-  const products = Object.keys(allProductsRaw)
-  .filter((key) => typeof allProductsRaw[key] === "object" && allProductsRaw[key].name)
-  .map((id) => {
-    const productData = allProductsRaw[id];
-    return {
-      id,
-      image: productData.image,
-      category: productData.category,
-      name: productData.name,
-      description: productData.description,
-      price: productData.price,
-      features: Array.isArray(productData.features)
-        ? (productData.features as { title: string; icon: string }[])
-        : [],
-    };
+  // Fetch products from API
+  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/products?categorySlug=${categorySlug}&locale=${locale}`, {
+    next: { revalidate: 3600 } // Cache for 1 hour
   });
+  
+  const products = response.ok ? await response.json() as Product[] : [];
 
 
   return (
