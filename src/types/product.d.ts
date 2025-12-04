@@ -5,6 +5,8 @@ export interface ProductFeature {
 
 export interface Product {
   id: string;
+  slug?: string;
+  categorySlug: string;
   image: string;
   category: string;
   name: string;

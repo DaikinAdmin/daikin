@@ -1,6 +1,7 @@
+"use client";
+
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { use } from "react";
+import { use, useState, useEffect } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ProductTemplatePage from "@/components/product-page";
@@ -12,27 +13,49 @@ export default function AirConditioningPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = use(params);
-  setRequestLocale(locale);
   const t = useTranslations("airConditioning");
-  const allProductsRaw = t.raw("products") as Record<string, any>;
 
-  const products = Object.keys(allProductsRaw)
-  .filter((key) => typeof allProductsRaw[key] === "object" && allProductsRaw[key].name)
-  .map((id) => {
-    const productData = allProductsRaw[id];
-    return {
-      id,
-      image: productData.image,
-      category: productData.category,
-      name: productData.name,
-      description: productData.description,
-      price: productData.price,
-      features: Array.isArray(productData.features)
-        ? (productData.features as { title: string; icon: string }[])
-        : [],
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          `/api/products?categorySlug=air-purifier&locale=${locale}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const mappedProducts = data.map((product: any) => {
+            const translation = product.productDetails?.[0];
+            const categoryTranslation = product.category?.categoryDetails?.[0];
+            const firstImage = product.img?.[0];
+
+            return {
+              id: product.slug || product.id,
+              image: firstImage?.imgs?.[0],
+              category:
+                categoryTranslation?.name,
+              name: translation?.name,
+              description: translation?.title,
+              price: product.price ? `${product.price} PLN` : "",
+              features:
+                product.features?.slice(0, 3).map((feature: any) => {
+                  const featureTranslation = feature.featureDetails?.[0];
+                  return {
+                    title: featureTranslation?.name || feature.name,
+                    icon: feature.img || "mdi:check-circle",
+                  };
+                }) || [],
+            };
+          });
+          setProducts(mappedProducts);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     };
-  });
-
+    fetchProducts();
+  }, [locale]);
 
   return (
     <>
@@ -45,32 +68,32 @@ export default function AirConditioningPage({
         products={products}
       />
       <WhyChooseSection
-                  title="Dlaczego warto wybrać"
-                  subtitle="Poznaj nasze innowacyjne rozwiązania"
-                  leftItem={{
-                    id: "left1",
-                    image: "/whychoose_1.png",
-                    title: "Efektywność energetyczna",
-                    description:
-                      "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
-                  }}
-                  rightItems={[
-                    {
-                      id: "right1",
-                      image: "/whychoose_2.png",
-                      title: "Inteligentna technologia",
-                      description:
-                        "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
-                    },
-                    {
-                      id: "right2",
-                      image: "/whychoose_3.png",
-                      title: "Niezawodność",
-                      description:
-                        "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
-                    },
-                  ]}
-                />
+        title={t("whyChoose.title")}
+        subtitle={t("whyChoose.subtitle")}
+        leftItem={{
+          id: "left1",
+          image: "/whychoose_1.png",
+          title: t("whyChoose.left1.title"),
+          description:
+            t("whyChoose.left1.description"),
+        }}
+        rightItems={[
+          {
+            id: "right1",
+            image: "/whychoose_2.png",
+            title: t("whyChoose.right1.title"),
+            description:
+              t("whyChoose.right1.description"),
+          },
+          {
+            id: "right2",
+            image: "/whychoose_3.png",
+            title: t("whyChoose.right2.title"),
+            description:
+              t("whyChoose.right2.description"),
+          },
+        ]}
+      />
       <Footer />
     </>
   );

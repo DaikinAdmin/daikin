@@ -1,5 +1,5 @@
 import { ProductPageProps } from "@/types/product";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Button } from "./ui/button";
 import { Link, useRouter } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
@@ -13,6 +13,7 @@ export default function ProductTemplatePage({
   children,
 }: ProductPageProps) {
   const t = useTranslations("productPage");
+  const locale = useLocale();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -86,14 +87,14 @@ export default function ProductTemplatePage({
                     )}
 
                     {/* Actions */}
-                    <Button
-                      className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
-                      variant={"default"}
-                    >
-                      <Link href={`/products/air-conditioning/${product.id}`}>
+                    <Link href={`/products/${product.categorySlug}/${product.slug ?? product.id}`}>
+                      <Button
+                        className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
+                        variant={"default"}
+                      >
                         {t("getQuote")}
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               );
