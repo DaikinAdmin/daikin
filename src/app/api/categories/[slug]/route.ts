@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
+import { Category, CategoryDetail } from "@/types/product";
 
 // GET single category
 export const GET = async (
@@ -107,12 +108,12 @@ export const PUT = async (
             if (translations && Array.isArray(translations)) {
                 // Delete existing translations and create new ones
                 await prisma.categoryTranslation.deleteMany({
-                    where: { categoryId: slug },
+                    where: { categorySlug: slug },
                 });
 
                 await prisma.categoryTranslation.createMany({
-                    data: translations.map((t: any) => ({
-                        categoryId: slug,
+                    data: translations.map((t: CategoryDetail) => ({
+                        categorySlug: slug,
                         locale: t.locale,
                         name: t.name,
                         isActive: t.isActive !== undefined ? t.isActive : true,
@@ -133,73 +134,6 @@ export const PUT = async (
             console.error("Error updating category:", error);
             return NextResponse.json(
                 { error: "Failed to update category" },
-                { status: 500 }
-            );
-        }
-    });
-};
-
-// DELETE category (Admin only)
-export const DELETE = async (
-    req: Request,
-    { params }: { params: Promise<{ slug: string }> }
-) => {
-    const session = await auth.api.getSession({
-        headers: await headers(),
-    });
-
-    if (!session) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    if (session.user.role !== "admin") {
-        return NextResponse.json(
-            { error: "Forbidden - Admin only" },
-            { status: 403 }
-        );
-    }
-
-    return withPrisma(async () => {
-        try {
-            const { slug } = await params;
-
-            const category = await prisma.category.findUnique({
-                where: { slug },
-                include: {
-                    _count: {
-                        select: { products: true },
-                    },
-                },
-            });
-
-            if (!category) {
-                return NextResponse.json(
-                    { error: "Category not found" },
-                    { status: 404 }
-                );
-            }
-
-            // Check if category has products
-            if (category._count.products > 0) {
-                return NextResponse.json(
-                    {
-                        error: "Cannot delete category with associated products. Delete products first or reassign them to another category.",
-                    },
-                    { status: 409 }
-                );
-            }
-
-            await prisma.category.delete({
-                where: { slug },
-            });
-
-            return NextResponse.json({
-                message: "Category deleted successfully",
-            });
-        } catch (error) {
-            console.error("Error deleting category:", error);
-            return NextResponse.json(
-                { error: "Failed to delete category" },
                 { status: 500 }
             );
         }

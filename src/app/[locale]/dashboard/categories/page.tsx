@@ -58,9 +58,7 @@ export default function CategoriesManagementPage() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -114,7 +112,7 @@ export default function CategoriesManagementPage() {
 
   const handleToggleActive = async (category: Category) => {
     try {
-      const response = await fetch(`/api/categories/${category.id}`, {
+      const response = await fetch(`/api/categories/${category.slug}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -201,31 +199,6 @@ export default function CategoriesManagementPage() {
     } catch (error) {
       console.error("Error saving category:", error);
       alert("Failed to save category");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleDelete = async () => {
-    if (!selectedCategory) return;
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch(`/api/categories/${selectedCategory.id}`, {
-        method: "DELETE",
-      });
-
-      if (response.ok) {
-        setIsDeleteDialogOpen(false);
-        setSelectedCategory(null);
-        await fetchCategories(searchQuery);
-      } else {
-        const error = await response.json();
-        alert(error.error || "Failed to delete category");
-      }
-    } catch (error) {
-      console.error("Error deleting category:", error);
-      alert("Failed to delete category");
     } finally {
       setIsSubmitting(false);
     }
@@ -328,16 +301,6 @@ export default function CategoriesManagementPage() {
                             onClick={() => handleOpenDialog(category)}
                           >
                             <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="destructive"
-                            size="sm"
-                            onClick={() => {
-                              setSelectedCategory(category);
-                              setIsDeleteDialogOpen(true);
-                            }}
-                          >
-                            <Trash2 className="h-4 w-4" />
                           </Button>
                         </ButtonGroup>
                       </div>
@@ -464,34 +427,6 @@ export default function CategoriesManagementPage() {
               </Button>
             </DialogFooter>
           </form>
-        </DialogContent>
-      </Dialog>
-
-      {/* Delete Confirmation Dialog */}
-      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{t("areYouSure")}</DialogTitle>
-            <DialogDescription>
-              {t("deleteConfirmation")}
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setIsDeleteDialogOpen(false)}
-              disabled={isSubmitting}
-            >
-              {t("cancel")}
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={handleDelete}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? t("deleting") : t("deleteCategory")}
-            </Button>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
