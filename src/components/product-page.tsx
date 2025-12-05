@@ -11,7 +11,7 @@ export default function ProductTemplatePage({
   productsSubtitle,
   products,
   children,
-  categorySlug
+  categorySlug,
 }: ProductPageProps) {
   const t = useTranslations("productPage");
   const locale = useLocale();
@@ -31,7 +31,9 @@ export default function ProductTemplatePage({
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-h1-mobile md:text-h1 text-black mb-2">{productsTitle}</h2>
+            <h2 className="text-h1-mobile md:text-h1 text-black mb-2">
+              {productsTitle}
+            </h2>
             <p className="text-subtitle-mobile md:text-subtitle text-amm max-w-3xl">
               {productsSubtitle}
             </p>
@@ -63,26 +65,33 @@ export default function ProductTemplatePage({
 
                   {/* Product Details */}
                   <div className="py-6 flex flex-col flex-grow">
-                    <h3 className="text-h2-mobile md:text-h2 text-black mb-3">{product.productDetails[0].name}</h3>
+                    <h3 className="text-h2-mobile md:text-h2 text-black mb-3">
+                      {product.productDetails[0].name}
+                    </h3>
                     <p className="text-main-text text-amm mb-4">
                       {product.productDetails[0].title}
                     </p>
-                    {product.features && product.features.length > 0 && (
+                    {product.features?.filter((f) => f.preview).length > 0 && (
                       <div className="mb-4">
                         <h4 className="text-black text-h3-mobile md:text-h3 mb-2">
                           {t("features")}
                         </h4>
                         <div className="grid grid-cols-1 gap-4">
-                          {product.features.map((f, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                              <div className="flex items-center justify-center">
-                                <Icon icon={f.img!} className="text-primary text-2xl" />
+                          {product.features
+                            .filter((f) => f.preview)
+                            .map((f, i) => (
+                              <div key={i} className="flex items-center gap-2">
+                                <div className="flex items-center justify-center">
+                                  <Icon
+                                    icon={f.img!}
+                                    className="text-primary text-2xl"
+                                  />
+                                </div>
+                                <span className="text-main-text text-amm text-sm">
+                                  {f.featureDetails[0].name}
+                                </span>
                               </div>
-                              <span className="text-main-text text-amm text-sm">
-                                {f.featureDetails[0].name}
-                              </span>
-                            </div>
-                          ))}
+                            ))}
                         </div>
                       </div>
                     )}
