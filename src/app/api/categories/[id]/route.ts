@@ -107,7 +107,7 @@ export const PUT = async (
             if (translations && Array.isArray(translations)) {
                 // Delete existing translations and create new ones
                 await prisma.categoryTranslation.deleteMany({
-                    where: { categoryId: id },
+                    where: { categoryId: slug },
                 });
 
                 await prisma.categoryTranslation.createMany({
