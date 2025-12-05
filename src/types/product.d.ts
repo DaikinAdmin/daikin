@@ -172,3 +172,18 @@ interface ProductDetail {
   title: string;
   subtitle: string;
 }
+
+type CategoryDetail = {
+  id: string;
+  categorySlug: string;
+  locale: string;
+  name: string;
+  isActive: boolean;
+};
+
+type Category = {
+  id: string;
+  slug: string;
+  isActive: boolean;
+  categoryDetails: CategoryDetail[];
+};

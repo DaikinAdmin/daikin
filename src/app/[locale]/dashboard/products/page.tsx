@@ -177,7 +177,7 @@ export default function ProductsManagementPage() {
 
   const fetchProducts = async (search = "", categoryFilter = "") => {
     try {
-      let url = "/api/products?includeInactive=true";
+      let url = "/api/products?includeInactive=true&locale=pl";
       if (search) url += `&search=${encodeURIComponent(search)}`;
       if (categoryFilter) url += `&categoryId=${categoryFilter}`;
       
