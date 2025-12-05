@@ -29,8 +29,14 @@ function getInitials(name: string | null | undefined): string {
   return (words[0].charAt(0) + words[1].charAt(0)).toUpperCase();
 }
 
-export default function Header() {
-  const locale = useLocale();
+type HeaderProps = {
+  currentCategorySlug?: string;
+  currentProductSlug?: string;
+  currentLocale?: string;
+};
+
+const Header: React.FC<HeaderProps> = (props) => {
+  const locale = props.currentLocale ?? useLocale();
   const router = useRouter();
   const t = useTranslations('header');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -428,3 +434,5 @@ export default function Header() {
     </>
   );
 }
+
+export default Header;

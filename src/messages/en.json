@@ -128,377 +128,6 @@
       "dashboard": "Access Dashboard"
     }
   },
-  "products": {
-    "daikinFit": {
-      "name": "Daikin Fit Heat Pump",
-      "category": "Heat Pump Systems",
-      "description": "Compact design with superior efficiency and quiet operation. Perfect for residential applications with limited space.",
-      "features": [
-        "19 SEER",
-        "Quiet Operation",
-        "Compact Design",
-        "R-32 Refrigerant"
-      ],
-      "price": "Starting from $3,500"
-    },
-    "vrv": {
-      "name": "VRV X Series",
-      "category": "Commercial HVAC",
-      "description": "Variable Refrigerant Volume system offering ultimate flexibility and energy efficiency for commercial buildings.",
-      "features": [
-        "Heat Recovery",
-        "Individual Control",
-        "Energy Efficient",
-        "Smart Controls"
-      ],
-      "price": "Contact for pricing"
-    },
-    "thermostat": {
-      "name": "Daikin One+ Smart Thermostat",
-      "category": "Smart Controls",
-      "description": "Advanced smart thermostat with WiFi connectivity and intelligent comfort management.",
-      "features": [
-        "WiFi Enabled",
-        "Smart Scheduling",
-        "Energy Reports",
-        "Voice Control"
-      ],
-      "price": "$299"
-    },
-    "aurora": {
-      "name": "Daikin Aurora Series",
-      "category": "Ductless Systems",
-      "description": "Sleek wall-mounted units with advanced filtration and quiet operation for residential comfort.",
-      "features": [
-        "Inverter Technology",
-        "Multi-Zone",
-        "Advanced Filtration",
-        "Remote Control"
-      ],
-      "price": "Starting from $2,800"
-    },
-    "rebel": {
-      "name": "Daikin Rebel Series",
-      "category": "Packaged Units",
-      "description": "Robust packaged units designed for commercial applications with excellent reliability.",
-      "features": [
-        "High Efficiency",
-        "Durable Design",
-        "Easy Maintenance",
-        "Flexible Installation"
-      ],
-      "price": "Starting from $4,200"
-    }
-  },
-  "airConditioning": {
-    "hero": {
-      "title": "Air Conditioning Systems",
-      "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
-    },
-    "products": {
-      "title": "Our Air Conditioning Range",
-      "subtitle": "Discover premium cooling solutions for every space",
-      "aurora": {
-        "name": "Daikin Aurora Series",
-        "category": "Wall-Mounted Air Conditioning",
-        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--29a1876a-44ae-4780-96f4-de6733b763f1/00-cold-packshot-ftxz-n-1-1-front.jpg?preferwebp=true&quality=90&width=751",
-        "description": "Elegant and stylish wall-mounted unit with advanced filtration and whisper-quiet operation. Ideal for bedrooms and living rooms.",
-        "features": [
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:ai-editing"
-          },
-          {
-            "title": "Advanced Filtration",
-            "icon": "hugeicons:eco-power"
-          },
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:approximately-equal"
-          }
-        ],
-        "price": "From 2800 PLN"
-      },
-      "emura": {
-        "name": "Daikin Emura",
-        "category": "Premium Wall-Mounted",
-        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Award-winning design meets cutting-edge technology. The Emura series offers unmatched style and performance for modern homes.",
-        "features": [
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:ai-editing"
-          },
-          {
-            "title": "Advanced Filtration",
-            "icon": "hugeicons:eco-power"
-          },
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:approximately-equal"
-          }
-        ],
-        "price": "From 3200 PLN"
-      },
-      "perfera": {
-        "name": "Daikin Perfera",
-        "category": "High-Performance AC",
-        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--1aae3569-f5c8-4fd5-a212-2b57abbba0e2/00-packshot-ftxm-a-1-1-front-cold.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Ultimate performance with intelligent comfort features. Ideal for larger rooms and demanding applications.",
-        "features": [
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:ai-editing"
-          },
-          {
-            "title": "Advanced Filtration",
-            "icon": "hugeicons:eco-power"
-          },
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:approximately-equal"
-          }
-        ],
-        "price": "Starting from $3,400"
-      }
-    },
-    "features": "Key Features",
-    "learnMore": "Learn More",
-    "getQuote": "Get Quote",
-    "whyChoose": {
-      "title": "Why Choose Daikin Air Conditioning?",
-      "efficiency": {
-        "title": "Superior Efficiency",
-        "description": "Industry-leading SEER ratings that reduce energy costs while keeping you comfortable year-round."
-      },
-      "comfort": {
-        "title": "Perfect Comfort",
-        "description": "Advanced climate control technology ensures consistent temperature and humidity levels throughout your space."
-      },
-      "air": {
-        "title": "Clean Air",
-        "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality."
-      }
-    }
-  },
-  "heatPumps": {
-    "hero": {
-      "title": "Heat Pump Systems",
-      "subtitle": "Sustainable heating and cooling with Daikin's advanced heat pump technology. Save energy while enjoying year-round comfort."
-    },
-    "products": {
-      "title": "Our Heat Pump Solutions",
-      "subtitle": "Eco-friendly systems for efficient heating and cooling",
-      "daikinFit": {
-        "name": "Daikin Fit",
-        "category": "Compact Heat Pump",
-        "description": "Ultra-compact design that fits almost anywhere. Ideal for homes with limited outdoor space without compromising performance.",
-        "features": [
-          "19 SEER / 10 HSPF",
-          "Compact Design",
-          "Low Sound Levels",
-          "R-32 Refrigerant",
-          "10-Year Warranty"
-        ],
-        "price": "Starting from $3,500"
-      },
-      "altherma": {
-        "name": "Daikin Altherma 3",
-        "category": "Air-to-Water Heat Pump",
-        "description": "Complete heating and hot water solution for residential applications. Works efficiently even in extreme cold conditions.",
-        "features": [
-          "A+++ Energy Rating",
-          "Works to -28°C",
-          "Domestic Hot Water",
-          "Smart Grid Ready",
-          "Quiet Operation"
-        ],
-        "price": "Starting from $8,500"
-      },
-      "althermaH": {
-        "name": "Daikin Altherma 3 H HT",
-        "category": "High-Temperature Heat Pump",
-        "description": "High-temperature heat pump perfect for retrofit applications. Delivers water up to 70°C for radiator systems.",
-        "features": [
-          "High Temperature Output",
-          "Retrofit Compatible",
-          "R-32 Technology",
-          "Heating & Cooling",
-          "Weather Dependent Control"
-        ],
-        "price": "Starting from $9,800"
-      }
-    },
-    "features": "Key Features",
-    "learnMore": "Learn More",
-    "getQuote": "Get Quote",
-    "benefits": {
-      "title": "Benefits of Heat Pump Systems",
-      "eco": {
-        "title": "Eco-Friendly",
-        "description": "Reduce your carbon footprint with renewable energy technology that extracts heat from the air."
-      },
-      "efficiency": {
-        "title": "Energy Savings",
-        "description": "Up to 50% energy savings compared to traditional heating systems, lowering your utility bills significantly."
-      },
-      "versatile": {
-        "title": "Heating & Cooling",
-        "description": "One system for year-round comfort. Heat in winter, cool in summer with the same efficient unit."
-      },
-      "reliable": {
-        "title": "Reliable Performance",
-        "description": "Proven technology that works efficiently even in extreme temperatures, ensuring comfort all year."
-      }
-    }
-  },
-  "airPurifier": {
-    "hero": {
-      "title": "Air Purifiers",
-      "subtitle": "Breathe cleaner, healthier air with Daikin's advanced air purification technology. Remove pollutants, allergens, and odors effectively."
-    },
-    "products": {
-      "title": "Our Air Purifier Range",
-      "subtitle": "Advanced filtration for healthier indoor environments",
-      "mc55w": {
-        "name": "Daikin MC55W",
-        "category": "Compact Air Purifier",
-        "description": "Perfect for small to medium rooms. Combines HEPA filtration with Streamer technology for comprehensive air purification.",
-        "features": [
-          "HEPA Filter",
-          "Streamer Technology",
-          "Covers 41m²",
-          "Compact Design",
-          "Low Noise"
-        ],
-        "price": "$399"
-      },
-      "mc70l": {
-        "name": "Daikin MC70L",
-        "category": "Large Room Purifier",
-        "description": "Powerful air purifier designed for larger spaces. Removes 99.97% of airborne particles with advanced multi-stage filtration.",
-        "features": [
-          "True HEPA Filter",
-          "Active Plasma Ion",
-          "Covers 70m²",
-          "Auto Mode",
-          "Air Quality Sensor"
-        ],
-        "price": "$599"
-      },
-      "mcz70w": {
-        "name": "Daikin MCZ70W",
-        "category": "Humidifying Air Purifier",
-        "description": "Ultimate air treatment system that purifies and humidifies. Maintains optimal humidity while removing allergens and pollutants.",
-        "features": [
-          "Humidifying Function",
-          "Streamer + HEPA",
-          "Covers 70m²",
-          "Smart Sensors",
-          "App Control"
-        ],
-        "price": "$799"
-      }
-    },
-    "features": "Key Features",
-    "learnMore": "Learn More",
-    "getQuote": "Get Quote",
-    "technology": {
-      "title": "Advanced Purification Technology",
-      "streamer": {
-        "title": "Streamer Technology",
-        "description": "Daikin's proprietary Streamer technology decomposes allergens, viruses, and bacteria at molecular level."
-      },
-      "hepa": {
-        "title": "HEPA Filtration",
-        "description": "Captures 99.97% of particles as small as 0.3 microns including dust, pollen, and pet dander."
-      },
-      "humidifying": {
-        "title": "Humidifying Function",
-        "description": "Maintains optimal humidity levels for improved comfort and respiratory health throughout the year."
-      }
-    }
-  },
-  "otherProducts": {
-    "hero": {
-      "title": "Other Products & Solutions",
-      "subtitle": "Complete your HVAC system with Daikin's smart controls, commercial solutions, and accessories."
-    },
-    "products": {
-      "title": "Additional Products & Services",
-      "subtitle": "Enhance your comfort with our complete range",
-      "thermostat": {
-        "name": "Daikin One+ Smart Thermostat",
-        "category": "Smart Control",
-        "description": "Next-generation smart thermostat with intuitive interface and advanced features. Control your comfort from anywhere.",
-        "features": [
-          "Wi-Fi Enabled",
-          "Smart Scheduling",
-          "Geofencing",
-          "Voice Control",
-          "Energy Reports"
-        ],
-        "price": "$299"
-      },
-      "vrv": {
-        "name": "VRV X Series",
-        "category": "Commercial HVAC",
-        "description": "Industry-leading Variable Refrigerant Volume system for commercial buildings. Maximum flexibility and efficiency.",
-        "features": [
-          "Heat Recovery",
-          "Individual Zone Control",
-          "Energy Efficiency",
-          "Modular Design",
-          "Easy Installation"
-        ],
-        "price": "Contact for pricing"
-      },
-      "rebel": {
-        "name": "Daikin Rebel Series",
-        "category": "Light Commercial",
-        "description": "Robust packaged rooftop units designed for light commercial applications with outstanding reliability and performance.",
-        "features": [
-          "Up to 16 SEER",
-          "Durable Construction",
-          "Easy Service Access",
-          "Flexible Options",
-          "10-Year Warranty"
-        ],
-        "price": "Starting from $4,200"
-      },
-      "accessories": {
-        "name": "Daikin Accessories",
-        "category": "Add-ons & Parts",
-        "description": "Complete range of accessories including filters, remote controls, mounting brackets, and installation kits.",
-        "features": [
-          "Genuine Parts",
-          "Easy Installation",
-          "Wide Compatibility",
-          "Quality Assured",
-          "Expert Support"
-        ],
-        "price": "Varies by product"
-      }
-    },
-    "features": "Key Features",
-    "learnMore": "Learn More",
-    "getQuote": "Get Quote",
-    "solutions": {
-      "title": "Complete HVAC Solutions",
-      "smart": {
-        "title": "Smart Controls",
-        "description": "Intelligent thermostats and controllers that optimize comfort while reducing energy consumption."
-      },
-      "commercial": {
-        "title": "Commercial Systems",
-        "description": "Scalable VRV and packaged solutions designed for commercial buildings of all sizes."
-      },
-      "accessories": {
-        "title": "Accessories & Parts",
-        "description": "Genuine Daikin parts and accessories to maintain peak performance and extend system life."
-      }
-    }
-  },
   "dashboard": {
     "title": "AMM Salon Dashboard",
     "welcome": "Welcome back, {name}!",
@@ -1554,11 +1183,6 @@
       "alt": "Daikin HVAC System Installation"
     }
   },
-  "productPage": {
-    "features": "Key Features",
-    "learnMore": "Learn More",
-    "getQuote": "Get Quote"
-  },
   "whyChoose": {
     "cta": {
       "title": "Ready to Perfect Your Air?",
@@ -1568,112 +1192,96 @@
     }
   },
   "product": {
-    "emura": {
-      "name": "Emura",
-      "specs": [
-        {
-          "title": "Sound pressure",
-          "subtitle": "up to 19 dBA"
-        },
-        {
-          "title": "Cooling & heating energy label",
-          "subtitle": "top energy efficiency A+++"
-        },
-        {
-          "title": "Heating & cooling capacity (kW)",
-          "subtitle": "up to 5.8 / 5.0"
-        },
-        {
-          "title": "Unit dimensions",
-          "subtitle": "305 x 900 x 212 mm"
-        }
-      ],
-      "description": {
-        "title": "Why choose Daikin Emura?",
-        "subtitle": "Daikin Emura combines elegant design with advanced technology, delivering exceptional comfort and outstanding performance. The purification system removes fine particles and odors from the air while intelligent sensors adapt operation to room conditions, directing a gentle, even airflow without uncomfortable drafts. The design also enables faster heating when needed and whisper-quiet operation keeps the unit almost unnoticeable. Seasonal efficiency provides realistic information about air-to-air heat pump performance across the full heating or cooling season—rated from A+++ to D. Daikin Emura achieves the highest energy efficiency label."
+    "whyChooseTitle": "Why Choose ",
+    "getQuote": "Get a Quote",
+    "keyFeatures": "Key Features",
+    "itemsTitle": "What's Included",
+    "tabs": {
+      "features": "Features",
+      "specs": "Specifications",
+      "description": "Description"
+    },
+    "backButton": "Back"
+  },
+    "productPage": {
+    "getQuote": "Get a Quote",
+    "features": "Key Features",
+    "air-conditioning": {
+      "hero": {
+        "title": "Air Conditioning Systems",
+        "subtitle": "Experience perfect comfort with Daikin's innovative air conditioning solutions. Energy-efficient, reliable, and designed for your home."
       },
-      "featuresTitle": "Product Features",
-      "features": [
-        {
-          "title": "Air Quality",
-          "icon": "streamer",
-          "description": "Daikin's patented air purification technology captures viruses, allergens (such as pollen and fungal allergens) and unpleasant odors, breaking them down into harmless atoms and water molecules. The multi-stage purification system combines electrostatic, photocatalytic and streamer processes to remove ultrafine particles and volatile organic compounds that ordinary filters often miss. Continuous operation maintains a healthier indoor environment, reducing allergy symptoms and persistent smells while requiring only periodic maintenance to keep peak performance."
+      "products": {
+        "title": "Our Air Conditioning Range",
+        "subtitle": "Discover premium cooling solutions for every space"
+      },
+      "whyChoose": {
+        "title": "Why Choose Daikin Air Conditioning?",
+        "subtitle": "We lead the industry with innovative technology and exceptional performance",
+        "left1": {
+          "title": "Energy Efficiency",
+          "description": "Industry-leading SEER ratings and innovative inverter technology for maximum energy savings"
         },
-        {
-          "title": "Intelligent Temperature Sensor",
-          "icon": "grid_eye_sensor",
-          "description": "A high-resolution matrix sensor continuously scans the room for occupants and temperature variations, then intelligently directs airflow away from people or toward colder/warmer zones to even out comfort. It adapts fan speed and louver position in real time, minimizing drafts while keeping the target temperature stable, and works together with adaptive algorithms to reduce energy use over time. The result is more uniform comfort across the space with fewer manual adjustments required from users."
+        "right1": {
+          "title": "Smart Technology",
+          "description": "Advanced controls and IoT integration for intelligent comfort management."
         },
-        {
-          "title": "Heat Boost",
-          "icon": "heat_boost",
-          "description": "Heat Boost accelerates warm-up by optimizing compressor output, fan control and refrigerant flow so rooms reach the set temperature up to 14% faster than conventional units. This mode intelligently prioritizes rapid comfort while balancing efficiency, temporarily increasing power only as long as needed and reverting to energy‑saving operation once the target is reached. It's ideal for cold mornings or when quick recovery is required after doors open, delivering fast warmth without sacrificing long‑term reliability."
-        },
-        {
-          "title": "Coanda Effect",
-          "icon": "coanda_effect_cooling",
-          "description": "Carefully engineered louvres exploit the Coanda effect to guide and extend the airflow along ceilings and walls, achieving greater reach and more even temperature distribution even in large rooms. During heating the flow hugs the ceiling to deliver warm air deep into the room, while in cooling it is adjusted to avoid uncomfortable drafts around occupants. The result is efficient room coverage, improved comfort with fewer hot/cold spots, and quieter operation due to smoother airflow paths."
+        "right2": {
+          "title": "Reliability",
+          "description": "Proven performance with comprehensive warranties and exceptional build quality."
         }
-      ],
-      "images": [
-        {
-          "color": "#D9D9D9",
-          "imgs": [
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--ac3846f8-9063-4c12-8eaa-2d71b0e822f3/01-cold-packshot-ftxj-as-1-1-left.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9273885f-631b-4179-903c-045eb4fa5fbb/02-cold-packshot-ftxj-as-1-1-right.jpg?quality=90&width=751&preferwebp=true"
-          ]
+      }
+    },
+    "heat-pumps": {
+      "hero": {
+        "title": "Heat Pump Systems",
+        "subtitle": "Experience perfect comfort with Daikin's innovative heat pump solutions. Energy-efficient, reliable, and designed for your home."
+      },
+      "products": {
+        "title": "Our Heat Pump Range",
+        "subtitle": "Discover premium heating and cooling solutions for every space"
+      },
+      "whyChoose": {
+        "title": "Why Choose Daikin Heat Pumps?",
+        "subtitle": "We lead the industry with innovative technology and exceptional performance",
+        "left1": {
+          "title": "Energy Efficiency",
+          "description": "Industry-leading SEER ratings and innovative inverter technology for maximum energy savings"
         },
-        {
-          "color": "#000000",
-          "imgs": [
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--e2851bf8-980e-46f8-b1ae-a54f3e11b5e3/00-packshot-ftxj-ab-1-1-front.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--14362693-f252-49b9-b033-728c97892fa6/01-packshot-ftxj-ab-1-1-left.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--4f41b6ef-2716-497a-a517-9b384b4a1521/02-packshot-ftxj-ab-1-1-right.jpg?quality=90&width=751&preferwebp=true"
-          ]
+        "right1": {
+          "title": "Smart Technology",
+          "description": "Advanced controls and IoT integration for intelligent comfort management."
         },
-        {
-          "color": "#FFFFFF",
-          "imgs": [
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3b5c980f-34eb-4c3d-a96b-f2be7c37c15f/00-cold-packshot-ftxj-aw-1-1-front.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3f336b21-f641-4e9d-a37f-008365cb5bab/01-cold-packshot-ftxj-aw-1-1-left.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d58f16cf-e356-47f5-928d-972fa09685dd/02-cold-packshot-ftxj-aw-1-1-right.jpg?quality=90&width=751&preferwebp=true"
-          ]
+        "right2": {
+          "title": "Reliability",
+          "description": "Proven performance with comprehensive warranties and exceptional build quality."
         }
-      ],
-      "includesTitle": "What's Included",
-      "includes": [
-        {
-          "title": "Indoor Unit",
-          "subtitle": "Iconically designed wall-mounted unit",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+      }
+    },
+    "air-purifier": {
+      "hero": {
+        "title": "Air Purifier Systems",
+        "subtitle": "Experience perfect comfort with Daikin's innovative air purifier solutions. Energy-efficient, reliable, and designed for your home."
+      },
+      "products": {
+        "title": "Our Air Purifier Range",
+        "subtitle": "Discover premium air purification solutions for every space"
+      },
+      "whyChoose": {
+        "title": "Why Choose Daikin Air Purifiers?",
+        "subtitle": "We lead the industry with innovative technology and exceptional performance",
+        "left1": {
+          "title": "Energy Efficiency",
+          "description": "Industry-leading SEER ratings and innovative inverter technology for maximum energy savings"
         },
-        {
-          "title": "Outdoor Unit",
-          "subtitle": "Fits your roof, wall or garden for maximum versatility",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        "right1": {
+          "title": "Smart Technology",
+          "description": "Advanced controls and IoT integration for intelligent comfort management."
         },
-        {
-          "title": "User Interface",
-          "subtitle": "Intuitive remote controller gives you full control",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
-        },
-        {
-          "title": "Service",
-          "subtitle": "Peace of mind with warranty and service package",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
-        },
-        {
-          "title": "Onecta App",
-          "subtitle": "Always in control wherever you are",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        "right2": {
+          "title": "Reliability",
+          "description": "Proven performance with comprehensive warranties and exceptional build quality."
         }
-      ],
-      "getQuote": "Get Quote",
-      "tabs": {
-        "features": "Features",
-        "specs": "Specifications",
-        "description": "Description"
       }
     }
   },
@@ -1691,7 +1299,7 @@
       "label": "Red"
     },
     "blue": {
-      "hex": "#0000ff", 
+      "hex": "#0000ff",
       "label": "Blue"
     },
     "gray": {

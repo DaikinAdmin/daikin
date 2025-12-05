@@ -10,10 +10,10 @@ import WhyChooseSection from "@/components/why-choose";
 export default function AirConditioningPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string, categorySlug: string }>;
 }) {
-  const { locale } = use(params);
-  const t = useTranslations("airConditioning");
+  const { locale, categorySlug } = use(params);
+  const t = useTranslations("productPage");
 
   const [products, setProducts] = useState<any[]>([]);
 
@@ -21,7 +21,7 @@ export default function AirConditioningPage({
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `/api/products?categorySlug=air-purifier&locale=${locale}`
+          `/api/products?categorySlug=${categorySlug}&locale=${locale}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -31,10 +31,12 @@ export default function AirConditioningPage({
             const firstImage = product.img?.[0];
 
             return {
-              id: product.slug || product.id,
+              id: product.id,
+              slug: product.slug,
               image: firstImage?.imgs?.[0],
               category:
                 categoryTranslation?.name,
+              categorySlug: product.category?.slug,
               name: translation?.name,
               description: translation?.title,
               price: product.price ? `${product.price} PLN` : "",
@@ -61,36 +63,36 @@ export default function AirConditioningPage({
     <>
       <Header />
       <ProductTemplatePage
-        heroTitle={t("hero.title")}
-        heroSubtitle={t("hero.subtitle")}
-        productsTitle={t("products.title")}
-        productsSubtitle={t("products.subtitle")}
+        heroTitle={t(`${categorySlug}.hero.title`)}
+        heroSubtitle={t(`${categorySlug}.hero.subtitle`)}
+        productsTitle={t(`${categorySlug}.products.title`)}
+        productsSubtitle={t(`${categorySlug}.products.subtitle`)}
         products={products}
       />
       <WhyChooseSection
-        title={t("whyChoose.title")}
-        subtitle={t("whyChoose.subtitle")}
+        title={t(`${categorySlug}.whyChoose.title`)}
+        subtitle={t(`${categorySlug}.whyChoose.subtitle`)}
         leftItem={{
           id: "left1",
           image: "/whychoose_1.png",
-          title: t("whyChoose.left1.title"),
+          title: t(`${categorySlug}.whyChoose.left1.title`),
           description:
-            t("whyChoose.left1.description"),
+            t(`${categorySlug}.whyChoose.left1.description`),
         }}
         rightItems={[
           {
             id: "right1",
             image: "/whychoose_2.png",
-            title: t("whyChoose.right1.title"),
+            title: t(`${categorySlug}.whyChoose.right1.title`),
             description:
-              t("whyChoose.right1.description"),
+              t(`${categorySlug}.whyChoose.right1.description`),
           },
           {
             id: "right2",
             image: "/whychoose_3.png",
-            title: t("whyChoose.right2.title"),
+            title: t(`${categorySlug}.whyChoose.right2.title`),
             description:
-              t("whyChoose.right2.description"),
+              t(`${categorySlug}.whyChoose.right2.description`),
           },
         ]}
       />

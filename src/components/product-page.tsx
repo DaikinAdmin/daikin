@@ -87,7 +87,7 @@ export default function ProductTemplatePage({
                     )}
 
                     {/* Actions */}
-                    <Link href={`/products/${product.categorySlug}/${product.slug ?? product.id}`}>
+                    <Link href={`/products/${product.categorySlug}/${product.id}`}>
                       <Button
                         className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
                         variant={"default"}
