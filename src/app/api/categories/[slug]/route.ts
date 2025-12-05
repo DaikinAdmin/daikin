@@ -7,16 +7,16 @@ import { withPrisma } from "@/db/utils";
 // GET single category
 export const GET = async (
     req: Request,
-    { params }: { params: Promise<{ id: string }> }
+    { params }: { params: Promise<{ slug: string }> }
 ) => {
     return withPrisma(async () => {
         try {
-            const { id } = await params;
+            const { slug } = await params;
             const { searchParams } = new URL(req.url);
             const locale = searchParams.get("locale");
 
             const category = await prisma.category.findUnique({
-                where: { id },
+                where: { slug },
                 include: {
                     categoryDetails: locale
                         ? {
@@ -57,7 +57,7 @@ export const GET = async (
 // PUT update category (Admin only)
 export const PUT = async (
     req: Request,
-    { params }: { params: Promise<{ id: string }> }
+    { params }: { params: Promise<{ slug: string }> }
 ) => {
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -73,29 +73,29 @@ export const PUT = async (
 
     return withPrisma(async () => {
         try {
-            const { id } = await params;
-            const { name, slug, isActive, translations } = await req.json();
+            const { slug } = await params;
+            const { name, isActive, translations } = await req.json();
 
             // Check if slug is being changed and if it already exists
-            if (slug) {
-                const existingCategory = await prisma.category.findFirst({
-                    where: {
-                        slug,
-                        NOT: { id },
-                    },
-                });
+            // if (slug) {
+            //     const existingCategory = await prisma.category.findFirst({
+            //         where: {
+            //             id,
+            //             NOT: { slug },
+            //         },
+            //     });
 
-                if (existingCategory) {
-                    return NextResponse.json(
-                        { error: "Category with this slug already exists" },
-                        { status: 409 }
-                    );
-                }
-            }
+            //     if (existingCategory) {
+            //         return NextResponse.json(
+            //             { error: "Category with this slug already exists" },
+            //             { status: 409 }
+            //         );
+            //     }
+            // }
 
             // Update category
             const category = await prisma.category.update({
-                where: { id },
+                where: { slug },
                 data: {
                     ...(name !== undefined && { name }),
                     ...(slug !== undefined && { slug }),
@@ -112,7 +112,7 @@ export const PUT = async (
 
                 await prisma.categoryTranslation.createMany({
                     data: translations.map((t: any) => ({
-                        categoryId: id,
+                        categoryId: slug,
                         locale: t.locale,
                         name: t.name,
                         isActive: t.isActive !== undefined ? t.isActive : true,
@@ -122,7 +122,7 @@ export const PUT = async (
 
             // Fetch updated category with translations
             const updatedCategory = await prisma.category.findUnique({
-                where: { id },
+                where: { slug },
                 include: {
                     categoryDetails: true,
                 },
@@ -142,7 +142,7 @@ export const PUT = async (
 // DELETE category (Admin only)
 export const DELETE = async (
     req: Request,
-    { params }: { params: Promise<{ id: string }> }
+    { params }: { params: Promise<{ slug: string }> }
 ) => {
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -161,10 +161,10 @@ export const DELETE = async (
 
     return withPrisma(async () => {
         try {
-            const { id } = await params;
+            const { slug } = await params;
 
             const category = await prisma.category.findUnique({
-                where: { id },
+                where: { slug },
                 include: {
                     _count: {
                         select: { products: true },
@@ -190,7 +190,7 @@ export const DELETE = async (
             }
 
             await prisma.category.delete({
-                where: { id },
+                where: { slug },
             });
 
             return NextResponse.json({

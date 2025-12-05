@@ -24,7 +24,7 @@ export default function ProductsPage({
       try {
         setLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/products?categorySlug=${categorySlug}&locale=${locale}`
+          `/api/products?categorySlug=${categorySlug}&locale=${locale}`
         );
 
         if (response.ok) {

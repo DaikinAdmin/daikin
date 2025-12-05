@@ -180,7 +180,7 @@ export default function CategoriesManagementPage() {
 
     try {
       const url = editingCategory 
-        ? `/api/categories/${editingCategory.id}` 
+        ? `/api/categories/${editingCategory.slug}` 
         : "/api/categories";
       
       const method = editingCategory ? "PUT" : "POST";
