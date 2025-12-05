@@ -7,14 +7,14 @@ import { useTranslations } from 'next-intl';
 export default function Footer() {
   const t = useTranslations('footer');
   return (
-    <footer className="bg-accent-blue-grey text-white">
+    <footer className="bg-amm text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <img
-                src="/daikin_logo_pl.png"
+                src="/logo_white.png"
                 alt="Daikin"
                 className="h-16 w-auto rounded-lg select-none"
                 draggable={false}

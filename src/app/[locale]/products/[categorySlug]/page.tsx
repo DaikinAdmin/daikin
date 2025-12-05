@@ -14,7 +14,7 @@ export default function ProductsPage({
   params: Promise<{ locale: string, categorySlug: string }>;
 }) {
   const { locale, categorySlug } = use(params);
-  const t = useTranslations("airConditioning");
+  const t = useTranslations("productPage");
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -60,37 +60,37 @@ export default function ProductsPage({
     <>
       <Header />
       <ProductTemplatePage
-        heroTitle={t("hero.title")}
-        heroSubtitle={t("hero.subtitle")}
-        productsTitle={t("products.title")}
-        productsSubtitle={t("products.subtitle")}
+        heroTitle={t(`${categorySlug}.hero.title`)}
+        heroSubtitle={t(`${categorySlug}.hero.subtitle`)}
+        productsTitle={t(`${categorySlug}.products.title`)}
+        productsSubtitle={t(`${categorySlug}.products.subtitle`)}
         products={products}
         categorySlug={categorySlug}
       />
       <WhyChooseSection
-        title="Dlaczego warto wybrać"
-        subtitle="Poznaj nasze innowacyjne rozwiązania"
+        title={t(`${categorySlug}.whyChoose.title`)}
+        subtitle={t(`${categorySlug}.whyChoose.subtitle`)}
         leftItem={{
           id: "left1",
           image: "/whychoose_1.png",
-          title: "Efektywność energetyczna",
+          title: t(`${categorySlug}.whyChoose.left1.title`),
           description:
-            "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+            t(`${categorySlug}.whyChoose.left1.description`),
         }}
         rightItems={[
           {
             id: "right1",
             image: "/whychoose_2.png",
-            title: "Inteligentna technologia",
+            title: t(`${categorySlug}.whyChoose.right1.title`),
             description:
-              "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+              t(`${categorySlug}.whyChoose.right1.description`),
           },
           {
             id: "right2",
             image: "/whychoose_3.png",
-            title: "Niezawodność",
+            title: t(`${categorySlug}.whyChoose.right2.title`),
             description:
-              "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+              t(`${categorySlug}.whyChoose.right2.description`),
           },
         ]}
       />

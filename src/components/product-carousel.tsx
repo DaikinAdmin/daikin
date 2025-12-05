@@ -1,12 +1,21 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import DaikinIcon from "./daikin-icon";
 import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "./ui/arrows";
+import { Product } from "@/types/product";
 
-const productKeys = ["daikinFit", "vrv", "thermostat", "aurora", "rebel"];
+// Manually set 5 product IDs here (replace placeholders with real slugs/IDs)
+const productIds: string[] = [
+  "cmipuhoqw000q01l64lrud61a",
+  "cmipuhoqw000q01l64lrud61a",
+  "cmipuhoqw000q01l64lrud61a",
+  "cmipuhoqw000q01l64lrud61a",
+  "cmipuhoqw000q01l64lrud61a",
+];
+
 const productIcons = [
   "air_filter",
   "comfort_mode",
@@ -17,9 +26,12 @@ const productIcons = [
 
 export default function ProductCarousel() {
   const t = useTranslations();
+  const locale = useLocale();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (scrollContainerRef.current) {
@@ -43,24 +55,67 @@ export default function ProductCarousel() {
   useEffect(() => {
     if (isAutoPlay) {
       const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % productKeys.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % productIds.length);
       }, 5000);
       return () => clearInterval(interval);
     }
   }, [isAutoPlay]);
 
+  // Fetch products by IDs
+  useEffect(() => {
+    const run = async () => {
+      try {
+        const results: Product[] = [];
+        for (const id of productIds) {
+          const res = await fetch(
+            `/api/products/${encodeURIComponent(
+              id
+            )}?locale=${encodeURIComponent(locale)}`
+          );
+          if (!res.ok) continue;
+          const json: Product = await res.json();
+          results.push(json);
+        }
+        setProducts(results);
+      } catch (e) {
+        console.error("Carousel products fetch error:", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    run();
+  }, [locale]);
+
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? productKeys.length - 1 : prevIndex - 1
+      prevIndex === 0 ? productIds.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % productKeys.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % productIds.length);
   };
 
-  const currentProductKey = productKeys[currentIndex];
   const currentIcon = productIcons[currentIndex];
+  const currentProduct: Product | undefined = products[currentIndex];
+
+  // Derive name/description from productDetails in current locale
+  const currentName = currentProduct
+    ? currentProduct.productDetails?.find((d) => d.locale === locale)?.name ??
+      currentProduct.slug
+    : "";
+  const currentDescription = currentProduct
+    ? currentProduct.productDetails?.find((d) => d.locale === locale)?.title ??
+      ""
+    : "";
+  const currentFeatures: string[] = currentProduct
+    ? (currentProduct.features ?? []).map(
+        (f) =>
+          f.featureDetails?.find((d) => d.locale === locale)?.name ?? f.name
+      )
+    : [];
+  const currentFirstImage: string | undefined =
+    currentProduct?.img?.[0]?.imgs?.[0];
 
   return (
     <section className="md:py-16 bg-gradient-to-br bg-white">
@@ -83,7 +138,7 @@ export default function ProductCarousel() {
             {/* Mobile Header */}
             <div className="pt-8 lg:hidden">
               <h2 className="text-h2-mobile font-normal text-black">
-                {t(`products.${currentProductKey}.name`)}
+                {currentName}
               </h2>
               <p className="text-main-text-mobile text-black font-medium mb-1">
                 {t("home.products.subtitle")}
@@ -91,38 +146,45 @@ export default function ProductCarousel() {
             </div>
 
             {/* Product Image */}
-            <div className="relative h-96 lg:h-[500px] bg-gradient-to-br from-gray-50 to-gray-100">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
+            <div className="relative w-full flex items-center justify-center">
+              {/* Image wrapper */}
+              <div className="relative w-full flex items-center justify-center">
+                {currentFirstImage ? (
+                  <img
+                    src={currentFirstImage}
+                    alt={currentName}
+                    className="mx-auto max-h-[600px] w-auto object-contain"
+                  />
+                ) : (
                   <p className="text-gray-500">Product Image</p>
-                </div>
+                )}
+
+                {/* Navigation Arrows (inside image) */}
+                <button
+                  onClick={goToPrevious}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2 transition"
+                >
+                  <ArrowLeft />
+                </button>
+
+                <button
+                  onClick={goToNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2 transition"
+                >
+                  <ArrowRight />
+                </button>
               </div>
-
-              {/* Navigation Arrows */}
-              <button
-                onClick={goToPrevious}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2"
-              >
-                <ArrowLeft />
-              </button>
-
-              <button
-                onClick={goToNext}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2"
-              >
-                <ArrowRight />
-              </button>
             </div>
 
             {/* Product Details */}
             <div className="py-6 lg:p-12 flex flex-col justify-center">
               <div className="mb-6">
                 <h2 className="text-h2 text-black mb-4 hidden lg:block">
-                  {t(`products.${currentProductKey}.name`)}
+                  {currentName}
                 </h2>
 
                 <p className="text-amm text-main-text leading-relaxed mb-6 hidden lg:block">
-                  {t(`products.${currentProductKey}.description`)}
+                  {currentDescription}
                 </p>
 
                 {/* Features */}
@@ -131,21 +193,14 @@ export default function ProductCarousel() {
                     Key Features:
                   </p>
                   <div className="ml-3 grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {Array.isArray(
-                      t.raw(`products.${currentProductKey}.features`)
-                    ) &&
-                      (
-                        t.raw(
-                          `products.${currentProductKey}.features`
-                        ) as string[]
-                      ).map((feature: string, index: number) => (
-                        <div key={index} className="flex items-center">
-                          <div className="w-1 h-1 md:w-2 md:h-2 bg-primary rounded-full mr-3"></div>
-                          <span className="text-main-text-mobile md:text-main-text text-amm">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
+                    {currentFeatures.map((feature: string, index: number) => (
+                      <div key={index} className="flex items-center">
+                        <div className="w-1 h-1 md:w-2 md:h-2 bg-primary rounded-full mr-3"></div>
+                        <span className="text-main-text-mobile md:text-main-text text-amm">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -174,13 +229,18 @@ export default function ProductCarousel() {
           ref={scrollContainerRef}
           className="lg:mt-12 flex overflow-x-auto md:grid md:grid-cols-5 gap-7 md:gap-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x order-2 lg:order-3 lg:mb-0 relative"
         >
-          {productKeys.map((productKey, index) => {
+          {productIds.map((productId, index) => {
             const ProductIcon = productIcons[index];
             const isActive = index === currentIndex;
+            const p = products[index];
+            const name = p
+              ? p.productDetails?.find((d) => d.locale === locale)?.name ??
+                p.slug
+              : "";
 
             return (
               <button
-                key={productKey}
+                key={productId}
                 onClick={() => {
                   setCurrentIndex(index);
                   setIsAutoPlay(false);
@@ -208,7 +268,7 @@ export default function ProductCarousel() {
             isActive ? "text-primary" : "text-gray-700 group-hover:text-black"
           }`}
                 >
-                  {t(`products.${productKey}.name`)}
+                  {name}
                 </p>
               </button>
             );

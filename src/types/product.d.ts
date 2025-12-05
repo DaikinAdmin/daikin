@@ -3,15 +3,17 @@
 //   icon: string;
 // }
 
-// export interface Product {
-//   id: string;
-//   image: string;
-//   category: string;
-//   name: string;
-//   description: string;
-//   price: string;
-//   features?: ProductFeature[];
-// }
+export interface ProductPreview {
+  id: string;
+  slug?: string;
+  categorySlug: string;
+  image: string;
+  category: string;
+  name: string;
+  description: string;
+  price: string;
+  features?: ProductFeature[];
+}
 
 export interface ProductPageProps {
   heroTitle: string;
@@ -49,8 +51,7 @@ export interface WhyChooseProps {
   rightItems: WhyChooseItem[];
 }
 
-
-interface Product {
+export interface Product {
   id: string;
   price: number;
   articleId: string;
@@ -64,7 +65,7 @@ interface Product {
   category: Category;
   features: Feature[];
   specs: Spec[];
-  img: Img[];
+  img: Image[];
   items: Item[];
 }
 
@@ -109,7 +110,7 @@ interface ProductItemDetail {
   isActive: boolean;
 }
 
-interface Img {
+interface Image {
   id: string;
   productSlug: string;
   color: string;

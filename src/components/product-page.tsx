@@ -1,5 +1,5 @@
 import { ProductPageProps } from "@/types/product";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Button } from "./ui/button";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
@@ -14,6 +14,7 @@ export default function ProductTemplatePage({
   categorySlug
 }: ProductPageProps) {
   const t = useTranslations("productPage");
+  const locale = useLocale();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -102,7 +103,6 @@ export default function ProductTemplatePage({
           </div>
         </div>
       </section>
-
       {children}
     </div>
   );
