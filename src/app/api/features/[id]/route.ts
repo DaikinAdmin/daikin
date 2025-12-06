@@ -85,20 +85,6 @@ export const PUT = async (
             const { id } = await params;
             const { name, slug, img, isActive, preview, translations } = await req.json(); // img: string URL from image service
 
-            // Check if slug already exists (if provided and changed)
-            if (slug) {
-                const existingSlug = await prisma.feature.findUnique({
-                    where: { slug },
-                });
-
-                if (existingSlug && existingSlug.id !== id) {
-                    return NextResponse.json(
-                        { error: "Feature with this slug already exists" },
-                        { status: 409 }
-                    );
-                }
-            }
-
             // Update feature
             const feature = await prisma.feature.update({
                 where: { id },
@@ -115,7 +101,7 @@ export const PUT = async (
             if (translations && Array.isArray(translations)) {
                 // Delete existing translations and create new ones
                 await prisma.featureTranslation.deleteMany({
-                    where: { featureId: slug },
+                    where: { featureId: id },
                 });
 
                 await prisma.featureTranslation.createMany({
