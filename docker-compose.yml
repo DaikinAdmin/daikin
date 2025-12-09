@@ -49,7 +49,7 @@ services:
       
       # Image Upload Service
       UPLOAD_DIR: /uploads
-      IMAGE_SERVICE_URL: ${IMAGE_SERVICE_URL:-http://localhost:3030}
+      IMAGE_SERVICE_URL: ${IMAGE_SERVICE_URL}
       
       # Environment
       ENV: ${ENV:-production}
