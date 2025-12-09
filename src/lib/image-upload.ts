@@ -5,7 +5,7 @@
  * and managing image URLs for use in the application.
  */
 
-const IMAGE_SERVICE_URL = process.env.IMAGE_SERVICE_URL || 'http://localhost:3030';
+const IMAGE_SERVICE_URL = process.env.IMAGE_SERVICE_URL;
 
 export interface UploadImageOptions {
   folder?: string;

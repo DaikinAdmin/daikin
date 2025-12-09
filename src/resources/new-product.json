@@ -56,7 +56,7 @@
             "productSlug": "",
             "color": "#ffffff",
             "imgs": [
-                "http://localhost:3030/api/images/productImages/daikin-aurora-1765297405410.webp"
+                "https://daikinkobierzyce.pl/api/images/productImages/daikin-aurora-1765297405410.webp"
             ]
         }
     ],
@@ -64,7 +64,7 @@
         {
             "title": "Installation",
             "slug": "item-installation",
-            "img": "http://localhost:3030/api/images/productItems/daikin_logo1-1765296213869.png",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo1-1765296213869.png",
             "isActive": true,
             "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
             "translations": [
@@ -91,7 +91,7 @@
         {
             "title": "Service",
             "slug": "item-service",
-            "img": "http://localhost:3030/api/images/productItems/daikin_logo-1764712550414.png",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo-1764712550414.png",
             "isActive": true,
             "lookupItemId": "cmip4b1rk000001o40tie4s5r",
             "translations": [
