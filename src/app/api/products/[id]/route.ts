@@ -237,8 +237,8 @@ export const PUT = async (
                     await prisma.productSpecs.createMany({
                         data: specs.map((spec: any) => ({
                             locale: spec.locale,
-                            name: spec.name || '',
-                            value: spec.value || '',
+                            title: spec.title || '',
+                            subtitle: spec.value || '',
                             productSlug: product.slug,
                         })),
                     });
