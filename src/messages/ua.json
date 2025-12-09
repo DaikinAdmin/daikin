@@ -507,6 +507,8 @@
       "previewFeatures": "Попередній перегляд функцій",
       "specifications": "Специфікації",
       "productImages": "Зображення",
+      "addImageGroup": "Додати групу зображень",
+      "imageGroup": "Група зображень",
       "productItems": "Елементи",
       "slug": "Slug",
       "slugPlaceholder": "автоматично-згенеровано-з-id-артикулу",

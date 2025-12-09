@@ -508,6 +508,8 @@
       "previewFeatures": "Preview Features",
       "specifications": "Specifications",
       "productImages": "Images",
+      "addImageGroup": "Add Image Group",
+      "imageGroup": "Image Group",
       "productItems": "Items",
       "slug": "Slug",
       "slugPlaceholder": "auto-generated-from-article-id",

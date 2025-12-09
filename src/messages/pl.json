@@ -507,6 +507,8 @@
       "previewFeatures": "Funkcje podglądu",
       "specifications": "Specyfikacje",
       "productImages": "Zdjęcia",
+      "addImageGroup": "Dodaj grupę zdjęć",
+      "imageGroup": "Grupa zdjęć",
       "productItems": "Elementy",
       "slug": "Slug",
       "slugPlaceholder": "automatycznie-generowane-z-id-artykułu",
