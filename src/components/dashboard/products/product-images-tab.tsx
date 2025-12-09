@@ -137,6 +137,10 @@ export function ProductImagesTab({
   };
 
   const removeImg = (groupIndex: number, imgIndex: number) => {
+    if (!confirm(t("confirmDelete") || "Are you sure you want to delete this image?")) {
+      return;
+    }
+    
     const updated = [...images];
     updated[groupIndex] = {
       ...updated[groupIndex],

@@ -272,13 +272,6 @@ export default function ProductsManagementPage() {
         t => t.name!.trim() || t.title!.trim() || t.subtitle!.trim()
       );
 
-      console.log('Form submission:', {
-        images: formData.images,
-        imagesLength: formData.images.length,
-        specs: formData.specs,
-        specsLength: formData.specs.length,
-      });
-
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },

@@ -4,7 +4,7 @@ import { existsSync } from 'fs';
 import path from 'path';
 
 const UPLOAD_DIR = process.env.UPLOAD_DIR || '/uploads';
-const BASE_URL = process.env.IMAGE_SERVICE_URL || 'http://localhost:3030';
+const BASE_URL = process.env.IMAGE_SERVICE_URL;
 
 export async function POST(request: NextRequest) {
   try {
