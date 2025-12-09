@@ -249,7 +249,7 @@ export const PUT = async (
             if (items !== undefined && Array.isArray(items)) {
                 // Delete existing items
                 await prisma.productItem.deleteMany({
-                    where: { productSlug: product.slug },
+                    where: { slug: product.slug },
                 });
 
                 // Create new items if any
@@ -258,8 +258,10 @@ export const PUT = async (
                         const createdItem = await prisma.productItem.create({
                             data: {
                                 img: item.img || '',
-                                productSlug: product.slug,
+                                slug: product.slug,
                                 lookupItemId: item.lookupItemId || null,
+                                title: item.title || '',
+                                isActive: item.isActive || false,
                             },
                         });
 
