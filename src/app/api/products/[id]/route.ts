@@ -192,7 +192,6 @@ export const PUT = async (
 
                 await prisma.productTranslation.createMany({
                     data: translations.map((t: any) => ({
-                        productId: id,
                         locale: t.locale,
                         name: t.name,
                         description: t.description,
