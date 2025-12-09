@@ -47,14 +47,18 @@ export const GET = async (req: Request) => {
                     ...(!includeInactive && { isActive: true }),
                 },
                 include: {
-                    productDetails: locale
+                    // If includeInactive is true (admin view), always return all translations
+                    // Otherwise, filter by locale if provided
+                    productDetails: includeInactive 
+                        ? true
+                        : locale
                         ? {
                               where: { locale },
                           }
                         : true,
                     category: {
                         include: {
-                            categoryDetails: locale
+                            categoryDetails: locale && !includeInactive
                                 ? {
                                       where: { locale, isActive: true },
                                   }
@@ -64,27 +68,29 @@ export const GET = async (req: Request) => {
                     features: {
                         where: { isActive: true },
                         include: {
-                            featureDetails: locale
+                            featureDetails: locale && !includeInactive
                                 ? {
                                       where: { locale, isActive: true },
                                   }
                                 : { where: { isActive: true } },
                         },
                     },
-                    specs: {    
-                        where: { locale }
-                    },
+                    specs: locale && !includeInactive
+                        ? {    
+                              where: { locale }
+                          }
+                        : true,
                     img: true,
                     items: {
                         include: {
-                            productItemDetails: locale
+                            productItemDetails: locale && !includeInactive
                                 ? {
                                       where: { locale, isActive: true },
                                   }
                                 : { where: { isActive: true } },
                             lookupItem: {
                                 include: {
-                                    lookupItemDetails: locale
+                                    lookupItemDetails: locale && !includeInactive
                                         ? {
                                               where: { locale, isActive: true },
                                           }

@@ -29,13 +29,11 @@ import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NativeSelect } from "@/components/ui/native-select";
-import { generateSlug } from "@/utils/slug";
 import { MainInfoTab } from "@/components/dashboard/products/main-info-tab";
 import { ProductDetailsTab } from "@/components/dashboard/products/product-details-tab";
 import { FeaturesTab } from "@/components/dashboard/products/features-tab";
 import { SpecificationsTab } from "@/components/dashboard/products/specifications-tab";
 import { ProductImagesTab } from "@/components/dashboard/products/product-images-tab";
-import { ProductItemsTab } from "@/components/dashboard/products/product-items-tab";
 import { ProductItemsWithLookup } from "@/components/dashboard/products/product-items-with-lookup";
 import { ProductItem } from "@/types/product-items";
 
@@ -247,6 +245,14 @@ export default function ProductsManagementPage() {
         translations: item.productItemDetails || [],
       })) || [];
       
+      // Ensure all locales exist in translations
+      const locales = ["en", "pl", "ua"];
+      const existingTranslations = product.productDetails || [];
+      const allTranslations = locales.map(locale => {
+        const existing = existingTranslations.find(t => t.locale === locale);
+        return existing || { locale, name: "", title: "", subtitle: "" };
+      });
+      
       setFormData({
         articleId: product.articleId,
         price: product.price ? product.price.toString() : "",
@@ -256,13 +262,22 @@ export default function ProductsManagementPage() {
         isActive: product.isActive,
         previewFeatureSlugs: preview,
         featureSlugs: regular,
-        translations: product.productDetails || [],
+        translations: allTranslations,
         specs: product.specs || [],
         images: product.img || [], // 'img' is the relation name in Prisma schema
         items: transformedItems,
       });
     } else {
       setEditingProduct(null);
+      // Initialize with empty translations for all locales
+      const locales = ["en", "pl", "ua"];
+      const emptyTranslations = locales.map(locale => ({
+        locale,
+        name: "",
+        title: "",
+        subtitle: "",
+      }));
+      
       setFormData({
         articleId: "",
         price: "",
@@ -272,7 +287,7 @@ export default function ProductsManagementPage() {
         isActive: true,
         previewFeatureSlugs: [],
         featureSlugs: [],
-        translations: [],
+        translations: emptyTranslations,
         specs: [],
         images: [],
         items: [],
@@ -300,6 +315,11 @@ export default function ProductsManagementPage() {
       // Combine preview and regular features
       const allFeatureSlugs = [...formData.previewFeatureSlugs, ...formData.featureSlugs];
 
+      // Filter out completely empty translations (all fields are empty)
+      const validTranslations = formData.translations.filter(
+        t => t.name.trim() || t.title.trim() || t.subtitle.trim()
+      );
+
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
@@ -311,7 +331,7 @@ export default function ProductsManagementPage() {
           energyClass: formData.energyClass === "None" ? null : formData.energyClass,
           isActive: formData.isActive,
           featureSlugs: allFeatureSlugs,
-          translations: formData.translations,
+          translations: validTranslations,
           specs: formData.specs,
           images: formData.images,
           items: formData.items,

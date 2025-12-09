@@ -1,0 +1,131 @@
+{
+    "articleId": "Aurora",
+    "price": 5300,
+    "categorySlug": "air-conditioning",
+    "slug": "aurora",
+    "energyClass": "A",
+    "isActive": true,
+    "featureSlugs": [
+        "sound-pressure",
+        "advanced-filtration",
+        "high-energy-efficiency",
+        "zaawansowana-filtra",
+        "smart-thermal-sensor"
+    ],
+    "translations": [
+        {
+            "locale": "en",
+            "name": "Aurora Conditioning Series",
+            "title": "Aurora Conditioning",
+            "subtitle": "Aurora Conditioning Series"
+        }
+    ],
+    "specs": [
+        {
+            "locale": "en",
+            "title": "Heating/Cooling Power",
+            "subtitle": "5,8kW/5,0kW"
+        },
+        {
+            "locale": "pl",
+            "title": "Moc Nagrzewania/Chłodzenia",
+            "subtitle": "5,8kW/5,0kW"
+        },
+        {
+            "locale": "ua",
+            "title": "Потужність нагрівання/охолодження",
+            "subtitle": "5,8кВт/5,0кВт"
+        }
+    ],
+    "images": [
+        {
+            "color": "#ffffff",
+            "imgs": [
+                "http://localhost:3030/api/images/productImages/daikin-aurora-1765284591675.webp"
+            ]
+        }
+    ],
+    "items": [
+        {
+            "title": "Indoor unit",
+            "slug": "indoor-unit-ac-sensira",
+            "img": "",
+            "isActive": true,
+            "lookupItemId": "cmisxdsb7002801oarzuraag7",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Indoor unit",
+                    "subtitle": "Iconically designed wall-mounted unit",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Jednostka wewnętrzna",
+                    "subtitle": "Ikonicznie zaprojektowana jednostka naścienna",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Внутрішній блок",
+                    "subtitle": "Іконічно запроектована настіннa одиниця",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Service",
+            "slug": "service-ac",
+            "img": "",
+            "isActive": true,
+            "lookupItemId": "cmisuksmr000v01oa9s190l3r",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Service",
+                    "subtitle": "Enjoy peace of mind with our warranty and service package",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Serwis",
+                    "subtitle": null,
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Сервіс",
+                    "subtitle": "Насолоджуйтесь спокоєм душі завдяки нашій гарантії та сервісному пакету",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Installation",
+            "slug": "item-installation",
+            "img": "http://localhost:3030/api/images/productItems/image 108-1764762007752.svg",
+            "isActive": true,
+            "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Installation",
+                    "subtitle": "Installation",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Montaż",
+                    "subtitle": "Montaż",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Монтаж",
+                    "subtitle": "Монтаж",
+                    "isActive": true
+                }
+            ]
+        }
+    ]
+}
