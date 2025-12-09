@@ -13,18 +13,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Pencil, Trash2, Plus, X, Upload, Loader2, Image as ImageIcon } from "lucide-react";
+import {
+  Pencil,
+  Trash2,
+  Plus,
+  X,
+  Upload,
+  Loader2,
+  Image as ImageIcon,
+} from "lucide-react";
 import { uploadImage } from "@/lib/image-upload";
-
-type ProductImage = {
-  id?: string;
-  color: string;
-  imgs: string[];
-};
+import ColorPickerButton from "@/components/color-selector";
+import { Image } from "@/types/product";
 
 type ProductImagesTabProps = {
-  images: ProductImage[];
-  onChange: (images: ProductImage[]) => void;
+  images: Image[];
+  onChange: (images: Image[]) => void;
   t: (key: string) => string;
   disabled?: boolean;
 };
@@ -39,35 +43,43 @@ export function ProductImagesTab({
   disabled = false,
 }: ProductImagesTabProps) {
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  const [formData, setFormData] = useState<ProductImage>({
-    color: "",
-    imgs: [],
-  });
   const [uploading, setUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
+  const [uploadProgress, setUploadProgress] = useState({
+    current: 0,
+    total: 0,
+  });
   const [error, setError] = useState<string | null>(null);
 
   const validateFile = (file: File): string | null => {
-    if (!file.type.startsWith('image/')) {
-      return t('errorNotImage') || 'File must be an image';
+    if (!file.type.startsWith("image/")) {
+      return t("errorNotImage") || "File must be an image";
     }
     if (file.size > MAX_FILE_SIZE) {
-      return t('errorFileSize') || 'File size must be less than 1MB';
+      return t("errorFileSize") || "File size must be less than 1MB";
     }
     return null;
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (index: number, field: keyof Image, value: any) => {
+    const updated = [...images];
+    updated[index] = { ...updated[index], [field]: value };
+    onChange(updated);
+  };
+
+  const handleFileUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    
+
     if (files.length === 0) return;
 
     // Check if adding these files would exceed the limit
-    const currentCount = formData.imgs.length;
+    const currentCount = images[index]?.imgs.length || 0;
     const totalCount = currentCount + files.length;
-    
+
     if (totalCount > MAX_FILES) {
-      setError(t('errorMaxFiles')?.replace('{max}', MAX_FILES.toString()) || `Maximum ${MAX_FILES} images allowed`);
+      setError(
+        t("errorMaxFiles")?.replace("{max}", MAX_FILES.toString()) ||
+          `Maximum ${MAX_FILES} images allowed`
+      );
       return;
     }
 
@@ -89,21 +101,19 @@ export function ProductImagesTab({
     try {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const result = await uploadImage(file, { folder: 'productImages' });
+        const result = await uploadImage(file, { folder: "productImages" });
         uploadedUrls.push(result.url);
         setUploadProgress({ current: i + 1, total: files.length });
       }
 
-      // Add uploaded URLs to imgs array
-      setFormData({
-        ...formData,
-        imgs: [...formData.imgs, ...uploadedUrls],
-      });
+      // Add uploaded URLs directly to the parent state
+      const currentImgs = images[index]?.imgs || [];
+      handleChange(index, 'imgs', [...currentImgs, ...uploadedUrls]);
 
       // Clear the file input
-      e.target.value = '';
+      e.target.value = "";
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Upload failed';
+      const errorMessage = err instanceof Error ? err.message : "Upload failed";
       setError(errorMessage);
     } finally {
       setUploading(false);
@@ -111,262 +121,189 @@ export function ProductImagesTab({
     }
   };
 
-  const handleAdd = () => {
-    if (formData.imgs.length > 0) {
-      onChange([...images, formData]);
-      setFormData({ color: "", imgs: [] });
-      setError(null);
-    }
+  const addImageGroup = () => {
+    onChange([...images, {
+      id: "",
+      productSlug: "",
+      color: "",
+      imgs: [],
+    }]);
   };
 
-  const handleEdit = (index: number) => {
-    setEditingIndex(index);
-    setFormData(images[index]);
-    setError(null);
-  };
-
-  const handleUpdate = () => {
-    if (editingIndex !== null && formData.imgs.length > 0) {
-      const updated = [...images];
-      updated[editingIndex] = formData;
-      onChange(updated);
-      setEditingIndex(null);
-      setFormData({ color: "", imgs: [] });
-      setError(null);
-    }
-  };
-
-  const handleDelete = (index: number) => {
+  const removeImageGroup = (index: number) => {
     if (confirm(t("confirmDelete"))) {
       onChange(images.filter((_, i) => i !== index));
     }
   };
 
-  const handleCancel = () => {
-    setEditingIndex(null);
-    setFormData({ color: "", imgs: [] });
-    setError(null);
+  const removeImg = (groupIndex: number, imgIndex: number) => {
+    if (!confirm(t("confirmDelete") || "Are you sure you want to delete this image?")) {
+      return;
+    }
+    
+    const updated = [...images];
+    updated[groupIndex] = {
+      ...updated[groupIndex],
+      imgs: updated[groupIndex].imgs.filter((_, i) => i !== imgIndex),
+    };
+    onChange(updated);
   };
 
-  const removeImg = (index: number) => {
-    setFormData({
-      ...formData,
-      imgs: formData.imgs.filter((_, i) => i !== index),
-    });
+  const canUploadMore = (index: number) => {
+    return (images[index]?.imgs.length || 0) < MAX_FILES;
   };
-
-  const canUploadMore = formData.imgs.length < MAX_FILES;
 
   return (
-    <div className="space-y-6" data-testid="product-images-tab">
-      <div className="border rounded-lg p-4 space-y-4">
-        <h3 className="font-semibold text-lg">
-          {editingIndex !== null ? t("editImage") : t("addImage")}
-        </h3>
+    <div className="space-y-4" data-testid="product-images-tab">
+      <div className="flex justify-between items-center">
+        <h3 className="font-semibold text-lg">{t("productImages")}</h3>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={addImageGroup}
+          disabled={disabled}
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          {t("addImageGroup")}
+        </Button>
+      </div>
 
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="image-color">{t("color")}</Label>
-            <Input
-              id="image-color"
-              data-testid="input-image-color"
-              value={formData.color}
-              onChange={(e) => setFormData({ ...formData, color: e.target.value })}
-              disabled={disabled || uploading}
-              placeholder={t("colorPlaceholder")}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label>{t("images")} <span className="text-sm text-muted-foreground">({formData.imgs.length}/{MAX_FILES})</span></Label>
-            
-            {error && (
-              <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">
-                {error}
-              </div>
-            )}
-
-            {canUploadMore && (
-              <div className="flex items-center gap-2">
-                <Input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleFileUpload}
-                  disabled={disabled || uploading || !canUploadMore}
-                  className="hidden"
-                  id="image-upload-input"
-                  data-testid="input-image-upload"
-                />
-                <Label
-                  htmlFor="image-upload-input"
-                  className="flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-md cursor-pointer hover:bg-accent transition-colors w-full"
-                >
-                  {uploading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>{t('uploading')} ({uploadProgress.current}/{uploadProgress.total})</span>
-                    </>
-                  ) : (
-                    <>
-                      <Upload className="h-4 w-4" />
-                      <span>{t('uploadImages')} (Max {MAX_FILES - formData.imgs.length} files, 1MB each)</span>
-                    </>
-                  )}
-                </Label>
-              </div>
-            )}
-
-            {formData.imgs.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-                {formData.imgs.map((imgUrl, index) => (
-                  <div
-                    key={index}
-                    data-testid={`img-preview-${index}`}
-                    className="relative group aspect-square border rounded-lg overflow-hidden bg-muted"
-                  >
-                    <img
-                      src={imgUrl}
-                      alt={`Preview ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="hidden items-center justify-center w-full h-full bg-muted">
-                      <ImageIcon className="h-8 w-8 text-muted-foreground" />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => removeImg(index)}
-                      disabled={disabled || uploading}
-                      className="absolute top-2 right-2 p-1 bg-destructive text-destructive-foreground rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
-                      data-testid={`btn-remove-img-${index}`}
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {!canUploadMore && (
-              <p className="text-sm text-muted-foreground">
-                {t('maxFilesReached')?.replace('{max}', MAX_FILES.toString()) || `Maximum of ${MAX_FILES} images reached`}
-              </p>
-            )}
-          </div>
-
-          <div className="flex gap-2">
-            {editingIndex !== null ? (
-              <>
-                <Button
-                  data-testid="btn-update-image"
-                  onClick={handleUpdate}
-                  disabled={disabled || uploading || formData.imgs.length === 0}
-                >
-                  {t("update")}
-                </Button>
-                <Button
-                  data-testid="btn-cancel-image"
-                  variant="outline"
-                  onClick={handleCancel}
-                  disabled={disabled || uploading}
-                >
-                  {t("cancel")}
-                </Button>
-              </>
-            ) : (
-              <Button
-                data-testid="btn-add-image"
-                onClick={handleAdd}
-                disabled={disabled || uploading || formData.imgs.length === 0}
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                {t("addImage")}
-              </Button>
-            )}
-          </div>
+      {error && (
+        <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">
+          {error}
         </div>
-      </div>
+      )}
 
-      <div>
-        <h3 className="font-semibold text-lg mb-3">{t("productImages")}</h3>
-        {images.length === 0 ? (
-          <p className="text-muted-foreground text-center py-8">
-            {t("noImages")}
-          </p>
-        ) : (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>{t("color")}</TableHead>
-                <TableHead>{t("images")}</TableHead>
-                <TableHead>{t("preview")}</TableHead>
-                <TableHead className="text-right">{t("actions")}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {images.map((image, index) => (
-                <TableRow key={index} data-testid={`image-row-${index}`}>
-                  <TableCell>{image.color || "—"}</TableCell>
-                  <TableCell>
-                    <span className="text-sm">{image.imgs.length} {t("imagesCount")}</span>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex gap-1">
-                      {image.imgs.slice(0, 3).map((imgUrl, imgIndex) => (
-                        <div key={imgIndex} className="w-10 h-10 rounded border overflow-hidden bg-muted">
-                          <img
-                            src={imgUrl}
-                            alt={`Preview ${imgIndex + 1}`}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                            }}
-                          />
-                        </div>
-                      ))}
-                      {image.imgs.length > 3 && (
-                        <div className="w-10 h-10 rounded border bg-muted flex items-center justify-center text-xs">
-                          +{image.imgs.length - 3}
-                        </div>
+      {images.length === 0 ? (
+        <div className="text-center py-8 text-muted-foreground border-2 border-dashed rounded-lg">
+          <p>{t("noImages")}</p>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {images.map((image, index) => (
+            <div key={index} className="border rounded-lg p-6 space-y-4 bg-card">
+              <div className="flex justify-between items-center pb-4 border-b">
+                <h4 className="font-semibold text-base">
+                  {t("imageGroup")} #{index + 1}
+                </h4>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => removeImageGroup(index)}
+                  disabled={disabled}
+                >
+                  <Trash2 className="h-4 w-4 text-destructive" />
+                </Button>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor={`image-${index}-color`}>{t("color")}</Label>
+                <Input
+                  id={`image-${index}-color`}
+                  data-testid={`input-image-${index}-color`}
+                  value={image.color || ""}
+                  onChange={(e) => handleChange(index, "color", e.target.value)}
+                  disabled={disabled}
+                  placeholder={t("colorPlaceholder")}
+                />
+                <ColorPickerButton
+                  value={image.color || ""}
+                  onChange={(color) => handleChange(index, "color", color)}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>
+                  {t("images")}{" "}
+                  <span className="text-sm text-muted-foreground">
+                    ({image.imgs.length}/{MAX_FILES})
+                  </span>
+                </Label>
+
+                {canUploadMore(index) && (
+                  <div className="flex items-center gap-2">
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(e) => handleFileUpload(index, e)}
+                      disabled={disabled || uploading}
+                      className="hidden"
+                      id={`image-upload-input-${index}`}
+                      data-testid={`input-image-upload-${index}`}
+                    />
+                    <Label
+                      htmlFor={`image-upload-input-${index}`}
+                      className="flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-md cursor-pointer hover:bg-accent transition-colors w-full"
+                    >
+                      {uploading ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <span>
+                            {t("uploading")} ({uploadProgress.current}/
+                            {uploadProgress.total})
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="h-4 w-4" />
+                          <span>
+                            {t("uploadImages")} (Max{" "}
+                            {MAX_FILES - image.imgs.length} files, 1MB each)
+                          </span>
+                        </>
                       )}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex justify-end">
-                      <ButtonGroup>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleEdit(index)}
-                          disabled={disabled}
-                          data-testid={`btn-edit-image-${index}`}
+                    </Label>
+                  </div>
+                )}
+
+                {image.imgs.length > 0 && (
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                    {image.imgs.map((imgUrl, imgIndex) => (
+                      <div
+                        key={imgIndex}
+                        data-testid={`img-preview-${index}-${imgIndex}`}
+                        className="relative group aspect-square border rounded-lg overflow-hidden bg-muted"
+                      >
+                        <img
+                          src={imgUrl}
+                          alt={`Preview ${imgIndex + 1}`}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = "none";
+                            target.nextElementSibling?.classList.remove("hidden");
+                          }}
+                        />
+                        <div className="hidden items-center justify-center w-full h-full bg-muted">
+                          <ImageIcon className="h-8 w-8 text-muted-foreground" />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeImg(index, imgIndex)}
+                          disabled={disabled || uploading}
+                          className="absolute top-2 right-2 p-1 bg-destructive text-destructive-foreground rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                          data-testid={`btn-remove-img-${index}-${imgIndex}`}
                         >
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() => handleDelete(index)}
-                          disabled={disabled}
-                          data-testid={`btn-delete-image-${index}`}
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </ButtonGroup>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
-      </div>
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {!canUploadMore(index) && (
+                  <p className="text-sm text-muted-foreground">
+                    {t("maxFilesReached")?.replace("{max}", MAX_FILES.toString()) ||
+                      `Maximum of ${MAX_FILES} images reached`}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

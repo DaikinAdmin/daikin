@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
-import { title } from "process";
 
 // GET single product
 export const GET = async (
@@ -17,7 +16,7 @@ export const GET = async (
             const locale = searchParams.get("locale");
 
             const product = await prisma.product.findUnique({
-                where: { id },
+                where: { slug: id },
                 include: {
                     productDetails: locale
                         ? {
@@ -107,11 +106,15 @@ export const PUT = async (
             const {
                 articleId,
                 price,
-                img, // Image URLs from image upload service
+                slug,
+                images, // Image URLs from image upload service (array of image objects)
                 categorySlug,
+                energyClass,
                 isActive,
                 translations,
                 featureSlugs, // Array of feature slugs
+                specs, // Array of spec objects
+                items, // Array of item objects
             } = await req.json();
 
             // Check if articleId is being changed and if it already exists
@@ -166,13 +169,14 @@ export const PUT = async (
                 featureIds = features.map((f: { id: string; slug: string }) => f.id);
             }
 
-            // Update product
+            // Update product basic fields
             const product = await prisma.product.update({
                 where: { id },
                 data: {
                     ...(articleId !== undefined && { articleId }),
                     ...(price !== undefined && { price: price ? parseFloat(price) : null }),
-                    ...(img !== undefined && { img }),
+                    ...(slug !== undefined && { slug }),
+                    ...(energyClass !== undefined && { energyClass }),
                     ...(categorySlug !== undefined && { categorySlug }),
                     ...(isActive !== undefined && { isActive }),
                     ...(featureSlugs !== undefined && featureIds.length > 0 && {
@@ -187,24 +191,96 @@ export const PUT = async (
             if (translations && Array.isArray(translations)) {
                 // Delete existing translations and create new ones
                 await prisma.productTranslation.deleteMany({
-                    where: { productId: id },
+                    where: { productSlug: product.slug },
                 });
 
                 await prisma.productTranslation.createMany({
                     data: translations.map((t: any) => ({
-                        productId: id,
                         locale: t.locale,
                         name: t.name,
                         description: t.description,
                         title: t.title,
                         subtitle: t.subtitle,
+                        productSlug: product.slug,
                     })),
                 });
             }
 
+            // Handle images if provided
+            if (images !== undefined && Array.isArray(images)) {
+                // Delete existing images
+                await prisma.productImages.deleteMany({
+                    where: { productSlug: product.slug },
+                });
+
+                // Create new images if any
+                if (images.length > 0) {
+                    await prisma.productImages.createMany({
+                        data: images.map((img: any) => ({
+                            color: img.color || '',
+                            imgs: img.imgs || [],
+                            productSlug: product.slug,
+                        })),
+                    });
+                }
+            }
+
+            // Handle specs if provided
+            if (specs !== undefined && Array.isArray(specs)) {
+                // Delete existing specs
+                await prisma.productSpecs.deleteMany({
+                    where: { productSlug: product.slug },
+                });
+
+                // Create new specs if any
+                if (specs.length > 0) {
+                    await prisma.productSpecs.createMany({
+                        data: specs.map((spec: any) => ({
+                            locale: spec.locale,
+                            name: spec.name || '',
+                            value: spec.value || '',
+                            productSlug: product.slug,
+                        })),
+                    });
+                }
+            }
+
+            // Handle items if provided
+            if (items !== undefined && Array.isArray(items)) {
+                // Delete existing items
+                await prisma.productItem.deleteMany({
+                    where: { productSlug: product.slug },
+                });
+
+                // Create new items if any
+                if (items.length > 0) {
+                    for (const item of items) {
+                        const createdItem = await prisma.productItem.create({
+                            data: {
+                                img: item.img || '',
+                                productSlug: product.slug,
+                                lookupItemId: item.lookupItemId || null,
+                            },
+                        });
+
+                        // Create item details if provided
+                        if (item.details && Array.isArray(item.details)) {
+                            await prisma.productItemDetails.createMany({
+                                data: item.details.map((detail: any) => ({
+                                    locale: detail.locale,
+                                    title: detail.title || '',
+                                    subtitle: detail.subtitle || '',
+                                    productItemId: createdItem.id,
+                                })),
+                            });
+                        }
+                    }
+                }
+            }
+
             // Fetch updated product with all relations
             const updatedProduct = await prisma.product.findUnique({
-                where: { id },
+                where: { slug: product.slug },
                 include: {
                     productDetails: true,
                     category: {

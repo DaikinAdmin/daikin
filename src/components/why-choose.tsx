@@ -29,11 +29,11 @@ export default function WhyChooseSection({
   return (
     <div>
       {/* WHY CHOOSE Section */}
-      <section className="py-4">
+      <section className="py-10 bg-container md:bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-h1-mobile md:text-h1">{title}</h2>
-            <p className="text-subtitle-mobile md:text-subtitle mx-auto">{subtitle}</p>
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-h1-mobile md:text-h1 mb-2">{title}</h2>
+            <p className="text-subtitle-mobile md:text-subtitle mx-auto text-amm">{subtitle}</p>
           </div>
 
           {/* Mobile Carousel */}
@@ -50,7 +50,7 @@ export default function WhyChooseSection({
                       />
                       <div className="mt-4 flex flex-col">
                         <p className="text-h2-mobile md:text-h3">{item.title}</p>
-                        <p className="mt-2 text-main-text-mobile md:text-main-text">{item.description}</p>
+                        <p className="mt-2 text-main-text-mobile md:text-main-text text-amm">{item.description}</p>
                       </div>
                     </div>
                   </div>
@@ -66,11 +66,11 @@ export default function WhyChooseSection({
               <img
                 src={leftItem.image}
                 alt={leftItem.title}
-                className="w-full object-cover"
+                className="w-full object-cover h-[1100px]"
               />
-              <div className="mt-auto flex flex-col">
-                <p className="mt-3 text-h3-mobile md:text-h3">{leftItem.title}</p>
-                <p className="mt-3 text-main-text-mobile md:text-main-text">{leftItem.description}</p>
+              <div className="mt-6 flex flex-col">
+                <p className="text-h3-mobile md:text-h3">{leftItem.title}</p>
+                <p className="mt-2 text-main-text-mobile md:text-main-text text-amm">{leftItem.description}</p>
               </div>
             </div>
 
@@ -81,11 +81,11 @@ export default function WhyChooseSection({
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full object-cover"
+                    className="w-full md:object-cover h-[450px]"
                   />
-                  <div className="mt-auto flex flex-col">
-                    <p className="mt-3 text-h2-mobile md:text-h3">{item.title}</p>
-                    <p className="mt-4 text-main-text-mobile md:text-main-text">{item.description}</p>
+                  <div className="mt-6 flex flex-col">
+                    <p className="text-h2-mobile md:text-h3">{item.title}</p>
+                    <p className="mt-2 text-main-text-mobile md:text-main-text text-amm">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -94,15 +94,14 @@ export default function WhyChooseSection({
         </div>
       </section>
 
-      {/* CTA Section — статична */}
-      <section className="py-16">
+      {/* CTA Section */}
+      <section className="py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:text-left flex-1">
-              <h2 className="text-h2-mobile md:text-h1 mb-4">{t("cta.title")}</h2>
-              <p className="text-main-text-mobile md:text-main-text opacity-90">{t("cta.subtitle")}</p>
+              <h2 className="text-h2-mobile md:text-h1 mb-2 md:mb-0">{t("cta.title")}</h2>
+              <p className="text-subtitle-mobile md:text-subtitle text-amm">{t("cta.subtitle")}</p>
             </div>
-
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <Button
                 className="px-12 py-4 md:px-20 md:py-2 rounded-full transition-colors font-medium"

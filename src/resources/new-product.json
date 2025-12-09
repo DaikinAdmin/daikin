@@ -1,0 +1,119 @@
+{
+    "articleId": "Aurora",
+    "price": 5300,
+    "categorySlug": "air-conditioning",
+    "slug": "aurora",
+    "energyClass": "A",
+    "isActive": true,
+    "featureSlugs": [
+        "feature-1",
+        "filter"
+    ],
+    "translations": [
+        {
+            "locale": "en",
+            "name": "Aurora Series AC",
+            "title": "Aurora AC Series",
+            "subtitle": "AC with perfect design",
+            "productSlug": "",
+            "id": ""
+        },
+        {
+            "locale": "pl",
+            "name": "Seria klimatyzatorów Aurora",
+            "title": "Klimatyzator Aurora",
+            "subtitle": "Przepiękny Klimatyzator Aurora",
+            "productSlug": "",
+            "id": ""
+        }
+    ],
+    "specs": [
+        {
+            "id": "1765297397233",
+            "locale": "en",
+            "title": "Power",
+            "subtitle": "5,0kW",
+            "productSlug": "aurora"
+        },
+        {
+            "id": "1765297397328",
+            "locale": "pl",
+            "title": "Moc",
+            "subtitle": "5,0kW",
+            "productSlug": "aurora"
+        },
+        {
+            "id": "1765297397417",
+            "locale": "ua",
+            "title": "Потужність",
+            "subtitle": "5,0кВт",
+            "productSlug": "aurora"
+        }
+    ],
+    "images": [
+        {
+            "id": "",
+            "productSlug": "",
+            "color": "#ffffff",
+            "imgs": [
+                "https://daikinkobierzyce.pl/api/images/productImages/daikin-aurora-1765297405410.webp"
+            ]
+        }
+    ],
+    "items": [
+        {
+            "title": "Installation",
+            "slug": "item-installation",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo1-1765296213869.png",
+            "isActive": true,
+            "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Installation",
+                    "subtitle": "Installation",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Montaż",
+                    "subtitle": "Montaż",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Монтаж",
+                    "subtitle": "Монтаж",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Service",
+            "slug": "item-service",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo-1764712550414.png",
+            "isActive": true,
+            "lookupItemId": "cmip4b1rk000001o40tie4s5r",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Service",
+                    "subtitle": "Service",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Serwis",
+                    "subtitle": "Serwis",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Сервіс",
+                    "subtitle": "Сервіс",
+                    "isActive": true
+                }
+            ]
+        }
+    ]
+}

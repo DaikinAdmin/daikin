@@ -5,19 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Trash2 } from "lucide-react";
-
-type ProductSpec = {
-  id?: string;
-  locale: string;
-  title: string;
-  subtitle: string;
-};
+import { Spec } from "@/types/product";
 
 type SpecificationsTabProps = {
-  specs: ProductSpec[];
-  onChange: (specs: ProductSpec[]) => void;
+  specs: Spec[];
+  onChange: (specs: Spec[]) => void;
   t: (key: string) => string;
   disabled?: boolean;
+  productSlug: string;
 };
 
 const LOCALES = [
@@ -25,21 +20,21 @@ const LOCALES = [
   { value: "pl", label: "Polski" },
   { value: "ua", label: "Українська" },
 ];
-
 export function SpecificationsTab({
   specs,
   onChange,
   t,
   disabled = false,
+  productSlug,
 }: SpecificationsTabProps) {
-  const handleChange = (index: number, field: keyof Omit<ProductSpec, 'locale' | 'id'>, value: string) => {
+  const handleChange = (index: number, field: keyof Omit<Spec, 'locale' | 'id'>, value: string) => {
     const updated = [...specs];
     updated[index] = { ...updated[index], [field]: value };
     onChange(updated);
   };
 
   const addSpec = (locale: string) => {
-    onChange([...specs, { locale, title: "", subtitle: "" }]);
+    onChange([...specs, { id: Date.now().toString(), locale, title: "", subtitle: "", productSlug }]);
   };
 
   const removeSpec = (index: number) => {
@@ -47,7 +42,7 @@ export function SpecificationsTab({
     onChange(updated);
   };
 
-  const getSpecsByLocale = (locale: string): ProductSpec[] => {
+  const getSpecsByLocale = (locale: string): Spec[] => {
     return specs.filter(s => s.locale === locale);
   };
 

@@ -29,67 +29,15 @@ import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { NativeSelect } from "@/components/ui/native-select";
-import { generateSlug } from "@/utils/slug";
 import { MainInfoTab } from "@/components/dashboard/products/main-info-tab";
 import { ProductDetailsTab } from "@/components/dashboard/products/product-details-tab";
 import { FeaturesTab } from "@/components/dashboard/products/features-tab";
 import { SpecificationsTab } from "@/components/dashboard/products/specifications-tab";
 import { ProductImagesTab } from "@/components/dashboard/products/product-images-tab";
-import { ProductItemsTab } from "@/components/dashboard/products/product-items-tab";
 import { ProductItemsWithLookup } from "@/components/dashboard/products/product-items-with-lookup";
 import { ProductItem } from "@/types/product-items";
+import { Category, Feature, Image, Product, ProductDetail, Spec } from "@/types/product";
 
-type ProductTranslation = {
-  locale: string;
-  name: string;
-  title: string;
-  subtitle: string;
-};
-
-type ProductSpec = {
-  id?: string;
-  locale: string;
-  title: string;
-  subtitle: string;
-};
-
-type ProductImage = {
-  id?: string;
-  color: string;
-  imgs: string[];
-};
-
-type Category = {
-  id: string;
-  name: string;
-  slug: string;
-};
-
-type Feature = {
-  id: string;
-  name: string;
-  slug: string;
-  img: string | null;
-  preview: boolean | null;
-};
-
-type Product = {
-  id: string;
-  articleId: string;
-  price: number | null;
-  img: ProductImage[]; // Relation name in Prisma schema
-  categorySlug: string;
-  slug: string | null;
-  energyClass: string | null;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
-  productDetails: ProductTranslation[];
-  category: Category;
-  features: Feature[];
-  specs: ProductSpec[];
-  items: ProductItem[];
-};
 
 export default function ProductsManagementPage() {
   const t = useTranslations("dashboard.products");
@@ -127,9 +75,9 @@ export default function ProductsManagementPage() {
     isActive: true,
     previewFeatureSlugs: [] as string[],
     featureSlugs: [] as string[],
-    translations: [] as ProductTranslation[],
-    specs: [] as ProductSpec[],
-    images: [] as ProductImage[],
+    translations: [] as ProductDetail[],
+    specs: [] as Spec[],
+    images: [] as Image[],
     items: [] as ProductItem[],
   });
 
@@ -177,7 +125,7 @@ export default function ProductsManagementPage() {
 
   const fetchProducts = async (search = "", categoryFilter = "") => {
     try {
-      let url = "/api/products?includeInactive=true";
+      let url = "/api/products?includeInactive=true&locale=pl";
       if (search) url += `&search=${encodeURIComponent(search)}`;
       if (categoryFilter) url += `&categoryId=${categoryFilter}`;
       
@@ -247,6 +195,14 @@ export default function ProductsManagementPage() {
         translations: item.productItemDetails || [],
       })) || [];
       
+      // Ensure all locales exist in translations
+      const locales = ["en", "pl", "ua"];
+      const existingTranslations = product.productDetails || [];
+      const allTranslations = locales.map(locale => {
+        const existing = existingTranslations.find(t => t.locale === locale);
+        return existing || { locale, name: "", title: "", subtitle: "", productSlug: product.slug || "", id: "" };
+      });
+      
       setFormData({
         articleId: product.articleId,
         price: product.price ? product.price.toString() : "",
@@ -256,13 +212,24 @@ export default function ProductsManagementPage() {
         isActive: product.isActive,
         previewFeatureSlugs: preview,
         featureSlugs: regular,
-        translations: product.productDetails || [],
+        translations: allTranslations,
         specs: product.specs || [],
         images: product.img || [], // 'img' is the relation name in Prisma schema
         items: transformedItems,
       });
     } else {
       setEditingProduct(null);
+      // Initialize with empty translations for all locales
+      const locales = ["en", "pl", "ua"];
+      const emptyTranslations = locales.map(locale => ({
+        locale,
+        name: "",
+        title: "",
+        subtitle: "",
+        productSlug: "",
+        id: ""
+      }));
+      
       setFormData({
         articleId: "",
         price: "",
@@ -272,7 +239,7 @@ export default function ProductsManagementPage() {
         isActive: true,
         previewFeatureSlugs: [],
         featureSlugs: [],
-        translations: [],
+        translations: emptyTranslations,
         specs: [],
         images: [],
         items: [],
@@ -300,6 +267,11 @@ export default function ProductsManagementPage() {
       // Combine preview and regular features
       const allFeatureSlugs = [...formData.previewFeatureSlugs, ...formData.featureSlugs];
 
+      // Filter out completely empty translations (all fields are empty)
+      const validTranslations = formData.translations.filter(
+        t => t.name!.trim() || t.title!.trim() || t.subtitle!.trim()
+      );
+
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
@@ -311,7 +283,7 @@ export default function ProductsManagementPage() {
           energyClass: formData.energyClass === "None" ? null : formData.energyClass,
           isActive: formData.isActive,
           featureSlugs: allFeatureSlugs,
-          translations: formData.translations,
+          translations: validTranslations,
           specs: formData.specs,
           images: formData.images,
           items: formData.items,
@@ -662,7 +634,7 @@ export default function ProductsManagementPage() {
                 <TabsContent value="details" className="mt-0">
                   <ProductDetailsTab
                     translations={formData.translations}
-                    onChange={(translations) => setFormData({ ...formData, translations })}
+                    onChange={(translations) => setFormData((prev) => ({ ...prev, translations }))}
                     t={t}
                   />
                 </TabsContent>
@@ -672,7 +644,7 @@ export default function ProductsManagementPage() {
                     preview={true}
                     availableFeatures={previewFeatures}
                     selectedFeatureIds={formData.previewFeatureSlugs}
-                    onChange={(ids) => setFormData({ ...formData, previewFeatureSlugs: ids })}
+                    onChange={(ids) => setFormData((prev) => ({ ...prev, previewFeatureSlugs: ids }))}
                     loading={featuresLoading}
                     t={t}
                   />
@@ -683,7 +655,7 @@ export default function ProductsManagementPage() {
                     preview={false}
                     availableFeatures={regularFeatures}
                     selectedFeatureIds={formData.featureSlugs}
-                    onChange={(ids) => setFormData({ ...formData, featureSlugs: ids })}
+                    onChange={(ids) => setFormData((prev) => ({ ...prev, featureSlugs: ids }))}
                     loading={featuresLoading}
                     t={t}
                   />
@@ -692,15 +664,14 @@ export default function ProductsManagementPage() {
                 <TabsContent value="specifications" className="mt-0">
                   <SpecificationsTab
                     specs={formData.specs}
-                    onChange={(specs) => setFormData({ ...formData, specs })}
-                    t={t}
-                  />
+                    onChange={(specs) => setFormData((prev) => ({ ...prev, specs }))}
+                    t={t} productSlug={formData.slug}                  />
                 </TabsContent>
 
                 <TabsContent value="images" className="mt-0">
                   <ProductImagesTab
                     images={formData.images}
-                    onChange={(images) => setFormData({ ...formData, images })}
+                    onChange={(images) => setFormData((prev) => ({ ...prev, images }))}
                     t={t}
                   />
                 </TabsContent>
@@ -708,7 +679,7 @@ export default function ProductsManagementPage() {
                 <TabsContent value="items" className="mt-0">
                   <ProductItemsWithLookup
                     items={formData.items}
-                    onChange={(items) => setFormData({ ...formData, items })}
+                    onChange={(items) => setFormData((prev) => ({ ...prev, items }))}
                     t={t}
                   />
                 </TabsContent>

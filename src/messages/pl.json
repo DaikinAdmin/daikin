@@ -103,7 +103,8 @@
       "title": "Polecane produkty Daikin",
       "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC",
       "learnMore": "Szczegóły",
-      "getQuote": "Uzyskaj ofertę"
+      "getQuote": "Uzyskaj ofertę",
+      "keyFeatures": "Kluczowe cechy"
     },
     "features": {
       "title": "Dlaczego Daikin?",
@@ -121,382 +122,30 @@
         "description": "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem."
       }
     },
+    "whyChoose": {
+      "title": "Dlaczego Daikin?",
+      "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+      "left1": {
+        "title": "Niższe rachunki",
+        "description": "Dzięki najwyższej klasie efektywności energetycznej A+++",
+        "image": "https://daikinkobierzyce.pl/api/images/main_page/Nizsze_rachunki-1765210907264.jpg"
+      },
+      "right1": {
+        "title": "Cisza i komfort",
+        "description": "Dzięki zaawansowanej cichej technologii pracy urządzeń",
+        "image": "https://daikinkobierzyce.pl/api/images/main_page/pewnosc_na_lata-1765210916679.jpg"
+      },
+      "right2": {
+        "title": "Niezawodność na lata",
+        "description": "Dzięki jakości Daikin, która jest potwierdzona globalnymi standardami",
+        "image": "https://daikinkobierzyce.pl/api/images/main_page/cisza_komfort-1765210923645.jpg"
+      }
+    },
     "cta": {
       "title": "Gotowy na czyste powietrze?",
       "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
       "consultation": "Uzyskaj ofertę",
       "dashboard": "Panel dostępu"
-    }
-  },
-  "products": {
-    "daikinFit": {
-      "name": "Pompa ciepła Daikin Fit",
-      "category": "Systemy pomp ciepła",
-      "description": "Kompaktowa konstrukcja o doskonałej wydajności i cichej pracy. Idealna do zastosowań mieszkalnych z ograniczoną przestrzenią.",
-      "features": [
-        "19 SEER",
-        "Cicha praca",
-        "Kompaktowa konstrukcja",
-        "Czynnik chłodniczy R-32"
-      ],
-      "price": "Od 3500 zł"
-    },
-    "vrv": {
-      "name": "Seria VRV X",
-      "category": "Komercyjne HVAC",
-      "description": "System o zmiennym przepływie czynnika chłodniczego oferujący maksymalną elastyczność i efektywność energetyczną dla budynków komercyjnych.",
-      "features": [
-        "Odzyskiwanie ciepła",
-        "Sterowanie indywidualne",
-        "Energooszczędny",
-        "Inteligentne sterowanie"
-      ],
-      "price": "Skontaktuj się w sprawie ceny"
-    },
-    "thermostat": {
-      "name": "Termostat Daikin One+",
-      "category": "Inteligentne sterowanie",
-      "description": "Zaawansowany inteligentny termostat z łącznością WiFi i inteligentnym zarządzaniem komfortem.",
-      "features": [
-        "WiFi",
-        "Inteligentne planowanie",
-        "Raporty energii",
-        "Sterowanie głosowe"
-      ],
-      "price": "299 zł"
-    },
-    "aurora": {
-      "name": "Seria Daikin Aurora",
-      "category": "Systemy bezkanałowe",
-      "description": "Eleganckie jednostki naścienne z zaawansowaną filtracją i cichą pracą dla komfortu mieszkalnego.",
-      "features": [
-        "Technologia inwertera",
-        "Wielostrefowy",
-        "Zaawansowana filtracja",
-        "Pilot"
-      ],
-      "price": "Od 2800 zł"
-    },
-    "rebel": {
-      "name": "Seria Daikin Rebel",
-      "category": "Jednostki packaged",
-      "description": "Wytrzymałe jednostki packaged zaprojektowane do zastosowań komercyjnych o doskonałej niezawodności.",
-      "features": [
-        "Wysoka wydajność",
-        "Trwała konstrukcja",
-        "Łatwa konserwacja",
-        "Elastyczna instalacja"
-      ],
-      "price": "Od 4200 zł"
-    }
-  },
-  "airConditioning": {
-    "hero": {
-      "title": "Systemy klimatyzacyjne",
-      "subtitle": "Doświadcz doskonałego komfortu dzięki innowacyjnym rozwiązaniom klimatyzacyjnym Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
-    },
-    "products": {
-      "title": "Nasza Gama Klimatyzacji",
-      "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni",
-      "aurora": {
-        "name": "Seria Daikin Aurora",
-        "category": "Klimatyzacja Ścienna",
-        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--29a1876a-44ae-4780-96f4-de6733b763f1/00-cold-packshot-ftxz-n-1-1-front.jpg?preferwebp=true&quality=90&width=751",
-        "description": "Elegancka i stylowa jednostka naścienna z zaawansowaną filtracją i szepczącą cichą pracą. Idealna do sypialni i salonów.",
-        "features": [
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:ai-editing"
-          },
-          {
-            "title": "Zaawansowana Filtracja",
-            "icon": "hugeicons:eco-power"
-          },
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:approximately-equal"
-          }
-        ],
-        "price": "Od 2800 zł"
-      },
-      "emura": {
-        "name": "Daikin Emura",
-        "category": "Premium Naścienna",
-        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Nagradzany design spotyka się z najnowszą technologią. Seria Emura oferuje niezrównany styl i wydajność dla nowoczesnych domów.",
-        "features": [
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:ai-editing"
-          },
-          {
-            "title": "Zaawansowana Filtracja",
-            "icon": "hugeicons:eco-power"
-          },
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:approximately-equal"
-          }
-        ],
-        "price": "Od 3200 zł"
-      },
-      "perfera": {
-        "name": "Daikin Perfera",
-        "category": "Wysokowydajna klimatyzacja",
-        "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--1aae3569-f5c8-4fd5-a212-2b57abbba0e2/00-packshot-ftxm-a-1-1-front-cold.jpg?preferwebp=true&width=751&quality=90",
-        "description": "Najwyższa wydajność z inteligentnymi funkcjami komfortu. Idealna do większych pomieszczeń i wymagających zastosowań.",
-        "features": [
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:ai-editing"
-          },
-          {
-            "title": "Zaawansowana Filtracja",
-            "icon": "hugeicons:eco-power"
-          },
-          {
-            "title": "21 SEER2",
-            "icon": "hugeicons:approximately-equal"
-          }
-        ],
-        "price": "Od $3,400"
-      }
-    },
-    "features": "Kluczowe cechy",
-    "learnMore": "Dowiedz się więcej",
-    "getQuote": "Uzyskaj ofertę",
-    "whyChoose": {
-      "title": "Dlaczego warto wybrać klimatyzację Daikin?",
-      "efficiency": {
-        "title": "Najwyższa efektywność",
-        "description": "Wiodące w branży współczynniki SEER obniżają koszty energii, zapewniając komfort przez cały rok."
-      },
-      "comfort": {
-        "title": "Doskonały komfort",
-        "description": "Zaawansowana technologia sterowania klimatem zapewnia stałą temperaturę i wilgotność w całej przestrzeni."
-      },
-      "air": {
-        "title": "Czyste powietrze",
-        "description": "Wielostopniowe systemy filtracji usuwają alergeny, kurz i zapachy, poprawiając jakość powietrza w pomieszczeniach."
-      }
-    }
-  },
-  "heatPumps": {
-    "hero": {
-      "title": "Systemy Pomp Ciepła",
-      "subtitle": "Zrównoważone ogrzewanie i chłodzenie z zaawansowaną technologią pomp ciepła Daikin. Oszczędzaj energię, ciesząc się komfortem przez cały rok."
-    },
-    "products": {
-      "title": "Nasze Rozwiązania Pomp Ciepła",
-      "subtitle": "Ekologiczne systemy dla efektywnego ogrzewania i chłodzenia",
-      "daikinFit": {
-        "name": "Daikin Fit",
-        "category": "Kompaktowa Pompa Ciepła",
-        "description": "Ultra-kompaktowy design, który pasuje niemal wszędzie. Idealny dla domów z ograniczoną przestrzenią zewnętrzną bez kompromisu w wydajności.",
-        "features": [
-          "19 SEER / 10 HSPF",
-          "Kompaktowy Design",
-          "Niski Poziom Hałasu",
-          "Czynnik Chłodniczy R-32",
-          "Gwarancja 10 Lat"
-        ],
-        "price": "Od 3500 zł"
-      },
-      "altherma": {
-        "name": "Daikin Altherma 3",
-        "category": "Pompa Ciepła Powietrze-Woda",
-        "description": "Kompleksowe rozwiązanie ogrzewania i ciepłej wody dla zastosowań mieszkalnych. Działa efektywnie nawet w ekstremalnie zimnych warunkach.",
-        "features": [
-          "Klasa Energetyczna A+++",
-          "Działa do -28°C",
-          "Ciepła Woda Użytkowa",
-          "Gotowy na Smart Grid",
-          "Cicha Praca"
-        ],
-        "price": "Od 8500 zł"
-      },
-      "althermaH": {
-        "name": "Daikin Altherma 3 H HT",
-        "category": "Wysokotemperaturowa Pompa Ciepła",
-        "description": "Wysokotemperaturowa pompa ciepła idealna do modernizacji. Dostarcza wodę do 70°C dla systemów grzejnikowych.",
-        "features": [
-          "Wyjście Wysokotemperaturowe",
-          "Kompatybilny z Modernizacją",
-          "Technologia R-32",
-          "Ogrzewanie i Chłodzenie",
-          "Sterowanie Zależne od Pogody"
-        ],
-        "price": "Od 9800 zł"
-      }
-    },
-    "features": "Kluczowe Cechy",
-    "learnMore": "Dowiedz się więcej",
-    "getQuote": "Otrzymaj Wycenę",
-    "benefits": {
-      "title": "Korzyści z Systemów Pomp Ciepła",
-      "eco": {
-        "title": "Ekologiczny",
-        "description": "Zmniejsz swój ślad węglowy dzięki technologii energii odnawialnej, która pobiera ciepło z powietrza."
-      },
-      "efficiency": {
-        "title": "Oszczędność Energii",
-        "description": "Do 50% oszczędności energii w porównaniu do tradycyjnych systemów ogrzewania, znacznie obniżając rachunki za media."
-      },
-      "versatile": {
-        "title": "Ogrzewanie i Chłodzenie",
-        "description": "Jeden system dla całorocznego komfortu. Grzej zimą, chłódź latem z tym samym wydajnym urządzeniem."
-      },
-      "reliable": {
-        "title": "Niezawodna Wydajność",
-        "description": "Sprawdzona technologia, która działa efektywnie nawet w ekstremalnych temperaturach, zapewniając komfort przez cały rok."
-      }
-    }
-  },
-  "airPurifier": {
-    "hero": {
-      "title": "Oczyszczacze Powietrza",
-      "subtitle": "Oddychaj czystszym, zdrowszym powietrzem dzięki zaawansowanej technologii oczyszczania powietrza Daikin. Skutecznie usuwa zanieczyszczenia, alergeny i zapachy."
-    },
-    "products": {
-      "title": "Nasza Gama Oczyszczaczy Powietrza",
-      "subtitle": "Zaawansowana filtracja dla zdrowszych środowisk wewnętrznych",
-      "mc55w": {
-        "name": "Daikin MC55W",
-        "category": "Kompaktowy Oczyszczacz Powietrza",
-        "description": "Idealny do małych i średnich pomieszczeń. Łączy filtrację HEPA z technologią Streamer dla kompleksowego oczyszczania powietrza.",
-        "features": [
-          "Filtr HEPA",
-          "Technologia Streamer",
-          "Pokrycie 41m²",
-          "Kompaktowy Design",
-          "Niski Hałas"
-        ],
-        "price": "399 zł"
-      },
-      "mc70l": {
-        "name": "Daikin MC70L",
-        "category": "Oczyszczacz dla Dużych Pomieszczeń",
-        "description": "Potężny oczyszczacz powietrza zaprojektowany dla większych przestrzeni. Usuwa 99,97% cząstek unoszących się w powietrzu dzięki zaawansowanej wieloetapowej filtracji.",
-        "features": [
-          "Prawdziwy Filtr HEPA",
-          "Aktywne Jony Plazmy",
-          "Pokrycie 70m²",
-          "Tryb Automatyczny",
-          "Czujnik Jakości Powietrza"
-        ],
-        "price": "599 zł"
-      },
-      "mcz70w": {
-        "name": "Daikin MCZ70W",
-        "category": "Nawilżający Oczyszczacz Powietrza",
-        "description": "Najlepszy system uzdatniania powietrza, który oczyszcza i nawilża. Utrzymuje optymalną wilgotność, jednocześnie usuwając alergeny i zanieczyszczenia.",
-        "features": [
-          "Funkcja Nawilżania",
-          "Streamer + HEPA",
-          "Pokrycie 70m²",
-          "Inteligentne Czujniki",
-          "Sterowanie Aplikacją"
-        ],
-        "price": "799 zł"
-      }
-    },
-    "features": "Kluczowe Cechy",
-    "learnMore": "Dowiedz się więcej",
-    "getQuote": "Otrzymaj Wycenę",
-    "technology": {
-      "title": "Zaawansowana Technologia Oczyszczania",
-      "streamer": {
-        "title": "Technologia Streamer",
-        "description": "Zastrzeżona technologia Streamer Daikin rozkłada alergeny, wirusy i bakterie na poziomie molekularnym."
-      },
-      "hepa": {
-        "title": "Filtracja HEPA",
-        "description": "Wychwytuje 99,97% cząstek małych jak 0,3 mikrona, w tym kurz, pyłki i sierść zwierząt."
-      },
-      "humidifying": {
-        "title": "Funkcja Nawilżania",
-        "description": "Utrzymuje optymalne poziomy wilgotności dla poprawy komfortu i zdrowia układu oddechowego przez cały rok."
-      }
-    }
-  },
-  "otherProducts": {
-    "hero": {
-      "title": "Inne Produkty i Rozwiązania",
-      "subtitle": "Uzupełnij swój system HVAC o inteligentne sterowanie, rozwiązania komercyjne i akcesoria Daikin."
-    },
-    "products": {
-      "title": "Dodatkowe Produkty i Usługi",
-      "subtitle": "Zwiększ swój komfort dzięki naszej kompletnej gamie",
-      "thermostat": {
-        "name": "Inteligentny Termostat Daikin One+",
-        "category": "Inteligentne Sterowanie",
-        "description": "Termostat inteligentny nowej generacji z intuicyjnym interfejsem i zaawansowanymi funkcjami. Kontroluj swój komfort z dowolnego miejsca.",
-        "features": [
-          "Wi-Fi",
-          "Inteligentne Planowanie",
-          "Geofencing",
-          "Sterowanie Głosowe",
-          "Raporty Energii"
-        ],
-        "price": "299 zł"
-      },
-      "vrv": {
-        "name": "Seria VRV X",
-        "category": "Komercyjne HVAC",
-        "description": "Wiodący w branży system o zmiennym przepływie czynnika chłodniczego dla budynków komercyjnych. Maksymalna elastyczność i wydajność.",
-        "features": [
-          "Odzyskiwanie Ciepła",
-          "Indywidualne Sterowanie Strefą",
-          "Efektywność Energetyczna",
-          "Modułowy Design",
-          "Łatwy Montaż"
-        ],
-        "price": "Skontaktuj się w sprawie ceny"
-      },
-      "rebel": {
-        "name": "Seria Daikin Rebel",
-        "category": "Lekko Komercyjny",
-        "description": "Wytrzymałe jednostki dachowe packaged zaprojektowane dla lekkich zastosowań komercyjnych z wyjątkową niezawodnością i wydajnością.",
-        "features": [
-          "Do 16 SEER",
-          "Trwała Konstrukcja",
-          "Łatwy Dostęp Serwisowy",
-          "Elastyczne Opcje",
-          "Gwarancja 10 Lat"
-        ],
-        "price": "Od 4200 zł"
-      },
-      "accessories": {
-        "name": "Akcesoria Daikin",
-        "category": "Dodatki i Części",
-        "description": "Kompletna gama akcesoriów, w tym filtry, piloty, uchwyty montażowe i zestawy instalacyjne.",
-        "features": [
-          "Oryginalne Części",
-          "Łatwy Montaż",
-          "Szeroka Kompatybilność",
-          "Zapewniona Jakość",
-          "Wsparcie Ekspertów"
-        ],
-        "price": "Różne w zależności od produktu"
-      }
-    },
-    "features": "Kluczowe Cechy",
-    "learnMore": "Dowiedz się więcej",
-    "getQuote": "Otrzymaj Wycenę",
-    "solutions": {
-      "title": "Kompleksowe Rozwiązania HVAC",
-      "smart": {
-        "title": "Inteligentne Sterowanie",
-        "description": "Inteligentne termostaty i regulatory, które optymalizują komfort przy jednoczesnym zmniejszeniu zużycia energii."
-      },
-      "commercial": {
-        "title": "Systemy Komercyjne",
-        "description": "Skalowalne rozwiązania VRV i packaged zaprojektowane dla budynków komercyjnych wszystkich rozmiarów."
-      },
-      "accessories": {
-        "title": "Akcesoria i Części",
-        "description": "Oryginalne części i akcesoria Daikin do utrzymania szczytowej wydajności i wydłużenia żywotności systemu."
-      }
     }
   },
   "dashboard": {
@@ -858,6 +507,8 @@
       "previewFeatures": "Funkcje podglądu",
       "specifications": "Specyfikacje",
       "productImages": "Zdjęcia",
+      "addImageGroup": "Dodaj grupę zdjęć",
+      "imageGroup": "Grupa zdjęć",
       "productItems": "Elementy",
       "slug": "Slug",
       "slugPlaceholder": "automatycznie-generowane-z-id-artykułu",
@@ -995,6 +646,46 @@
       "errorFileSize": "Rozmiar pliku musi być mniejszy niż 1MB",
       "translationActive": "Tłumaczenie aktywne"
     },
+    "images": {
+      "title": "Zarządzanie obrazami",
+      "uploadImage": "Prześlij obraz",
+      "createFolder": "Utwórz folder",
+      "allImages": "Wszystkie obrazy",
+      "searchPlaceholder": "Wyszukaj po nazwie pliku...",
+      "allFolders": "Wszystkie foldery",
+      "search": "Szukaj",
+      "clear": "Wyczyść",
+      "noImagesFound": "Nie znaleziono obrazów",
+      "preview": "Podgląd",
+      "filename": "Nazwa pliku",
+      "folder": "Folder",
+      "size": "Rozmiar",
+      "created": "Utworzono",
+      "url": "URL",
+      "actions": "Akcje",
+      "copy": "Kopiuj URL",
+      "urlCopied": "URL skopiowany do schowka!",
+      "delete": "Usuń",
+      "deleting": "Usuwanie...",
+      "areYouSure": "Czy na pewno?",
+      "deleteConfirmation": "Ta akcja nie może zostać cofnięta. Spowoduje to trwałe usunięcie obrazu.",
+      "uploadImageTitle": "Prześlij obraz",
+      "uploadImageDescription": "Wybierz folder i plik obrazu do przesłania",
+      "selectFolder": "Wybierz folder",
+      "selectFile": "Wybierz plik obrazu",
+      "selected": "Wybrano",
+      "cancel": "Anuluj",
+      "upload": "Prześlij",
+      "uploading": "Przesyłanie...",
+      "noFileSelected": "Proszę wybrać plik do przesłania",
+      "createFolderTitle": "Utwórz nowy folder",
+      "createFolderDescription": "Wprowadź nazwę nowego folderu",
+      "folderName": "Nazwa folderu",
+      "folderNamePlaceholder": "np. produkty, banery, ikony",
+      "folderNameRequired": "Nazwa folderu jest wymagana",
+      "create": "Utwórz folder",
+      "creating": "Tworzenie..."
+    },
     "benefitsRedeemed": {
       "title": "Zrealizowane benefity",
       "allRedeemed": "Wszystkie zrealizowane benefity",
@@ -1113,29 +804,24 @@
   "services": {
     "installation": {
       "hero": {
-        "badge": "Profesjonalna instalacja",
         "title": "Ekspertowe usługi instalacji Daikin",
-        "subtitle": "Zaufaj naszym certyfikowanym technikom, którzy zainstalują Twój system HVAC Daikin z precyzją i starannością, zapewniając optymalną wydajność i długowieczność.",
-        "cta": {
-          "schedule": "Zaplanuj instalację",
-          "contact": "Skontaktuj się"
-        }
+        "subtitle": "Zaufaj naszym certyfikowanym technikom, którzy zainstalują Twój system HVAC Daikin z precyzją i starannością, zapewniając optymalną wydajność i długowieczność. Profesjonalna instalacja jest kluczowa dla wydajności i efektywności Twojego systemu HVAC"
       },
       "whyChoose": {
         "title": "Dlaczego wybrać nasze usługi instalacyjne?",
-        "subtitle": "Profesjonalna instalacja jest kluczowa dla wydajności i efektywności Twojego systemu HVAC",
+        "subtitle": "Doświadczenie i jakość, na które możesz liczyć",
         "reasons": {
           "certified": {
             "title": "Certyfikowani technicy",
-            "description": "Wszyscy nasi instalatorzy są certyfikowani przez Daikin i wysoko wykwalifikowani"
+            "description": "Wszyscy nasi instalatorzy są wysoko wykwalifikowani oraz certyfikowani przez Daikin"
           },
           "quality": {
             "title": "Gwarancja jakości",
-            "description": "Używamy tylko oryginalnych części Daikin i przestrzegamy specyfikacji producenta"
+            "description": "Używamy tylko oryginalnych części Daikin i przestrzegamy specyfikacji producenta. Pracujemy na najwyższej jakości materiałach"
           },
           "fast": {
             "title": "Szybko i efektywnie",
-            "description": "Większość instalacji wykonywana w ciągu 1-2 dni z minimalnym zakłóceniem"
+            "description": "Większość instalacji jest wykonywana w ciągu 1-2 dni"
           },
           "warranty": {
             "title": "Rozszerzona gwarancja",
@@ -1236,193 +922,42 @@
         }
       },
       "cta": {
-        "title": "Gotowy do zainstalowania systemu Daikin?",
-        "subtitle": "Uzyskaj bezpłatną konsultację i wycenę od naszego zespołu ekspertów",
-        "schedule": "Zaplanuj konsultację",
+        "title": "Pozwól nam zadbać o Twój komfort",
+        "subtitle": "Skontaktuj się z nami - o resztę zadbamy my",
+        "schedule": "Skontaktuj się",
         "viewProducts": "Zobacz produkty"
       }
     },
     "maintenance": {
       "hero": {
-        "badge": "Konserwacja prewencyjna",
-        "title": "Konserwacja i plany serwisowe Daikin",
-        "subtitle": "Utrzymuj swój system HVAC w szczytowej wydajności dzięki naszym kompleksowym usługom konserwacji i elastycznym planom serwisowym.",
-        "cta": {
-          "schedule": "Zaplanuj konserwację",
-          "emergency": "Serwis awaryjny 24/7"
-        }
+        "title": "Serwis",
+        "subtitle": "W Daikin nasze zaangażowanie w satysfakcję klienta wykracza poza dostarczanie wysokowydajnych rozwiązań klimatyzacyjnych. Równie ważne jest zapewnienie każdemu klientowi Daikin, doskonałej obsługi przez cały okres użytkowania systemu. Dlatego posiadamy własny, doświadczony zespół techników serwisu, a także współpracujemy z zaufanymi profesjonalistami, instalatorami, którzy podzielają nasze zaangażowanie w profesjonalną opiekę i wieloletnią niezawodność."
       },
-      "whyMaintenance": {
-        "title": "Dlaczego regularna konserwacja ma znaczenie",
-        "subtitle": "Chroń swoją inwestycję i zapewnij optymalną wydajność przez cały rok",
-        "benefits": {
-          "efficiency": {
-            "title": "Lepsza wydajność",
-            "description": "Regularna konserwacja może poprawić efektywność energetyczną nawet o 30%"
+      "whyChoose": {
+        "title": "Rozwiązania serwisowe",
+        "subtitle": "Dlaczego warto wybrać nasze usługi serwisowe?",
+        "reasons": {
+          "specialistKnowledge": {
+            "title": "Specjalistyczna wiedza",
+            "description": "Wspieramy w osiąganiu celów energetycznych dzięki eksperckiej analizie systemu, planowaniu modernizacji oraz wsparciu w zakresie zgodności z przepisami"
           },
-          "lifespan": {
-            "title": "Wydłużona żywotność",
-            "description": "Odpowiednia opieka może wydłużyć żywotność systemu o 10-15 lat"
+          "regularInspections": {
+            "title": "Regularne przeglądy",
+            "description": "Dbamy o odpowiednią żywotność sprzętu oraz zapewniamy najwyższą wydajność rozwiązań dzięki specjalistycznej diagnostyce i odpowiedniej konserwacji przez dedykowany zespół serwisowy Daikin"
           },
-          "reliability": {
-            "title": "Mniej awarii",
-            "description": "Konserwacja prewencyjna zmniejsza naprawy awaryjne o 95%"
+          "modernization": {
+            "title": "Modernizacja",
+            "description": "Modernizujemy systemy HVAC poprawiając wydajność, obniżając zużycie energii i zwiększając komfort w pomieszczeniach"
           },
-          "airQuality": {
-            "title": "Lepsza jakość powietrza",
-            "description": "Czyste filtry i wężownice oznaczają zdrowsze powietrze wewnętrzne"
-          }
-        }
-      },
-      "plans": {
-        "title": "Plany konserwacji",
-        "subtitle": "Wybierz plan najlepiej dopasowany do Twoich potrzeb",
-        "recommended": "Najpopularniejszy",
-        "perVisit": "/wizyta",
-        "selectPlan": "Wybierz ten plan",
-        "packages": {
-          "basic": {
-            "title": "Podstawowy",
-            "description": "Niezbędna konserwacja dla właścicieli domów",
-            "price": "399 zł",
-            "features": {
-              "1": "Roczna inspekcja systemu",
-              "2": "Czyszczenie i wymiana filtrów",
-              "3": "Podstawowa kontrola wydajności",
-              "4": "Priorytetowe planowanie",
-              "5": "10% zniżki na naprawy"
-            }
-          },
-          "standard": {
-            "title": "Standardowy",
-            "description": "Kompleksowa opieka dla optymalnej wydajności",
-            "price": "699 zł",
-            "features": {
-              "1": "Dwie wizyty rocznie (wiosna i jesień)",
-              "2": "Kompleksowe czyszczenie systemu",
-              "3": "Kontrola poziomu czynnika chłodniczego",
-              "4": "Inspekcja komponentów elektrycznych",
-              "5": "15% zniżki na naprawy"
-            }
-          },
-          "premium": {
-            "title": "Premium",
-            "description": "Najwyższa ochrona i spokój ducha",
-            "price": "1199 zł",
-            "features": {
-              "1": "Kwartalne wizyty (4x rocznie)",
-              "2": "Wszystkie funkcje planu Standardowego",
-              "3": "Priorytetowy serwis awaryjny 24/7",
-              "4": "Darmowe drobne naprawy (do 800 zł)",
-              "5": "20% zniżki na większe naprawy"
-            }
-          }
-        }
-      },
-      "included": {
-        "title": "Co zawiera każdy serwis",
-        "subtitle": "Kompleksowa lista kontrolna konserwacji wykonywana przez certyfikowanych techników",
-        "services": {
-          "1": {
-            "title": "Inspekcja i czyszczenie filtrów",
-            "description": "Czyszczenie lub wymiana filtrów powietrza dla optymalnego przepływu"
-          },
-          "2": {
-            "title": "Czyszczenie wężownic",
-            "description": "Czyszczenie parownika i skraplacza"
-          },
-          "3": {
-            "title": "Kontrola czynnika chłodniczego",
-            "description": "Weryfikacja poziomu czynnika i sprawdzenie szczelności"
-          },
-          "4": {
-            "title": "Inspekcja elektryczna",
-            "description": "Test wszystkich połączeń i komponentów elektrycznych"
-          },
-          "5": {
-            "title": "Kalibracja termostatu",
-            "description": "Zapewnienie dokładnej kontroli temperatury"
-          },
-          "6": {
-            "title": "Serwis linii odpływowej",
-            "description": "Czyszczenie odpływów skroplin, aby zapobiec zatykaniu"
-          },
-          "7": {
-            "title": "Inspekcja silnika wentylatora",
-            "description": "Smarowanie i testowanie wszystkich silników i wentylatorów"
-          },
-          "8": {
-            "title": "Kontrola bezpieczeństwa",
-            "description": "Weryfikacja działania wszystkich zabezpieczeń"
-          },
-          "9": {
-            "title": "Test wydajności",
-            "description": "Pomiar i optymalizacja wydajności systemu"
-          }
-        }
-      },
-      "warningSigns": {
-        "title": "Oznaki potrzeby serwisu",
-        "subtitle": "Nie czekaj na awarię - obserwuj te częste problemy",
-        "signs": {
-          "1": {
-            "title": "Nietypowe hałasy",
-            "description": "Zgrzytanie, piszczenie lub stukanie wskazują na problemy mechaniczne"
-          },
-          "2": {
-            "title": "Słaby przepływ powietrza",
-            "description": "Zmniejszony przepływ sugeruje zablokowane filtry lub uszkodzone komponenty"
-          },
-          "3": {
-            "title": "Wysokie rachunki za energię",
-            "description": "Nagły wzrost kosztów energii wskazuje na nieefektywność systemu"
-          },
-          "4": {
-            "title": "Nierównomierne temperatury",
-            "description": "Gorące lub zimne miejsca oznaczają, że system nie dystrybuuje powietrza prawidłowo"
-          },
-          "5": {
-            "title": "Częste włączanie",
-            "description": "System włączający się zbyt często wymaga profesjonalnej uwagi"
-          },
-          "6": {
-            "title": "Nieprzyjemne zapachy",
-            "description": "Stęchłe lub palące zapachy wymagają natychmiastowej inspekcji"
-          }
-        },
-        "emergency": {
-          "title": "Potrzebujesz serwisu awaryjnego?",
-          "description": "Oferujemy naprawy awaryjne 24/7 dla krytycznych problemów HVAC. Nie wahaj się zadzwonić.",
-          "cta": "Zadzwoń po serwis awaryjny"
-        }
-      },
-      "seasonal": {
-        "title": "Sezonowe wskazówki konserwacyjne",
-        "subtitle": "Utrzymuj swój system gotowy na każdą porę roku",
-        "spring": {
-          "title": "Przygotowanie wiosna/lato",
-          "tasks": {
-            "1": "Wymiana lub czyszczenie filtrów powietrza",
-            "2": "Sprawdzenie poziomu czynnika chłodniczego",
-            "3": "Czyszczenie jednostki zewnętrznej i usunięcie zanieczyszczeń",
-            "4": "Test wydajności chłodzenia",
-            "5": "Inspekcja kanałów pod kątem nieszczelności"
-          }
-        },
-        "fall": {
-          "title": "Przygotowanie jesień/zima",
-          "tasks": {
-            "1": "Inspekcja elementów grzewczych",
-            "2": "Test zaworu odwracającego pompy ciepła",
-            "3": "Sprawdzenie działania termostatu",
-            "4": "Czyszczenie wężownic wewnętrznych",
-            "5": "Weryfikacja prawidłowego przepływu powietrza"
+          "partsAndRepairs": {
+            "title": "Części i naprawy",
+            "description": "Zapewniamy niezawodne działanie dzięki oryginalnym częściom zamiennym Daikin i specjalistycznym usługom naprawczym dostosowanym do potrzeb systemu"
           }
         }
       },
       "cta": {
-        "title": "Chroń swoją inwestycję już dziś",
-        "subtitle": "Zapisz się na plan konserwacji i ciesz się spokojem przez cały rok",
+        "title": "Zadbaj o swój sprzęt",
+        "subtitle": "Jesteśmy zawsze do Twojej dyspozycji",
         "schedule": "Zaplanuj serwis",
         "contact": "Skontaktuj się"
       }
@@ -1494,29 +1029,21 @@
     }
   },
   "about": {
-    "hero": {
-      "title": "O AMM Salon",
-      "subtitle": "Twój zaufany partner w rozwiązaniach klimatyzacyjnych od ponad 15 lat"
-    },
-    "section": {
-      "title": "Nasze wartości",
-      "subtitle": "Zasady, które kierują wszystkim, co robimy"
-    },
     "intro": {
       "aboutUs": {
         "title": "O nas",
-        "subtitle": "AMM Salon to wiodący autoryzowany dealer i instalator Daikin, specjalizujący się w wysokiej jakości rozwiązaniach klimatyzacyjnych, grzewczych i wentylacyjnych. Od 2009 roku dostarczamy naszym klientom najwyższej jakości systemy kontroli klimatu."
+        "subtitle": "AMM Project to firma specjalizująca się w automatyce przemysłowej oraz nowoczesnych rozwiązaniach HVAC. Jako oficjalny partner i instalator marki Daikin realizujemy kompleksowe projekty – od doradztwa i doboru urządzeń, przez profesjonalny montaż, po serwis i pełne wsparcie techniczne. Do każdego zlecenia podchodzimy indywidualnie, analizując potrzeby klienta i specyfikę obiektu, aby dobrać optymalne i energooszczędne rozwiązania."
       },
       "daikin": {
         "title": "Daikin",
-        "subtitle": "Jako oficjalny partner Daikin, oferujemy pełną gamę ich innowacyjnych produktów, od domowych klimatyzatorów po komercyjne systemy HVAC. Nasz zespół certyfikowanych techników zapewnia profesjonalną instalację, konserwację i wsparcie dla każdego projektu."
+        "subtitle": "Daikin to marka znana z japońskiej precyzji i konsekwentnego dążenia do energooszczędnych rozwiązań. Wyróżnia ją samodzielne projektowanie kluczowych komponentów, co pozwala maksymalnie optymalizować zużycie energii i zapewniać stabilny, nowoczesny komfort."
       }
     },
     "stats": {
       "items": {
         "1": {
           "title": "5000+",
-          "subtitle": "Zadowolonych Klientów"
+          "subtitle": "Zrealizowanych projektów"
         },
         "2": {
           "title": "15+",
@@ -1524,40 +1051,66 @@
         },
         "3": {
           "title": "24/7",
-          "subtitle": "Wsparcie Techniczne"
+          "subtitle": "Wsparcie klienta"
         },
         "4": {
-          "title": "100%",
+          "title": "99%",
           "subtitle": "Gwarancja Jakości"
         }
       }
     },
-    "grid": {
-      "item1": {
-        "title": "Profesjonalny Montaż",
-        "subtitle": "Precyzyjna instalacja przez certyfikowanych profesjonalistów zapewniająca optymalną wydajność."
-      },
-      "item2": {
-        "title": "Serwis i Konserwacja",
-        "subtitle": "Regularny serwis utrzymujący Twój system w szczytowej formie i wydajności."
-      },
-      "cta": {
-        "text": "Uzyskaj Wycenę",
-        "link": "/contact"
+    "whyChoose": {
+      "title": "Nasze wartości",
+      "subtitle": "Zasady, które kierują wszystkim, co robimy",
+      "reasons": {
+        "craftsmanship": {
+          "title": "Perfekcja wykonania",
+          "description": "Każda instalacja jest dla nas rzemiosłem. Dbamy o precyzyjne prowadzenie instalacji i pracę zgodną z rygorystycznymi standardami Daikin — tak, aby system działał idealnie od pierwszego uruchomienia."
+        },
+        "partnership": {
+          "title": "Partnerskie podejście",
+          "description": "Relacja z klientem to dla nas współpraca, nie jednorazowa transakcja. Słuchamy, doradzamy, tłumaczymy — tak, aby każda decyzja była świadoma, a instalacja idealnie dopasowana do potrzeb."
+        },
+        "development": {
+          "title": "Ciągły rozwój i certyfikacje",
+          "description": "Regularnie podnosimy kwalifikacje i aktualizujemy wiedzę o nowych technologiach Daikin. Proponujemy klientom rozwiązania, które są zgodne z najnowszymi trendami i gwarantują najwyższą efektywność."
+        },
+        "responsibility": {
+          "title": "Odpowiedzialność za każdy etap",
+          "description": "Nie kończymy projektu w momencie montażu. Bierzemy pełną odpowiedzialność za działanie systemu, oferując nadzór, serwis i doradztwo przez cały okres użytkowania urządzeń."
+        }
+      }
+    },
+    "application": {
+      "title": "Aplikacja Onecta",
+      "subtitle": "Centrum sterowania w Twoim telefonie",
+      "items": {
+        "1": {
+          "title": "Ustawianie harmonogramów",
+          "description": "Ustaw harmonogramy, aby zmieniać temperaturę i inne ustawienia zgodnie z Twoimi potrzebami. "
+        },
+        "2": {
+          "title": "Informacje o stanie urządzenia ",
+          "description": "Powiadomienia o usterkach, konieczności konserwacji lub zmianach parametrów."
+        },
+        "3": {
+          "title": "Zawsze pod kontrolą",
+          "description": "Sterowanie głosowe Amazon Alexa lub Google Assistant pozwala na obsługę bez użycia rąk."
+        },
+        "4": {
+          "title": "Monitoruj Twoje zużycie energii",
+          "description": "Przyjazne dla użytkownika wykresy i ikony pomagają zobaczyć, gdzie można zaoszczędzić energię."
+        }
       }
     },
     "cta": {
-      "title": "Gotowy na doskonałą kontrolę klimatu?",
-      "subtitle": "Skontaktuj się z nami już dziś, aby uzyskać bezpłatną konsultację i odkryj, jak możemy poprawić Twój komfort w pomieszczeniach."
+      "title": "Dowiedz się więcej",
+      "subtitle": "Mamy rozwiązanie dopasowane do Twoich potrzeb",
+      "schedule": "Skontaktuj się"
     },
     "bottom": {
       "alt": "Instalacja systemu HVAC Daikin"
     }
-  },
-  "productPage": {
-    "features": "Kluczowe cechy",
-    "learnMore": "Szczegóły",
-    "getQuote": "Uzyskaj ofertę"
   },
   "whyChoose": {
     "cta": {
@@ -1568,135 +1121,139 @@
     }
   },
   "product": {
-    "emura": {
-      "name": "Emura",
-      "specs": [
-        {
-          "title": "Ciśnienie akustyczne",
-          "subtitle": "do 19dBA"
-        },
-        {
-          "title": "Etykieta energetyczna chłodzenia i ogrzewania",
-          "subtitle": "najwyższa efektywność energetyczna A+++"
-        },
-        {
-          "title": "Moc grzewcza i chłodnicza (kW)",
-          "subtitle": "do 5,8 / 5,0"
-        },
-        {
-          "title": "Wymiary jednostki",
-          "subtitle": "305 x 900 x 212 mm"
-        }
-      ],
-      "description": {
-        "title": "Dlaczego warto wybrać Daikin Emura?",
-        "subtitle": "Daikin Emura łączy elegancki design z zaawansowaną technologią, oferując najwyższy komfort i wyjątkową jakość pracy. System oczyszczania usuwa z powietrza drobne cząsteczki i zapachy, a inteligentne czujniki dostosowują działanie urządzenia do warunków w pomieszczeniu, kierując łagodny, równomierny strumień powietrza bez niekomfortowych podmuchów. Konstrukcja pozwala także szybciej dogrzać wnętrze w razie potrzeby, a cicha praca sprawia, że klimatyzator pozostaje niemal niezauważalny. Współczynnik efektywności sezonowej podaje bardziej realne informacje dotyczące wydajności pompy ciepła powietrze-powietrze w całym sezonie grzewczym lub chłodniczym. Etykieta obejmuje klasyfikacje od A+++ do D. Daikin Emura uzyskał etykietę najwyższej efektywności energetycznej."
+    "whyChooseTitle": "Dlaczego wybrać",
+    "getQuote": "Uzyskaj ofertę",
+    "keyFeatures": "Kluczowe cechy",
+    "itemsTitle": "Co jest w zestawie",
+    "tabs": {
+      "features": "Cechy",
+      "specs": "Specyfikacje",
+      "description": "Opis"
+    },
+    "backButton": "Wróć",
+    "includesTitle": "Co jest w zestawie"
+  },
+  "productPage": {
+    "viewDetails": "Zobacz szczegóły",
+    "features": "Kluczowe cechy",
+    "air-conditioning": {
+      "banner": "https://daikinkobierzyce.pl/api/images/banery/image-1765209394490.jpg",
+      "hero": {
+        "title": "Systemy Klimatyzacji",
+        "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
       },
-      "featuresTitle": "Cechy produktu",
-      "features": [
-        {
-          "title": "Jakość powietrza",
-          "icon": "streamer",
-          "description": "Zapewnia oczyszczanie powietrza i usuwa drobne zanieczyszczenia. Wielostopniowy system filtracji łączy procesy elektrostatyczne, fotokatalityczne i streamer, aby wychwytywać ultradrobne cząstki oraz lotne związki organiczne, które często przechodzą przez zwykłe filtry. Ciągła praca urządzenia utrzymuje zdrowsze powietrze w pomieszczeniu, redukując objawy alergii i nieprzyjemne zapachy, przy czym konserwacja ogranicza się do okresowych przeglądów dla zachowania najwyższej wydajności."
+      "products": {
+        "title": "Systemy Klimatyzacji",
+        "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu"
+      },
+      "whyChoose": {
+        "title": "Dlaczego wybrać klimatyzację Daikin?",
+        "subtitle": "Urządzenia firmy Daikin liderują w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+        "left1": {
+          "title": "Doskonała wydajność",
+          "description": "Wiodące w branży oceny SEER, które obniżają koszty energii, zapewniając komfort przez cały rok.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/czyste_powietrze-1765210725323.jpg"
         },
-        {
-          "title": "Inteligenty czujnik temperatury",
-          "icon": "grid_eye_sensor",
-          "description": "Matrycowy czujnik o wysokiej rozdzielczości nieustannie skanuje obecność osób i wahania temperatury w pomieszczeniu, a następnie inteligentnie kieruje przepływ powietrza z dala od ludzi lub w stronę chłodniejszych/cieplejszych stref, wyrównując komfort. Automatycznie dopasowuje prędkość wentylatora i pozycję lameli w czasie rzeczywistym, redukując przeciągi i utrzymując stabilną temperaturę, a jednocześnie współpracuje z algorytmami adaptacyjnymi, aby z czasem zmniejszać zużycie energii. Efekt to bardziej równomierny komfort w całej przestrzeni bez potrzeby częstych ręcznych ustawień."
+        "right1": {
+          "title": "Czyste powietrze",
+          "description": "Wieloetapowe systemy filtracji usuwają alergeny, kurz i zapachy dla zdrowszej jakości powietrza wewnętrznego.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonaly_komfort-1765210718053.jpg"
         },
-        {
-          "title": "Heat boost",
-          "icon": "heat_boost",
-          "description": "Tryb Heat Boost przyspiesza nagrzewanie poprzez optymalizację pracy sprężarki, wentylatora i przepływu czynnika chłodniczego, dzięki czemu pomieszczenie osiąga ustawioną temperaturę nawet do 14% szybciej niż standardowe urządzenia. Tryb ten inteligentnie zwiększa moc tylko na czas niezbędny do szybkiego uzyskania komfortu, po czym wraca do trybu oszczędnego, zapewniając kompromis między szybkością działania a efektywnością. To idealne rozwiązanie na chłodne poranki lub szybkie przywrócenie komfortu po otwarciu drzwi, oferując natychmiastowe ciepło bez negatywnego wpływu na trwałość systemu."
-        },
-        {
-          "title": "Efekt Coandy",
-          "icon": "coanda_effect_cooling",
-          "description": "Specjalnie zaprojektowane lamele wykorzystują efekt Coandy do prowadzenia i przedłużenia strumienia powietrza wzdłuż sufitu i ścian, co daje większy zasięg i bardziej równomierne rozłożenie temperatury, nawet w dużych pomieszczeniach. Podczas ogrzewania strumień „przylega” do sufitu, dostarczając ciepłe powietrze głębiej do wnętrza, a podczas chłodzenia jest regulowany tak, aby unikać nieprzyjemnych przeciągów przy osobach. Efekt to efektywne pokrycie pomieszczenia, lepszy komfort z mniejszą ilością gorących/zimnych stref oraz cichsza praca dzięki łagodniejszym strumieniom powietrza."
+        "right2": {
+          "title": "Doskonały komfort",
+          "description": "Zaawansowana technologia kontroli klimatu zapewnia stałą temperaturę i wilgotność w całej przestrzeni.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonala_wydajnosc-1765210707161.jpg"
         }
-      ],
-      "images": [
-        {
-          "color": "#D9D9D9",
-          "imgs": [
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d98754f3-fc32-4d54-a2fa-04061abf7336/00-cold-packshot-ftxj-as-1-1-front.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--ac3846f8-9063-4c12-8eaa-2d71b0e822f3/01-cold-packshot-ftxj-as-1-1-left.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9273885f-631b-4179-903c-045eb4fa5fbb/02-cold-packshot-ftxj-as-1-1-right.jpg?quality=90&width=751&preferwebp=true"
-          ]
+      }
+    },
+    "heat-pumps": {
+      "banner": "https://daikinkobierzyce.pl/api/images/heat-pumps/baner-heat-pumps-1765270744225.jpg",
+      "hero": {
+        "title": "Systemy Klimatyzacji",
+        "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
+      },
+      "products": {
+        "title": "Nasza gama pomp ciepła",
+        "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni"
+      },
+      "whyChoose": {
+        "title": "Dlaczego pompa ciepła Daikin?",
+        "subtitle": "Urządzenia firmy Daikin liderują w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+        "left1": {
+          "title": "Trwałość i niezawodność",
+          "description": "Japońska inżynieria to gwarancja długiej żywotności urządzenia. Technologia została zaprojektowana tak, by stabilnie pracować nawet w najtrudniejszych warunkach.",
+          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla1-1765266488522.jpg"
         },
-        {
-          "color": "#000000",
-          "imgs": [
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--e2851bf8-980e-46f8-b1ae-a54f3e11b5e3/00-packshot-ftxj-ab-1-1-front.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--14362693-f252-49b9-b033-728c97892fa6/01-packshot-ftxj-ab-1-1-left.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--4f41b6ef-2716-497a-a517-9b384b4a1521/02-packshot-ftxj-ab-1-1-right.jpg?quality=90&width=751&preferwebp=true"
-          ]
+        "right1": {
+          "title": "Efektywność energetyczna",
+          "description": "Zaawansowana technologia Daikin pozwala pobierać energię z otoczenia i przekształcać ją w ciepło przy minimalnym zużyciu prądu.",
+          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla2-1765266506015.jpg"
         },
-        {
-          "color": "#FFFFFF",
-          "imgs": [
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3b5c980f-34eb-4c3d-a96b-f2be7c37c15f/00-cold-packshot-ftxj-aw-1-1-front.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--3f336b21-f641-4e9d-a37f-008365cb5bab/01-cold-packshot-ftxj-aw-1-1-left.jpg?quality=90&width=751&preferwebp=true",
-            "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--d58f16cf-e356-47f5-928d-972fa09685dd/02-cold-packshot-ftxj-aw-1-1-right.jpg?quality=90&width=751&preferwebp=true"
-          ]
+        "right2": {
+          "title": "Komfort przez cały rok",
+          "description": "System sam dostosowuje moc ogrzewania i chłodzenia do warunków w domu, utrzymując idealną temperaturę.",
+          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla3-1765266515323.jpg"
         }
-      ],
-      "includesTitle": "Co jest w zestawie",
-      "includes": [
-        {
-          "title": "Jednostka wewnętrzna",
-          "subtitle": "Ikonicznie zaprojektowana jednostka naścienna.",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--5b4b0646-eb80-473b-afc6-5f52b8d5a289/03-cold-packshot-ftxj-as-3-4-front.jpg?preferwebp=true&width=751&quality=90"
+      }
+    },
+    "air-purifiers": {
+      "banner": "https://daikinkobierzyce.pl/api/images/banery/baner-air-purifier-1765271078177.jpg",
+      "hero": {
+        "title": "Systemy Klimatyzacji",
+        "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
+      },
+      "products": {
+        "title": "Oczyszczacze Powietrza",
+        "subtitle": "Oddychaj czystszym, zdrowszym powietrzem dzięki zaawansowanej technologii oczyszczania powietrza Daikin. Skutecznie usuwa zanieczyszczenia, alergeny i zapachy."
+      },
+      "whyChoose": {
+        "title": "Dlaczego oczyszczacz powietrza Daikin?",
+        "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonał ej wydajności",
+        "left1": {
+          "title": "Skuteczne wychwytywanie zanieczyszczeń",
+          "description": "Filtr HEPA zatrzymujący kurz wychwytuje substancje unoszące się razem ze szkodliwymi gazami, a technologia Streamer rozkłada gazy.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz _powietrza1-1765269773035.jpg"
         },
-        {
-          "title": "Jednostka zewnętrzna",
-          "subtitle": "Pasuje na Twój dach, ścianę lub do ogrodu, zapewniając maksymalną wszechstronność",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--10e137c6-4357-4ce6-8812-c7016ba4e039/04-cold-packshot-rxj-a-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        "right1": {
+          "title": "Wydajność oczyszczania",
+          "description": "Nasza unikalna wieżowa struktura pobiera powietrze na dużym obszarze z 3 kierunków.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza2-1765269782059.jpg"
         },
-        {
-          "title": "Interfejs użytkownika",
-          "subtitle": "Intuicyjny i łatwy w użyciu pilot zdalnego sterowania zapewnia pełną kontrolę",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--77498f2f-8975-4aeb-9e27-224587bac639/05-cold-packshot-arc488a1w-3-4-front.jpg?preferwebp=true&width=432&quality=90"
-        },
-        {
-          "title": "Serwis",
-          "subtitle": "Ciesz się spokojem ducha dzięki naszej gwarancji i pakietowi serwisowemu",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--9b82df74-7cbe-4fe8-a866-df4a0fcaf817/moments-02-3-4-7.jpg?preferwebp=true&width=432&quality=90"
-        },
-        {
-          "title": "Aplikacja Onecta",
-          "subtitle": "Zawsze pod kontrolą, gdziekolwiek jesteś",
-          "image": "https://www.daikin.pl/adobe/dynamicmedia/deliver/dm-aid--89ecc0f9-3ce5-4dec-be24-f80a28bc9848/05-cold-packshot-onecta-app-3-4-front.jpg?preferwebp=true&width=432&quality=90"
+        "right2": {
+          "title": "Rozkład",
+          "description": "Technologia Streamer służy do rozkładu szkodliwych substancji zatrzymanych na filtrze poprzez utlenianie.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza3-1765269791100.jpg"
         }
-      ],
-      "getQuote": "Uzyskaj ofertę",
-      "tabs": {
-        "features": "Cechy",
-        "specs": "Specyfikacja",
-        "description": "Opis"
       }
     }
   },
   "colors": {
-    "white": {
-      "hex": "#ffffff",
-      "label": "Biały"
+    "texts": {
+      "select": "Wybierz kolor",
+      "choose": "Wybierz kolor",
+      "close": "Zamknij"
     },
-    "black": {
-      "hex": "#000000",
-      "label": "Czarny"
-    },
-    "red": {
-      "hex": "#ff0000",
-      "label": "Czerwony"
-    },
-    "blue": {
-      "hex": "#0000ff",
-      "label": "Niebieski"
-    },
-    "gray": {
-      "hex": "#D9D9D9",
-      "label": "Srebrny"
+    "items": {
+      "white": {
+        "hex": "#ffffff",
+        "label": "Biały"
+      },
+      "white_mat": {
+        "hex": "#fcfcfc",
+        "label": "Biały matowy"
+      },
+      "black_mat": {
+        "hex": "#4A4C4E",
+        "label": "Czarny matowy"
+      },
+      "black": {
+        "hex": "#000000",
+        "label": "Czarny"
+      },
+      "gray": {
+        "hex": "#D3D5D8",
+        "label": "Srebrny"
+      }
     }
   }
 }

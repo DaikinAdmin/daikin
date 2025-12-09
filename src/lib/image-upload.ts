@@ -5,7 +5,7 @@
  * and managing image URLs for use in the application.
  */
 
-const IMAGE_SERVICE_URL = process.env.IMAGE_SERVICE_URL || 'http://localhost:3030';
+const IMAGE_SERVICE_URL = process.env.IMAGE_SERVICE_URL;
 
 export interface UploadImageOptions {
   folder?: string;
@@ -42,7 +42,7 @@ export async function uploadImage(
     formData.append('folder', options.folder);
   }
 
-  const response = await fetch(`${IMAGE_SERVICE_URL}/api/images/upload`, {
+  const response = await fetch(`/api/images/upload`, {
     method: 'POST',
     body: formData,
   });

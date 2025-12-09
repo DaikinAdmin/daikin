@@ -30,13 +30,13 @@ import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Feature } from "@/types/feature";
 import { generateSlug } from "@/utils/slug";
-
+import IconPicker from "@/components/icons-picker";
 
 export default function FeaturesManagementPage() {
   const t = useTranslations("dashboard.features");
   const router = useRouter();
   const userRole = useUserRole();
-  
+
   const [features, setFeatures] = useState<Feature[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -68,10 +68,12 @@ export default function FeaturesManagementPage() {
 
   const fetchFeatures = async (search = "") => {
     try {
-      const url = search 
-        ? `/api/features?search=${encodeURIComponent(search)}&includeInactive=true`
+      const url = search
+        ? `/api/features?search=${encodeURIComponent(
+            search
+          )}&includeInactive=true`
         : "/api/features?includeInactive=true";
-      
+
       const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
@@ -128,18 +130,19 @@ export default function FeaturesManagementPage() {
         img: feature.img || "",
         isActive: feature.isActive,
         preview: feature.preview || false,
-        translations: feature.featureDetails.length > 0
-          ? feature.featureDetails.map(t => ({
-              locale: t.locale,
-              name: t.name,
-              desc: t.desc || "",
-              isActive: t.isActive,
-            }))
-          : [
-              { locale: "en", name: "", desc: "", isActive: true },
-              { locale: "pl", name: "", desc: "", isActive: true },
-              { locale: "ua", name: "", desc: "", isActive: true },
-            ],
+        translations:
+          feature.featureDetails.length > 0
+            ? feature.featureDetails.map((t) => ({
+                locale: t.locale,
+                name: t.name,
+                desc: t.desc || "",
+                isActive: t.isActive,
+              }))
+            : [
+                { locale: "en", name: "", desc: "", isActive: true },
+                { locale: "pl", name: "", desc: "", isActive: true },
+                { locale: "ua", name: "", desc: "", isActive: true },
+              ],
       });
     } else {
       setEditingFeature(null);
@@ -169,10 +172,10 @@ export default function FeaturesManagementPage() {
     setIsSubmitting(true);
 
     try {
-      const url = editingFeature 
-        ? `/api/features/${editingFeature.id}` 
+      const url = editingFeature
+        ? `/api/features/${editingFeature.id}`
         : "/api/features";
-      
+
       const method = editingFeature ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -297,15 +300,22 @@ export default function FeaturesManagementPage() {
             <TableBody>
               {features.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center text-muted-foreground">
+                  <TableCell
+                    colSpan={6}
+                    className="text-center text-muted-foreground"
+                  >
                     {t("noFeaturesFound")}
                   </TableCell>
                 </TableRow>
               ) : (
                 features.map((feature) => (
                   <TableRow key={feature.id} data-testid="feature-row">
-                    <TableCell className="font-medium">{feature.name}</TableCell>
-                    <TableCell className="text-muted-foreground">{feature.slug}</TableCell>
+                    <TableCell className="font-medium">
+                      {feature.name}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {feature.slug}
+                    </TableCell>
                     <TableCell className="text-muted-foreground">
                       {feature.img ? (
                         <span className="text-xs truncate max-w-[200px] block">
@@ -374,10 +384,12 @@ export default function FeaturesManagementPage() {
                     value={formData.name}
                     onChange={(e) => {
                       const name = e.target.value;
-                      setFormData({ 
-                        ...formData, 
+                      setFormData({
+                        ...formData,
                         name,
-                        slug: editingFeature ? formData.slug : generateSlug(name)
+                        slug: editingFeature
+                          ? formData.slug
+                          : generateSlug(name),
                       });
                     }}
                     required
@@ -389,11 +401,15 @@ export default function FeaturesManagementPage() {
                     id="slug"
                     name="slug"
                     value={formData.slug}
-                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, slug: e.target.value })
+                    }
                     placeholder="feature-slug"
                     required
                   />
-                  <p className="text-xs text-muted-foreground">{t("slugHelp")}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("slugHelp")}
+                  </p>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="img">{t("imageUrl")}</Label>
@@ -401,17 +417,29 @@ export default function FeaturesManagementPage() {
                     id="img"
                     name="img"
                     value={formData.img}
-                    onChange={(e) => setFormData({ ...formData, img: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, img: e.target.value })
+                    }
                     placeholder="/icons/feature.svg"
                   />
-                  <p className="text-xs text-muted-foreground">{t("imageHelp")}</p>
+                  <IconPicker
+                    value={formData.img}
+                    onChange={(iconPath) =>
+                      setFormData({ ...formData, img: iconPath })
+                    }
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    {t("imageHelp")}
+                  </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Switch
                     id="isActive"
                     name="isActive"
                     checked={formData.isActive}
-                    onCheckedChange={(checked) => setFormData({ ...formData, isActive: checked })}
+                    onCheckedChange={(checked) =>
+                      setFormData({ ...formData, isActive: checked })
+                    }
                   />
                   <Label htmlFor="isActive">{t("isActive")}</Label>
                 </div>
@@ -420,7 +448,9 @@ export default function FeaturesManagementPage() {
                     id="preview"
                     name="preview"
                     checked={formData.preview}
-                    onCheckedChange={(checked) => setFormData({ ...formData, preview: checked })}
+                    onCheckedChange={(checked) =>
+                      setFormData({ ...formData, preview: checked })
+                    }
                   />
                   <Label htmlFor="preview">{t("preview")}</Label>
                 </div>
@@ -436,9 +466,15 @@ export default function FeaturesManagementPage() {
                     <TabsTrigger value="ua">Українська</TabsTrigger>
                   </TabsList>
                   {formData.translations.map((translation, index) => (
-                    <TabsContent key={translation.locale} value={translation.locale} className="space-y-4">
+                    <TabsContent
+                      key={translation.locale}
+                      value={translation.locale}
+                      className="space-y-4"
+                    >
                       <div className="space-y-2">
-                        <Label htmlFor={`translation-${translation.locale}-name`}>
+                        <Label
+                          htmlFor={`translation-${translation.locale}-name`}
+                        >
                           {t("translatedName")}
                         </Label>
                         <Input
@@ -447,13 +483,18 @@ export default function FeaturesManagementPage() {
                           onChange={(e) => {
                             const newTranslations = [...formData.translations];
                             newTranslations[index].name = e.target.value;
-                            setFormData({ ...formData, translations: newTranslations });
+                            setFormData({
+                              ...formData,
+                              translations: newTranslations,
+                            });
                           }}
                           placeholder={t("translationPlaceholder")}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor={`translation-${translation.locale}-desc`}>
+                        <Label
+                          htmlFor={`translation-${translation.locale}-desc`}
+                        >
                           {t("translatedDescription")}
                         </Label>
                         <Input
@@ -462,7 +503,10 @@ export default function FeaturesManagementPage() {
                           onChange={(e) => {
                             const newTranslations = [...formData.translations];
                             newTranslations[index].desc = e.target.value;
-                            setFormData({ ...formData, translations: newTranslations });
+                            setFormData({
+                              ...formData,
+                              translations: newTranslations,
+                            });
                           }}
                           placeholder={t("descriptionPlaceholder")}
                         />
@@ -474,10 +518,15 @@ export default function FeaturesManagementPage() {
                           onCheckedChange={(checked) => {
                             const newTranslations = [...formData.translations];
                             newTranslations[index].isActive = checked;
-                            setFormData({ ...formData, translations: newTranslations });
+                            setFormData({
+                              ...formData,
+                              translations: newTranslations,
+                            });
                           }}
                         />
-                        <Label htmlFor={`translation-${translation.locale}-active`}>
+                        <Label
+                          htmlFor={`translation-${translation.locale}-active`}
+                        >
                           {t("translationActive")}
                         </Label>
                       </div>
@@ -495,11 +544,18 @@ export default function FeaturesManagementPage() {
               >
                 {t("cancel")}
               </Button>
-              <Button type="submit" data-testid="save-feature" disabled={isSubmitting}>
-                {isSubmitting 
-                  ? (editingFeature ? t("saving") : t("creating"))
-                  : (editingFeature ? t("save") : t("createFeature"))
-                }
+              <Button
+                type="submit"
+                data-testid="save-feature"
+                disabled={isSubmitting}
+              >
+                {isSubmitting
+                  ? editingFeature
+                    ? t("saving")
+                    : t("creating")
+                  : editingFeature
+                  ? t("save")
+                  : t("createFeature")}
               </Button>
             </DialogFooter>
           </form>
@@ -511,9 +567,7 @@ export default function FeaturesManagementPage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{t("areYouSure")}</DialogTitle>
-            <DialogDescription>
-              {t("deleteConfirmation")}
-            </DialogDescription>
+            <DialogDescription>{t("deleteConfirmation")}</DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button

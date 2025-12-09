@@ -1,22 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
 import { useTranslations } from 'next-intl';
 
 export default function Footer() {
   const t = useTranslations('footer');
   return (
-    <footer className="bg-accent-blue-grey text-white">
+    <footer className="bg-amm text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <img
-                src="/daikin_logo_pl.png"
+                src="/logo_white.png"
                 alt="Daikin"
-                className="h-16 w-auto rounded-lg select-none"
+                className="h-16 w-auto select-none"
                 draggable={false}
                 onDragStart={(e) => e.preventDefault()}
                 onContextMenu={(e) => e.preventDefault()}
@@ -28,7 +28,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com/daikin"
+                href="https://www.facebook.com/kobierzyce.daikin/"
                   className="text-white hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -36,15 +36,7 @@ export default function Footer() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com/daikin"
-                  className="text-white hover:text-primary transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com/company/daikin"
+                href="https://www.linkedin.com/company/amm-project-sp-z-o-o"
                   className="text-white hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -52,12 +44,12 @@ export default function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://youtube.com/daikin"
+                href="https://www.instagram.com/daikin_kobierzyce/"
                   className="text-white hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Youtube className="h-5 w-5" />
+                <Instagram className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -99,27 +91,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6 text-white">{t('products')}</h3>
             <ul className="space-y-3">
               <li>
-                  <a href="#" className="text-white hover:text-primary transition-colors">
+                  <a href="products/air-conditioning" className="text-white hover:text-primary transition-colors">
                   {t('productLinks.airConditioning')}
                 </a>
               </li>
               <li>
-                  <a href="#" className="text-white hover:text-primary transition-colors">
+                  <a href="products/heat-pumps" className="text-white hover:text-primary transition-colors">
                   {t('productLinks.heatPumps')}
                 </a>
               </li>
               <li>
-                  <a href="#" className="text-white hover:text-primary transition-colors">
-                  {t('productLinks.vrvSystems')}
-                </a>
-              </li>
-              <li>
-                  <a href="#" className="text-white hover:text-primary transition-colors">
-                  {t('productLinks.refrigeration')}
-                </a>
-              </li>
-              <li>
-                  <a href="#" className="text-white hover:text-primary transition-colors">
+                  <a href="products/air-purifiers" className="text-white hover:text-primary transition-colors">
                   {t('productLinks.airPurifiers')}
                 </a>
               </li>
@@ -134,15 +116,7 @@ export default function Footer() {
                 <Phone className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white">{t('salesSupport')}</p>
-                  <p className="text-white font-medium">+1 (800) 432-4546</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-white">{t('techSupport')}</p>
-                  <p className="text-white font-medium">+1 (855) 770-8973</p>
+                  <p className="text-white font-medium">+48 (690) 990 794</p>
                 </div>
               </div>
 
@@ -150,7 +124,7 @@ export default function Footer() {
                 <Mail className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white">{t('email')}</p>
-                  <p className="text-white font-medium">info@daikin.com</p>
+                  <p className="text-white font-medium">a.ivanovic@ammproject.com</p>
                 </div>
               </div>
 
@@ -159,8 +133,8 @@ export default function Footer() {
                 <div>
                   <p className="text-white">{t('headquarters')}</p>
                   <p className="text-white font-medium">
-                    5151 San Felipe St.<br />
-                    Houston, TX 77056
+                    Krótka 3, 55-040 <br /> 
+                    Kobierzyce, Poland
                   </p>
                 </div>
               </div>

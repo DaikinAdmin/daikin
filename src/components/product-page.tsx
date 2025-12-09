@@ -1,8 +1,10 @@
 import { ProductPageProps } from "@/types/product";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Button } from "./ui/button";
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -11,26 +13,50 @@ export default function ProductTemplatePage({
   productsSubtitle,
   products,
   children,
+  categorySlug,
 }: ProductPageProps) {
   const t = useTranslations("productPage");
+  const locale = useLocale();
+  const rawBanner = t(`${categorySlug}.banner`, { default: "" }) as string;
+  const bannerSrc = rawBanner ? encodeURI(rawBanner) : "";
+  const productsRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Top Banner (full-width image) */}
+      {bannerSrc && (
+        <section className="w-full">
+          <div className="relative w-full h-[250px] lg:h-[650px]">
+            <Image
+              src={bannerSrc}
+              alt={heroTitle || "Banner"}
+              fill
+              unoptimized
+              className="object-cover"
+              priority
+            />
+          </div>
+        </section>
+      )}
+
       {/* Hero Section */}
-      <section className="bg-primary text-white py-20">
+      {/* <section className="bg-primary text-white py-20">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-h1-mobile md:text-h1 mb-6">{heroTitle}</h1>
           <p className="text-subtitle-mobile md:text-subtitle mb-8 max-w-4xl mx-auto opacity-90">
             {heroSubtitle}
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Products Grid */}
-      <section className="py-16">
+      <section className="py-8" ref={productsRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-h1-mobile md:text-h1 text-black mb-2">{productsTitle}</h2>
-            <p className="text-subtitle-mobile md:text-subtitle text-amm max-w-3xl">
+            <h2 className="text-h1-mobile md:text-h1 text-black">
+              {productsTitle}
+            </h2>
+            <p className="text-subtitle-mobile md:text-subtitle text-amm">
               {productsSubtitle}
             </p>
           </div>
@@ -46,41 +72,48 @@ export default function ProductTemplatePage({
                   <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                     {/* Product Image */}
                     <img
-                      src={product.image}
-                      alt={product.name}
+                      src={product.img[0]?.imgs[0] || "/placeholder-image.png"}
+                      alt={product.articleId}
                       className="w-full h-full object-cover"
                     />
 
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
                       <span className="bg-amm text-white px-5 py-1 rounded-full text-main-text-mobile md:text-main-text">
-                        {product.category}
+                        {product.category.name}
                       </span>
                     </div>
                   </div>
 
                   {/* Product Details */}
                   <div className="py-6 flex flex-col flex-grow">
-                    <h3 className="text-h2-mobile md:text-h2 text-black mb-3">{product.name}</h3>
+                    <h3 className="text-h2-mobile md:text-h2 text-black mb-3">
+                      {product.productDetails[0].name}
+                    </h3>
                     <p className="text-main-text text-amm mb-4">
-                      {product.description}
+                      {product.productDetails[0].title}
                     </p>
-                    {product.features && product.features.length > 0 && (
+                    {product.features?.filter((f) => f.preview).length > 0 && (
                       <div className="mb-4">
                         <h4 className="text-black text-h3-mobile md:text-h3 mb-2">
                           {t("features")}
                         </h4>
                         <div className="grid grid-cols-1 gap-4">
-                          {product.features.map((f, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                              <div className="flex items-center justify-center">
-                                <Icon icon={f.icon} className="text-primary text-2xl" />
+                          {product.features
+                            .filter((f) => f.preview)
+                            .map((f, i) => (
+                              <div key={i} className="flex items-center gap-2">
+                                <div className="flex items-center justify-center">
+                                  <Icon
+                                    icon={f.img!}
+                                    className="text-primary text-2xl"
+                                  />
+                                </div>
+                                <span className="text-main-text md:text-main-text text-amm">
+                                  {f.featureDetails[0].name}
+                                </span>
                               </div>
-                              <span className="text-main-text text-amm text-sm">
-                                {f.title}
-                              </span>
-                            </div>
-                          ))}
+                            ))}
                         </div>
                       </div>
                     )}
@@ -90,8 +123,8 @@ export default function ProductTemplatePage({
                       className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
                       variant={"default"}
                     >
-                      <Link href={`/products/air-conditioning/${product.id}`}>
-                        {t("getQuote")}
+                      <Link href={`/products/${categorySlug}/${product.slug}`}>
+                        {t("viewDetails") ?? "View Details"}
                       </Link>
                     </Button>
                   </div>
@@ -101,7 +134,6 @@ export default function ProductTemplatePage({
           </div>
         </div>
       </section>
-
       {children}
     </div>
   );

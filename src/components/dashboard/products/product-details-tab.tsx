@@ -3,17 +3,11 @@
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-type ProductTranslation = {
-  locale: string;
-  name: string;
-  title: string;
-  subtitle: string;
-};
+import { ProductDetail } from "@/types/product";
 
 type ProductDetailsTabProps = {
-  translations: ProductTranslation[];
-  onChange: (translations: ProductTranslation[]) => void;
+  translations: ProductDetail[];
+  onChange: (translations: ProductDetail[]) => void;
   t: (key: string) => string;
   disabled?: boolean;
 };
@@ -30,7 +24,7 @@ export function ProductDetailsTab({
   t,
   disabled = false,
 }: ProductDetailsTabProps) {
-  const handleChange = (locale: string, field: keyof Omit<ProductTranslation, 'locale'>, value: string) => {
+  const handleChange = (locale: string, field: keyof Omit<ProductDetail, 'locale'>, value: string) => {
     const existingIndex = translations.findIndex(tr => tr.locale === locale);
     
     if (existingIndex >= 0) {
@@ -40,16 +34,22 @@ export function ProductDetailsTab({
       onChange(updated);
     } else {
       // Create new translation
-      onChange([...translations, { locale, name: "", title: "", subtitle: "", [field]: value }]);
+      onChange([...translations, {
+        locale, name: "", title: "", subtitle: "", productSlug: "", [field]: value,
+        id: ""
+      }]);
     }
   };
 
-  const getTranslation = (locale: string): ProductTranslation => {
+  const getTranslation = (locale: string): ProductDetail => {
     return translations.find(t => t.locale === locale) || {
       locale,
+      productSlug: "",
       name: "",
       title: "",
       subtitle: "",
+      id: ""
+
     };
   };
 
