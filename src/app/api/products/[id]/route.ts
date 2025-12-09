@@ -198,6 +198,7 @@ export const PUT = async (
                         description: t.description,
                         title: t.title,
                         subtitle: t.subtitle,
+                        productSlug: slug,
                     })),
                 });
             }
