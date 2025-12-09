@@ -18,6 +18,7 @@ import {
   Sparkles,
   Package,
   ListChecks,
+  Images,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -110,6 +111,11 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       title: "Features",
       href: "/dashboard/features",
       icon: Sparkles,
+    },
+    {
+      title: "Images",
+      href: "/dashboard/images",
+      icon: Images,
     },
     {
       title: "Benefits",
