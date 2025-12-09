@@ -103,7 +103,8 @@
       "title": "Polecane produkty Daikin",
       "subtitle": "Odkryj nasze innowacyjne rozwiązania HVAC",
       "learnMore": "Szczegóły",
-      "getQuote": "Uzyskaj ofertę"
+      "getQuote": "Uzyskaj ofertę",
+      "keyFeatures": "Kluczowe cechy"
     },
     "features": {
       "title": "Dlaczego Daikin?",
@@ -119,6 +120,25 @@
       "smart": {
         "title": "Inteligentna technologia",
         "description": "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem."
+      }
+    },
+    "whyChoose": {
+      "title": "Dlaczego Daikin?",
+      "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+      "left1": {
+        "title": "Niższe rachunki",
+        "description": "Dzięki najwyższej klasie efektywności energetycznej A+++",
+        "image": "https://daikinkobierzyce.pl/api/images/main_page/Nizsze_rachunki-1765210907264.jpg"
+      },
+      "right1": {
+        "title": "Cisza i komfort",
+        "description": "Dzięki zaawansowanej cichej technologii pracy urządzeń",
+        "image": "https://daikinkobierzyce.pl/api/images/main_page/pewnosc_na_lata-1765210916679.jpg"
+      },
+      "right2": {
+        "title": "Niezawodność na lata",
+        "description": "Dzięki jakości Daikin, która jest potwierdzona globalnymi standardami",
+        "image": "https://daikinkobierzyce.pl/api/images/main_page/cisza_komfort-1765210923645.jpg"
       }
     },
     "cta": {
@@ -742,29 +762,24 @@
   "services": {
     "installation": {
       "hero": {
-        "badge": "Profesjonalna instalacja",
         "title": "Ekspertowe usługi instalacji Daikin",
-        "subtitle": "Zaufaj naszym certyfikowanym technikom, którzy zainstalują Twój system HVAC Daikin z precyzją i starannością, zapewniając optymalną wydajność i długowieczność.",
-        "cta": {
-          "schedule": "Zaplanuj instalację",
-          "contact": "Skontaktuj się"
-        }
+        "subtitle": "Zaufaj naszym certyfikowanym technikom, którzy zainstalują Twój system HVAC Daikin z precyzją i starannością, zapewniając optymalną wydajność i długowieczność. Profesjonalna instalacja jest kluczowa dla wydajności i efektywności Twojego systemu HVAC"
       },
       "whyChoose": {
         "title": "Dlaczego wybrać nasze usługi instalacyjne?",
-        "subtitle": "Profesjonalna instalacja jest kluczowa dla wydajności i efektywności Twojego systemu HVAC",
+        "subtitle": "Doświadczenie i jakość, na które możesz liczyć",
         "reasons": {
           "certified": {
             "title": "Certyfikowani technicy",
-            "description": "Wszyscy nasi instalatorzy są certyfikowani przez Daikin i wysoko wykwalifikowani"
+            "description": "Wszyscy nasi instalatorzy są wysoko wykwalifikowani oraz certyfikowani przez Daikin"
           },
           "quality": {
             "title": "Gwarancja jakości",
-            "description": "Używamy tylko oryginalnych części Daikin i przestrzegamy specyfikacji producenta"
+            "description": "Używamy tylko oryginalnych części Daikin i przestrzegamy specyfikacji producenta. Pracujemy na najwyższej jakości materiałach"
           },
           "fast": {
             "title": "Szybko i efektywnie",
-            "description": "Większość instalacji wykonywana w ciągu 1-2 dni z minimalnym zakłóceniem"
+            "description": "Większość instalacji jest wykonywana w ciągu 1-2 dni"
           },
           "warranty": {
             "title": "Rozszerzona gwarancja",
@@ -865,193 +880,42 @@
         }
       },
       "cta": {
-        "title": "Gotowy do zainstalowania systemu Daikin?",
-        "subtitle": "Uzyskaj bezpłatną konsultację i wycenę od naszego zespołu ekspertów",
-        "schedule": "Zaplanuj konsultację",
+        "title": "Pozwól nam zadbać o Twój komfort",
+        "subtitle": "Skontaktuj się z nami - o resztę zadbamy my",
+        "schedule": "Skontaktuj się",
         "viewProducts": "Zobacz produkty"
       }
     },
     "maintenance": {
       "hero": {
-        "badge": "Konserwacja prewencyjna",
-        "title": "Konserwacja i plany serwisowe Daikin",
-        "subtitle": "Utrzymuj swój system HVAC w szczytowej wydajności dzięki naszym kompleksowym usługom konserwacji i elastycznym planom serwisowym.",
-        "cta": {
-          "schedule": "Zaplanuj konserwację",
-          "emergency": "Serwis awaryjny 24/7"
-        }
+        "title": "Serwis",
+        "subtitle": "W Daikin nasze zaangażowanie w satysfakcję klienta wykracza poza dostarczanie wysokowydajnych rozwiązań klimatyzacyjnych. Równie ważne jest zapewnienie każdemu klientowi Daikin, doskonałej obsługi przez cały okres użytkowania systemu. Dlatego posiadamy własny, doświadczony zespół techników serwisu, a także współpracujemy z zaufanymi profesjonalistami, instalatorami, którzy podzielają nasze zaangażowanie w profesjonalną opiekę i wieloletnią niezawodność."
       },
-      "whyMaintenance": {
-        "title": "Dlaczego regularna konserwacja ma znaczenie",
-        "subtitle": "Chroń swoją inwestycję i zapewnij optymalną wydajność przez cały rok",
-        "benefits": {
-          "efficiency": {
-            "title": "Lepsza wydajność",
-            "description": "Regularna konserwacja może poprawić efektywność energetyczną nawet o 30%"
+      "whyChoose": {
+        "title": "Rozwiązania serwisowe",
+        "subtitle": "Dlaczego warto wybrać nasze usługi serwisowe?",
+        "reasons": {
+          "specialistKnowledge": {
+            "title": "Specjalistyczna wiedza",
+            "description": "Wspieramy w osiąganiu celów energetycznych dzięki eksperckiej analizie systemu, planowaniu modernizacji oraz wsparciu w zakresie zgodności z przepisami"
           },
-          "lifespan": {
-            "title": "Wydłużona żywotność",
-            "description": "Odpowiednia opieka może wydłużyć żywotność systemu o 10-15 lat"
+          "regularInspections": {
+            "title": "Regularne przeglądy",
+            "description": "Dbamy o odpowiednią żywotność sprzętu oraz zapewniamy najwyższą wydajność rozwiązań dzięki specjalistycznej diagnostyce i odpowiedniej konserwacji przez dedykowany zespół serwisowy Daikin"
           },
-          "reliability": {
-            "title": "Mniej awarii",
-            "description": "Konserwacja prewencyjna zmniejsza naprawy awaryjne o 95%"
+          "modernization": {
+            "title": "Modernizacja",
+            "description": "Modernizujemy systemy HVAC poprawiając wydajność, obniżając zużycie energii i zwiększając komfort w pomieszczeniach"
           },
-          "airQuality": {
-            "title": "Lepsza jakość powietrza",
-            "description": "Czyste filtry i wężownice oznaczają zdrowsze powietrze wewnętrzne"
-          }
-        }
-      },
-      "plans": {
-        "title": "Plany konserwacji",
-        "subtitle": "Wybierz plan najlepiej dopasowany do Twoich potrzeb",
-        "recommended": "Najpopularniejszy",
-        "perVisit": "/wizyta",
-        "selectPlan": "Wybierz ten plan",
-        "packages": {
-          "basic": {
-            "title": "Podstawowy",
-            "description": "Niezbędna konserwacja dla właścicieli domów",
-            "price": "399 zł",
-            "features": {
-              "1": "Roczna inspekcja systemu",
-              "2": "Czyszczenie i wymiana filtrów",
-              "3": "Podstawowa kontrola wydajności",
-              "4": "Priorytetowe planowanie",
-              "5": "10% zniżki na naprawy"
-            }
-          },
-          "standard": {
-            "title": "Standardowy",
-            "description": "Kompleksowa opieka dla optymalnej wydajności",
-            "price": "699 zł",
-            "features": {
-              "1": "Dwie wizyty rocznie (wiosna i jesień)",
-              "2": "Kompleksowe czyszczenie systemu",
-              "3": "Kontrola poziomu czynnika chłodniczego",
-              "4": "Inspekcja komponentów elektrycznych",
-              "5": "15% zniżki na naprawy"
-            }
-          },
-          "premium": {
-            "title": "Premium",
-            "description": "Najwyższa ochrona i spokój ducha",
-            "price": "1199 zł",
-            "features": {
-              "1": "Kwartalne wizyty (4x rocznie)",
-              "2": "Wszystkie funkcje planu Standardowego",
-              "3": "Priorytetowy serwis awaryjny 24/7",
-              "4": "Darmowe drobne naprawy (do 800 zł)",
-              "5": "20% zniżki na większe naprawy"
-            }
-          }
-        }
-      },
-      "included": {
-        "title": "Co zawiera każdy serwis",
-        "subtitle": "Kompleksowa lista kontrolna konserwacji wykonywana przez certyfikowanych techników",
-        "services": {
-          "1": {
-            "title": "Inspekcja i czyszczenie filtrów",
-            "description": "Czyszczenie lub wymiana filtrów powietrza dla optymalnego przepływu"
-          },
-          "2": {
-            "title": "Czyszczenie wężownic",
-            "description": "Czyszczenie parownika i skraplacza"
-          },
-          "3": {
-            "title": "Kontrola czynnika chłodniczego",
-            "description": "Weryfikacja poziomu czynnika i sprawdzenie szczelności"
-          },
-          "4": {
-            "title": "Inspekcja elektryczna",
-            "description": "Test wszystkich połączeń i komponentów elektrycznych"
-          },
-          "5": {
-            "title": "Kalibracja termostatu",
-            "description": "Zapewnienie dokładnej kontroli temperatury"
-          },
-          "6": {
-            "title": "Serwis linii odpływowej",
-            "description": "Czyszczenie odpływów skroplin, aby zapobiec zatykaniu"
-          },
-          "7": {
-            "title": "Inspekcja silnika wentylatora",
-            "description": "Smarowanie i testowanie wszystkich silników i wentylatorów"
-          },
-          "8": {
-            "title": "Kontrola bezpieczeństwa",
-            "description": "Weryfikacja działania wszystkich zabezpieczeń"
-          },
-          "9": {
-            "title": "Test wydajności",
-            "description": "Pomiar i optymalizacja wydajności systemu"
-          }
-        }
-      },
-      "warningSigns": {
-        "title": "Oznaki potrzeby serwisu",
-        "subtitle": "Nie czekaj na awarię - obserwuj te częste problemy",
-        "signs": {
-          "1": {
-            "title": "Nietypowe hałasy",
-            "description": "Zgrzytanie, piszczenie lub stukanie wskazują na problemy mechaniczne"
-          },
-          "2": {
-            "title": "Słaby przepływ powietrza",
-            "description": "Zmniejszony przepływ sugeruje zablokowane filtry lub uszkodzone komponenty"
-          },
-          "3": {
-            "title": "Wysokie rachunki za energię",
-            "description": "Nagły wzrost kosztów energii wskazuje na nieefektywność systemu"
-          },
-          "4": {
-            "title": "Nierównomierne temperatury",
-            "description": "Gorące lub zimne miejsca oznaczają, że system nie dystrybuuje powietrza prawidłowo"
-          },
-          "5": {
-            "title": "Częste włączanie",
-            "description": "System włączający się zbyt często wymaga profesjonalnej uwagi"
-          },
-          "6": {
-            "title": "Nieprzyjemne zapachy",
-            "description": "Stęchłe lub palące zapachy wymagają natychmiastowej inspekcji"
-          }
-        },
-        "emergency": {
-          "title": "Potrzebujesz serwisu awaryjnego?",
-          "description": "Oferujemy naprawy awaryjne 24/7 dla krytycznych problemów HVAC. Nie wahaj się zadzwonić.",
-          "cta": "Zadzwoń po serwis awaryjny"
-        }
-      },
-      "seasonal": {
-        "title": "Sezonowe wskazówki konserwacyjne",
-        "subtitle": "Utrzymuj swój system gotowy na każdą porę roku",
-        "spring": {
-          "title": "Przygotowanie wiosna/lato",
-          "tasks": {
-            "1": "Wymiana lub czyszczenie filtrów powietrza",
-            "2": "Sprawdzenie poziomu czynnika chłodniczego",
-            "3": "Czyszczenie jednostki zewnętrznej i usunięcie zanieczyszczeń",
-            "4": "Test wydajności chłodzenia",
-            "5": "Inspekcja kanałów pod kątem nieszczelności"
-          }
-        },
-        "fall": {
-          "title": "Przygotowanie jesień/zima",
-          "tasks": {
-            "1": "Inspekcja elementów grzewczych",
-            "2": "Test zaworu odwracającego pompy ciepła",
-            "3": "Sprawdzenie działania termostatu",
-            "4": "Czyszczenie wężownic wewnętrznych",
-            "5": "Weryfikacja prawidłowego przepływu powietrza"
+          "partsAndRepairs": {
+            "title": "Części i naprawy",
+            "description": "Zapewniamy niezawodne działanie dzięki oryginalnym częściom zamiennym Daikin i specjalistycznym usługom naprawczym dostosowanym do potrzeb systemu"
           }
         }
       },
       "cta": {
-        "title": "Chroń swoją inwestycję już dziś",
-        "subtitle": "Zapisz się na plan konserwacji i ciesz się spokojem przez cały rok",
+        "title": "Zadbaj o swój sprzęt",
+        "subtitle": "Jesteśmy zawsze do Twojej dyspozycji",
         "schedule": "Zaplanuj serwis",
         "contact": "Skontaktuj się"
       }
@@ -1123,29 +987,21 @@
     }
   },
   "about": {
-    "hero": {
-      "title": "O AMM Salon",
-      "subtitle": "Twój zaufany partner w rozwiązaniach klimatyzacyjnych od ponad 15 lat"
-    },
-    "section": {
-      "title": "Nasze wartości",
-      "subtitle": "Zasady, które kierują wszystkim, co robimy"
-    },
     "intro": {
       "aboutUs": {
         "title": "O nas",
-        "subtitle": "AMM Salon to wiodący autoryzowany dealer i instalator Daikin, specjalizujący się w wysokiej jakości rozwiązaniach klimatyzacyjnych, grzewczych i wentylacyjnych. Od 2009 roku dostarczamy naszym klientom najwyższej jakości systemy kontroli klimatu."
+        "subtitle": "AMM Project to firma specjalizująca się w automatyce przemysłowej oraz nowoczesnych rozwiązaniach HVAC. Jako oficjalny partner i instalator marki Daikin realizujemy kompleksowe projekty – od doradztwa i doboru urządzeń, przez profesjonalny montaż, po serwis i pełne wsparcie techniczne. Do każdego zlecenia podchodzimy indywidualnie, analizując potrzeby klienta i specyfikę obiektu, aby dobrać optymalne i energooszczędne rozwiązania."
       },
       "daikin": {
         "title": "Daikin",
-        "subtitle": "Jako oficjalny partner Daikin, oferujemy pełną gamę ich innowacyjnych produktów, od domowych klimatyzatorów po komercyjne systemy HVAC. Nasz zespół certyfikowanych techników zapewnia profesjonalną instalację, konserwację i wsparcie dla każdego projektu."
+        "subtitle": "Daikin to marka znana z japońskiej precyzji i konsekwentnego dążenia do energooszczędnych rozwiązań. Wyróżnia ją samodzielne projektowanie kluczowych komponentów, co pozwala maksymalnie optymalizować zużycie energii i zapewniać stabilny, nowoczesny komfort."
       }
     },
     "stats": {
       "items": {
         "1": {
           "title": "5000+",
-          "subtitle": "Zadowolonych Klientów"
+          "subtitle": "Zrealizowanych projektów"
         },
         "2": {
           "title": "15+",
@@ -1153,31 +1009,62 @@
         },
         "3": {
           "title": "24/7",
-          "subtitle": "Wsparcie Techniczne"
+          "subtitle": "Wsparcie klienta"
         },
         "4": {
-          "title": "100%",
+          "title": "99%",
           "subtitle": "Gwarancja Jakości"
         }
       }
     },
-    "grid": {
-      "item1": {
-        "title": "Profesjonalny Montaż",
-        "subtitle": "Precyzyjna instalacja przez certyfikowanych profesjonalistów zapewniająca optymalną wydajność."
-      },
-      "item2": {
-        "title": "Serwis i Konserwacja",
-        "subtitle": "Regularny serwis utrzymujący Twój system w szczytowej formie i wydajności."
-      },
-      "cta": {
-        "text": "Uzyskaj Wycenę",
-        "link": "/contact"
+    "whyChoose": {
+      "title": "Nasze wartości",
+      "subtitle": "Zasady, które kierują wszystkim, co robimy",
+      "reasons": {
+        "craftsmanship": {
+          "title": "Perfekcja wykonania",
+          "description": "Każda instalacja jest dla nas rzemiosłem. Dbamy o precyzyjne prowadzenie instalacji i pracę zgodną z rygorystycznymi standardami Daikin — tak, aby system działał idealnie od pierwszego uruchomienia."
+        },
+        "partnership": {
+          "title": "Partnerskie podejście",
+          "description": "Relacja z klientem to dla nas współpraca, nie jednorazowa transakcja. Słuchamy, doradzamy, tłumaczymy — tak, aby każda decyzja była świadoma, a instalacja idealnie dopasowana do potrzeb."
+        },
+        "development": {
+          "title": "Ciągły rozwój i certyfikacje",
+          "description": "Regularnie podnosimy kwalifikacje i aktualizujemy wiedzę o nowych technologiach Daikin. Proponujemy klientom rozwiązania, które są zgodne z najnowszymi trendami i gwarantują najwyższą efektywność."
+        },
+        "responsibility": {
+          "title": "Odpowiedzialność za każdy etap",
+          "description": "Nie kończymy projektu w momencie montażu. Bierzemy pełną odpowiedzialność za działanie systemu, oferując nadzór, serwis i doradztwo przez cały okres użytkowania urządzeń."
+        }
+      }
+    },
+    "application": {
+      "title": "Aplikacja Onecta",
+      "subtitle": "Centrum sterowania w Twoim telefonie",
+      "items": {
+        "1": {
+          "title": "Ustawianie harmonogramów",
+          "description": "Ustaw harmonogramy, aby zmieniać temperaturę i inne ustawienia zgodnie z Twoimi potrzebami. "
+        },
+        "2": {
+          "title": "Informacje o stanie urządzenia ",
+          "description": "Powiadomienia o usterkach, konieczności konserwacji lub zmianach parametrów."
+        },
+        "3": {
+          "title": "Zawsze pod kontrolą",
+          "description": "Sterowanie głosowe Amazon Alexa lub Google Assistant pozwala na obsługę bez użycia rąk."
+        },
+        "4": {
+          "title": "Monitoruj Twoje zużycie energii",
+          "description": "Przyjazne dla użytkownika wykresy i ikony pomagają zobaczyć, gdzie można zaoszczędzić energię."
+        }
       }
     },
     "cta": {
-      "title": "Gotowy na doskonałą kontrolę klimatu?",
-      "subtitle": "Skontaktuj się z nami już dziś, aby uzyskać bezpłatną konsultację i odkryj, jak możemy poprawić Twój komfort w pomieszczeniach."
+      "title": "Dowiedz się więcej",
+      "subtitle": "Mamy rozwiązanie dopasowane do Twoich potrzeb",
+      "schedule": "Skontaktuj się"
     },
     "bottom": {
       "alt": "Instalacja systemu HVAC Daikin"
@@ -1205,36 +1092,40 @@
     "includesTitle": "Co jest w zestawie"
   },
   "productPage": {
-    "getQuote": "Uzyskaj ofertę",
+    "viewDetails": "Zobacz szczegóły",
     "features": "Kluczowe cechy",
-    
     "air-conditioning": {
+      "banner": "https://daikinkobierzyce.pl/api/images/banery/image-1765209394490.jpg",
       "hero": {
         "title": "Systemy Klimatyzacji",
         "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
       },
       "products": {
-        "title": "Nasza gama klimatyzacji ",
-        "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni"
+        "title": "Systemy Klimatyzacji",
+        "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu"
       },
       "whyChoose": {
         "title": "Dlaczego wybrać klimatyzację Daikin?",
-        "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+        "subtitle": "Urządzenia firmy Daikin liderują w branży dzięki innowacyjnej technologii i doskonałej wydajności",
         "left1": {
-          "title": "Efektywność energetyczna",
-          "description": "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii"
+          "title": "Doskonała wydajność",
+          "description": "Wiodące w branży oceny SEER, które obniżają koszty energii, zapewniając komfort przez cały rok.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/czyste_powietrze-1765210725323.jpg"
         },
         "right1": {
-          "title": "Inteligentna technologia",
-          "description": "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem."
+          "title": "Czyste powietrze",
+          "description": "Wieloetapowe systemy filtracji usuwają alergeny, kurz i zapachy dla zdrowszej jakości powietrza wewnętrznego.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonaly_komfort-1765210718053.jpg"
         },
         "right2": {
-          "title": "Niezawodność",
-          "description": "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania."
+          "title": "Doskonały komfort",
+          "description": "Zaawansowana technologia kontroli klimatu zapewnia stałą temperaturę i wilgotność w całej przestrzeni.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonala_wydajnosc-1765210707161.jpg"
         }
       }
     },
     "heat-pumps": {
+      "banner": "https://daikinkobierzyce.pl/api/images/heat-pumps/baner-heat-pumps-1765270744225.jpg",
       "hero": {
         "title": "Systemy Klimatyzacji",
         "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
@@ -1244,69 +1135,83 @@
         "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni"
       },
       "whyChoose": {
-        "title": "Dlaczego wybrać klimatyzację Daikin?",
-        "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+        "title": "Dlaczego pompa ciepła Daikin?",
+        "subtitle": "Urządzenia firmy Daikin liderują w branży dzięki innowacyjnej technologii i doskonałej wydajności",
         "left1": {
-          "title": "Efektywność energetyczna",
-          "description": "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii"
+          "title": "Trwałość i niezawodność",
+          "description": "Japońska inżynieria to gwarancja długiej żywotności urządzenia. Technologia została zaprojektowana tak, by stabilnie pracować nawet w najtrudniejszych warunkach.",
+          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla1-1765266488522.jpg"
         },
         "right1": {
-          "title": "Inteligentna technologia",
-          "description": "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem."
+          "title": "Efektywność energetyczna",
+          "description": "Zaawansowana technologia Daikin pozwala pobierać energię z otoczenia i przekształcać ją w ciepło przy minimalnym zużyciu prądu.",
+          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla2-1765266506015.jpg"
         },
         "right2": {
-          "title": "Niezawodność",
-          "description": "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania."
+          "title": "Komfort przez cały rok",
+          "description": "System sam dostosowuje moc ogrzewania i chłodzenia do warunków w domu, utrzymując idealną temperaturę.",
+          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla3-1765266515323.jpg"
         }
       }
     },
-    "air-purifier": {
+    "air-purifiers": {
+      "banner": "https://daikinkobierzyce.pl/api/images/banery/baner-air-purifier-1765271078177.jpg",
       "hero": {
         "title": "Systemy Klimatyzacji",
         "subtitle": "Doświadcz doskonałego komfortu z innowacyjnymi rozwiązaniami klimatyzacyjnymi Daikin. Energooszczędne, niezawodne i zaprojektowane dla Twojego domu."
       },
       "products": {
-        "title": "Nasza gama oczyszczaczy powietrza",
-        "subtitle": "Odkryj premium rozwiązania chłodzące dla każdej przestrzeni"
+        "title": "Oczyszczacze Powietrza",
+        "subtitle": "Oddychaj czystszym, zdrowszym powietrzem dzięki zaawansowanej technologii oczyszczania powietrza Daikin. Skutecznie usuwa zanieczyszczenia, alergeny i zapachy."
       },
       "whyChoose": {
-        "title": "Dlaczego wybrać klimatyzację Daikin?",
-        "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności",
+        "title": "Dlaczego oczyszczacz powietrza Daikin?",
+        "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonał ej wydajności",
         "left1": {
-          "title": "Efektywność energetyczna",
-          "description": "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii"
+          "title": "Skuteczne wychwytywanie zanieczyszczeń",
+          "description": "Filtr HEPA zatrzymujący kurz wychwytuje substancje unoszące się razem ze szkodliwymi gazami, a technologia Streamer rozkłada gazy.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz _powietrza1-1765269773035.jpg"
         },
         "right1": {
-          "title": "Inteligentna technologia",
-          "description": "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem."
+          "title": "Wydajność oczyszczania",
+          "description": "Nasza unikalna wieżowa struktura pobiera powietrze na dużym obszarze z 3 kierunków.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza2-1765269782059.jpg"
         },
         "right2": {
-          "title": "Niezawodność",
-          "description": "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania."
+          "title": "Rozkład",
+          "description": "Technologia Streamer służy do rozkładu szkodliwych substancji zatrzymanych na filtrze poprzez utlenianie.",
+          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza3-1765269791100.jpg"
         }
       }
     }
   },
   "colors": {
-    "white": {
-      "hex": "#ffffff",
-      "label": "Biały"
+    "texts": {
+      "select": "Wybierz kolor",
+      "choose": "Wybierz kolor",
+      "close": "Zamknij"
     },
-    "black": {
-      "hex": "#000000",
-      "label": "Czarny"
-    },
-    "red": {
-      "hex": "#ff0000",
-      "label": "Czerwony"
-    },
-    "blue": {
-      "hex": "#0000ff",
-      "label": "Niebieski"
-    },
-    "gray": {
-      "hex": "#D9D9D9",
-      "label": "Srebrny"
+    "items": {
+      "white": {
+        "hex": "#ffffff",
+        "label": "Biały"
+      },
+      "white_mat": {
+        "hex": "#fcfcfc",
+        "label": "Biały matowy"
+      },
+      "black_mat": {
+        "hex": "#4A4C4E",
+        "label": "Czarny matowy"
+      },
+      "black": {
+        "hex": "#000000",
+        "label": "Czarny"
+      },
+      "gray": {
+        "hex": "#D3D5D8",
+        "label": "Srebrny"
+      }
     }
   }
 }

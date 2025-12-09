@@ -9,6 +9,7 @@ import DaikinIcon from "@/components/daikin-icon";
 import { EmblaFadeCarousel } from "@/components/ui/emblaFadeCarousel";
 import { EmblaCardCarousel } from "@/components/ui/emblaCardCarousel";
 import { Icon } from "@iconify-icon/react";
+import { ExpandableRow } from "@/components/ui/expandable-row";
 import { useColorLabel } from "@/utils/colors";
 import {
   TabsUnderline,
@@ -58,6 +59,11 @@ export default function ProductView({ product, locale }: Props) {
   }, [images.length]);
 
   const selectedImages = images[selectedColorIndex]?.imgs ?? [];
+  const [expandedFeatures, setExpandedFeatures] = useState<Record<number, boolean>>({});
+
+  const toggleFeature = (i: number) => {
+    setExpandedFeatures((prev) => ({ ...prev, [i]: !prev[i] }));
+  };
 
   return (
     <main className="max-w-7xl mx-auto px-2 md:px-4 lg:px-8 py-8 flex flex-col gap-4 md:gap-8">
@@ -84,7 +90,7 @@ export default function ProductView({ product, locale }: Props) {
         {/* Info */}
         <div className="w-full md:w-6/12 flex flex-col gap-4 md:justify-between">
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <h1 className="text-h1-mobile md:text-h1">{details.name || product.slug}</h1>
 
               <div className="flex w-full items-center gap-2 mt-2 md:w-auto md:justify-end">
@@ -116,10 +122,10 @@ export default function ProductView({ product, locale }: Props) {
             </div>
 
             {/* Specs (desktop) */}
-            <div className="hidden md:grid gap-4 text-sm text-main-text md:grid-cols-1 mt-4 md:mt-0">
+            <div className="hidden md:grid gap-3 text-sm text-main-text md:grid-cols-1 mt-4 md:mt-0">
               {specs.map((item, i) => (
                 <div key={i} className="flex flex-col">
-                  <span className="text-subtitle-mobile md:text-subtitle text-amm">{item.title}</span>
+                  <span className="text-main-text-mobile md:text-main-text text-amm">{item.title}</span>
                   <span className="text-h3-mobile md:text-h3 text-black">{item.subtitle}</span>
                 </div>
               ))}
@@ -142,22 +148,23 @@ export default function ProductView({ product, locale }: Props) {
           </TabsUnderlineList>
 
           <TabsUnderlineContent value="features">
-            <div className="grid grid-cols-1 gap-y-8 pt-4">
+            <div className="grid grid-cols-1 gap-y-6 pt-4">
               {features
                 .filter((f: Feature) => !f.preview)
                 .map((f: Feature, i: number) => {
                   const name = f.featureDetails?.find((d) => d.locale === locale)?.name ?? f.name;
                   const desc = f.featureDetails?.find((d) => d.locale === locale)?.desc ?? "";
+                  const isOpen = !!expandedFeatures[i];
                   return (
-                    <div key={f.id ?? i} className="flex flex-row gap-4 items-start">
-                      <div className="w-20 h-20 shrink-0 rounded-full flex items-center justify-center border-[1.5px] transition-all duration-200">
-                        <DaikinIcon name={f.img ?? ""} className="w-10 h-10" />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <span className="text-h3-mobile md:text-h3">{name}</span>
-                        <p className="text-subtitle-mobile md:text-subtitle">{desc}</p>
-                      </div>
-                    </div>
+                    <ExpandableRow
+                      key={f.id ?? i}
+                      title={name}
+                      isOpen={isOpen}
+                      onToggle={() => toggleFeature(i)}
+                      icon={<DaikinIcon name={f.img ?? ""} className="w-8 h-8" />}
+                    >
+                      <p className="text-subtitle-mobile md:text-subtitle">{desc}</p>
+                    </ExpandableRow>
                   );
                 })}
             </div>

@@ -72,7 +72,7 @@ export default function ProductsPage({
         subtitle={t(`${categorySlug}.whyChoose.subtitle`)}
         leftItem={{
           id: "left1",
-          image: "/whychoose_1.png",
+          image: t(`${categorySlug}.whyChoose.left1.image`),
           title: t(`${categorySlug}.whyChoose.left1.title`),
           description:
             t(`${categorySlug}.whyChoose.left1.description`),
@@ -80,14 +80,14 @@ export default function ProductsPage({
         rightItems={[
           {
             id: "right1",
-            image: "/whychoose_2.png",
+            image: t(`${categorySlug}.whyChoose.right1.image`),
             title: t(`${categorySlug}.whyChoose.right1.title`),
             description:
               t(`${categorySlug}.whyChoose.right1.description`),
           },
           {
             id: "right2",
-            image: "/whychoose_3.png",
+            image: t(`${categorySlug}.whyChoose.right2.image`),
             title: t(`${categorySlug}.whyChoose.right2.title`),
             description:
               t(`${categorySlug}.whyChoose.right2.description`),

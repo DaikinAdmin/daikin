@@ -3,6 +3,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { Button } from "./ui/button";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -15,26 +17,46 @@ export default function ProductTemplatePage({
 }: ProductPageProps) {
   const t = useTranslations("productPage");
   const locale = useLocale();
+  const rawBanner = t(`${categorySlug}.banner`, { default: "" }) as string;
+  const bannerSrc = rawBanner ? encodeURI(rawBanner) : "";
+  const productsRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Top Banner (full-width image) */}
+      {bannerSrc && (
+        <section className="w-full">
+          <div className="relative w-full h-[250px] lg:h-[650px]">
+            <Image
+              src={bannerSrc}
+              alt={heroTitle || "Banner"}
+              fill
+              unoptimized
+              className="object-cover"
+              priority
+            />
+          </div>
+        </section>
+      )}
+
       {/* Hero Section */}
-      <section className="bg-primary text-white py-20">
+      {/* <section className="bg-primary text-white py-20">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-h1-mobile md:text-h1 mb-6">{heroTitle}</h1>
           <p className="text-subtitle-mobile md:text-subtitle mb-8 max-w-4xl mx-auto opacity-90">
             {heroSubtitle}
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Products Grid */}
-      <section className="py-16">
+      <section className="py-8" ref={productsRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-h1-mobile md:text-h1 text-black mb-2">
+            <h2 className="text-h1-mobile md:text-h1 text-black">
               {productsTitle}
             </h2>
-            <p className="text-subtitle-mobile md:text-subtitle text-amm max-w-3xl">
+            <p className="text-subtitle-mobile md:text-subtitle text-amm">
               {productsSubtitle}
             </p>
           </div>
@@ -87,7 +109,7 @@ export default function ProductTemplatePage({
                                     className="text-primary text-2xl"
                                   />
                                 </div>
-                                <span className="text-main-text text-amm text-sm">
+                                <span className="text-main-text md:text-main-text text-amm">
                                   {f.featureDetails[0].name}
                                 </span>
                               </div>
@@ -102,7 +124,7 @@ export default function ProductTemplatePage({
                       variant={"default"}
                     >
                       <Link href={`/products/${categorySlug}/${product.slug}`}>
-                        {t("getQuote")}
+                        {t("viewDetails") ?? "View Details"}
                       </Link>
                     </Button>
                   </div>

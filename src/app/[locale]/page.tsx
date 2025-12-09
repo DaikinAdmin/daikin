@@ -28,29 +28,26 @@ export default function Home({
       <ProductCarousel />
 
       <WhyChooseSection
-        title="Dlaczego warto wybrać"
-        subtitle="Poznaj nasze innowacyjne rozwiązania"
+        title="Dlaczego Daikin?"
+        subtitle="Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności"
         leftItem={{
           id: "left1",
-          image: "/whychoose_1.png",
-          title: "Efektywność energetyczna",
-          description:
-            "Wiodące w branży oceny SEER i innowacyjna technologia inwertera dla maksymalnych oszczędności energii",
+          image: t("whyChoose.left1.image"),
+          title: t("whyChoose.left1.title"),
+          description: t("whyChoose.left1.description"),
         }}
         rightItems={[
           {
             id: "right1",
-            image: "/whychoose_2.png",
-            title: "Inteligentna technologia",
-            description:
-              "Zaawansowane sterowanie i integracja IoT dla inteligentnego zarządzania komfortem.",
+            image: t("whyChoose.right1.image"),
+            title: t("whyChoose.right1.title"),
+            description:t("whyChoose.right1.description"),
           },
           {
             id: "right2",
-            image: "/whychoose_3.png",
-            title: "Niezawodność",
-            description:
-              "Sprawdzona wydajność z kompleksowymi gwarancjami i wyjątkową jakością wykonania.",
+            image: t("whyChoose.right2.image"),
+            title: t("whyChoose.right2.title"),
+            description: t("whyChoose.right2.description"),
           },
         ]}
       />

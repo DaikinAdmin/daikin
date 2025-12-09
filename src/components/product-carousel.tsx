@@ -6,22 +6,42 @@ import DaikinIcon from "./daikin-icon";
 import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "./ui/arrows";
 import { Product } from "@/types/product";
+import Link from "next/link";
 
 // Manually set 5 product IDs here (replace placeholders with real slugs/IDs)
 const productIds: string[] = [
-  "cmipuhoqw000q01l64lrud61a",
-  "cmipuhoqw000q01l64lrud61a",
-  "cmipuhoqw000q01l64lrud61a",
-  "cmipuhoqw000q01l64lrud61a",
-  "cmipuhoqw000q01l64lrud61a",
+  "stylish",
+  "emura",
+  "mck70z",
+  "altherma-3",
+  "altherma-4-erga",
 ];
 
+// Corresponding icons for the products above
 const productIcons = [
-  "air_filter",
-  "comfort_mode",
-  "heat_plus",
-  "streamer",
   "stylish",
+  "emura",
+  "ururu_humidification",
+  "hugeicons_nuclear-power",
+  "hugeicons_eco-power",
+];
+
+// Full titles for desktop (md and up)
+const productIconTitles = [
+  "Seria Daikin ㅤStylish",
+  "Seria Daikin Emura",
+  "Oczyszczacz powietrza MCK70Z",
+  "Pompa ciepła Altherma 4",
+  "Pompa ciepła Altherma 3 ERGA",
+];
+
+// Shorter titles for mobile (< md)
+const productIconTitlesShort = [
+  "Stylish",
+  "Emura",
+  "MCK70Z",
+  "Altherma 4",
+  "Altherma 3",
 ];
 
 export default function ProductCarousel() {
@@ -108,11 +128,15 @@ export default function ProductCarousel() {
     ? currentProduct.productDetails?.find((d) => d.locale === locale)?.title ??
       ""
     : "";
-  const currentFeatures: string[] = currentProduct
-    ? (currentProduct.features ?? []).map(
-        (f) =>
-          f.featureDetails?.find((d) => d.locale === locale)?.name ?? f.name
-      )
+  const currentFeatures = currentProduct
+    ? (currentProduct.features ?? []).map((f) => {
+        const name =
+          f.featureDetails?.find((d) => d.locale === locale)?.name ?? f.name;
+        return {
+          label: name,
+          preview: f.preview ?? false, // або як у твоїй структурі позначається preview
+        };
+      })
     : [];
   const currentFirstImage: string | undefined =
     currentProduct?.img?.[0]?.imgs?.[0];
@@ -120,11 +144,11 @@ export default function ProductCarousel() {
   return (
     <section className="md:py-16 bg-gradient-to-br bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
-        <div className="md:mb-12 order-1">
-          <h2 className="text-h1-mobile lg:text-h1 font-normal text-black mb-4 md:mb-2">
+        <div className="mb-5 md:mb-10 order-1">
+          <h2 className="text-h1-mobile lg:text-h1 text-black">
             {t("home.products.title")}
           </h2>
-          <p className="text-subtitle text-black font-medium mb-1 hidden lg:block">
+          <p className="text-subtitle-mobile lg:text-subtitle text-amm hidden lg:block">
             {t("home.products.subtitle")}
           </p>
         </div>
@@ -156,20 +180,20 @@ export default function ProductCarousel() {
                     className="mx-auto max-h-[600px] w-auto object-contain"
                   />
                 ) : (
-                  <p className="text-gray-500">Product Image</p>
+                  <p className="text-amm">Product Image</p>
                 )}
 
                 {/* Navigation Arrows (inside image) */}
                 <button
                   onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2 transition"
+                  className="absolute left-[1px] top-1/2 -translate-y-1/2 rounded-full p-2 transition"
                 >
                   <ArrowLeft />
                 </button>
 
                 <button
                   onClick={goToNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2 transition"
+                  className="absolute right-[1px] top-1/2 -translate-y-1/2 rounded-full p-2 transition"
                 >
                   <ArrowRight />
                 </button>
@@ -183,35 +207,52 @@ export default function ProductCarousel() {
                   {currentName}
                 </h2>
 
-                <p className="text-amm text-main-text leading-relaxed mb-6 hidden lg:block">
+                <p className="text-amm text-main-text-mobile md:text-main-text mb-6 hidden lg:block">
                   {currentDescription}
                 </p>
 
                 {/* Features */}
                 <div className="mb-6">
                   <p className="text-h3-mobile md:text-h3 text-black mb-3">
-                    Key Features:
+                    {t("home.products.keyFeatures")}
                   </p>
                   <div className="ml-3 grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {currentFeatures.map((feature: string, index: number) => (
-                      <div key={index} className="flex items-center">
-                        <div className="w-1 h-1 md:w-2 md:h-2 bg-primary rounded-full mr-3"></div>
-                        <span className="text-main-text-mobile md:text-main-text text-amm">
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
+                    {currentFeatures
+                      .filter((feature) => feature.preview)
+                      .map((feature, index) => (
+                        <div key={index} className="flex items-center">
+                          <div className="w-1 h-1 md:w-2 md:h-2 bg-primary rounded-full mr-3"></div>
+                          <span className="text-main-text-mobile md:text-main-text text-amm">
+                            {feature.label}
+                          </span>
+                        </div>
+                      ))}
                   </div>
                 </div>
 
                 {/* Actions */}
                 <div className="flex flex-row gap-3">
-                  <Button
-                    className="px-4 py-2 rounded-full transition-colors font-medium flex-1"
-                    variant={"secondary"}
-                  >
-                    {t("home.products.learnMore")}
-                  </Button>
+                  {currentProduct?.slug && currentProduct?.category?.slug ? (
+                    <Link
+                      href={`/products/${currentProduct.category.slug}/${currentProduct.slug}`}
+                      className="flex-1"
+                    >
+                      <Button
+                        className="w-full px-4 py-2 rounded-full transition-colors font-medium"
+                        variant={"secondary"}
+                      >
+                        {t("home.products.learnMore")}
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      className="px-4 py-2 rounded-full transition-colors font-medium flex-1"
+                      variant={"secondary"}
+                      disabled
+                    >
+                      {t("home.products.learnMore")}
+                    </Button>
+                  )}
                   <Button
                     className="px-4 py-2 rounded-full transition-colors font-medium flex-1"
                     variant={"default"}
@@ -232,11 +273,8 @@ export default function ProductCarousel() {
           {productIds.map((productId, index) => {
             const ProductIcon = productIcons[index];
             const isActive = index === currentIndex;
-            const p = products[index];
-            const name = p
-              ? p.productDetails?.find((d) => d.locale === locale)?.name ??
-                p.slug
-              : "";
+            const nameDesktop = productIconTitles[index];
+            const nameMobile = productIconTitlesShort[index];
 
             return (
               <button
@@ -262,13 +300,25 @@ export default function ProductCarousel() {
                 </div>
 
                 {/* Назва під іконкою */}
+                {/* Desktop (md and up): long names */}
                 <p
-                  className={`text-sm text-center transition-colors duration-200
-          ${
-            isActive ? "text-primary" : "text-gray-700 group-hover:text-black"
-          }`}
+                  className={`hidden md:block text-center transition-colors max-w-[152px] duration-200 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-gray-700 group-hover:text-black"
+                  }`}
                 >
-                  {name}
+                  {nameDesktop}
+                </p>
+                {/* Mobile (< md): short names */}
+                <p
+                  className={`block md:hidden text-center transition-colors max-w-[152px] duration-200 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-gray-700 group-hover:text-black"
+                  }`}
+                >
+                  {nameMobile}
                 </p>
               </button>
             );

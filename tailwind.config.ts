@@ -22,7 +22,7 @@ export default {
         "h1-mobile": ["24px", { lineHeight: "36px", fontWeight: "400" }],
         "h2-mobile": ["20px", { lineHeight: "32px", fontWeight: "400" }],
         "h3-mobile": ["16px", { lineHeight: "28px", fontWeight: "400" }],
-        "subtitle-mobile": ["14px", { lineHeight: "21px", fontWeight: "400" }],
+        "subtitle-mobile": ["14px", { lineHeight: "30px", fontWeight: "500" }],
         "xs-mobile": ["10px", { lineHeight: "17px", fontWeight: "500" }],
         "s-mobile": ["12px", { lineHeight: "20px", fontWeight: "500" }],
         "button-m-mobile": ["14px", { lineHeight:"24px", fontWeight: "600" }],
@@ -77,7 +77,7 @@ export default {
         "accent-berry": "#966498",
         "accent-brown": "#977362",
         "amm": "#4D4D4D",
-        "container": "#f0f9ff",
+        "container": "#F8FCFE",
         "grey-light":"#faf9f9d2",
 
         muted: {

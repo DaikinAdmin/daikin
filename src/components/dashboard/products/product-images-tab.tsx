@@ -13,8 +13,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Pencil, Trash2, Plus, X, Upload, Loader2, Image as ImageIcon } from "lucide-react";
+import {
+  Pencil,
+  Trash2,
+  Plus,
+  X,
+  Upload,
+  Loader2,
+  Image as ImageIcon,
+} from "lucide-react";
 import { uploadImage } from "@/lib/image-upload";
+import ColorPickerButton from "@/components/color-selector";
+import { hex } from "framer-motion";
 
 type ProductImage = {
   id?: string;
@@ -44,30 +54,36 @@ export function ProductImagesTab({
     imgs: [],
   });
   const [uploading, setUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
+  const [uploadProgress, setUploadProgress] = useState({
+    current: 0,
+    total: 0,
+  });
   const [error, setError] = useState<string | null>(null);
 
   const validateFile = (file: File): string | null => {
-    if (!file.type.startsWith('image/')) {
-      return t('errorNotImage') || 'File must be an image';
+    if (!file.type.startsWith("image/")) {
+      return t("errorNotImage") || "File must be an image";
     }
     if (file.size > MAX_FILE_SIZE) {
-      return t('errorFileSize') || 'File size must be less than 1MB';
+      return t("errorFileSize") || "File size must be less than 1MB";
     }
     return null;
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    
+
     if (files.length === 0) return;
 
     // Check if adding these files would exceed the limit
     const currentCount = formData.imgs.length;
     const totalCount = currentCount + files.length;
-    
+
     if (totalCount > MAX_FILES) {
-      setError(t('errorMaxFiles')?.replace('{max}', MAX_FILES.toString()) || `Maximum ${MAX_FILES} images allowed`);
+      setError(
+        t("errorMaxFiles")?.replace("{max}", MAX_FILES.toString()) ||
+          `Maximum ${MAX_FILES} images allowed`
+      );
       return;
     }
 
@@ -89,7 +105,7 @@ export function ProductImagesTab({
     try {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const result = await uploadImage(file, { folder: 'productImages' });
+        const result = await uploadImage(file, { folder: "productImages" });
         uploadedUrls.push(result.url);
         setUploadProgress({ current: i + 1, total: files.length });
       }
@@ -101,9 +117,9 @@ export function ProductImagesTab({
       });
 
       // Clear the file input
-      e.target.value = '';
+      e.target.value = "";
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Upload failed';
+      const errorMessage = err instanceof Error ? err.message : "Upload failed";
       setError(errorMessage);
     } finally {
       setUploading(false);
@@ -171,15 +187,27 @@ export function ProductImagesTab({
               id="image-color"
               data-testid="input-image-color"
               value={formData.color}
-              onChange={(e) => setFormData({ ...formData, color: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, color: e.target.value })
+              }
               disabled={disabled || uploading}
               placeholder={t("colorPlaceholder")}
+            />
+
+            <ColorPickerButton
+              value={formData.color}
+              onChange={(color) => setFormData({ ...formData, color: color })}
             />
           </div>
 
           <div className="space-y-2">
-            <Label>{t("images")} <span className="text-sm text-muted-foreground">({formData.imgs.length}/{MAX_FILES})</span></Label>
-            
+            <Label>
+              {t("images")}{" "}
+              <span className="text-sm text-muted-foreground">
+                ({formData.imgs.length}/{MAX_FILES})
+              </span>
+            </Label>
+
             {error && (
               <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">
                 {error}
@@ -205,12 +233,18 @@ export function ProductImagesTab({
                   {uploading ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>{t('uploading')} ({uploadProgress.current}/{uploadProgress.total})</span>
+                      <span>
+                        {t("uploading")} ({uploadProgress.current}/
+                        {uploadProgress.total})
+                      </span>
                     </>
                   ) : (
                     <>
                       <Upload className="h-4 w-4" />
-                      <span>{t('uploadImages')} (Max {MAX_FILES - formData.imgs.length} files, 1MB each)</span>
+                      <span>
+                        {t("uploadImages")} (Max{" "}
+                        {MAX_FILES - formData.imgs.length} files, 1MB each)
+                      </span>
                     </>
                   )}
                 </Label>
@@ -231,8 +265,8 @@ export function ProductImagesTab({
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
+                        target.style.display = "none";
+                        target.nextElementSibling?.classList.remove("hidden");
                       }}
                     />
                     <div className="hidden items-center justify-center w-full h-full bg-muted">
@@ -254,7 +288,8 @@ export function ProductImagesTab({
 
             {!canUploadMore && (
               <p className="text-sm text-muted-foreground">
-                {t('maxFilesReached')?.replace('{max}', MAX_FILES.toString()) || `Maximum of ${MAX_FILES} images reached`}
+                {t("maxFilesReached")?.replace("{max}", MAX_FILES.toString()) ||
+                  `Maximum of ${MAX_FILES} images reached`}
               </p>
             )}
           </div>
@@ -313,19 +348,24 @@ export function ProductImagesTab({
                 <TableRow key={index} data-testid={`image-row-${index}`}>
                   <TableCell>{image.color || "—"}</TableCell>
                   <TableCell>
-                    <span className="text-sm">{image.imgs.length} {t("imagesCount")}</span>
+                    <span className="text-sm">
+                      {image.imgs.length} {t("imagesCount")}
+                    </span>
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-1">
                       {image.imgs.slice(0, 3).map((imgUrl, imgIndex) => (
-                        <div key={imgIndex} className="w-10 h-10 rounded border overflow-hidden bg-muted">
+                        <div
+                          key={imgIndex}
+                          className="w-10 h-10 rounded border overflow-hidden bg-muted"
+                        >
                           <img
                             src={imgUrl}
                             alt={`Preview ${imgIndex + 1}`}
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
+                              target.style.display = "none";
                             }}
                           />
                         </div>

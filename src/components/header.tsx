@@ -355,38 +355,17 @@ const Header: React.FC<HeaderProps> = (props) => {
                     {t("nav.products")}
                   </div>
                   <div className="pl-4 space-y-1">
-                    <Link
-                      href="/products/air-conditioning"
-                      className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                      locale={locale}
-                    >
-                      {t("nav.airConditioning")}
-                    </Link>
-                    <Link
-                      href="/products/heat-pumps"
-                      className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                      locale={locale}
-                    >
-                      {t("nav.heatPumps")}
-                    </Link>
-                    <Link
-                      href="/products/air-purifier"
-                      className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                      locale={locale}
-                    >
-                      {t("nav.airPurifier")}
-                    </Link>
-                    <Link
-                      href="/products/other"
-                      className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                      locale={locale}
-                    >
-                      {t("nav.other")}
-                    </Link>
+                    {categories.map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        href={`/products/${cat.slug}`}
+                        className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                        locale={locale}
+                      >
+                        {cat.categoryDetails[0].name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
 
@@ -416,14 +395,14 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </div>
 
                 {/* Wiadomości */}
-                <Link
+                {/* <Link
                   href="/news"
                   className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                   locale={locale}
                 >
                   {t("nav.news")}
-                </Link>
+                </Link> */}
 
                 {/* Twoja wiedza */}
                 {/* <Link
