@@ -28,7 +28,7 @@ const productIcons = [
 
 // Full titles for desktop (md and up)
 const productIconTitles = [
-  "Seria Daikin ㅤStylish",
+  "ㅤSeria Daikin ㅤStylish",
   "Seria Daikin Emura",
   "Oczyszczacz powietrza MCK70Z",
   "Pompa ciepła Altherma 4",
