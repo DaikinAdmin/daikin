@@ -9,8 +9,7 @@
         "unique-design",
         "cooling-heating-energy-label",
         "unit-dimensions-305x900x212",
-        "heat-boost",
-        "zaawansowana-filtra"
+        "heat-boost"
     ],
     "translations": [
         {
@@ -40,37 +39,28 @@
     ],
     "specs": [
         {
-            "id": "1765298431611",
+            "id": "1765362633004",
             "locale": "en",
             "title": "Heating/Cooling power",
             "subtitle": "5kW",
             "productSlug": "aurora"
         },
         {
-            "id": "1765298454827",
+            "id": "1765362633071",
             "locale": "pl",
             "title": "Moc nagrzewania/chłodzenia",
             "subtitle": "5kW",
             "productSlug": "aurora"
         },
         {
-            "id": "1765298567978",
+            "id": "1765362633187",
             "locale": "ua",
             "title": "Потужність нагрівання/охолодження",
             "subtitle": "5кВт",
             "productSlug": "aurora"
         }
     ],
-    "images": [
-        {
-            "id": "",
-            "productSlug": "",
-            "color": "#ffffff",
-            "imgs": [
-                "https://daikinkobierzyce.pl/api/images/productImages/daikin-aurora-1765298613242.webp"
-            ]
-        }
-    ],
+    "images": [],
     "items": [
         {
             "title": "Indoor unit",
@@ -102,7 +92,7 @@
         {
             "title": "Installation",
             "slug": "item-installation",
-            "img": "https://daikinkobierzyce.pl/api/images/productItems/image 108-1764762007752.svg",
+            "img": "http://localhost:3030/api/images/productItems/image 108-1764762007752.svg",
             "isActive": true,
             "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
             "translations": [
@@ -129,7 +119,7 @@
         {
             "title": "Service",
             "slug": "item-service",
-            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo-1764712550414.png",
+            "img": "http://localhost:3030/api/images/productItems/daikin_logo-1764712550414.png",
             "isActive": true,
             "lookupItemId": "cmip4b1rk000001o40tie4s5r",
             "translations": [

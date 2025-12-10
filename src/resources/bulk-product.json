@@ -1,0 +1,463 @@
+[
+    {
+    "articleId": "Aurora",
+    "price": 5300,
+    "categorySlug": "air-conditioning",
+    "slug": "aurora",
+    "energyClass": "A",
+    "isActive": true,
+    "featureSlugs": [
+        "unique-design",
+        "cooling-heating-energy-label",
+        "unit-dimensions-305x900x212",
+        "heat-boost",
+        "zaawansowana-filtra"
+    ],
+    "translations": [
+        {
+            "locale": "en",
+            "name": "Aurora AC",
+            "title": "Aurora AC Series",
+            "subtitle": "Aurora AC Series with the perfect design",
+            "productSlug": "aurora",
+            "id": ""
+        },
+        {
+            "locale": "pl",
+            "name": "Klimatyzatory Aurora",
+            "title": "Klimatyzatory serii Aurora",
+            "subtitle": "Klimatyzatory serii Aurora z perfekcyjnym desainem",
+            "productSlug": "aurora",
+            "id": ""
+        },
+        {
+            "locale": "ua",
+            "name": "Кондиціонери Аврора",
+            "title": "Кондиціонери Серії Аврора",
+            "subtitle": "Кондиціонери серії Аврора з найкращим дизайном",
+            "productSlug": "aurora",
+            "id": ""
+        }
+    ],
+    "specs": [
+        {
+            "id": "1765298431611",
+            "locale": "en",
+            "title": "Heating/Cooling power",
+            "subtitle": "5kW",
+            "productSlug": "aurora"
+        },
+        {
+            "id": "1765298454827",
+            "locale": "pl",
+            "title": "Moc nagrzewania/chłodzenia",
+            "subtitle": "5kW",
+            "productSlug": "aurora"
+        },
+        {
+            "id": "1765298567978",
+            "locale": "ua",
+            "title": "Потужність нагрівання/охолодження",
+            "subtitle": "5кВт",
+            "productSlug": "aurora"
+        }
+    ],
+    "images": [
+        {
+            "id": "",
+            "productSlug": "aurora",
+            "color": "#ffffff",
+            "imgs": [
+                "https://daikinkobierzyce.pl/api/images/productImages/daikin-aurora-1765298613242.webp"
+            ]
+        }
+    ],
+    "items": [
+        {
+            "title": "Indoor unit",
+            "slug": "indoor-unit-ac-sensira",
+            "img": "",
+            "isActive": true,
+            "lookupItemId": "cmisxdsb7002801oarzuraag7",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Indoor unit",
+                    "subtitle": "Iconically designed wall-mounted unit",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Jednostka wewnętrzna",
+                    "subtitle": "Ikonicznie zaprojektowana jednostka naścienna",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Внутрішній блок",
+                    "subtitle": "Іконічно запроектована настіннa одиниця",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Installation",
+            "slug": "item-installation",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/image 108-1764762007752.svg",
+            "isActive": true,
+            "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Installation",
+                    "subtitle": "Installation",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Montaż",
+                    "subtitle": "Montaż",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Монтаж",
+                    "subtitle": "Монтаж",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Service",
+            "slug": "item-service",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo-1764712550414.png",
+            "isActive": true,
+            "lookupItemId": "cmip4b1rk000001o40tie4s5r",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Service",
+                    "subtitle": "Service",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Serwis",
+                    "subtitle": "Serwis",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Сервіс",
+                    "subtitle": "Сервіс",
+                    "isActive": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "articleId": "Aurora-1",
+    "price": 5300,
+    "categorySlug": "air-conditioning",
+    "slug": "aurora-1",
+    "energyClass": "A",
+    "isActive": true,
+    "featureSlugs": [
+        "unique-design",
+        "cooling-heating-energy-label",
+        "unit-dimensions-305x900x212",
+        "heat-boost",
+        "zaawansowana-filtra"
+    ],
+    "translations": [
+        {
+            "locale": "en",
+            "name": "Aurora-1 AC",
+            "title": "Aurora-1 AC Series",
+            "subtitle": "Aurora-1 AC Series with the perfect design",
+            "productSlug": "aurora-1",
+            "id": ""
+        },
+        {
+            "locale": "pl",
+            "name": "Klimatyzatory Aurora-1",
+            "title": "Klimatyzatory serii Aurora-1",
+            "subtitle": "Klimatyzatory serii Aurora-1 z perfekcyjnym desainem",
+            "productSlug": "aurora-1",
+            "id": ""
+        },
+        {
+            "locale": "ua",
+            "name": "Кондиціонери Аврора-1",
+            "title": "Кондиціонери Серії Аврора-1",
+            "subtitle": "Кондиціонери серії Аврора-1 з найкращим дизайном",
+            "productSlug": "aurora-1",
+            "id": ""
+        }
+    ],
+    "specs": [
+        {
+            "id": "1765298431611",
+            "locale": "en",
+            "title": "Heating/Cooling power",
+            "subtitle": "5kW",
+            "productSlug": "aurora-1"
+        },
+        {
+            "id": "1765298454827",
+            "locale": "pl",
+            "title": "Moc nagrzewania/chłodzenia",
+            "subtitle": "5kW",
+            "productSlug": "aurora-1"
+        },
+        {
+            "id": "1765298567978",
+            "locale": "ua",
+            "title": "Потужність нагрівання/охолодження",
+            "subtitle": "5кВт",
+            "productSlug": "aurora-1"
+        }
+    ],
+    "images": [
+        {
+            "id": "",
+            "productSlug": "aurora-1",
+            "color": "#ffffff",
+            "imgs": [
+                "https://daikinkobierzyce.pl/api/images/productImages/daikin-aurora-1765298613242.webp"
+            ]
+        }
+    ],
+    "items": [
+        {
+            "title": "Indoor unit",
+            "slug": "indoor-unit-ac-sensira",
+            "img": "",
+            "isActive": true,
+            "lookupItemId": "cmisxdsb7002801oarzuraag7",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Indoor unit",
+                    "subtitle": "Iconically designed wall-mounted unit",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Jednostka wewnętrzna",
+                    "subtitle": "Ikonicznie zaprojektowana jednostka naścienna",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Внутрішній блок",
+                    "subtitle": "Іконічно запроектована настіннa одиниця",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Installation",
+            "slug": "item-installation",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/image 108-1764762007752.svg",
+            "isActive": true,
+            "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Installation",
+                    "subtitle": "Installation",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Montaż",
+                    "subtitle": "Montaż",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Монтаж",
+                    "subtitle": "Монтаж",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Service",
+            "slug": "item-service",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo-1764712550414.png",
+            "isActive": true,
+            "lookupItemId": "cmip4b1rk000001o40tie4s5r",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Service",
+                    "subtitle": "Service",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Serwis",
+                    "subtitle": "Serwis",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Сервіс",
+                    "subtitle": "Сервіс",
+                    "isActive": true
+                }
+            ]
+        }
+    ]
+},
+{
+    "articleId": "Aurora-2",
+    "price": 5300,
+    "categorySlug": "air-conditioning",
+    "slug": "aurora-2",
+    "energyClass": "A",
+    "isActive": true,
+    "featureSlugs": [
+        "unique-design",
+        "cooling-heating-energy-label",
+        "unit-dimensions-305x900x212",
+        "heat-boost"
+    ],
+    "translations": [
+        {
+            "locale": "en",
+            "name": "Aurora-2 AC",
+            "title": "Aurora-2 AC Series",
+            "subtitle": "Aurora-2 AC Series with the perfect design",
+            "productSlug": "",
+            "id": ""
+        },
+        {
+            "locale": "pl",
+            "name": "Klimatyzatory Aurora-2",
+            "title": "Klimatyzatory serii Aurora-2",
+            "subtitle": "Klimatyzatory serii Aurora-2 z perfekcyjnym desainem",
+            "productSlug": "",
+            "id": ""
+        },
+        {
+            "locale": "ua",
+            "name": "Кондиціонери Аврора-2",
+            "title": "Кондиціонери Серії Аврора-2",
+            "subtitle": "Кондиціонери серії Аврора-2 з найкращим дизайном",
+            "productSlug": "",
+            "id": ""
+        }
+    ],
+    "specs": [
+        {
+            "id": "1765362633004",
+            "locale": "en",
+            "title": "Heating/Cooling power",
+            "subtitle": "5kW",
+            "productSlug": "aurora"
+        },
+        {
+            "id": "1765362633071",
+            "locale": "pl",
+            "title": "Moc nagrzewania/chłodzenia",
+            "subtitle": "5kW",
+            "productSlug": "aurora"
+        },
+        {
+            "id": "1765362633187",
+            "locale": "ua",
+            "title": "Потужність нагрівання/охолодження",
+            "subtitle": "5кВт",
+            "productSlug": "aurora"
+        }
+    ],
+    "images": [],
+    "items": [
+        {
+            "title": "Indoor unit",
+            "slug": "indoor-unit-ac-sensira",
+            "img": "",
+            "isActive": true,
+            "lookupItemId": "cmisxdsb7002801oarzuraag7",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Indoor unit",
+                    "subtitle": "Iconically designed wall-mounted unit",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Jednostka wewnętrzna",
+                    "subtitle": "Ikonicznie zaprojektowana jednostka naścienna",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Внутрішній блок",
+                    "subtitle": "Іконічно запроектована настіннa одиниця",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Installation",
+            "slug": "item-installation",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/image 108-1764762007752.svg",
+            "isActive": true,
+            "lookupItemId": "cmip4ci48000401o4pu2jnt5u",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Installation",
+                    "subtitle": "Installation",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Montaż",
+                    "subtitle": "Montaż",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Монтаж",
+                    "subtitle": "Монтаж",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "title": "Service",
+            "slug": "item-service",
+            "img": "https://daikinkobierzyce.pl/api/images/productItems/daikin_logo-1764712550414.png",
+            "isActive": true,
+            "lookupItemId": "cmip4b1rk000001o40tie4s5r",
+            "translations": [
+                {
+                    "locale": "en",
+                    "title": "Service",
+                    "subtitle": "Service",
+                    "isActive": true
+                },
+                {
+                    "locale": "pl",
+                    "title": "Serwis",
+                    "subtitle": "Serwis",
+                    "isActive": true
+                },
+                {
+                    "locale": "ua",
+                    "title": "Сервіс",
+                    "subtitle": "Сервіс",
+                    "isActive": true
+                }
+            ]
+        }
+    ]
+}
+]
