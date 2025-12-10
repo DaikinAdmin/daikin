@@ -192,7 +192,7 @@ export const POST = async (req: Request) => {
                                 connect: { id: item.lookupItemId },
                               }
                             : undefined,
-                          productItemsTranslation: item.translations
+                          productItemDetails: item.translations
                             ? {
                                 create: item.translations.map((t: any) => ({
                                   locale: t.locale,
@@ -264,7 +264,7 @@ export const POST = async (req: Request) => {
                               connect: { id: item.lookupItemId },
                             }
                           : undefined,
-                        productItemsTranslation: item.translations
+                        productItemDetails: item.translations
                           ? {
                               create: item.translations.map((t: any) => ({
                                 locale: t.locale,
