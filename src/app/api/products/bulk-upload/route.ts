@@ -187,7 +187,11 @@ export const POST = async (req: Request) => {
                           slug: item.slug,
                           img: item.img || null,
                           isActive: item.isActive !== undefined ? item.isActive : true,
-                          lookupItemId: item.lookupItemId || null,
+                          lookupItem: item.lookupItemId
+                            ? {
+                                connect: { id: item.lookupItemId },
+                              }
+                            : undefined,
                           productItemsTranslation: item.translations
                             ? {
                                 create: item.translations.map((t: any) => ({
@@ -255,7 +259,11 @@ export const POST = async (req: Request) => {
                         slug: item.slug,
                         img: item.img || null,
                         isActive: item.isActive !== undefined ? item.isActive : true,
-                        lookupItemId: item.lookupItemId || null,
+                        lookupItem: item.lookupItemId
+                          ? {
+                              connect: { id: item.lookupItemId },
+                            }
+                          : undefined,
                         productItemsTranslation: item.translations
                           ? {
                               create: item.translations.map((t: any) => ({
