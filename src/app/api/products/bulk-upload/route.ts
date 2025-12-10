@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
-import { Product } from "@/types/product";
 import { NewProductRequest } from "@/types/new-product-request";
 
 type BulkProductInput = NewProductRequest;
@@ -81,7 +80,7 @@ export const POST = async (req: Request) => {
           // Verify features exist if provided
           if (productData.featureSlugs && productData.featureSlugs.length > 0) {
             const features = await prisma.feature.findMany({
-              where: { id: { in: productData.featureSlugs } },
+              where: { slug: { in: productData.featureSlugs } },
             });
 
             if (features.length !== productData.featureSlugs.length) {
@@ -128,21 +127,21 @@ export const POST = async (req: Request) => {
             await prisma.$transaction(async (tx: any) => {
               // Delete existing related data
               await tx.productTranslation.deleteMany({
-                where: { productId: existingProduct.id },
+                where: { productSlug: existingProduct.slug },
               });
               await tx.productSpecs.deleteMany({
-                where: { productId: existingProduct.id },
+                where: { productSlug: existingProduct.slug },
               });
               await tx.productImages.deleteMany({
-                where: { productId: existingProduct.id },
+                where: { productSlug: existingProduct.slug },
               });
               await tx.productItems.deleteMany({
-                where: { productId: existingProduct.id },
+                where: { productSlug: existingProduct.slug },
               });
 
               // Update product
               await tx.product.update({
-                where: { id: existingProduct.id },
+                where: { slug: existingProduct.slug },
                 data: {
                   price: productData.price,
                   categorySlug: category.slug,
@@ -156,6 +155,7 @@ export const POST = async (req: Request) => {
                           name: t.name,
                           title: t.title,
                           subtitle: t.subtitle || null,
+                          productSlug: slug,
                         })),
                       }
                     : undefined,
@@ -170,6 +170,7 @@ export const POST = async (req: Request) => {
                           locale: s.locale,
                           title: s.title,
                           subtitle: s.subtitle || null,
+                          productSlug: slug,
                         })),
                       }
                     : undefined,
