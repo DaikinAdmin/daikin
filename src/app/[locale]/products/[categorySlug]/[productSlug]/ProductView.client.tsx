@@ -83,7 +83,7 @@ export default function ProductView({ product, locale }: Props) {
 
       <div className="flex flex-col md:flex-row gap-4 md:gap-12">
         {/* Carousel */}
-        <div className="w-full md:w-1/2 flex flex-col items-center">
+        <div className="w-full md:w-7/12 flex flex-col items-center">
           <EmblaFadeCarousel images={selectedImages} />
         </div>
 
@@ -122,7 +122,7 @@ export default function ProductView({ product, locale }: Props) {
             </div>
 
             {/* Specs (desktop) */}
-            <div className="hidden md:grid gap-3 text-sm text-main-text md:grid-cols-1 mt-4 md:mt-0">
+            <div className="hidden md:grid gap-6 text-sm text-main-text md:grid-cols-1 mt-4 md:mt-0">
               {specs.map((item, i) => (
                 <div key={i} className="flex flex-col">
                   <span className="text-main-text-mobile md:text-main-text text-amm">{item.title}</span>
@@ -132,7 +132,7 @@ export default function ProductView({ product, locale }: Props) {
             </div>
           </div>
 
-          <Button className="px-4 py-4 rounded-full w-full mt-2 md:mt-4 hidden md:block" variant={"default"}>
+          <Button className="px-4 py-4 h-16 rounded-full w-full mt-2 md:mt-3 hidden md:block" variant={"default"}>
             {t("getQuote") ?? "Get quote"}
           </Button>
         </div>
