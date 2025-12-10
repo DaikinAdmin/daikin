@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
+import { NewProductRequest } from "@/types/new-product-request";
 
 // GET single product
 export const GET = async (
@@ -113,24 +114,7 @@ export const PUT = async (
                 featureSlugs, // Array of feature slugs
                 specs, // Array of spec objects
                 items, // Array of item objects
-            } = await req.json();
-
-            // Check if articleId is being changed and if it already exists
-            if (articleId) {
-                const existingProduct = await prisma.product.findFirst({
-                    where: {
-                        articleId,
-                        NOT: { id },
-                    },
-                });
-
-                if (existingProduct) {
-                    return NextResponse.json(
-                        { error: "Product with this articleId already exists" },
-                        { status: 409 }
-                    );
-                }
-            }
+            } = await req.json() as NewProductRequest;
 
             // Resolve category slug if being changed
             if (categorySlug) {
@@ -176,10 +160,10 @@ export const PUT = async (
 
             // Update product basic fields
             const product = await prisma.product.update({
-                where: { id },
+                where: { slug: id },
                 data: {
                     ...(articleId !== undefined && { articleId }),
-                    ...(price !== undefined && { price: price ? parseFloat(price) : null }),
+                    ...(price !== undefined && { price: price ? price : null }),
                     ...(slug !== undefined && { slug }),
                     ...(energyClass !== undefined && { energyClass }),
                     ...(categorySlug !== undefined && { categorySlug }),
@@ -268,14 +252,13 @@ export const PUT = async (
                         });
 
                         // Create item details if provided
-                        if (item.details && Array.isArray(item.details)) {
+                        if (item.translations && Array.isArray(item.translations)) {
                             await prisma.productItemsTranslation.createMany({
-                                data: item.details.map((detail: any) => ({
+                                data: item.translations.map((detail: any) => ({
                                     locale: detail.locale,
                                     title: detail.title || '',
                                     subtitle: detail.subtitle || '',
-                                    productItemId: createdItem.id,
-                                    name: detail.name || '',
+                                    productItemId: createdItem.id
                                 })),
                             });
                         }

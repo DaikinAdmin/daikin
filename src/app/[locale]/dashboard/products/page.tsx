@@ -259,7 +259,7 @@ export default function ProductsManagementPage() {
 
     try {
       const url = editingProduct 
-        ? `/api/products/${editingProduct.id}` 
+        ? `/api/products/${editingProduct.slug}` 
         : "/api/products";
       
       const method = editingProduct ? "PUT" : "POST";
