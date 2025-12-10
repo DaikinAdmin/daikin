@@ -3,39 +3,10 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
+import { Product } from "@/types/product";
+import { NewProductRequest } from "@/types/new-product-request";
 
-type BulkProductInput = {
-  articleId: string;
-  price?: number | null;
-  categorySlug: string;
-  slug?: string | null;
-  energyClass?: string | null;
-  isActive?: boolean;
-  featureIds?: string[];
-  translations?: {
-    locale: string;
-    name: string;
-    title: string;
-    subtitle?: string | null;
-  }[];
-  specs?: {
-    locale: string;
-    title: string;
-    subtitle?: string | null;
-  }[];
-  images?: {
-    color?: string | null;
-    imgs?: string[];
-    url?: string[];
-  }[];
-  items?: {
-    locale: string;
-    title: string;
-    subtitle?: string | null;
-    img?: string | null;
-    isActive?: boolean;
-  }[];
-};
+type BulkProductInput = NewProductRequest;
 
 type BulkUploadResult = {
   success: boolean;
@@ -108,12 +79,12 @@ export const POST = async (req: Request) => {
           }
 
           // Verify features exist if provided
-          if (productData.featureIds && productData.featureIds.length > 0) {
+          if (productData.featureSlugs && productData.featureSlugs.length > 0) {
             const features = await prisma.feature.findMany({
-              where: { id: { in: productData.featureIds } },
+              where: { id: { in: productData.featureSlugs } },
             });
 
-            if (features.length !== productData.featureIds.length) {
+            if (features.length !== productData.featureSlugs.length) {
               result.failed++;
               result.errors.push({
                 articleId: productData.articleId,
@@ -188,9 +159,9 @@ export const POST = async (req: Request) => {
                         })),
                       }
                     : undefined,
-                  features: productData.featureIds
+                  features: productData.featureSlugs
                     ? {
-                        set: productData.featureIds.map((id) => ({ id })),
+                        set: productData.featureSlugs.map((slug) => ({ slug })),
                       }
                     : undefined,
                   specs: productData.specs
@@ -207,7 +178,7 @@ export const POST = async (req: Request) => {
                         create: productData.images.map((img) => ({
                           color: img.color || null,
                           imgs: img.imgs || [],
-                          url: img.url || [],
+                          productSlug: productData.slug,
                         })),
                       }
                     : undefined,
@@ -257,9 +228,9 @@ export const POST = async (req: Request) => {
                       })),
                     }
                   : undefined,
-                features: productData.featureIds
+                features: productData.featureSlugs
                   ? {
-                      connect: productData.featureIds.map((id) => ({ id })),
+                      connect: productData.featureSlugs.map((slug) => ({ slug })),
                     }
                   : undefined,
                 specs: productData.specs
@@ -276,7 +247,7 @@ export const POST = async (req: Request) => {
                       create: productData.images.map((img) => ({
                         color: img.color || null,
                         imgs: img.imgs || [],
-                        url: img.url || [],
+                        productSlug: productData.slug,
                       })),
                     }
                   : undefined,
