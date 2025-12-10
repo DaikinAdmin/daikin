@@ -139,13 +139,13 @@ export const POST = async (req: Request) => {
                 where: { productSlug: existingProduct.slug },
               });
 
-              // Update product
+              // Update product 
               await tx.product.update({
                 where: { slug: existingProduct.slug },
                 data: {
                   price: productData.price,
                   categorySlug: category.slug,
-                  slug,
+                  slug: productData.slug,
                   energyClass: productData.energyClass,
                   isActive: productData.isActive !== undefined ? productData.isActive : true,
                   productDetails: productData.translations
@@ -155,7 +155,6 @@ export const POST = async (req: Request) => {
                           name: t.name,
                           title: t.title,
                           subtitle: t.subtitle || null,
-                          productSlug: slug,
                         })),
                       }
                     : undefined,
@@ -170,7 +169,6 @@ export const POST = async (req: Request) => {
                           locale: s.locale,
                           title: s.title,
                           subtitle: s.subtitle || null,
-                          productSlug: slug,
                         })),
                       }
                     : undefined,
@@ -179,7 +177,6 @@ export const POST = async (req: Request) => {
                         create: productData.images.map((img) => ({
                           color: img.color || null,
                           imgs: img.imgs || [],
-                          productSlug: productData.slug,
                         })),
                       }
                     : undefined,
@@ -191,7 +188,7 @@ export const POST = async (req: Request) => {
                           img: item.img || null,
                           isActive: item.isActive !== undefined ? item.isActive : true,
                           lookupItemId: item.lookupItemId || null,
-                          productItemDetails: item.translations
+                          productItemsTranslation: item.translations
                             ? {
                                 create: item.translations.map((t: any) => ({
                                   locale: t.locale,
@@ -216,7 +213,7 @@ export const POST = async (req: Request) => {
                 articleId: productData.articleId,
                 price: productData.price,
                 categorySlug: category.slug,
-                slug,
+                slug: productData.slug,
                 energyClass: productData.energyClass,
                 isActive: productData.isActive !== undefined ? productData.isActive : true,
                 productDetails: productData.translations
@@ -248,7 +245,6 @@ export const POST = async (req: Request) => {
                       create: productData.images.map((img) => ({
                         color: img.color || null,
                         imgs: img.imgs || [],
-                        productSlug: productData.slug,
                       })),
                     }
                   : undefined,
@@ -260,7 +256,7 @@ export const POST = async (req: Request) => {
                         img: item.img || null,
                         isActive: item.isActive !== undefined ? item.isActive : true,
                         lookupItemId: item.lookupItemId || null,
-                        productItemDetails: item.translations
+                        productItemsTranslation: item.translations
                           ? {
                               create: item.translations.map((t: any) => ({
                                 locale: t.locale,

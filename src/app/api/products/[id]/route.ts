@@ -247,25 +247,26 @@ export const PUT = async (
             if (items !== undefined && Array.isArray(items)) {
                 // Delete existing items
                 await prisma.productItems.deleteMany({
-                    where: { slug: product.slug },
+                    where: { productSlug: product.slug },
                 });
 
                 // Create new items if any
                 if (items.length > 0) {
                     for (const item of items) {
-                        const createdItem = await prisma.productItem.create({
+                        const createdItem = await prisma.productItems.create({
                             data: {
                                 img: item.img || '',
-                                slug: product.slug,
+                                productSlug: product.slug,
                                 lookupItemId: item.lookupItemId || null,
                                 title: item.title || '',
                                 isActive: item.isActive || false,
+                                slug: item.slug || '',
                             },
                         });
 
                         // Create item details if provided
                         if (item.details && Array.isArray(item.details)) {
-                            await prisma.productItemDetails.createMany({
+                            await prisma.productItemsTranslation.createMany({
                                 data: item.details.map((detail: any) => ({
                                     locale: detail.locale,
                                     title: detail.title || '',
