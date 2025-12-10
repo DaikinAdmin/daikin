@@ -147,24 +147,31 @@ export const PUT = async (
             }
 
             // Resolve feature IDs from slugs if provided
-            let featureIds: string[] = [];
+            let featureConnections = undefined;
             
-            if (featureSlugs && featureSlugs.length > 0) {
-                const features = await prisma.feature.findMany({
-                    where: { slug: { in: featureSlugs } },
-                    select: { id: true, slug: true },
-                });
+            if (featureSlugs !== undefined) {
+                if (featureSlugs.length > 0) {
+                    const features = await prisma.feature.findMany({
+                        where: { slug: { in: featureSlugs } },
+                        select: { id: true, slug: true },
+                    });
 
-                if (features.length !== featureSlugs.length) {
-                    const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
-                    const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
-                    return NextResponse.json(
-                        { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
-                        { status: 404 }
-                    );
+                    if (features.length !== featureSlugs.length) {
+                        const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
+                        const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
+                        return NextResponse.json(
+                            { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
+                            { status: 404 }
+                        );
+                    }
+                    
+                    featureConnections = {
+                        set: features.map((f: { id: string; slug: string }) => ({ id: f.id })),
+                    };
+                } else {
+                    // Empty array means disconnect all features
+                    featureConnections = { set: [] };
                 }
-                
-                featureIds = features.map((f: { id: string; slug: string }) => f.id);
             }
 
             // Update product basic fields
@@ -177,11 +184,7 @@ export const PUT = async (
                     ...(energyClass !== undefined && { energyClass }),
                     ...(categorySlug !== undefined && { categorySlug }),
                     ...(isActive !== undefined && { isActive }),
-                    ...(featureSlugs !== undefined && featureIds.length > 0 && {
-                        features: {
-                            set: featureIds.map((fId: string) => ({ id: fId })),
-                        },
-                    }),
+                    ...(featureConnections !== undefined && { features: featureConnections }),
                 },
             });
 
@@ -272,6 +275,7 @@ export const PUT = async (
                                     title: detail.title || '',
                                     subtitle: detail.subtitle || '',
                                     productItemId: createdItem.id,
+                                    name: detail.name || '',
                                 })),
                             });
                         }
