@@ -64,7 +64,15 @@ export const POST = async (req: Request) => {
 
   return withPrisma(async () => {
     try {
-      const { products } = await req.json();
+      const body = await req.json();
+      
+      // Handle both wrapped {products: [...]} and direct array [...]
+      let products = Array.isArray(body) ? body : body.products;
+      
+      // Also handle double-wrapped {products: {products: [...]}}
+      if (products && typeof products === 'object' && !Array.isArray(products) && products.products) {
+        products = products.products;
+      }
 
       if (!products || !Array.isArray(products) || products.length === 0) {
         return NextResponse.json(
@@ -207,7 +215,6 @@ export const POST = async (req: Request) => {
                         create: productData.images.map((img) => ({
                           color: img.color || null,
                           imgs: img.imgs || [],
-                          url: img.url || [],
                         })),
                       }
                     : undefined,
@@ -276,7 +283,6 @@ export const POST = async (req: Request) => {
                       create: productData.images.map((img) => ({
                         color: img.color || null,
                         imgs: img.imgs || [],
-                        url: img.url || [],
                       })),
                     }
                   : undefined,
