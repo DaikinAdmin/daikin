@@ -9,7 +9,6 @@ export const GET = async (
     req: Request,
     { params }: { params: Promise<{ id: string }> }
 ) => {
-    return withPrisma(async () => {
         try {
             const { id } = await params;
             const { searchParams } = new URL(req.url);
@@ -80,7 +79,6 @@ export const GET = async (
                 { status: 500 }
             );
         }
-    });
 };
 
 // PUT update product (Admin only)
@@ -248,7 +246,7 @@ export const PUT = async (
             // Handle items if provided
             if (items !== undefined && Array.isArray(items)) {
                 // Delete existing items
-                await prisma.productItem.deleteMany({
+                await prisma.productItems.deleteMany({
                     where: { slug: product.slug },
                 });
 
