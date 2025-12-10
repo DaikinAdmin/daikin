@@ -34,6 +34,7 @@ export const POST = async (req: Request) => {
 
   return withPrisma(async () => {
     try {
+      
       const { products } = await req.json();
 
       if (!products || !Array.isArray(products) || products.length === 0) {
