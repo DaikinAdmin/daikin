@@ -236,7 +236,7 @@ export const PUT = async (
                         data: specs.map((spec: any) => ({
                             locale: spec.locale,
                             title: spec.title || '',
-                            subtitle: spec.value || '',
+                            subtitle: spec.subtitle || '',
                             productSlug: product.slug,
                         })),
                     });
