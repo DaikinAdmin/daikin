@@ -61,8 +61,23 @@ export default function ProductTemplatePage({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
             {products.map((product) => {
+              const fullName = product.productDetails?.[0]?.name || "";
+              const nameParts = fullName.trim().split(/\s+/);
+              const lastWordOriginal = nameParts[nameParts.length - 1] || "";
+              const lastWord = lastWordOriginal.toLowerCase();
+              const typeWords = [
+                "naścienna",
+                "przypodłogowa",
+                "wall-mounted",
+                "floor-standing",
+                "настінна",
+                "підлогова",
+              ];
+              const isTypeWord = typeWords.includes(lastWord);
+              const baseName = isTypeWord ? nameParts.slice(0, -1).join(" ") : fullName;
+              const typeLabel = isTypeWord ? lastWordOriginal : "";
               return (
                 <div
                   key={product.id}
@@ -87,9 +102,17 @@ export default function ProductTemplatePage({
 
                   {/* Product Details */}
                   <div className="py-6 flex flex-col flex-grow">
-                    <h3 className="text-h2-mobile md:text-h2 text-black mb-3">
-                      {product.productDetails[0].name}
-                    </h3>
+                    {/* Title and type label block with consistent min-height */}
+                    <div className="mb-3">
+                      <h3 className="text-h2-mobile md:text-h2 text-black">
+                        {baseName}
+                      </h3>
+                      {typeLabel && (
+                        <div className="text-h3-mobile md:text-h3 text-amm">
+                          {typeLabel}
+                        </div>
+                      )}
+                    </div>
                     <p className="text-main-text text-amm mb-4">
                       {product.productDetails[0].title}
                     </p>
@@ -120,7 +143,7 @@ export default function ProductTemplatePage({
 
                     {/* Actions */}
                     <Button
-                      className="px-4 py-2 mt-3 rounded-full w-full transition-colors font-medium"
+                      className="px-4 py-3 mt-auto rounded-full w-full transition-colors font-medium"
                       variant={"default"}
                     >
                       <Link href={`/products/${categorySlug}/${product.slug}`}>

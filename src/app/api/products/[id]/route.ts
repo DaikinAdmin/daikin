@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "@/db";
 import { withPrisma } from "@/db/utils";
+import { NewProductRequest } from "@/types/new-product-request";
 
 // GET single product
 export const GET = async (
@@ -113,24 +114,7 @@ export const PUT = async (
                 featureSlugs, // Array of feature slugs
                 specs, // Array of spec objects
                 items, // Array of item objects
-            } = await req.json();
-
-            // Check if articleId is being changed and if it already exists
-            if (articleId) {
-                const existingProduct = await prisma.product.findFirst({
-                    where: {
-                        articleId,
-                        NOT: { id },
-                    },
-                });
-
-                if (existingProduct) {
-                    return NextResponse.json(
-                        { error: "Product with this articleId already exists" },
-                        { status: 409 }
-                    );
-                }
-            }
+            } = await req.json() as NewProductRequest;
 
             // Resolve category slug if being changed
             if (categorySlug) {
@@ -147,41 +131,44 @@ export const PUT = async (
             }
 
             // Resolve feature IDs from slugs if provided
-            let featureIds: string[] = [];
+            let featureConnections = undefined;
             
-            if (featureSlugs && featureSlugs.length > 0) {
-                const features = await prisma.feature.findMany({
-                    where: { slug: { in: featureSlugs } },
-                    select: { id: true, slug: true },
-                });
+            if (featureSlugs !== undefined) {
+                if (featureSlugs.length > 0) {
+                    const features = await prisma.feature.findMany({
+                        where: { slug: { in: featureSlugs } },
+                        select: { id: true, slug: true },
+                    });
 
-                if (features.length !== featureSlugs.length) {
-                    const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
-                    const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
-                    return NextResponse.json(
-                        { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
-                        { status: 404 }
-                    );
+                    if (features.length !== featureSlugs.length) {
+                        const foundSlugs = features.map((f: { id: string; slug: string }) => f.slug);
+                        const missingSlugs = featureSlugs.filter((slug: string) => !foundSlugs.includes(slug));
+                        return NextResponse.json(
+                            { error: `Features not found for slugs: ${missingSlugs.join(', ')}` },
+                            { status: 404 }
+                        );
+                    }
+                    
+                    featureConnections = {
+                        set: features.map((f: { id: string; slug: string }) => ({ id: f.id })),
+                    };
+                } else {
+                    // Empty array means disconnect all features
+                    featureConnections = { set: [] };
                 }
-                
-                featureIds = features.map((f: { id: string; slug: string }) => f.id);
             }
 
             // Update product basic fields
             const product = await prisma.product.update({
-                where: { id },
+                where: { slug: id },
                 data: {
                     ...(articleId !== undefined && { articleId }),
-                    ...(price !== undefined && { price: price ? parseFloat(price) : null }),
+                    ...(price !== undefined && { price: price ? price : null }),
                     ...(slug !== undefined && { slug }),
                     ...(energyClass !== undefined && { energyClass }),
                     ...(categorySlug !== undefined && { categorySlug }),
                     ...(isActive !== undefined && { isActive }),
-                    ...(featureSlugs !== undefined && featureIds.length > 0 && {
-                        features: {
-                            set: featureIds.map((fId: string) => ({ id: fId })),
-                        },
-                    }),
+                    ...(featureConnections !== undefined && { features: featureConnections }),
                 },
             });
 
@@ -236,7 +223,7 @@ export const PUT = async (
                         data: specs.map((spec: any) => ({
                             locale: spec.locale,
                             title: spec.title || '',
-                            subtitle: spec.value || '',
+                            subtitle: spec.subtitle || '',
                             productSlug: product.slug,
                         })),
                     });
@@ -247,30 +234,31 @@ export const PUT = async (
             if (items !== undefined && Array.isArray(items)) {
                 // Delete existing items
                 await prisma.productItems.deleteMany({
-                    where: { slug: product.slug },
+                    where: { productSlug: product.slug },
                 });
 
                 // Create new items if any
                 if (items.length > 0) {
                     for (const item of items) {
-                        const createdItem = await prisma.productItem.create({
+                        const createdItem = await prisma.productItems.create({
                             data: {
                                 img: item.img || '',
-                                slug: product.slug,
+                                productSlug: product.slug,
                                 lookupItemId: item.lookupItemId || null,
                                 title: item.title || '',
                                 isActive: item.isActive || false,
+                                slug: item.slug || '',
                             },
                         });
 
                         // Create item details if provided
-                        if (item.details && Array.isArray(item.details)) {
-                            await prisma.productItemDetails.createMany({
-                                data: item.details.map((detail: any) => ({
+                        if (item.translations && Array.isArray(item.translations)) {
+                            await prisma.productItemsTranslation.createMany({
+                                data: item.translations.map((detail: any) => ({
                                     locale: detail.locale,
                                     title: detail.title || '',
                                     subtitle: detail.subtitle || '',
-                                    productItemId: createdItem.id,
+                                    productItemId: createdItem.id
                                 })),
                             });
                         }
