@@ -32,7 +32,7 @@ export const EmblaCardCarousel: React.FC<EmblaCardCarouselProps> = ({
               key={index}
               className="flex-[0_0_80%] md:flex-[0_0_35%] flex flex-col transition-all duration-200"
             >
-              <div className="w-full h-[200px] md:h-[550px] overflow-hidden">
+              <div className="w-full h-[400px] md:h-[550px] overflow-hidden">
                 <img
                   src={item.img}
                   className="w-full h-full object-cover"
