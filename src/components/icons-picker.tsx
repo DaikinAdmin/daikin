@@ -124,6 +124,7 @@ export default function IconPicker({
           {/* TABS */}
           <div className="flex mb-2 border-b">
             <button
+              type="button"
               className={`flex-1 py-1 ${
                 activeTab === "preview"
                   ? "border-b-2 border-blue-500 font-semibold"
@@ -134,6 +135,7 @@ export default function IconPicker({
               Preview
             </button>
             <button
+              type="button"
               className={`flex-1 py-1 ${
                 activeTab === "full"
                   ? "border-b-2 border-blue-500 font-semibold"
@@ -149,6 +151,7 @@ export default function IconPicker({
           <div className="grid grid-cols-4 gap-2 max-h-60 overflow-y-auto">
             {icons.map((icon) => (
               <button
+                type="button"
                 key={icon.name}
                 onClick={() => {
                   onChange(icon.src);
@@ -167,6 +170,7 @@ export default function IconPicker({
 
           {/* CLOSE BUTTON */}
           <button
+            type="button"
             onClick={() => setOpen(false)}
             className="mt-2 w-full py-2 border rounded-md hover:bg-gray-50"
           >
