@@ -6,7 +6,7 @@ import DaikinIcon from "./daikin-icon";
 import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "./ui/arrows";
 import { Product } from "@/types/product";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 // Manually set 5 product IDs here (replace placeholders with real slugs/IDs)
 const productIds: string[] = [
@@ -235,7 +235,7 @@ export default function ProductCarousel() {
                   {currentProduct?.slug && currentProduct?.category?.slug ? (
                     <Link
                       href={`/products/${currentProduct.category.slug}/${currentProduct.slug}`}
-                      className="flex-1"
+                      className="flex-1 block w-full"
                     >
                       <Button
                         className="w-full px-4 py-2 rounded-full transition-colors font-medium"

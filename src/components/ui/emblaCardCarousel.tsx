@@ -30,12 +30,14 @@ export const EmblaCardCarousel: React.FC<EmblaCardCarouselProps> = ({
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex-[0_0_80%] md:flex-[0_0_40%] flex flex-col transition-all duration-200"
+              className="flex-[0_0_80%] md:flex-[0_0_35%] flex flex-col transition-all duration-200"
             >
-              <img
-                src={item.img}
-                className="w-full h-auto object-cover"
-              />
+              <div className="w-full h-[400px] md:h-[550px] overflow-hidden">
+                <img
+                  src={item.img}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="text-h2-mobile md:text-h2 mt-4 md:mt-6">{item.productItemDetails[0].title}</span>
               <span className="text-subtitle-mobile md:text-subtitle text-amm">{item.productItemDetails[0].subtitle}</span>
             </div>

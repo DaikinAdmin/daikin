@@ -34,6 +34,7 @@ export default function ProductView({ product, locale }: Props) {
   const features: Feature[] = product.features ?? [];
   const specsAll = product.specs ?? [];
   const items: Item[] = product.items ?? [];
+  const categorySlug = (product as any)?.category?.slug ?? (product as any)?.categorySlug ?? "";
 
   // pick localized product details
   const details = useMemo(() => {
@@ -60,6 +61,23 @@ export default function ProductView({ product, locale }: Props) {
 
   const selectedImages = images[selectedColorIndex]?.imgs ?? [];
   const [expandedFeatures, setExpandedFeatures] = useState<Record<number, boolean>>({});
+  const filteredFeatures: Feature[] = (features || []).filter((f: Feature) => !f.preview);
+  const hasFeatures = filteredFeatures.length > 0;
+  const isAirPurifiers = categorySlug === "air-purifiers";
+  const splitSentences = (text: string): string[] => {
+    const normalized = (text || "").replace(/\r\n|\r/g, "\n").trim();
+    const lines = normalized.split(/\n+/);
+    const out: string[] = [];
+    for (const line of lines) {
+      const parts = line.match(/[^.!?]+[.!?]*/g) || [line];
+      for (const p of parts) {
+        const v = p.trim();
+        if (v) out.push(v);
+      }
+    }
+    return out;
+  };
+  const descriptionSentences = isAirPurifiers ? splitSentences(details.subtitle || "") : [];
 
   const toggleFeature = (i: number) => {
     setExpandedFeatures((prev) => ({ ...prev, [i]: !prev[i] }));
@@ -93,28 +111,29 @@ export default function ProductView({ product, locale }: Props) {
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <h1 className="text-h1-mobile md:text-h1">{details.name || product.slug}</h1>
 
-              <div className="flex w-full items-center gap-2 mt-2 md:w-auto md:justify-end">
-                <div className="flex flex-row-reverse md:flex-row items-center gap-2">
-                  <span className="text-sm text-main-text md:mr-2 md:ml-0">
-                    {images[selectedColorIndex]?.color ? getColorLabel(images[selectedColorIndex].color!) : ""}
-                  </span>
+              {images.length > 1 && (
+                <div className="flex w-full items-center gap-2 mt-2 md:w-auto md:justify-end">
+                  <div className="flex flex-row-reverse md:flex-row items-center gap-2">
+                    <span className="text-sm text-main-text md:mr-2 md:ml-0">
+                      {images[selectedColorIndex]?.color ? getColorLabel(images[selectedColorIndex].color!) : ""}
+                    </span>
 
-                  <div className="flex gap-2">
-                    {images.map((c: Image, idx: number) => (
-                      <button
-                        key={c.id ?? idx}
-                        className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full p-[3px] border-2 border-primary ${selectedColorIndex === idx ? "border-opacity-100" : "border-opacity-0"
-                          }`}
-                        onClick={() => setSelectedColorIndex(idx)}
-                        aria-label={`Select color ${c.color ?? idx}`}
-                        type="button"
-                      >
-                        <span className="block w-full h-full rounded-full border" style={{ backgroundColor: c.color ?? "#fff" }} />
-                      </button>
-                    ))}
+                    <div className="flex gap-2">
+                      {images.map((c: Image, idx: number) => (
+                        <button
+                          key={c.id ?? idx}
+                          className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full p-[3px] border-2 border-primary ${selectedColorIndex === idx ? "border-opacity-100" : "border-opacity-0"}`}
+                          onClick={() => setSelectedColorIndex(idx)}
+                          aria-label={`Select color ${c.color ?? idx}`}
+                          type="button"
+                        >
+                          <span className="block w-full h-full rounded-full border" style={{ backgroundColor: c.color ?? "#fff" }} />
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <Button className="px-4 py-4 rounded-full w-full mt-4 md:hidden" variant={"default"}>
                 {t("getQuote") ?? "Get quote"}
@@ -140,18 +159,19 @@ export default function ProductView({ product, locale }: Props) {
 
       {/* Mobile tabs */}
       <div className="md:hidden">
-        <TabsUnderline defaultValue="features">
+        <TabsUnderline defaultValue={hasFeatures ? "features" : "description"}>
           <TabsUnderlineList>
-            <TabsUnderlineTrigger value="features">{t("tabs.features") ?? "Features"}</TabsUnderlineTrigger>
+            {hasFeatures && (
+              <TabsUnderlineTrigger value="features">{t("tabs.features") ?? "Features"}</TabsUnderlineTrigger>
+            )}
             <TabsUnderlineTrigger value="specs">{t("tabs.specs") ?? "Specs"}</TabsUnderlineTrigger>
             <TabsUnderlineTrigger value="description">{t("tabs.description") ?? "Description"}</TabsUnderlineTrigger>
           </TabsUnderlineList>
 
-          <TabsUnderlineContent value="features">
-            <div className="grid grid-cols-1 gap-y-6 pt-4">
-              {features
-                .filter((f: Feature) => !f.preview)
-                .map((f: Feature, i: number) => {
+          {hasFeatures && (
+            <TabsUnderlineContent value="features">
+              <div className="grid grid-cols-1 gap-y-6 pt-4">
+                {filteredFeatures.map((f: Feature, i: number) => {
                   const name = f.featureDetails?.find((d) => d.locale === locale)?.name ?? f.name;
                   const desc = f.featureDetails?.find((d) => d.locale === locale)?.desc ?? "";
                   const isOpen = !!expandedFeatures[i];
@@ -167,8 +187,9 @@ export default function ProductView({ product, locale }: Props) {
                     </ExpandableRow>
                   );
                 })}
-            </div>
-          </TabsUnderlineContent>
+              </div>
+            </TabsUnderlineContent>
+          )}
 
           <TabsUnderlineContent value="specs">
             <div className="grid gap-7 text-sm text-main-text pt-4">
@@ -184,19 +205,26 @@ export default function ProductView({ product, locale }: Props) {
           <TabsUnderlineContent value="description">
             <div className="text-main-text pt-4 flex flex-col gap-2">
               <span className="text-h3-mobile md:text-h3">{t("whyChooseTitle") + " " + details.name}</span>
-              <span className="text-subtitle-mobile md:text-subtitle text-amm leading-10">{details.subtitle}</span>
+              {isAirPurifiers ? (
+                <div className="text-subtitle-mobile md:text-subtitle text-amm space-y-2">
+                  {descriptionSentences.map((s, idx) => (
+                    <p key={idx} className="pl-4">• {s}</p>
+                  ))}
+                </div>
+              ) : (
+                <span className="text-subtitle-mobile md:text-subtitle text-amm leading-10">{details.subtitle}</span>
+              )}
             </div>
           </TabsUnderlineContent>
         </TabsUnderline>
       </div>
 
       {/* Desktop features */}
-      <div className="hidden md:block">
-        <span className="text-h1-mobile md:text-h1">{t("keyFeatures")}</span>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-32 mt-6">
-          {features
-            .filter((f: Feature) => !f.preview)
-            .map((f: Feature, i: number) => {
+      {hasFeatures ? (
+        <div className="hidden md:block">
+          <span className="text-h1-mobile md:text-h1">{t("keyFeatures")}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-32 mt-6">
+            {filteredFeatures.map((f: Feature, i: number) => {
               const name = f.featureDetails?.find((d) => d.locale === locale)?.name ?? f.name;
               const desc = f.featureDetails?.find((d) => d.locale === locale)?.desc ?? "";
               return (
@@ -209,20 +237,44 @@ export default function ProductView({ product, locale }: Props) {
                 </div>
               );
             })}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="text-main-text mb-6 flex-col gap-2 hidden md:flex">
+          <span className="text-h1-mobile md:text-h1">{t("whyChooseTitle") + " " + details.name}</span>
+          {isAirPurifiers ? (
+            <div className="text-subtitle-mobile md:text-subtitle text-amm space-y-2">
+              {descriptionSentences.map((s, idx) => (
+                <p key={idx} className="pl-4">•ㅤ{s}</p>
+              ))}
+            </div>
+          ) : (
+            <span className="text-subtitle-mobile md:text-subtitle text-amm leading-10">{details.subtitle}</span>
+          )}
+        </div>
+      )}
 
       {/* Includes / Items */}
-      <div className="mt-16">
+      <div className="mt-4">
         <h2 className="text-h1-mobile md:text-h1 mb-6">{t("includesTitle")}</h2>
         {product.items && <EmblaCardCarousel items={product.items} />}
       </div>
 
-      {/* Desktop description */}
-      <div className="text-main-text mb-6 flex-col gap-2 hidden md:flex">
-        <span className="text-h1-mobile md:text-h1">{t("whyChooseTitle") + " " + details.name}</span>
-        <span className="text-subtitle-mobile md:text-subtitle text-amm leading-10">{details.subtitle}</span>
-      </div>
+      {/* Desktop description (only when features exist; otherwise it's rendered above) */}
+      {hasFeatures && (
+        <div className="text-main-text mb-6 flex-col gap-2 hidden md:flex">
+          <span className="text-h1-mobile md:text-h1">{t("whyChooseTitle") + " " + details.name}</span>
+          {isAirPurifiers ? (
+            <div className="text-subtitle-mobile md:text-subtitle text-amm space-y-2">
+              {descriptionSentences.map((s, idx) => (
+                <p key={idx} className="pl-4">•ㅤ{s}</p>
+              ))}
+            </div>
+          ) : (
+            <span className="text-subtitle-mobile md:text-subtitle text-amm leading-10">{details.subtitle}</span>
+          )}
+        </div>
+      )}
     </main>
   );
 }
