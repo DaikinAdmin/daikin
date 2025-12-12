@@ -12,10 +12,12 @@ import { useAuthState } from '@/hooks/use-auth-state'
 import { authClient } from '@/lib/auth-client'
 import { ForgotPasswordSchema } from '@/helpers/zod/forgot-password-schema'
 import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 
 
 const ForgotPassword = () => {
   const locale = useLocale();
+  const router = useRouter();
   const { error, success, loading, setError, setSuccess, setLoading, resetState } = useAuthState()
 
   const form = useForm<z.infer<typeof ForgotPasswordSchema>>({
@@ -27,27 +29,31 @@ const ForgotPassword = () => {
 
   const onSubmit = async (values: z.infer<typeof ForgotPasswordSchema>) => {
     try {
-      await authClient.forgetPassword({
-        email: values.email,
-        redirectTo: `/${locale}/reset-password`
-      }, {
-        onResponse: () => {
-          setLoading(false)
-        },
-        onRequest: () => {
-          resetState()
-          setLoading(true)
+      resetState();
+      setLoading(true);
+      
+      // Use $fetch to call the forget-password endpoint directly
+      await authClient.$fetch("/forget-password", {
+        method: "POST",
+        body: {
+          email: values.email,
+          redirectTo: "/reset-password",
         },
         onSuccess: () => {
+          setLoading(false);
           setSuccess("Reset password link has been sent")
+          setTimeout(() => {
+            router.push("/login");
+          }, 3000);
         },
         onError: (ctx) => {
+          setLoading(false);
           setError(ctx.error.message);
         },
       });
 
     } catch (error) {
-      console.log(error)
+      console.error(error)
       setError("Something went wrong")
     }
   }

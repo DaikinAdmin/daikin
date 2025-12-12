@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["daikinkobierzyce.pl"],
   },
+  serverExternalPackages: ['better-auth'],
   async headers() {
     return [
       {

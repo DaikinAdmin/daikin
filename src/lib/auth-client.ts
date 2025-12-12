@@ -1,9 +1,8 @@
 // src/lib/auth-client.ts
 import { createAuthClient } from "better-auth/react";
-import { bearer, twoFactorClient } from "better-auth/plugins";
 import { ac, admin, user, employee } from "@/lib/permissions"
 import { auth } from "./auth";
-import { adminClient, customSessionClient } from "better-auth/client/plugins"
+import { adminClient, customSessionClient, twoFactorClient } from "better-auth/client/plugins"
 
 export const authClient = createAuthClient({
     baseURL: process.env.NEXT_PUBLIC_APP_URL,
@@ -33,7 +32,6 @@ export const authClient = createAuthClient({
             adminRoles: ["admin"],
             adminUserIds: [process.env.ADMIN_USER_ID || ""]
         }),
-        bearer(),
         customSessionClient<typeof auth>()
     ]
 })

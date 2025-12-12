@@ -52,6 +52,11 @@ const Header: React.FC<HeaderProps> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -202,7 +207,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-[200px]">
-                  {session?.user ? (
+                  {isMounted && session?.user ? (
                     <>
                       <DropdownMenuItem asChild>
                         <Link
@@ -295,7 +300,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           <div className="absolute inset-0 bg-white overflow-y-auto shadow-lg mt-14">
             <div className="flex flex-col min-h-full">
               {/* User Profile Section - Top Priority */}
-              {session?.user && (
+              {isMounted && session?.user && (
                 <div className="px-4 py-4 bg-primary text-white">
                   <div className="flex items-center space-x-3 mb-4">
                     <Avatar className="h-12 w-12 sm:h-14 sm:w-14 ring-2 ring-white">
@@ -427,7 +432,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
               {/* Bottom Section - Auth & Language */}
               <div className="px-4 py-4 border-t-2 border-gray-100 bg-gray-50 space-y-3">
-                {session?.user ? (
+                {isMounted && session?.user ? (
                   <Button
                     onClick={() => {
                       setIsMenuOpen(false);
