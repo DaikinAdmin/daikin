@@ -31,8 +31,8 @@ const productIconTitles = [
   "ㅤSeria Daikin ㅤStylish",
   "Seria Daikin Emura",
   "Oczyszczacz powietrza MCK70Z",
+  "Pompa ciepła Altherma 3",
   "Pompa ciepła Altherma 4",
-  "Pompa ciepła Altherma 3 ERGA",
 ];
 
 // Shorter titles for mobile (< md)
@@ -40,8 +40,8 @@ const productIconTitlesShort = [
   "Stylish",
   "Emura",
   "MCK70Z",
-  "Altherma 4",
   "Altherma 3",
+  "Altherma 4",
 ];
 
 export default function ProductCarousel() {
