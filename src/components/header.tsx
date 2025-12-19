@@ -184,7 +184,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
               {/* Twoja wiedza */}
               <Link
-                href="/knowledge"
+                href="#"
                 className="px-4 py-2 hover:text-primary rounded-md transition-colors"
                 locale={locale}
               >
@@ -193,7 +193,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
               {/* Realizację */}
               <Link
-                href="/realizations"
+                href="#"
                 className="px-4 py-2 hover:text-primary rounded-md transition-colors"
                 locale={locale}
               >
@@ -400,14 +400,14 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </div>
 
                 {/* Wiadomości */}
-                {/* <Link
+                <Link
                   href="/news"
                   className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                   locale={locale}
                 >
                   {t("nav.news")}
-                </Link> */}
+                </Link>
 
                 {/* Twoja wiedza */}
                 {/* <Link
@@ -417,7 +417,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 locale={locale}
               >
                 {t('nav.knowledge')}
-              </Link> */}
+              </Link>
 
                 {/* Realizację */}
                 {/* <Link

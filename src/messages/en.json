@@ -36,6 +36,13 @@
         "quote": "Get Quote",
         "contact": "Contact Us"
       },
+      "banner": {
+        "title": "Daikin Devices on Installments",
+        "description": "High-quality Daikin devices are now available in convenient installments, financed through a cash loan from the Cooperative Bank in Kobierzyce",
+        "shortDescription": "High-quality Daikin devices are now available in convenient installments",
+        "ctaPrimary": "Credit Calculator",
+        "ctaSecondary": "Read More"
+      },
       "slides": {
         "slide1": {
           "badge": "New Products 2025",
@@ -1224,6 +1231,40 @@
           "description": "Streamer technology decomposes harmful substances trapped on the filter through oxidation.",
           "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza3-1765269791100.jpg"
         }
+      }
+    }
+  },
+  "getQuoteModal": {
+    "title": "Request a Quote",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "email": "EEmail Address",
+    "emailPlaceholder": "Enter your email address",
+    "phone": "Phone Number",
+    "product": "Product of Interest",
+    "productPlaceholder": "Select from the list",
+    "message": "Additional Information",
+    "messagePlaceholder": "Write us a message",
+    "credit": "Are you interested in a credit offer?",
+    "creditLink": "More information",
+    "submit": "Send Inquiry",
+    "submitting": "Sending...",
+    "close": "Close",
+    "successMessage": "Thank you for your inquiry! We will contact you shortly.",
+    "errorMessage": "An error occurred while sending the inquiry. Please try again later.",
+    "interests": {
+      "options": {
+        "ac": "Air Conditioning",
+        "hp": "Heat Pumps",
+        "ap": "Air Purifiers"
+      },
+      "services": {
+        "installation": "Installation Services",
+        "maintenance": "Maintenance Services"
+      },
+      "groups": {
+        "products": "Products",
+        "services": "Services"
       }
     }
   },

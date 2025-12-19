@@ -16,7 +16,7 @@
       "maintenance": "Serwis",
       "news": "Wiadomości",
       "knowledge": "Twoja wiedza",
-      "realizations": "Realizację",
+      "realizations": "Realizacje",
       "account": "Twoje konto"
     },
     "auth": {
@@ -35,6 +35,13 @@
         "explore": "Poznaj produkty",
         "quote": "Wycena",
         "contact": "Skontaktuj się"
+      },
+      "banner": {
+        "title": "Urządzenia Daikin na raty",
+        "description": "Urządzenia najwyższej jakości Daikin są od dziś dostępne  w dogodnych ratach, finansowanych poprzez kredyt gotówkowy Banku Spółdzielczego w Kobierzycach",
+        "shortDescription": "Urządzenia najwyższej jakości Daikin są od dziś dostępne w dogodnych ratach",
+        "ctaPrimary": "Kalkulator kredytowy",
+        "ctaSecondary": "Czytaj więcej"
       },
       "slides": {
         "slide1": {
@@ -1224,6 +1231,40 @@
           "description": "Technologia Streamer służy do rozkładu szkodliwych substancji zatrzymanych na filtrze poprzez utlenianie.",
           "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza3-1765269791100.jpg"
         }
+      }
+    }
+  },
+    "getQuoteModal": {
+    "title": "Skontaktuj się z nami - o resztę zadbamy my!",
+    "name": "Imię i Nazwisko",
+    "namePlaceholder": "Wpisz Imię i Nazwisko",
+    "email": "E-mail",
+    "emailPlaceholder": "Wpisz e-mail do kontaktu",
+    "phone": "Numer telefonu",
+    "product": "Jakim produktem lub usługą jesteś zainteresowany?",
+    "productPlaceholder": "Wybierz z listy",
+    "message": "Dodatkowe informacje",
+    "messagePlaceholder": "Napisz do nas wiadomość",
+    "credit": "Czy jesteś zainteresowany ofertą kredytową?",
+    "creditLink": "Więcej",
+    "submit": "Wyślij zapytanie",
+    "submitting": "Wysyłanie...",
+    "close": "Zamknij",
+    "successMessage": "Dziękujemy za Twoje zapytanie! Skontaktujemy się z Tobą wkrótce.",
+    "errorMessage": "Wystąpił błąd podczas wysyłania zapytania. Proszę spróbuj ponownie później.",
+    "interests": {
+        "options": {
+          "ac" : "Klimatyzacja",
+          "hp" : "Pompy ciepła",
+          "ap" : "Oczyszczacze powietrza"
+        },
+        "services": {
+          "installation" : "Usługi instalacyjne",
+          "maintenance" : "Usługi serwisowe"
+        },
+        "groups":{
+          "products": "Produkty",
+          "services": "Usługi"
       }
     }
   },

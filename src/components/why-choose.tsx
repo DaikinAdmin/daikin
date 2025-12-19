@@ -4,8 +4,9 @@ import { WhyChooseProps } from "@/types/product";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./ui/arrows";
+import { ModalInquiryForm } from "@/components/ModalInquiryForm";
 
 export default function WhyChooseSection({
   title,
@@ -15,6 +16,7 @@ export default function WhyChooseSection({
 }: WhyChooseProps) {
   const t = useTranslations("whyChoose");
   const [emblaRef, emblaApi] = useEmblaCarousel({align: "start" });
+  const [modalOpen, setModalOpen] = useState(false);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -106,6 +108,7 @@ export default function WhyChooseSection({
               <Button
                 className="px-12 py-4 md:px-20 md:py-2 rounded-full transition-colors font-medium"
                 variant="accent"
+                onClick={() => setModalOpen(true)}
               >
                 {t("cta.consultation")}
               </Button>
@@ -113,6 +116,7 @@ export default function WhyChooseSection({
           </div>
         </div>
       </section>
+      <ModalInquiryForm open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }
