@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { ArrowLeft, ArrowRight } from "./ui/arrows";
 import { Product } from "@/types/product";
 import { Link } from "@/i18n/navigation";
+import { ModalInquiryForm } from "@/components/ModalInquiryForm";
 
 // Manually set 5 product IDs here (replace placeholders with real slugs/IDs)
 const productIds: string[] = [
@@ -52,6 +53,7 @@ export default function ProductCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (scrollContainerRef.current) {
@@ -121,12 +123,12 @@ export default function ProductCarousel() {
 
   // Derive name/description from productDetails in current locale
   const currentName = currentProduct
-    ? currentProduct.productDetails?.find((d) => d.locale === locale)?.name ??
-      currentProduct.slug
+    ? (currentProduct.productDetails?.find((d) => d.locale === locale)?.name ??
+      currentProduct.slug)
     : "";
   const currentDescription = currentProduct
-    ? currentProduct.productDetails?.find((d) => d.locale === locale)?.title ??
-      ""
+    ? (currentProduct.productDetails?.find((d) => d.locale === locale)?.title ??
+      "")
     : "";
   const currentFeatures = currentProduct
     ? (currentProduct.features ?? []).map((f) => {
@@ -232,33 +234,42 @@ export default function ProductCarousel() {
 
                 {/* Actions */}
                 <div className="flex flex-row gap-3">
-                  {currentProduct?.slug && currentProduct?.category?.slug ? (
-                    <Link
-                      href={`/products/${currentProduct.category.slug}/${currentProduct.slug}`}
-                      className="flex-1 block w-full"
-                    >
+                  <div className="flex-1">
+                    {currentProduct?.slug && currentProduct?.category?.slug ? (
+                      <Link
+                        href={`/products/${currentProduct.category.slug}/${currentProduct.slug}`}
+                        className="block w-full"
+                      >
+                        <Button
+                          className="w-full px-4 py-2 rounded-full transition-colors font-medium"
+                          variant={"secondary"}
+                        >
+                          {t("home.products.learnMore")}
+                        </Button>
+                      </Link>
+                    ) : (
                       <Button
                         className="w-full px-4 py-2 rounded-full transition-colors font-medium"
                         variant={"secondary"}
+                        disabled
                       >
                         {t("home.products.learnMore")}
                       </Button>
-                    </Link>
-                  ) : (
+                    )}
+                  </div>
+                  <div className="flex-1">
                     <Button
-                      className="px-4 py-2 rounded-full transition-colors font-medium flex-1"
-                      variant={"secondary"}
-                      disabled
+                      className="w-full px-4 py-2 rounded-full transition-colors font-medium"
+                      variant={"default"}
+                      onClick={() => setOpen(true)}
                     >
-                      {t("home.products.learnMore")}
+                      {t("home.products.getQuote")}
                     </Button>
-                  )}
-                  <Button
-                    className="px-4 py-2 rounded-full transition-colors font-medium flex-1"
-                    variant={"default"}
-                  >
-                    {t("home.products.getQuote")}
-                  </Button>
+                  </div>
+                  <ModalInquiryForm
+                    open={open}
+                    onClose={() => setOpen(false)}
+                  />
                 </div>
               </div>
             </div>
@@ -299,8 +310,6 @@ export default function ProductCarousel() {
                   />
                 </div>
 
-                {/* Назва під іконкою */}
-                {/* Desktop (md and up): long names */}
                 <p
                   className={`hidden md:block text-center transition-colors max-w-[152px] duration-200 ${
                     isActive
