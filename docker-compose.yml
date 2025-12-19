@@ -50,6 +50,8 @@ services:
       # Image Upload Service
       UPLOAD_DIR: /uploads
       IMAGE_SERVICE_URL: ${IMAGE_SERVICE_URL}
+      NEXT_PUBLIC_BUILDER_API_KEY: ${NEXT_PUBLIC_BUILDER_API_KEY}
+      NEXT_PUBLIC_BUILDER_NEWS_MODEL: ${NEXT_PUBLIC_BUILDER_NEWS_MODEL}
       
       # Environment
       ENV: ${ENV:-production}
