@@ -18,6 +18,7 @@ import {
   TabsUnderlineContent,
 } from "@/components/ui/tabs-underline";
 import { useTranslations } from "next-intl";
+import { ModalInquiryForm } from "@/components/ModalInquiryForm";
 
 type Props = {
   product: Product;
@@ -28,6 +29,7 @@ export default function ProductView({ product, locale }: Props) {
   const t = useTranslations("product"); // keep translations for static UI
   const router = useRouter();
   const { getColorLabel } = useColorLabel();
+  const [modalOpen, setModalOpen] = useState(false);
 
   // normalize arrays
   const images: Image[] = (product.img ?? []) as Image[];
@@ -135,7 +137,11 @@ export default function ProductView({ product, locale }: Props) {
                 </div>
               )}
 
-              <Button className="px-4 py-4 rounded-full w-full mt-4 md:hidden" variant={"default"}>
+              <Button 
+                className="px-4 py-4 rounded-full w-full mt-4 md:hidden" 
+                variant={"default"}
+                onClick={() => setModalOpen(true)}
+              >
                 {t("getQuote") ?? "Get quote"}
               </Button>
             </div>
@@ -151,7 +157,11 @@ export default function ProductView({ product, locale }: Props) {
             </div>
           </div>
 
-          <Button className="px-4 py-4 h-16 rounded-full w-full mt-2 md:mt-3 hidden md:block" variant={"default"}>
+          <Button 
+            className="px-4 py-4 h-16 rounded-full w-full mt-2 md:mt-3 hidden md:block" 
+            variant={"default"}
+            onClick={() => setModalOpen(true)}
+          >
             {t("getQuote") ?? "Get quote"}
           </Button>
         </div>
@@ -275,6 +285,7 @@ export default function ProductView({ product, locale }: Props) {
           )}
         </div>
       )}
+      <ModalInquiryForm open={modalOpen} onClose={() => setModalOpen(false)} />
     </main>
   );
 }

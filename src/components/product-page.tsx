@@ -76,7 +76,9 @@ export default function ProductTemplatePage({
                 "підлогова",
               ];
               const isTypeWord = typeWords.includes(lastWord);
-              const baseName = isTypeWord ? nameParts.slice(0, -1).join(" ") : fullName;
+              const baseName = isTypeWord
+                ? nameParts.slice(0, -1).join(" ")
+                : fullName;
               const typeLabel = isTypeWord ? lastWordOriginal : "";
               return (
                 <div
@@ -142,14 +144,14 @@ export default function ProductTemplatePage({
                     )}
 
                     {/* Actions */}
-                    <Button
-                      className="px-4 py-3 mt-auto rounded-full w-full transition-colors font-medium"
-                      variant={"default"}
-                    >
-                      <Link href={`/products/${categorySlug}/${product.slug}`}>
+                    <Link href={`/products/${categorySlug}/${product.slug}`}>
+                      <Button
+                        className="px-4 py-3 mt-auto rounded-full w-full transition-colors font-medium"
+                        variant={"default"}
+                      >
                         {t("viewDetails") ?? "View Details"}
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               );

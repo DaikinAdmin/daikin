@@ -1,9 +1,12 @@
+"use client";
+
 import { FadeIn } from "@/components/fade-in";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { ModalInquiryForm } from "@/components/ModalInquiryForm";
+import { useState } from "react";
 
 export interface WhyChooseItem {
   key: string;
@@ -22,6 +25,7 @@ export function WhyChooseGrid({
   ctaLink = "/contact",
 }: WhyChooseGridProps) {
   const t = useTranslations(namespace);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const mappedItems = items.map((item) => ({
     type: "photo" as const,
@@ -65,9 +69,9 @@ export function WhyChooseGrid({
             <Button
               className="px-12 py-4 md:px-20 md:py-2 rounded-full transition-colors font-medium w-full md:w-auto"
               variant="accent"
-              asChild
+              onClick={() => setModalOpen(true)}
             >
-              <Link href={item.link || "#"}>{item.buttonText}</Link>
+              {item.buttonText}
             </Button>
           </div>
         </FadeIn>
@@ -97,6 +101,7 @@ export function WhyChooseGrid({
   return (
     <section className="w-full bg-container py-10 md:py-[65px] md:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ModalInquiryForm open={modalOpen} onClose={() => setModalOpen(false)} />
         <div className="mb-6 md:mb-10">
           <FadeIn>
             <p className="text-h1-mobile lg:text-h1">
