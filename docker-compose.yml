@@ -46,6 +46,8 @@ services:
       MAIL_PORT: ${MAIL_PORT}
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_FROM: ${MAIL_FROM}
+      MAIL_DAIKIN_SUPPORT: ${MAIL_DAIKIN_SUPPORT}
       
       # Image Upload Service
       UPLOAD_DIR: /uploads

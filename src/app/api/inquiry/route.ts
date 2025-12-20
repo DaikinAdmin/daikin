@@ -179,7 +179,7 @@ export async function POST(req: NextRequest) {
     // sending mail
     await transporter.sendMail({
       from: process.env.MAIL_FROM,
-      to: "a.ivanovic@ammproject.com",
+      to: process.env.MAIL_DAIKIN_SUPPORT,
       subject: `🎯 Nowe zgłoszenie od ${name}`,
       html: htmlContent,
       replyTo: email,
