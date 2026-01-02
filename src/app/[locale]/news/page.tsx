@@ -73,30 +73,17 @@ export default async function NewsPage({
           <div className="bg-white overflow-hidden border border-gray-100 duration-300 rounded-md">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-64 lg:h-auto min-h-[400px]">
-                <div className="absolute inset-0 bg-primary flex items-center justify-center">
-                  <div className="text-white text-center p-8">
-                    <Award className="h-24 w-24 mx-auto mb-6 opacity-90" />
-                    <p className="text-lg font-medium opacity-90">
-                      {t("featured.imageLabel")}
-                    </p>
-                  </div>
-                </div>
+                <Image
+                  src="https://daikinkobierzyce.pl/api/images/news/EPSK-A_Gijs_5-4_8A-1767175163837.png"
+                  alt={t("featured.imageLabel")}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
               <div className="p-8 lg:p-16 flex flex-col justify-center">
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-blue-50 text-blue-700 border border-blue-100">
-                    {t("categories.company")}
-                  </span>
-                  <div className="flex items-center gap-6 text-sm text-gray-500">
-                    <span className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      {t("articles.1.date")}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <Clock className="h-4 w-4" />
-                      {t("articles.1.readTime")}
-                    </span>
-                  </div>
                 </div>
                 <h2 className="text-h2-mobile lg:text-h2 text-gray-900 mb-6">
                   {t("articles.1.title")}
@@ -106,7 +93,7 @@ export default async function NewsPage({
                 </p>
                 <div className="flex gap-4">
                   <Button asChild className="rounded-full" size="lg">
-                    <Link href={`/news/${newsArticles[0].id}`}>
+                    <Link href="https://www.facebook.com/kobierzyce.daikin/">
                       {t("readMore")}
                       <ArrowRight className="h-5 w-5" />
                     </Link>
@@ -182,10 +169,10 @@ export default async function NewsPage({
       )}
 
       {/* Newsletter Section */}
-      <section className="py-12 lg:py-16">
-        <div className="relative bg-primary p-8 lg:p-20 text-center overflow-hidden">
+      {/* <section className="py-12 lg:py-16">
+        <div className="relative bg-primary p-8 lg:p-20 text-center overflow-hidden"> */}
           {/* Decorative Elements */}
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10"></div>
+          {/* <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10"></div>
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
@@ -208,7 +195,7 @@ export default async function NewsPage({
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

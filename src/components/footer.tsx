@@ -59,7 +59,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6 text-white">{t('quickLinks')}</h3>
             <ul className="space-y-3">
               <li>
-                  <Link href="/" className="text-white hover:text-primary transition-colors">
+                  <Link href="/news" className="text-white hover:text-primary transition-colors">
                   {t('links.blog')}
                 </Link>
               </li>
@@ -71,11 +71,6 @@ export default function Footer() {
               <li>
                   <Link href="/about" className="text-white hover:text-primary transition-colors">
                   {t('links.about')}
-                </Link>
-              </li>
-              <li>
-                  <Link href="/contact" className="text-white hover:text-primary transition-colors">
-                  {t('links.contact')}
                 </Link>
               </li>
               <li>

@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button";
 export function HeroCarousel() {
 	const t = useTranslations("home.hero.banner");
 
-	const imageDesktop = "https://daikinkobierzyce.pl/api/images/banery/banner-desktop-1766152303556.jpg";
-	const imageMobile = "https://daikinkobierzyce.pl/api/images/banery/banner-mobile-1766152737575.jpg";
+	const imageDesktop = "https://daikinkobierzyce.pl/api/images/banery/banner_desktop-1767173854537.png";
+	const imageMobile = "https://daikinkobierzyce.pl/api/images/banery/banner_mobile-1767173882608.png";
 	const imageAlt = t("imageAlt");
   const description = t("description");
   const shortDescription = t("shortDescription");
