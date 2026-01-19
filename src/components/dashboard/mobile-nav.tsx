@@ -19,6 +19,8 @@ import {
   Layers,
   Sparkles,
   Package,
+  Images,
+  ListChecks,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
@@ -41,7 +43,7 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
   href: string;
   icon: any;
 }>> => ({
-  "user": [
+  user: [
     {
       title: t("sidebar.userProfile"),
       href: "/dashboard/profile",
@@ -59,11 +61,11 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
     },
     {
       title: t("sidebar.myBenefits"),
-      href: "/dashboard/benefits",
+      href: "/dashboard/benefits/user",
       icon: Gift,
     },
   ],
-  "employee": [
+  employee: [
     {
       title: "Create Order",
       href: "/dashboard/create-order",
@@ -80,7 +82,7 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       icon: MessageSquare,
     },
   ],
-  "admin": [
+  admin: [
     {
       title: "Users",
       href: "/dashboard/users",
@@ -112,9 +114,24 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       icon: Package,
     },
     {
+      title: "Product Items",
+      href: "/dashboard/product-items",
+      icon: ListChecks,
+    },
+    {
       title: "Features",
       href: "/dashboard/features",
       icon: Sparkles,
+    },
+    {
+      title: "Images",
+      href: "/dashboard/images",
+      icon: Images,
+    },
+    {
+      title: "Banners",
+      href: "/dashboard/banners",
+      icon: Images,
     },
     {
       title: "Benefits",

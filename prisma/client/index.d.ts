@@ -128,6 +128,11 @@ export type Feature = $Result.DefaultSelection<Prisma.$FeaturePayload>
  * 
  */
 export type FeatureTranslation = $Result.DefaultSelection<Prisma.$FeatureTranslationPayload>
+/**
+ * Model Banners
+ * 
+ */
+export type Banners = $Result.DefaultSelection<Prisma.$BannersPayload>
 
 /**
  * Enums
@@ -493,6 +498,16 @@ export class PrismaClient<
     * ```
     */
   get featureTranslation(): Prisma.FeatureTranslationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.banners`: Exposes CRUD operations for the **Banners** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Banners
+    * const banners = await prisma.banners.findMany()
+    * ```
+    */
+  get banners(): Prisma.BannersDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -949,7 +964,8 @@ export namespace Prisma {
     ProductItemsTranslation: 'ProductItemsTranslation',
     ProductItemsLookupTranslation: 'ProductItemsLookupTranslation',
     Feature: 'Feature',
-    FeatureTranslation: 'FeatureTranslation'
+    FeatureTranslation: 'FeatureTranslation',
+    Banners: 'Banners'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -965,7 +981,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "userDetails" | "session" | "account" | "verification" | "twoFactor" | "order" | "orderProduct" | "benefitDescription" | "benefits" | "service" | "category" | "categoryTranslation" | "product" | "productSpecs" | "productImages" | "productTranslation" | "productItems" | "productItemsLookup" | "productItemsTranslation" | "productItemsLookupTranslation" | "feature" | "featureTranslation"
+      modelProps: "user" | "userDetails" | "session" | "account" | "verification" | "twoFactor" | "order" | "orderProduct" | "benefitDescription" | "benefits" | "service" | "category" | "categoryTranslation" | "product" | "productSpecs" | "productImages" | "productTranslation" | "productItems" | "productItemsLookup" | "productItemsTranslation" | "productItemsLookupTranslation" | "feature" | "featureTranslation" | "banners"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2671,6 +2687,80 @@ export namespace Prisma {
           }
         }
       }
+      Banners: {
+        payload: Prisma.$BannersPayload<ExtArgs>
+        fields: Prisma.BannersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BannersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BannersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>
+          }
+          findFirst: {
+            args: Prisma.BannersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BannersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>
+          }
+          findMany: {
+            args: Prisma.BannersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>[]
+          }
+          create: {
+            args: Prisma.BannersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>
+          }
+          createMany: {
+            args: Prisma.BannersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BannersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>[]
+          }
+          delete: {
+            args: Prisma.BannersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>
+          }
+          update: {
+            args: Prisma.BannersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>
+          }
+          deleteMany: {
+            args: Prisma.BannersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BannersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BannersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>[]
+          }
+          upsert: {
+            args: Prisma.BannersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannersPayload>
+          }
+          aggregate: {
+            args: Prisma.BannersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBanners>
+          }
+          groupBy: {
+            args: Prisma.BannersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BannersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BannersCountArgs<ExtArgs>
+            result: $Utils.Optional<BannersCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2802,6 +2892,7 @@ export namespace Prisma {
     productItemsLookupTranslation?: ProductItemsLookupTranslationOmit
     feature?: FeatureOmit
     featureTranslation?: FeatureTranslationOmit
+    banners?: BannersOmit
   }
 
   /* Types for Logging */
@@ -28951,6 +29042,1053 @@ export namespace Prisma {
 
 
   /**
+   * Model Banners
+   */
+
+  export type AggregateBanners = {
+    _count: BannersCountAggregateOutputType | null
+    _min: BannersMinAggregateOutputType | null
+    _max: BannersMaxAggregateOutputType | null
+  }
+
+  export type BannersMinAggregateOutputType = {
+    id: string | null
+    img: string | null
+    link: string | null
+    location: string | null
+    locale: string | null
+    isMobile: boolean | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BannersMaxAggregateOutputType = {
+    id: string | null
+    img: string | null
+    link: string | null
+    location: string | null
+    locale: string | null
+    isMobile: boolean | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BannersCountAggregateOutputType = {
+    id: number
+    img: number
+    link: number
+    location: number
+    locale: number
+    isMobile: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BannersMinAggregateInputType = {
+    id?: true
+    img?: true
+    link?: true
+    location?: true
+    locale?: true
+    isMobile?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BannersMaxAggregateInputType = {
+    id?: true
+    img?: true
+    link?: true
+    location?: true
+    locale?: true
+    isMobile?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BannersCountAggregateInputType = {
+    id?: true
+    img?: true
+    link?: true
+    location?: true
+    locale?: true
+    isMobile?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BannersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Banners to aggregate.
+     */
+    where?: BannersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannersOrderByWithRelationInput | BannersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BannersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Banners
+    **/
+    _count?: true | BannersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BannersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BannersMaxAggregateInputType
+  }
+
+  export type GetBannersAggregateType<T extends BannersAggregateArgs> = {
+        [P in keyof T & keyof AggregateBanners]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBanners[P]>
+      : GetScalarType<T[P], AggregateBanners[P]>
+  }
+
+
+
+
+  export type BannersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannersWhereInput
+    orderBy?: BannersOrderByWithAggregationInput | BannersOrderByWithAggregationInput[]
+    by: BannersScalarFieldEnum[] | BannersScalarFieldEnum
+    having?: BannersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BannersCountAggregateInputType | true
+    _min?: BannersMinAggregateInputType
+    _max?: BannersMaxAggregateInputType
+  }
+
+  export type BannersGroupByOutputType = {
+    id: string
+    img: string
+    link: string | null
+    location: string
+    locale: string
+    isMobile: boolean
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: BannersCountAggregateOutputType | null
+    _min: BannersMinAggregateOutputType | null
+    _max: BannersMaxAggregateOutputType | null
+  }
+
+  type GetBannersGroupByPayload<T extends BannersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BannersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BannersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BannersGroupByOutputType[P]>
+            : GetScalarType<T[P], BannersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BannersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    img?: boolean
+    link?: boolean
+    location?: boolean
+    locale?: boolean
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["banners"]>
+
+  export type BannersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    img?: boolean
+    link?: boolean
+    location?: boolean
+    locale?: boolean
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["banners"]>
+
+  export type BannersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    img?: boolean
+    link?: boolean
+    location?: boolean
+    locale?: boolean
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["banners"]>
+
+  export type BannersSelectScalar = {
+    id?: boolean
+    img?: boolean
+    link?: boolean
+    location?: boolean
+    locale?: boolean
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BannersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "img" | "link" | "location" | "locale" | "isMobile" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["banners"]>
+
+  export type $BannersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Banners"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      img: string
+      link: string | null
+      location: string
+      locale: string
+      isMobile: boolean
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["banners"]>
+    composites: {}
+  }
+
+  type BannersGetPayload<S extends boolean | null | undefined | BannersDefaultArgs> = $Result.GetResult<Prisma.$BannersPayload, S>
+
+  type BannersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BannersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BannersCountAggregateInputType | true
+    }
+
+  export interface BannersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Banners'], meta: { name: 'Banners' } }
+    /**
+     * Find zero or one Banners that matches the filter.
+     * @param {BannersFindUniqueArgs} args - Arguments to find a Banners
+     * @example
+     * // Get one Banners
+     * const banners = await prisma.banners.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BannersFindUniqueArgs>(args: SelectSubset<T, BannersFindUniqueArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Banners that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BannersFindUniqueOrThrowArgs} args - Arguments to find a Banners
+     * @example
+     * // Get one Banners
+     * const banners = await prisma.banners.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BannersFindUniqueOrThrowArgs>(args: SelectSubset<T, BannersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Banners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersFindFirstArgs} args - Arguments to find a Banners
+     * @example
+     * // Get one Banners
+     * const banners = await prisma.banners.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BannersFindFirstArgs>(args?: SelectSubset<T, BannersFindFirstArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Banners that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersFindFirstOrThrowArgs} args - Arguments to find a Banners
+     * @example
+     * // Get one Banners
+     * const banners = await prisma.banners.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BannersFindFirstOrThrowArgs>(args?: SelectSubset<T, BannersFindFirstOrThrowArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Banners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Banners
+     * const banners = await prisma.banners.findMany()
+     * 
+     * // Get first 10 Banners
+     * const banners = await prisma.banners.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bannersWithIdOnly = await prisma.banners.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BannersFindManyArgs>(args?: SelectSubset<T, BannersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Banners.
+     * @param {BannersCreateArgs} args - Arguments to create a Banners.
+     * @example
+     * // Create one Banners
+     * const Banners = await prisma.banners.create({
+     *   data: {
+     *     // ... data to create a Banners
+     *   }
+     * })
+     * 
+     */
+    create<T extends BannersCreateArgs>(args: SelectSubset<T, BannersCreateArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Banners.
+     * @param {BannersCreateManyArgs} args - Arguments to create many Banners.
+     * @example
+     * // Create many Banners
+     * const banners = await prisma.banners.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BannersCreateManyArgs>(args?: SelectSubset<T, BannersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Banners and returns the data saved in the database.
+     * @param {BannersCreateManyAndReturnArgs} args - Arguments to create many Banners.
+     * @example
+     * // Create many Banners
+     * const banners = await prisma.banners.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Banners and only return the `id`
+     * const bannersWithIdOnly = await prisma.banners.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BannersCreateManyAndReturnArgs>(args?: SelectSubset<T, BannersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Banners.
+     * @param {BannersDeleteArgs} args - Arguments to delete one Banners.
+     * @example
+     * // Delete one Banners
+     * const Banners = await prisma.banners.delete({
+     *   where: {
+     *     // ... filter to delete one Banners
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BannersDeleteArgs>(args: SelectSubset<T, BannersDeleteArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Banners.
+     * @param {BannersUpdateArgs} args - Arguments to update one Banners.
+     * @example
+     * // Update one Banners
+     * const banners = await prisma.banners.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BannersUpdateArgs>(args: SelectSubset<T, BannersUpdateArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Banners.
+     * @param {BannersDeleteManyArgs} args - Arguments to filter Banners to delete.
+     * @example
+     * // Delete a few Banners
+     * const { count } = await prisma.banners.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BannersDeleteManyArgs>(args?: SelectSubset<T, BannersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Banners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Banners
+     * const banners = await prisma.banners.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BannersUpdateManyArgs>(args: SelectSubset<T, BannersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Banners and returns the data updated in the database.
+     * @param {BannersUpdateManyAndReturnArgs} args - Arguments to update many Banners.
+     * @example
+     * // Update many Banners
+     * const banners = await prisma.banners.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Banners and only return the `id`
+     * const bannersWithIdOnly = await prisma.banners.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BannersUpdateManyAndReturnArgs>(args: SelectSubset<T, BannersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Banners.
+     * @param {BannersUpsertArgs} args - Arguments to update or create a Banners.
+     * @example
+     * // Update or create a Banners
+     * const banners = await prisma.banners.upsert({
+     *   create: {
+     *     // ... data to create a Banners
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Banners we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BannersUpsertArgs>(args: SelectSubset<T, BannersUpsertArgs<ExtArgs>>): Prisma__BannersClient<$Result.GetResult<Prisma.$BannersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Banners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersCountArgs} args - Arguments to filter Banners to count.
+     * @example
+     * // Count the number of Banners
+     * const count = await prisma.banners.count({
+     *   where: {
+     *     // ... the filter for the Banners we want to count
+     *   }
+     * })
+    **/
+    count<T extends BannersCountArgs>(
+      args?: Subset<T, BannersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BannersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Banners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BannersAggregateArgs>(args: Subset<T, BannersAggregateArgs>): Prisma.PrismaPromise<GetBannersAggregateType<T>>
+
+    /**
+     * Group by Banners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BannersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BannersGroupByArgs['orderBy'] }
+        : { orderBy?: BannersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BannersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBannersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Banners model
+   */
+  readonly fields: BannersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Banners.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BannersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Banners model
+   */
+  interface BannersFieldRefs {
+    readonly id: FieldRef<"Banners", 'String'>
+    readonly img: FieldRef<"Banners", 'String'>
+    readonly link: FieldRef<"Banners", 'String'>
+    readonly location: FieldRef<"Banners", 'String'>
+    readonly locale: FieldRef<"Banners", 'String'>
+    readonly isMobile: FieldRef<"Banners", 'Boolean'>
+    readonly isActive: FieldRef<"Banners", 'Boolean'>
+    readonly createdAt: FieldRef<"Banners", 'DateTime'>
+    readonly updatedAt: FieldRef<"Banners", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Banners findUnique
+   */
+  export type BannersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * Filter, which Banners to fetch.
+     */
+    where: BannersWhereUniqueInput
+  }
+
+  /**
+   * Banners findUniqueOrThrow
+   */
+  export type BannersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * Filter, which Banners to fetch.
+     */
+    where: BannersWhereUniqueInput
+  }
+
+  /**
+   * Banners findFirst
+   */
+  export type BannersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * Filter, which Banners to fetch.
+     */
+    where?: BannersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannersOrderByWithRelationInput | BannersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Banners.
+     */
+    cursor?: BannersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banners.
+     */
+    distinct?: BannersScalarFieldEnum | BannersScalarFieldEnum[]
+  }
+
+  /**
+   * Banners findFirstOrThrow
+   */
+  export type BannersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * Filter, which Banners to fetch.
+     */
+    where?: BannersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannersOrderByWithRelationInput | BannersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Banners.
+     */
+    cursor?: BannersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banners.
+     */
+    distinct?: BannersScalarFieldEnum | BannersScalarFieldEnum[]
+  }
+
+  /**
+   * Banners findMany
+   */
+  export type BannersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * Filter, which Banners to fetch.
+     */
+    where?: BannersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannersOrderByWithRelationInput | BannersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Banners.
+     */
+    cursor?: BannersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    distinct?: BannersScalarFieldEnum | BannersScalarFieldEnum[]
+  }
+
+  /**
+   * Banners create
+   */
+  export type BannersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Banners.
+     */
+    data: XOR<BannersCreateInput, BannersUncheckedCreateInput>
+  }
+
+  /**
+   * Banners createMany
+   */
+  export type BannersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Banners.
+     */
+    data: BannersCreateManyInput | BannersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Banners createManyAndReturn
+   */
+  export type BannersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * The data used to create many Banners.
+     */
+    data: BannersCreateManyInput | BannersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Banners update
+   */
+  export type BannersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Banners.
+     */
+    data: XOR<BannersUpdateInput, BannersUncheckedUpdateInput>
+    /**
+     * Choose, which Banners to update.
+     */
+    where: BannersWhereUniqueInput
+  }
+
+  /**
+   * Banners updateMany
+   */
+  export type BannersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Banners.
+     */
+    data: XOR<BannersUpdateManyMutationInput, BannersUncheckedUpdateManyInput>
+    /**
+     * Filter which Banners to update
+     */
+    where?: BannersWhereInput
+    /**
+     * Limit how many Banners to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Banners updateManyAndReturn
+   */
+  export type BannersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * The data used to update Banners.
+     */
+    data: XOR<BannersUpdateManyMutationInput, BannersUncheckedUpdateManyInput>
+    /**
+     * Filter which Banners to update
+     */
+    where?: BannersWhereInput
+    /**
+     * Limit how many Banners to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Banners upsert
+   */
+  export type BannersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Banners to update in case it exists.
+     */
+    where: BannersWhereUniqueInput
+    /**
+     * In case the Banners found by the `where` argument doesn't exist, create a new Banners with this data.
+     */
+    create: XOR<BannersCreateInput, BannersUncheckedCreateInput>
+    /**
+     * In case the Banners was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BannersUpdateInput, BannersUncheckedUpdateInput>
+  }
+
+  /**
+   * Banners delete
+   */
+  export type BannersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+    /**
+     * Filter which Banners to delete.
+     */
+    where: BannersWhereUniqueInput
+  }
+
+  /**
+   * Banners deleteMany
+   */
+  export type BannersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Banners to delete
+     */
+    where?: BannersWhereInput
+    /**
+     * Limit how many Banners to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Banners without action
+   */
+  export type BannersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banners
+     */
+    select?: BannersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Banners
+     */
+    omit?: BannersOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -29268,6 +30406,21 @@ export namespace Prisma {
   };
 
   export type FeatureTranslationScalarFieldEnum = (typeof FeatureTranslationScalarFieldEnum)[keyof typeof FeatureTranslationScalarFieldEnum]
+
+
+  export const BannersScalarFieldEnum: {
+    id: 'id',
+    img: 'img',
+    link: 'link',
+    location: 'location',
+    locale: 'locale',
+    isMobile: 'isMobile',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BannersScalarFieldEnum = (typeof BannersScalarFieldEnum)[keyof typeof BannersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -30980,6 +32133,78 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"FeatureTranslation"> | string
     desc?: StringNullableWithAggregatesFilter<"FeatureTranslation"> | string | null
     isActive?: BoolWithAggregatesFilter<"FeatureTranslation"> | boolean
+  }
+
+  export type BannersWhereInput = {
+    AND?: BannersWhereInput | BannersWhereInput[]
+    OR?: BannersWhereInput[]
+    NOT?: BannersWhereInput | BannersWhereInput[]
+    id?: StringFilter<"Banners"> | string
+    img?: StringFilter<"Banners"> | string
+    link?: StringNullableFilter<"Banners"> | string | null
+    location?: StringFilter<"Banners"> | string
+    locale?: StringFilter<"Banners"> | string
+    isMobile?: BoolFilter<"Banners"> | boolean
+    isActive?: BoolFilter<"Banners"> | boolean
+    createdAt?: DateTimeFilter<"Banners"> | Date | string
+    updatedAt?: DateTimeFilter<"Banners"> | Date | string
+  }
+
+  export type BannersOrderByWithRelationInput = {
+    id?: SortOrder
+    img?: SortOrder
+    link?: SortOrderInput | SortOrder
+    location?: SortOrder
+    locale?: SortOrder
+    isMobile?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannersWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BannersWhereInput | BannersWhereInput[]
+    OR?: BannersWhereInput[]
+    NOT?: BannersWhereInput | BannersWhereInput[]
+    img?: StringFilter<"Banners"> | string
+    link?: StringNullableFilter<"Banners"> | string | null
+    location?: StringFilter<"Banners"> | string
+    locale?: StringFilter<"Banners"> | string
+    isMobile?: BoolFilter<"Banners"> | boolean
+    isActive?: BoolFilter<"Banners"> | boolean
+    createdAt?: DateTimeFilter<"Banners"> | Date | string
+    updatedAt?: DateTimeFilter<"Banners"> | Date | string
+  }, "id">
+
+  export type BannersOrderByWithAggregationInput = {
+    id?: SortOrder
+    img?: SortOrder
+    link?: SortOrderInput | SortOrder
+    location?: SortOrder
+    locale?: SortOrder
+    isMobile?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BannersCountOrderByAggregateInput
+    _max?: BannersMaxOrderByAggregateInput
+    _min?: BannersMinOrderByAggregateInput
+  }
+
+  export type BannersScalarWhereWithAggregatesInput = {
+    AND?: BannersScalarWhereWithAggregatesInput | BannersScalarWhereWithAggregatesInput[]
+    OR?: BannersScalarWhereWithAggregatesInput[]
+    NOT?: BannersScalarWhereWithAggregatesInput | BannersScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Banners"> | string
+    img?: StringWithAggregatesFilter<"Banners"> | string
+    link?: StringNullableWithAggregatesFilter<"Banners"> | string | null
+    location?: StringWithAggregatesFilter<"Banners"> | string
+    locale?: StringWithAggregatesFilter<"Banners"> | string
+    isMobile?: BoolWithAggregatesFilter<"Banners"> | boolean
+    isActive?: BoolWithAggregatesFilter<"Banners"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Banners"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Banners"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -32709,6 +33934,90 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type BannersCreateInput = {
+    id?: string
+    img: string
+    link?: string | null
+    location: string
+    locale: string
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BannersUncheckedCreateInput = {
+    id?: string
+    img: string
+    link?: string | null
+    location: string
+    locale: string
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BannersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    isMobile?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    isMobile?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannersCreateManyInput = {
+    id?: string
+    img: string
+    link?: string | null
+    location: string
+    locale: string
+    isMobile?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BannersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    isMobile?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannersUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    isMobile?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -33953,6 +35262,42 @@ export namespace Prisma {
     name?: SortOrder
     desc?: SortOrder
     isActive?: SortOrder
+  }
+
+  export type BannersCountOrderByAggregateInput = {
+    id?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    location?: SortOrder
+    locale?: SortOrder
+    isMobile?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    location?: SortOrder
+    locale?: SortOrder
+    isMobile?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannersMinOrderByAggregateInput = {
+    id?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    location?: SortOrder
+    locale?: SortOrder
+    isMobile?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserDetailsCreateNestedOneWithoutUserInput = {

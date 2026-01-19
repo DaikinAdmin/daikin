@@ -118,6 +118,11 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       icon: Images,
     },
     {
+      title: "Banners",
+      href: "/dashboard/banners",
+      icon: Images,
+    },
+    {
       title: "Benefits",
       href: "/dashboard/benefits",
       icon: Gift,

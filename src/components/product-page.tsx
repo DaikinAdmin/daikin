@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useBanner } from "@/hooks/use-banner";
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -17,8 +18,10 @@ export default function ProductTemplatePage({
 }: ProductPageProps) {
   const t = useTranslations("productPage");
   const locale = useLocale();
-  const rawBanner = t(`${categorySlug}.banner`, { default: "" }) as string;
-  const bannerSrc = rawBanner ? encodeURI(rawBanner) : "";
+  const { firstBannerUrl: bannerSrc } = useBanner({
+    location: `${categorySlug}_top`,
+    isMobile: false,
+  });
   const productsRef = useRef<HTMLDivElement | null>(null);
 
   return (

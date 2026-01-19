@@ -347,3 +347,17 @@ model FeatureTranslation {
   @@unique([featureId, locale])
   @@map("feature_translation")
 }
+
+model Banners {
+  id        String   @id @default(cuid())
+  img       String
+  link      String?
+  location  String
+  locale    String
+  isMobile  Boolean  @default(false)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("banners")
+}

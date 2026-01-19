@@ -357,6 +357,18 @@ exports.Prisma.FeatureTranslationScalarFieldEnum = {
   isActive: 'isActive'
 };
 
+exports.Prisma.BannersScalarFieldEnum = {
+  id: 'id',
+  img: 'img',
+  link: 'link',
+  location: 'location',
+  locale: 'locale',
+  isMobile: 'isMobile',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -400,7 +412,8 @@ exports.Prisma.ModelName = {
   ProductItemsTranslation: 'ProductItemsTranslation',
   ProductItemsLookupTranslation: 'ProductItemsLookupTranslation',
   Feature: 'Feature',
-  FeatureTranslation: 'FeatureTranslation'
+  FeatureTranslation: 'FeatureTranslation',
+  Banners: 'Banners'
 };
 
 /**
