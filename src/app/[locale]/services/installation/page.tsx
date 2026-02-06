@@ -3,11 +3,41 @@ export const dynamic = 'force-dynamic';
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { use } from "react";
 import InstallationCarousel from "@/components/installation-carousel";
 import { FadeIn } from "@/components/fade-in";
 import { WhyChooseGrid } from "@/components/why-choose-grid";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'services.installation' });
+  
+  return {
+    title: "Usługi Instalacyjne - Profesjonalny Montaż Klimatyzacji i Pomp Ciepła",
+    description: "Profesjonalny montaż systemów klimatyzacji, pomp ciepła i oczyszczaczy powietrza Daikin. Certyfikowani technicy, gwarancja jakości i rozszerzona gwarancja na produkty.",
+    keywords: ['montaż klimatyzacji', 'instalacja pompy ciepła', 'montaż oczyszczacza', 'serwis instalacyjny Daikin', 'certyfikowani instalatorzy', 'profesjonalny montaż HVAC'],
+    openGraph: {
+      title: "Usługi Instalacyjne - Daikin Kobierzyce",
+      description: "Profesjonalny montaż i instalacja systemów Daikin przez certyfikowanych techników.",
+      url: `https://daikinkobierzyce.pl/${locale}/services/installation`,
+      type: 'website',
+    },
+    alternates: {
+      canonical: `/${locale}/services/installation`,
+      languages: {
+        'pl': '/pl/services/installation',
+        'en': '/en/services/installation',
+        'uk': '/ua/services/installation',
+      },
+    },
+  };
+}
 
 export default function InstallationPage({
   params,

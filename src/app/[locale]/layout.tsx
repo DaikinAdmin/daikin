@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
+import { OrganizationSchema } from "@/components/structured-data";
 
 // Google Font - Source Sans 3 as fallback
 const sourceSans = Source_Sans_3({
@@ -53,11 +54,68 @@ const myriadPro = localFont({
 // });
 
 export const metadata: Metadata = {
-  title: "AMM Salon - Daikin HVAC Solutions in Poland",
-  description: "AMM Salon is your trusted partner for Daikin HVAC solutions in Poland. We offer top-quality air conditioning, heating, and ventilation systems tailored to your needs.",
+  metadataBase: new URL('https://daikinkobierzyce.pl'),
+  title: {
+    default: "Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji i Pompy Ciepła",
+    template: "%s | Daikin Kobierzyce"
+  },
+  description: "AMM Salon - Autoryzowany partner Daikin w Polsce. Oferujemy profesjonalne systemy klimatyzacji, pompy ciepła, oczyszczacze powietrza oraz kompleksowe usługi instalacyjne i serwisowe.",
+  keywords: ['Daikin', 'klimatyzacja', 'pompy ciepła', 'oczyszczacze powietrza', 'klimatyzacja Kobierzyce', 'montaż klimatyzacji', 'serwis klimatyzacji', 'systemy HVAC', 'Wrocław'],
+  authors: [{ name: 'AMM Salon Daikin' }],
+  creator: 'AMM Salon',
+  publisher: 'AMM Salon',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: '/favicon.png',
-  }
+  },
+  alternates: {
+    canonical: '/',
+    languages: {
+      'pl': '/pl',
+      'en': '/en',
+      'uk': '/ua',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pl_PL',
+    url: 'https://daikinkobierzyce.pl',
+    siteName: 'Daikin Kobierzyce',
+    title: 'Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji',
+    description: 'Profesjonalne systemy klimatyzacji, pompy ciepła i oczyszczacze powietrza Daikin. Autoryzowany partner z pełnym zakresem usług instalacji i serwisu.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Daikin Kobierzyce - Systemy Klimatyzacji',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji',
+    description: 'Profesjonalne systemy klimatyzacji, pompy ciepła i oczyszczacze powietrza Daikin.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'verification_token',
+  },
 };
 
 export function generateStaticParams() {
@@ -85,6 +143,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${montserrat.variable} antialiased font-sans`}>
+        <OrganizationSchema locale={locale} />
         <NextIntlClientProvider>
           {children}
         </NextIntlClientProvider>

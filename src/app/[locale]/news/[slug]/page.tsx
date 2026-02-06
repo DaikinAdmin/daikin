@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import parse from 'html-react-parser';
 import { ar } from "zod/v4/locales";
+import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{
@@ -15,6 +16,59 @@ interface Props {
 }
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const article: NewsArticle | null = await getBuilderNewsBySlug(slug, locale);
+
+  if (!article) {
+    return {
+      title: 'Artykuł nie znaleziony',
+      description: 'Nie znaleziono artykułu',
+    };
+  }
+
+  const metaDescription = article.excerpt?.length > 160 
+    ? article.excerpt.substring(0, 157) + '...'
+    : article.excerpt || article.title;
+
+  return {
+    title: `${article.title} - Aktualności`,
+    description: metaDescription,
+    keywords: ['aktualności Daikin', 'nowości', article.title, 'news HVAC'],
+    openGraph: {
+      title: article.title,
+      description: metaDescription,
+      url: `https://daikinkobierzyce.pl/${locale}/news/${slug}`,
+      type: 'article',
+      publishedTime: article.publishedAt,
+      images: article.coverImage 
+        ? [
+            {
+              url: article.coverImage,
+              width: 1200,
+              height: 630,
+              alt: article.title,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: metaDescription,
+      images: article.coverImage ? [article.coverImage] : [],
+    },
+    alternates: {
+      canonical: `/${locale}/news/${slug}`,
+      languages: {
+        'pl': `/pl/news/${slug}`,
+        'en': `/en/news/${slug}`,
+        'uk': `/ua/news/${slug}`,
+      },
+    },
+  };
+}
 
 export default async function NewsArticlePage({ params }: Props) {
   const { slug, locale } = await params;
