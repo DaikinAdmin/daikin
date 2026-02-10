@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   Menu,
@@ -46,7 +46,8 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const locale = props.currentLocale ?? useLocale();
+  const defaultLocale = useLocale(); // ✅ OK: Hook is always called
+  const locale = props.currentLocale ?? defaultLocale;
   const router = useRouter();
   const t = useTranslations("header");
   const [isMenuOpen, setIsMenuOpen] = useState(false);

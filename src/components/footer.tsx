@@ -64,7 +64,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                  <Link href="/benefits" className="text-white hover:text-primary transition-colors">
+                  <Link href="#" className="text-white hover:text-primary transition-colors">
                   {t('links.benefits')}
                 </Link>
               </li>
@@ -144,13 +144,13 @@ export default function Footer() {
               {t('copyright')}
             </div>
             <div className="flex space-x-6 text-sm">
-                <Link href="/privacy" className="text-white hover:text-primary transition-colors">
+                <Link href="#" className="text-white hover:text-primary transition-colors">
                 {t('privacy')}
               </Link>
-                <Link href="/terms" className="text-white hover:text-primary transition-colors">
+                <Link href="#" className="text-white hover:text-primary transition-colors">
                 {t('terms')}
               </Link>
-                <Link href="/cookies" className="text-white hover:text-primary transition-colors">
+                <Link href="#" className="text-white hover:text-primary transition-colors">
                 {t('cookies')}
               </Link>
             </div>

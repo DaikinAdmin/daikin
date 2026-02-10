@@ -1,7 +1,7 @@
 // src/lib/auth-client.ts
 import { createAuthClient } from "better-auth/react";
 import { ac, admin, user, employee } from "@/lib/permissions"
-import { auth } from "./auth";
+import type { auth } from "./auth";
 import { adminClient, customSessionClient, twoFactorClient } from "better-auth/client/plugins"
 
 export const authClient = createAuthClient({

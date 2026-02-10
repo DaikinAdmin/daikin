@@ -1,7 +1,6 @@
-// prisma/schema.prisma
 generator client {
   provider      = "prisma-client-js"
-  output        = "./client" // update this if needed
+  output        = "./client"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
@@ -9,16 +8,10 @@ datasource db {
   provider = "postgresql"
 }
 
-enum ServiceStatus {
-  PENDING
-  APPROVED
-  REJECTED
-}
-
 model User {
   id               String       @id @default(cuid())
   name             String
-  email            String
+  email            String       @unique
   emailVerified    Boolean      @default(false)
   image            String?
   createdAt        DateTime     @default(now())
@@ -27,17 +20,16 @@ model User {
   username         String?
   displayUsername  String?
   role             String       @default("user")
-  banned           Boolean?     @default(false)
-  banReason        String?
   banExpires       DateTime?
-  userDetails      UserDetails?
-  Session          Session[]
+  banReason        String?
+  banned           Boolean?     @default(false)
   Account          Account[]
-  TwoFactor        TwoFactor[]
   benefits         Benefits[]
   services         Service[]
+  Session          Session[]
+  TwoFactor        TwoFactor[]
+  userDetails      UserDetails?
 
-  @@unique([email])
   @@map("user")
 }
 
@@ -63,30 +55,29 @@ model Session {
   ipAddress String?
   userAgent String?
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("session")
 }
 
 model Account {
-  id           String    @id @default(cuid())
-  accountId    String
-  providerId   String
-  userId       String
-  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accessToken  String?
-  refreshToken String?
-  idToken      String?
-  expiresAt    DateTime?
-  password     String?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  expiresAt             DateTime?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
   accessTokenExpiresAt  DateTime?
   refreshTokenExpiresAt DateTime?
   scope                 String?
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("account")
 }
@@ -132,11 +123,11 @@ model Order {
 
 model OrderProduct {
   id          String  @id @default(cuid())
-  productSlug String
   warranty    String?
   quantity    Int     @default(1)
   totalPrice  Float
   orderId     String
+  productSlug String
   order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
   product     Product @relation(fields: [productSlug], references: [slug])
 
@@ -188,21 +179,21 @@ model Category {
   id              String                @id @default(cuid())
   name            String
   slug            String                @unique
-  products        Product[]
   createdAt       DateTime              @default(now())
   updatedAt       DateTime              @updatedAt
   isActive        Boolean               @default(true)
   categoryDetails CategoryTranslation[]
+  products        Product[]
 
   @@map("category")
 }
 
 model CategoryTranslation {
   id           String   @id @default(cuid())
-  categorySlug String
   locale       String
   name         String
   isActive     Boolean  @default(true)
+  categorySlug String
   category     Category @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
 
   @@unique([categorySlug, locale])
@@ -213,29 +204,29 @@ model Product {
   id             String               @id @default(cuid())
   price          Float?
   articleId      String               @unique
-  categorySlug   String
-  slug           String               @unique
-  energyClass    String?
-  isActive       Boolean              @default(true)
-  category       Category             @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
-  orderProducts  OrderProduct[]
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
-  productDetails ProductTranslation[]
-  features       Feature[]
+  isActive       Boolean              @default(true)
+  energyClass    String?
+  slug           String               @unique
+  categorySlug   String
+  orderProducts  OrderProduct[]
+  category       Category             @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
   img            ProductImages[]
-  specs          ProductSpecs[]
   items          ProductItems[]
+  specs          ProductSpecs[]
+  productDetails ProductTranslation[]
+  features       Feature[]            @relation("FeatureToProduct")
 
   @@map("product")
 }
 
 model ProductSpecs {
   id          String  @id @default(cuid())
-  productSlug String
-  locale      String
   title       String
   subtitle    String?
+  locale      String
+  productSlug String
   product     Product @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
 
   @@map("product_specs")
@@ -243,9 +234,9 @@ model ProductSpecs {
 
 model ProductImages {
   id          String   @id @default(cuid())
-  productSlug String
   color       String?
   imgs        String[]
+  productSlug String
   product     Product  @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
 
   @@map("product_images")
@@ -253,11 +244,11 @@ model ProductImages {
 
 model ProductTranslation {
   id          String  @id @default(cuid())
-  productSlug String
   locale      String
   name        String
-  title       String
   subtitle    String?
+  title       String
+  productSlug String
   product     Product @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
 
   @@unique([productSlug, locale])
@@ -266,17 +257,17 @@ model ProductTranslation {
 
 model ProductItems {
   id                 String                    @id @default(cuid())
-  productSlug        String
   title              String
-  slug               String
   img                String?
   isActive           Boolean                   @default(true)
-  lookupItemId       String? // Reference to the lookup template item (null for custom items)
+  slug               String
+  lookupItemId       String?
+  productSlug        String
+  lookupItem         ProductItemsLookup?       @relation(fields: [lookupItemId], references: [id])
   product            Product                   @relation(fields: [productSlug], references: [slug], onDelete: Cascade)
-  lookupItem         ProductItemsLookup?       @relation(fields: [lookupItemId], references: [id], onDelete: SetNull)
   productItemDetails ProductItemsTranslation[]
 
-  @@unique([productSlug, slug]) // Unique within a product
+  @@unique([productSlug, slug])
   @@map("product_items")
 }
 
@@ -288,8 +279,8 @@ model ProductItemsLookup {
   isActive          Boolean                         @default(true)
   createdAt         DateTime                        @default(now())
   updatedAt         DateTime                        @updatedAt
+  productItems      ProductItems[]
   lookupItemDetails ProductItemsLookupTranslation[]
-  productItems      ProductItems[] // Track which products use this lookup item
 
   @@map("product_items_lookup")
 }
@@ -323,14 +314,14 @@ model ProductItemsLookupTranslation {
 model Feature {
   id             String               @id @default(cuid())
   name           String
-  slug           String               @unique
   img            String?
-  isActive       Boolean              @default(true)
-  preview        Boolean?
-  featureDetails FeatureTranslation[]
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
-  products       Product[]
+  isActive       Boolean              @default(true)
+  preview        Boolean?
+  slug           String               @unique
+  featureDetails FeatureTranslation[]
+  products       Product[]            @relation("FeatureToProduct")
 
   @@map("feature")
 }
@@ -340,10 +331,39 @@ model FeatureTranslation {
   featureId String
   locale    String
   name      String
-  desc      String?
   isActive  Boolean @default(true)
+  desc      String?
   feature   Feature @relation(fields: [featureId], references: [id], onDelete: Cascade)
 
   @@unique([featureId, locale])
   @@map("feature_translation")
+}
+
+model banners {
+  id        String   @id
+  img       String
+  link      String?
+  location  String
+  locale    String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  isMobile  Boolean  @default(false)
+}
+
+model products_carousel {
+  id          String   @id
+  productSlug String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  iconUrl     String
+  title       String
+  titleShort  String
+}
+
+enum ServiceStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }
