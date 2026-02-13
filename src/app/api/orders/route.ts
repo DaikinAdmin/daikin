@@ -114,6 +114,7 @@ export const POST = async (req: Request) => {
                         warranty: product.warranty || null,
                         quantity: product.quantity || 1,
                         totalPrice: product.totalPrice,
+                        price: product.price
                     })),
                 },
             },
