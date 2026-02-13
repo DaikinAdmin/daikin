@@ -34077,8 +34077,8 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
-    price: number
+    totalPrice?: number
+    price?: number
     order: OrderCreateNestedOneWithoutProductsInput
     product: ProductCreateNestedOneWithoutOrderProductsInput
   }
@@ -34087,10 +34087,10 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
+    totalPrice?: number
     orderId: string
     productSlug: string
-    price: number
+    price?: number
   }
 
   export type OrderProductUpdateInput = {
@@ -34117,10 +34117,10 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
+    totalPrice?: number
     orderId: string
     productSlug: string
-    price: number
+    price?: number
   }
 
   export type OrderProductUpdateManyMutationInput = {
@@ -38927,8 +38927,8 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
-    price: number
+    totalPrice?: number
+    price?: number
     product: ProductCreateNestedOneWithoutOrderProductsInput
   }
 
@@ -38936,9 +38936,9 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
+    totalPrice?: number
     productSlug: string
-    price: number
+    price?: number
   }
 
   export type OrderProductCreateOrConnectWithoutOrderInput = {
@@ -39754,8 +39754,8 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
-    price: number
+    totalPrice?: number
+    price?: number
     order: OrderCreateNestedOneWithoutProductsInput
   }
 
@@ -39763,9 +39763,9 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
+    totalPrice?: number
     orderId: string
-    price: number
+    price?: number
   }
 
   export type OrderProductCreateOrConnectWithoutProductInput = {
@@ -41164,9 +41164,9 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
+    totalPrice?: number
     productSlug: string
-    price: number
+    price?: number
   }
 
   export type ServiceCreateManyOrderInput = {
@@ -41356,9 +41356,9 @@ export namespace Prisma {
     id?: string
     warranty?: string | null
     quantity?: number
-    totalPrice: number
+    totalPrice?: number
     orderId: string
-    price: number
+    price?: number
   }
 
   export type ProductImagesCreateManyProductInput = {

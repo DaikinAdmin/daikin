@@ -125,10 +125,10 @@ model OrderProduct {
   id          String  @id @default(cuid())
   warranty    String?
   quantity    Int     @default(1)
-  totalPrice  Float
+  totalPrice  Float   @default(0)
   orderId     String
   productSlug String
-  price       Float
+  price       Float   @default(0)
   order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
   product     Product @relation(fields: [productSlug], references: [slug])
 

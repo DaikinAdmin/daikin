@@ -1,11 +1,6 @@
-/*
-  Warnings:
-
-  - Added the required column `price` to the `order_product` table without a default value. This is not possible if the table is not empty.
-
-*/
 -- AlterTable
-ALTER TABLE "order_product" ADD COLUMN     "price" DOUBLE PRECISION NOT NULL;
+ALTER TABLE "order_product" ADD COLUMN     "price" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ALTER COLUMN "totalPrice" SET DEFAULT 0;
 
 -- CreateTable
 CREATE TABLE "banners" (
