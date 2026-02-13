@@ -1,6 +1,6 @@
 # Stage 1: Dependencies
 FROM node:24-alpine AS deps
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat python3 make g++
 WORKDIR /app
 
 # Copy package files
