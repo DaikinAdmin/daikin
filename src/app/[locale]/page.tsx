@@ -6,10 +6,41 @@ import ProductCarousel from "@/components/product-carousel";
 import { HeroCarousel } from "@/components/hero-carousel";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import { Button } from "@/components/ui/button";
 import WhyChooseSection from "@/components/why-choose";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'home' });
+  
+  return {
+    title: "Strona Główna - Systemy Klimatyzacji i Pompy Ciepła Daikin",
+    description: "Witamy w AMM Salon - Twoim zaufanym partnerze Daikin w Polsce. Oferujemy profesjonalne systemy klimatyzacji, pompy ciepła, oczyszczacze powietrza oraz pełen zakres usług instalacyjnych i serwisowych.",
+    keywords: ['Daikin Polska', 'klimatyzacja domowa', 'pompy ciepła Daikin', 'systemy HVAC', 'klimatyzacja Wrocław', 'montaż klimatyzacji', 'oczyszczacze powietrza'],
+    openGraph: {
+      title: "Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji",
+      description: "Oferujemy profesjonalne systemy klimatyzacji, pompy ciepła i oczyszczacze powietrza Daikin z pełnym zakresem usług instalacji i serwisu.",
+      url: `https://daikinkobierzyce.pl/${locale}`,
+      type: 'website',
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        'pl': '/pl',
+        'en': '/en',
+        'uk': '/ua',
+      },
+    },
+  };
+}
 
 export default function Home({
   params,

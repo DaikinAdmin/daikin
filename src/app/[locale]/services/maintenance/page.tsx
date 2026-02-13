@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { use } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,36 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FadeIn } from "@/components/fade-in";
 import { WhyChooseGrid } from "@/components/why-choose-grid";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'services.maintenance' });
+  
+  return {
+    title: "Serwis i Konserwacja - Profesjonalna Obsługa Systemów HVAC",
+    description: "Kompleksowy serwis klimatyzacji, pomp ciepła i systemów wentylacji. Regularne przeglądy, naprawy, modernizacje i oryginalne części Daikin. Zapewniamy długą żywotność Twoich urządzeń.",
+    keywords: ['serwis klimatyzacji', 'konserwacja pompy ciepła', 'przegląd klimatyzacji', 'naprawa HVAC', 'serwis Daikin', 'czyszczenie klimatyzacji', 'oryginalne części Daikin'],
+    openGraph: {
+      title: "Serwis i Konserwacja - Daikin Kobierzyce",
+      description: "Profesjonalny serwis i konserwacja systemów Daikin przez autoryzowanych techników.",
+      url: `https://daikinkobierzyce.pl/${locale}/services/maintenance`,
+      type: 'website',
+    },
+    alternates: {
+      canonical: `/${locale}/services/maintenance`,
+      languages: {
+        'pl': '/pl/services/maintenance',
+        'en': '/en/services/maintenance',
+        'uk': '/ua/services/maintenance',
+      },
+    },
+  };
+}
 
 export default function MaintenancePage({
   params,

@@ -24,12 +24,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.3.0
+ * Query Engine version: 9d6ad21cbbceab97458517b147a6a09ff43aa735
  */
 Prisma.prismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.3.0",
+  engine: "9d6ad21cbbceab97458517b147a6a09ff43aa735"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -132,9 +132,9 @@ exports.Prisma.UserScalarFieldEnum = {
   username: 'username',
   displayUsername: 'displayUsername',
   role: 'role',
-  banned: 'banned',
+  banExpires: 'banExpires',
   banReason: 'banReason',
-  banExpires: 'banExpires'
+  banned: 'banned'
 };
 
 exports.Prisma.UserDetailsScalarFieldEnum = {
@@ -209,11 +209,11 @@ exports.Prisma.OrderScalarFieldEnum = {
 
 exports.Prisma.OrderProductScalarFieldEnum = {
   id: 'id',
-  productSlug: 'productSlug',
   warranty: 'warranty',
   quantity: 'quantity',
   totalPrice: 'totalPrice',
-  orderId: 'orderId'
+  orderId: 'orderId',
+  productSlug: 'productSlug'
 };
 
 exports.Prisma.BenefitDescriptionScalarFieldEnum = {
@@ -257,56 +257,56 @@ exports.Prisma.CategoryScalarFieldEnum = {
 
 exports.Prisma.CategoryTranslationScalarFieldEnum = {
   id: 'id',
-  categorySlug: 'categorySlug',
   locale: 'locale',
   name: 'name',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  categorySlug: 'categorySlug'
 };
 
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   price: 'price',
   articleId: 'articleId',
-  categorySlug: 'categorySlug',
-  slug: 'slug',
-  energyClass: 'energyClass',
-  isActive: 'isActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isActive: 'isActive',
+  energyClass: 'energyClass',
+  slug: 'slug',
+  categorySlug: 'categorySlug'
 };
 
 exports.Prisma.ProductSpecsScalarFieldEnum = {
   id: 'id',
-  productSlug: 'productSlug',
-  locale: 'locale',
   title: 'title',
-  subtitle: 'subtitle'
+  subtitle: 'subtitle',
+  locale: 'locale',
+  productSlug: 'productSlug'
 };
 
 exports.Prisma.ProductImagesScalarFieldEnum = {
   id: 'id',
-  productSlug: 'productSlug',
   color: 'color',
-  imgs: 'imgs'
+  imgs: 'imgs',
+  productSlug: 'productSlug'
 };
 
 exports.Prisma.ProductTranslationScalarFieldEnum = {
   id: 'id',
-  productSlug: 'productSlug',
   locale: 'locale',
   name: 'name',
+  subtitle: 'subtitle',
   title: 'title',
-  subtitle: 'subtitle'
+  productSlug: 'productSlug'
 };
 
 exports.Prisma.ProductItemsScalarFieldEnum = {
   id: 'id',
-  productSlug: 'productSlug',
   title: 'title',
-  slug: 'slug',
   img: 'img',
   isActive: 'isActive',
-  lookupItemId: 'lookupItemId'
+  slug: 'slug',
+  lookupItemId: 'lookupItemId',
+  productSlug: 'productSlug'
 };
 
 exports.Prisma.ProductItemsLookupScalarFieldEnum = {
@@ -340,12 +340,12 @@ exports.Prisma.ProductItemsLookupTranslationScalarFieldEnum = {
 exports.Prisma.FeatureScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  slug: 'slug',
   img: 'img',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   isActive: 'isActive',
   preview: 'preview',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  slug: 'slug'
 };
 
 exports.Prisma.FeatureTranslationScalarFieldEnum = {
@@ -353,8 +353,31 @@ exports.Prisma.FeatureTranslationScalarFieldEnum = {
   featureId: 'featureId',
   locale: 'locale',
   name: 'name',
-  desc: 'desc',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  desc: 'desc'
+};
+
+exports.Prisma.BannersScalarFieldEnum = {
+  id: 'id',
+  img: 'img',
+  link: 'link',
+  location: 'location',
+  locale: 'locale',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isMobile: 'isMobile'
+};
+
+exports.Prisma.Products_carouselScalarFieldEnum = {
+  id: 'id',
+  productSlug: 'productSlug',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  iconUrl: 'iconUrl',
+  title: 'title',
+  titleShort: 'titleShort'
 };
 
 exports.Prisma.SortOrder = {
@@ -400,7 +423,9 @@ exports.Prisma.ModelName = {
   ProductItemsTranslation: 'ProductItemsTranslation',
   ProductItemsLookupTranslation: 'ProductItemsLookupTranslation',
   Feature: 'Feature',
-  FeatureTranslation: 'FeatureTranslation'
+  FeatureTranslation: 'FeatureTranslation',
+  banners: 'banners',
+  products_carousel: 'products_carousel'
 };
 
 /**

@@ -15,6 +15,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { getBuilderNews } from "@/lib/getBuilderNews";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'news' });
+  
+  return {
+    title: "Aktualności - Nowości i Technologie Daikin",
+    description: "Bądź na bieżąco z najnowszymi technologiami Daikin, nowościami produktowymi i aktualnościami z branży HVAC. Dowiedz się więcej o innowacjach w klimatyzacji i pompach ciepła.",
+    keywords: ['aktualności Daikin', 'nowości klimatyzacja', 'technologie HVAC', 'pompy ciepła nowości', 'blog klimatyzacja', 'innowacje Daikin'],
+    openGraph: {
+      title: "Aktualności - Daikin Kobierzyce",
+      description: "Poznaj najnowsze technologie i aktualności ze świata Daikin.",
+      url: `https://daikinkobierzyce.pl/${locale}/news`,
+      type: 'website',
+    },
+    alternates: {
+      canonical: `/${locale}/news`,
+      languages: {
+        'pl': '/pl/news',
+        'en': '/en/news',
+        'uk': '/ua/news',
+      },
+    },
+  };
+}
 
 export default async function NewsPage({
   params,

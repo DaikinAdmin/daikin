@@ -3,13 +3,43 @@ export const dynamic = 'force-dynamic';
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/fade-in";
 import { motion } from "framer-motion";
 import { WhyChooseGrid } from "@/components/why-choose-grid";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'about' });
+  
+  return {
+    title: "O Nas - AMM Salon Daikin Kobierzyce",
+    description: "Poznaj AMM Salon - autoryzowanego partnera Daikin w Polsce. Doświadczony zespół, najwyższa jakość usług, perfekcja wykonania i partnerskie podejście do każdego klienta.",
+    keywords: ['o nas', 'AMM Salon', 'Daikin partner', 'autoryzowany serwis Daikin', 'doświadczenie HVAC', 'certyfikowani instalatorzy'],
+    openGraph: {
+      title: "O Nas - AMM Salon Daikin",
+      description: "Poznaj historię i wartości AMM Salon - Twojego zaufanego partnera Daikin.",
+      url: `https://daikinkobierzyce.pl/${locale}/about`,
+      type: 'website',
+    },
+    alternates: {
+      canonical: `/${locale}/about`,
+      languages: {
+        'pl': '/pl/about',
+        'en': '/en/about',
+        'uk': '/ua/about',
+      },
+    },
+  };
+}
 
 export default function AboutPage({
   params,
