@@ -20,6 +20,11 @@ export const GET = async (
     return withPrisma(async () => {
         try {
             const { id } = await params;
+        
+        // Get locale from query params, default to 'en'
+        const url = new URL(req.url);
+        const locale = url.searchParams.get('locale') || 'en';
+        
         const order = await prisma.order.findUnique({
             where: { id },
             include: {
@@ -28,7 +33,7 @@ export const GET = async (
                         product: {
                             include: {
                                 productDetails: {
-                                    where: { locale: 'en' },
+                                    where: { locale },
                                     take: 1,
                                 },
                             },
@@ -177,12 +182,17 @@ export const PUT = async (
                     productSlug: product.productSlug,
                     warranty: product.warranty || null,
                     quantity: product.quantity || 1,
+                    price: product.price,
                     totalPrice: product.totalPrice,
                 })),
             });
         }
 
         // Fetch updated order with products
+        // Get locale from query params, default to 'en'
+        const url = new URL(req.url);
+        const locale = url.searchParams.get('locale') || 'en';
+        
         const finalOrder = await prisma.order.findUnique({
             where: { id },
             include: {
@@ -191,7 +201,7 @@ export const PUT = async (
                         product: {
                             include: {
                                 productDetails: {
-                                    where: { locale: 'en' },
+                                    where: { locale },
                                     take: 1,
                                 },
                             },

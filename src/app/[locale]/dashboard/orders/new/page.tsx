@@ -39,29 +39,7 @@ import { ArrowLeft, Loader2, Save, Plus, Trash2, Check, ChevronsUpDown } from "l
 import { useTranslations } from "next-intl";
 import { useUserRole } from "@/hooks/use-user-role";
 import { cn } from "@/lib/utils";
-
-type Product = {
-  id: string;
-  productSlug: string;
-  productName: string;
-  warranty: string;
-  price: number;
-  quantity: number;
-  totalPrice: number;
-};
-
-type Category = {
-  id: string;
-  name: string;
-  slug: string;
-};
-
-type ProductOption = {
-  slug: string;
-  articleId: string;
-  name: string;
-  price: number | null;
-};
+import type { OrderProduct, Category, ProductOption, UserEmailSuggestion } from "@/types/orders";
 
 export default function NewOrderPage() {
   const t = useTranslations("dashboard.orders");
@@ -85,7 +63,7 @@ export default function NewOrderPage() {
     daikinCoins: 0,
   });
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<OrderProduct[]>([]);
   
   // Categories and products state
   const [categories, setCategories] = useState<Category[]>([]);
@@ -95,7 +73,7 @@ export default function NewOrderPage() {
   // Email autocomplete state
   const [openEmailCombobox, setOpenEmailCombobox] = useState(false);
   const [emailSearchQuery, setEmailSearchQuery] = useState("");
-  const [emailSuggestions, setEmailSuggestions] = useState<Array<{ email: string; name: string | null }>>([]);
+  const [emailSuggestions, setEmailSuggestions] = useState<UserEmailSuggestion[]>([]);
   
   // Search for user emails
   useEffect(() => {
@@ -184,10 +162,11 @@ export default function NewOrderPage() {
   };
 
   const handleAddProduct = () => {
-    const product: Product = {
+    const product: OrderProduct = {
       id: Date.now().toString(),
       productSlug: newProduct.productSlug,
       productName: newProduct.productName,
+      category: newProduct.categorySlug,
       warranty: newProduct.warranty,
       price: newProduct.price,
       quantity: newProduct.quantity,
@@ -544,7 +523,7 @@ export default function NewOrderPage() {
                 <PopoverContent className="w-full p-0">
                   <Command>
                     <CommandInput placeholder={t("searchProduct")} />
-                    <CommandList>
+                    <CommandList className="max-h-[300px] overflow-y-auto">
                       <CommandEmpty>{t("noProductFound")}</CommandEmpty>
                       <CommandGroup>
                         {categoryProducts.map((product) => (

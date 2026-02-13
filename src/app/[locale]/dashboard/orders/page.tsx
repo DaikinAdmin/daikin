@@ -24,29 +24,7 @@ import { useRouter } from "next/navigation";
 import { Pencil, Trash2, Plus, Loader2, Eye, Search } from "lucide-react";
 import { useUserRole } from "@/hooks/use-user-role";
 import { useTranslations } from "next-intl";
-
-type OrderProduct = {
-  id: string;
-  productId: string;
-  productDescription: string;
-  warranty: string | null;
-  price: number;
-  quantity: number;
-  totalPrice: number;
-  daikinCoins: number;
-};
-
-type Order = {
-  id: string;
-  orderId: string;
-  customerEmail: string;
-  dateOfPurchase: string;
-  nextDateOfService: string | null;
-  totalPrice: number;
-  daikinCoins: number;
-  products: OrderProduct[];
-  createdAt: string;
-};
+import type { OrderListItem } from "@/types/orders";
 
 // Helper function to get service date color based on days until service
 const getServiceDateColor = (serviceDate: string | null): string => {
@@ -78,11 +56,11 @@ const getServiceDateColor = (serviceDate: string | null): string => {
 
 export default function OrdersPage() {
   const t = useTranslations("dashboard.orders");
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<OrderListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<OrderListItem | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const userRole = useUserRole();
@@ -141,11 +119,11 @@ export default function OrdersPage() {
     }
   };
 
-  const handleViewOrder = (order: Order) => {
+  const handleViewOrder = (order: OrderListItem) => {
     router.push(`/dashboard/orders/${order.id}`);
   };
 
-  const handleEditOrder = (order: Order) => {
+  const handleEditOrder = (order: OrderListItem) => {
     router.push(`/dashboard/orders/${order.id}/edit`);
   };
 

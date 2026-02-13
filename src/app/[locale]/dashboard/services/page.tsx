@@ -26,39 +26,7 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { useUserRole } from "@/hooks/use-user-role";
 import { useUserProfile } from "@/hooks/use-user-profile";
-
-type OrderProduct = {
-  id: string;
-  productId: string;
-  productDescription: string;
-  warranty: string | null;
-  price: number;
-  quantity: number;
-  totalPrice: number;
-};
-
-type ServiceRequest = {
-  id: string;
-  dateOfProposedService: string;
-  dateOfService: string | null;
-  serviceDetails: string;
-  status: "PENDING" | "APPROVED" | "REJECTED";
-  user?: {
-    name: string;
-    email: string;
-  };
-};
-
-type Service = {
-  id: string;
-  orderId: string;
-  customerEmail: string;
-  nextDateOfService: string;
-  notificationSent30Days: boolean;
-  notificationSent7Days: boolean;
-  products: OrderProduct[];
-  services: ServiceRequest[];
-};
+import type { Service, ServiceRequest } from "@/types/services";
 
 export default function ServicesPage() {
   const t = useTranslations("dashboard.serviceManagement");

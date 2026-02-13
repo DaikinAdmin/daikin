@@ -15,33 +15,7 @@ import {
 import { ArrowLeft, Loader2, Pencil } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useUserRole } from "@/hooks/use-user-role";
-
-type OrderProduct = {
-  id: string;
-  productSlug: string;
-  warranty: string | null;
-  quantity: number;
-  totalPrice: number;
-  product: {
-    articleId: string;
-    price: number | null;
-    productDetails: Array<{
-      name: string;
-    }>;
-  };
-};
-
-type OrderData = {
-  id: string;
-  orderId: string;
-  customerEmail: string;
-  customerPhoneNumber?: string | null;
-  dateOfPurchase: string;
-  nextDateOfService: string | null;
-  totalPrice: number;
-  daikinCoins: number;
-  products: OrderProduct[];
-};
+import type { OrderDetailResponse } from "@/types/orders";
 
 // Helper function to get service date color based on days until service
 const getServiceDateColor = (serviceDate: string | null): string => {
@@ -79,7 +53,7 @@ export default function ViewOrderPage() {
   const userRole = useUserRole();
 
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState<OrderData | null>(null);
+  const [order, setOrder] = useState<OrderDetailResponse | null>(null);
 
   useEffect(() => {
     fetchOrder();

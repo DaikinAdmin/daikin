@@ -39,32 +39,14 @@ import { ArrowLeft, Loader2, Save, Plus, Trash2, Check, ChevronsUpDown } from "l
 import { useTranslations } from "next-intl";
 import { useUserRole } from "@/hooks/use-user-role";
 import { cn } from "@/lib/utils";
-
-type Product = {
-  id: string;
-  productId: string;
-  productDescription: string;
-  warranty: string;
-  price: number;
-  quantity: number;
-  totalPrice: number;
-};
-
-type OrderData = {
-  id: string;
-  orderId: string;
-  customerEmail: string;
-  dateOfPurchase: string;
-  nextDateOfService: string | null;
-  totalPrice: number;
-  products: Product[];
-};
+import type { OrderProduct, OrderData, Category, ProductOption, UserEmailSuggestion } from "@/types/orders";
 
 export default function EditOrderPage() {
   const t = useTranslations("dashboard.orders");
   const router = useRouter();
   const params = useParams();
   const orderId = params.id as string;
+  const locale = params.locale as string;
   const userRole = useUserRole();
 
   const [loading, setLoading] = useState(true);
@@ -87,12 +69,17 @@ export default function EditOrderPage() {
     daikinCoins: 0,
   });
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<OrderProduct[]>([]);
+  
+  // Categories and products state
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoryProducts, setCategoryProducts] = useState<ProductOption[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(false);
   
   // Email autocomplete state
   const [openEmailCombobox, setOpenEmailCombobox] = useState(false);
   const [emailSearchQuery, setEmailSearchQuery] = useState("");
-  const [emailSuggestions, setEmailSuggestions] = useState<Array<{ email: string; name: string | null }>>([]);
+  const [emailSuggestions, setEmailSuggestions] = useState<UserEmailSuggestion[]>([]);
 
   // Search for user emails
   useEffect(() => {
@@ -118,8 +105,10 @@ export default function EditOrderPage() {
   }, [emailSearchQuery]);
 
   const [newProduct, setNewProduct] = useState({
-    productId: "",
-    productDescription: "",
+    categorySlug: "",
+    productSlug: "",
+    productName: "",
+    category: "",
     warranty: "",
     price: 0,
     quantity: 1,
@@ -129,9 +118,56 @@ export default function EditOrderPage() {
     fetchOrder();
   }, [orderId]);
 
+  // Load categories on mount
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories");
+        if (response.ok) {
+          const data = await response.json();
+          setCategories(data);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Load products when category changes
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (!newProduct.categorySlug) {
+        setCategoryProducts([]);
+        return;
+      }
+
+      setLoadingProducts(true);
+      try {
+        const response = await fetch(`/api/products?categorySlug=${newProduct.categorySlug}&locale=${locale}`);
+        if (response.ok) {
+          const data = await response.json();
+          const productOptions: ProductOption[] = data.map((p: any) => ({
+            slug: p.slug,
+            articleId: p.articleId,
+            name: p.productDetails?.[0]?.name || p.articleId,
+            price: p.price,
+            categorySlug: p.categorySlug,
+          }));
+          setCategoryProducts(productOptions);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoadingProducts(false);
+      }
+    };
+    fetchProducts();
+  }, [newProduct.categorySlug, locale]);
+
   const fetchOrder = async () => {
     try {
-      const response = await fetch(`/api/orders/${orderId}`);
+      const response = await fetch(`/api/orders/${orderId}?locale=${locale}`);
       if (response.ok) {
         const data = await response.json();
         setOrder(data);
@@ -143,7 +179,18 @@ export default function EditOrderPage() {
             : "",
           daikinCoins: data.daikinCoins || 0,
         });
-        setProducts(data.products || []);
+        // Transform products to match our Product type
+        const transformedProducts = (data.products || []).map((p: any) => ({
+          id: p.id,
+          productSlug: p.productSlug,
+          productName: p.product?.productDetails?.[0]?.name || "Unknown",
+          category: p.product?.categorySlug || "Unknown",
+          warranty: p.warranty || "",
+          price: p.price,
+          quantity: p.quantity,
+          totalPrice: p.totalPrice,
+        }));
+        setProducts(transformedProducts);
       } else {
         alert("Failed to fetch order");
         router.back();
@@ -178,7 +225,7 @@ export default function EditOrderPage() {
       setEditingProductIndex(null);
     } else {
       // Add new product
-      const product: Product = {
+      const product: OrderProduct = {
         id: Date.now().toString(),
         ...newProduct,
         totalPrice: calculateProductTotal(),
@@ -187,20 +234,25 @@ export default function EditOrderPage() {
     }
 
     setNewProduct({
-      productId: "",
-      productDescription: "",
+      categorySlug: "",
+      productSlug: "",
+      productName: "",
+      category: "",
       warranty: "",
       price: 0,
       quantity: 1,
     });
+    setCategoryProducts([]);
     setIsProductDialogOpen(false);
   };
 
   const handleEditProduct = (index: number) => {
     const product = products[index];
     setNewProduct({
-      productId: product.productId,
-      productDescription: product.productDescription,
+      categorySlug: product.category,
+      productSlug: product.productSlug,
+      productName: product.productName,
+      category: product.category,
       warranty: product.warranty || "",
       price: product.price,
       quantity: product.quantity,
@@ -221,12 +273,12 @@ export default function EditOrderPage() {
 
     setSaving(true);
     try {
-      const response = await fetch(`/api/orders/${orderId}`, {
+      const response = await fetch(`/api/orders/${orderId}?locale=${locale}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...orderData,
-          products: products.map(({ id, ...product }) => product),
+          products: products.map(({ id, productName, category, ...product }) => product),
         }),
       });
 
@@ -386,12 +438,15 @@ export default function EditOrderPage() {
             <Button onClick={() => {
               setEditingProductIndex(null);
               setNewProduct({
-                productId: "",
-                productDescription: "",
+                categorySlug: "",
+                productSlug: "",
+                productName: "",
+                category: "",
                 warranty: "",
                 price: 0,
                 quantity: 1,
               });
+              setCategoryProducts([]);
               setIsProductDialogOpen(true);
             }}>
               <Plus className="mr-2 h-4 w-4" />
@@ -408,8 +463,8 @@ export default function EditOrderPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Product ID</TableHead>
-                  <TableHead>Description</TableHead>
+                  <TableHead>Product Name</TableHead>
+                  <TableHead>Category</TableHead>
                   <TableHead>Warranty</TableHead>
                   <TableHead>Price</TableHead>
                   <TableHead>Quantity</TableHead>
@@ -420,8 +475,8 @@ export default function EditOrderPage() {
               <TableBody>
                 {products.map((product, index) => (
                   <TableRow key={product.id}>
-                    <TableCell className="font-medium">{product.productId}</TableCell>
-                    <TableCell>{product.productDescription}</TableCell>
+                    <TableCell className="font-medium">{product.productName}</TableCell>
+                    <TableCell>{product.category}</TableCell>
                     <TableCell>{product.warranty || "N/A"}</TableCell>
                     <TableCell>{product.price.toFixed(2)} zł</TableCell>
                     <TableCell>{product.quantity}</TableCell>
@@ -494,30 +549,126 @@ export default function EditOrderPage() {
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
-              <Label htmlFor="productId">Product ID *</Label>
-              <Input
-                id="productId"
-                value={newProduct.productId}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, productId: e.target.value })
-                }
-                required
-              />
+              <Label htmlFor="category">Category *</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    className="w-full justify-between"
+                  >
+                    {newProduct.categorySlug
+                      ? categories.find((c) => c.slug === newProduct.categorySlug)?.name
+                      : "Select category"}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Search category..." />
+                    <CommandList>
+                      <CommandEmpty>No category found</CommandEmpty>
+                      <CommandGroup>
+                        {categories.map((category) => (
+                          <CommandItem
+                            key={category.slug}
+                            value={category.slug}
+                            onSelect={(currentValue) => {
+                              setNewProduct({
+                                ...newProduct,
+                                categorySlug: currentValue,
+                                category: currentValue,
+                                productSlug: "",
+                                productName: "",
+                                price: 0,
+                              });
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                newProduct.categorySlug === category.slug
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            {category.name}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="productDescription">Product Description *</Label>
-              <Input
-                id="productDescription"
-                value={newProduct.productDescription}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    productDescription: e.target.value,
-                  })
-                }
-                required
-              />
+              <Label htmlFor="product">Product *</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    className="w-full justify-between"
+                    disabled={!newProduct.categorySlug || loadingProducts}
+                  >
+                    {loadingProducts ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Loading products...
+                      </>
+                    ) : newProduct.productSlug ? (
+                      categoryProducts.find((p) => p.slug === newProduct.productSlug)?.name
+                    ) : (
+                      "Select product"
+                    )}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Search product..." />
+                    <CommandList className="max-h-[300px] overflow-y-auto">
+                      <CommandEmpty>No product found</CommandEmpty>
+                      <CommandGroup>
+                        {categoryProducts.map((product) => (
+                          <CommandItem
+                            key={product.slug}
+                            value={product.slug}
+                            onSelect={(currentValue) => {
+                              const selectedProduct = categoryProducts.find(
+                                (p) => p.slug === currentValue
+                              );
+                              setNewProduct({
+                                ...newProduct,
+                                productSlug: currentValue,
+                                productName: selectedProduct?.name || "",
+                                category: selectedProduct?.categorySlug || newProduct.categorySlug,
+                                price: selectedProduct?.price || 0,
+                              });
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                newProduct.productSlug === product.slug
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            <div className="flex flex-col">
+                              <span>{product.name}</span>
+                              <span className="text-sm text-muted-foreground">
+                                {product.articleId} {product.price ? `- ${product.price.toFixed(2)} zł` : ""}
+                              </span>
+                            </div>
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
 
             <div className="grid gap-2">
@@ -592,8 +743,7 @@ export default function EditOrderPage() {
             <Button
               onClick={handleAddProduct}
               disabled={
-                !newProduct.productId ||
-                !newProduct.productDescription ||
+                !newProduct.productSlug ||
                 newProduct.price <= 0
               }
             >
