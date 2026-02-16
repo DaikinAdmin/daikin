@@ -1,4 +1,6 @@
 User-agent: *
-Allow: /
+Disallow: /en/
+Disallow: /ua/
+Allow: /pl/
 
 Sitemap: https://daikinkobierzyce.pl/sitemap.xml

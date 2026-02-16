@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const categoryMeta = categoryMetadata[categorySlug] || {
     title: 'Produkty Daikin',
     description: 'Poznaj pełną gamę produktów Daikin.',
-    keywords: ['Daikin', 'produkty HVAC']
+    keywords: ['Daikin', 'produkty HVAC', 'Daikin Wrocław', 'klimatyzatory Wrocław', 'pompy ciepła Wrocław', 'pompy ciepła Kobierzyce', 'HVAC Wrocław']
   };
 
   return {
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: categoryMeta.title,
       description: categoryMeta.description,
-      url: `https://daikinkobierzyce.pl/${locale}/products/${categorySlug}`,
+      url: `https://daikinkobierzyce.pl/pl/products/${categorySlug}`,
       type: 'website',
       images: [
         {
@@ -55,12 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ],
     },
     alternates: {
-      canonical: `/${locale}/products/${categorySlug}`,
-      languages: {
-        'pl': `/pl/products/${categorySlug}`,
-        'en': `/en/products/${categorySlug}`,
-        'uk': `/ua/products/${categorySlug}`,
-      },
+      canonical: `/pl/products/${categorySlug}`,
     },
   };
 }

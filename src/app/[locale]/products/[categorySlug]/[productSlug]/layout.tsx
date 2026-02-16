@@ -56,12 +56,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         'HVAC',
         'klimatyzacja',
         'pompy ciepła',
-        'oczyszczacze powietrza'
+        'oczyszczacze powietrza',
+        'Daikin Wrocław',
+        'klimatyzatory Wrocław',
+        'pompy ciepła Wrocław',
+        'pompy ciepła Kobierzyce',
+        'HVAC Wrocław'
       ],
       openGraph: {
         title: metaTitle,
         description: metaDescription,
-        url: `https://daikinkobierzyce.pl/${locale}/products/${categorySlug}/${productSlug}`,
+        url: `https://daikinkobierzyce.pl/pl/products/${categorySlug}/${productSlug}`,
         type: 'website',
         images: product.img && product.img.length > 0 && product.img[0].imgs.length > 0
           ? [
@@ -81,12 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       }),
       alternates: {
-        canonical: `/${locale}/products/${categorySlug}/${productSlug}`,
-        languages: {
-          'pl': `/pl/products/${categorySlug}/${productSlug}`,
-          'en': `/en/products/${categorySlug}/${productSlug}`,
-          'uk': `/ua/products/${categorySlug}/${productSlug}`,
-        },
+        canonical: `/pl/products/${categorySlug}/${productSlug}`,
       },
     };
   } catch (error) {

@@ -28,20 +28,27 @@ export async function generateMetadata({
   return {
     title: "Aktualności - Nowości i Technologie Daikin",
     description: "Bądź na bieżąco z najnowszymi technologiami Daikin, nowościami produktowymi i aktualnościami z branży HVAC. Dowiedz się więcej o innowacjach w klimatyzacji i pompach ciepła.",
-    keywords: ['aktualności Daikin', 'nowości klimatyzacja', 'technologie HVAC', 'pompy ciepła nowości', 'blog klimatyzacja', 'innowacje Daikin'],
+    keywords: [
+      'aktualności Daikin',
+      'nowości klimatyzacja',
+      'technologie HVAC',
+      'pompy ciepła nowości',
+      'blog klimatyzacja',
+      'innowacje Daikin',
+      'Daikin Wrocław',
+      'klimatyzatory Wrocław',
+      'pompy ciepła Wrocław',
+      'pompy ciepła Kobierzyce',
+      'HVAC Wrocław'
+    ],
     openGraph: {
       title: "Aktualności - Daikin Kobierzyce",
       description: "Poznaj najnowsze technologie i aktualności ze świata Daikin.",
-      url: `https://daikinkobierzyce.pl/${locale}/news`,
+      url: `https://daikinkobierzyce.pl/pl/news`,
       type: 'website',
     },
     alternates: {
-      canonical: `/${locale}/news`,
-      languages: {
-        'pl': '/pl/news',
-        'en': '/en/news',
-        'uk': '/ua/news',
-      },
+      canonical: `/pl/news`,
     },
   };
 }

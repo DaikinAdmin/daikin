@@ -21,20 +21,28 @@ export async function generateMetadata({
   return {
     title: "Usługi Instalacyjne - Profesjonalny Montaż Klimatyzacji i Pomp Ciepła",
     description: "Profesjonalny montaż systemów klimatyzacji, pomp ciepła i oczyszczaczy powietrza Daikin. Certyfikowani technicy, gwarancja jakości i rozszerzona gwarancja na produkty.",
-    keywords: ['montaż klimatyzacji', 'instalacja pompy ciepła', 'montaż oczyszczacza', 'serwis instalacyjny Daikin', 'certyfikowani instalatorzy', 'profesjonalny montaż HVAC'],
+    keywords: [
+      'montaż klimatyzacji',
+      'instalacja pompy ciepła',
+      'montaż oczyszczacza',
+      'serwis instalacyjny Daikin',
+      'certyfikowani instalatorzy',
+      'profesjonalny montaż HVAC',
+      'Daikin Wrocław',
+      'klimatyzatory Wrocław',
+      'pompy ciepła Wrocław',
+      'pompy ciepła Kobierzyce',
+      'montaż klimatyzacji Wrocław',
+      'HVAC Wrocław'
+    ],
     openGraph: {
       title: "Usługi Instalacyjne - Daikin Kobierzyce",
       description: "Profesjonalny montaż i instalacja systemów Daikin przez certyfikowanych techników.",
-      url: `https://daikinkobierzyce.pl/${locale}/services/installation`,
+      url: `https://daikinkobierzyce.pl/pl/services/installation`,
       type: 'website',
     },
     alternates: {
-      canonical: `/${locale}/services/installation`,
-      languages: {
-        'pl': '/pl/services/installation',
-        'en': '/en/services/installation',
-        'uk': '/ua/services/installation',
-      },
+      canonical: `/pl/services/installation`,
     },
   };
 }

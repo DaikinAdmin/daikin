@@ -1,5 +1,4 @@
-export const dynamic = 'force-dynamic';
-
+export const dynamic = "force-dynamic";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ProductCarousel from "@/components/product-carousel";
@@ -9,35 +8,44 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
-import { Button } from "@/components/ui/button";
 import WhyChooseSection from "@/components/why-choose";
 import type { Metadata } from "next";
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'home' });
-  
+  const t = await getTranslations({ locale, namespace: "home" });
+
   return {
-    title: "Strona Główna - Systemy Klimatyzacji i Pompy Ciepła Daikin",
-    description: "Witamy w AMM Salon - Twoim zaufanym partnerze Daikin w Polsce. Oferujemy profesjonalne systemy klimatyzacji, pompy ciepła, oczyszczacze powietrza oraz pełen zakres usług instalacyjnych i serwisowych.",
-    keywords: ['Daikin Polska', 'klimatyzacja domowa', 'pompy ciepła Daikin', 'systemy HVAC', 'klimatyzacja Wrocław', 'montaż klimatyzacji', 'oczyszczacze powietrza'],
+    title:
+      "Klimatyzacja Wrocław i Kobierzyce | Pompy Ciepła Daikin – Montaż i Serwis",
+    description:
+      "Profesjonalny montaż klimatyzacji, pomp ciepła oraz oczyszczaczy powietrza Daikin we Wrocławiu i Kobierzycach. Autoryzowany partner, szybka realizacja, serwis i doradztwo. Skontaktuj się z nami już dziś!",
+    keywords: [
+      "Daikin Wrocław",
+      "klimatyzatory Wrocław",
+      "pompy ciepła Wrocław",
+      "pompy ciepła Kobierzyce",
+      "klimatyzacja Polska",
+      "montaż klimatyzacji Wrocław",
+      "serwis klimatyzacji Wrocław",
+      "klimatyzacja Kobierzyce",
+      "oczyszczacze powietrza Daikin",
+      "Daikin Kobierzyce",
+      "HVAC Wrocław",
+    ],
     openGraph: {
-      title: "Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji",
-      description: "Oferujemy profesjonalne systemy klimatyzacji, pompy ciepła i oczyszczacze powietrza Daikin z pełnym zakresem usług instalacji i serwisu.",
-      url: `https://daikinkobierzyce.pl/${locale}`,
-      type: 'website',
+      title: "Klimatyzacja i Pompy Ciepła Daikin – Wrocław | AMM Salon",
+      description:
+        "Autoryzowany partner Daikin. Montaż i serwis klimatyzacji, pomp ciepła i oczyszczaczy powietrza we Wrocławiu i Kobierzycach.",
+      url: `https://daikinkobierzyce.pl/pl`,
+      type: "website",
     },
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        'pl': '/pl',
-        'en': '/en',
-        'uk': '/ua',
-      },
+      canonical: "https://daikinkobierzyce.pl/pl",
     },
   };
 }
@@ -54,7 +62,7 @@ export default function Home({
     <div className="min-h-screen bg-white">
       <Header />
 
-            {/* Hero Carousel Section */}
+      {/* Hero Carousel Section */}
       <HeroCarousel />
 
       {/* Product Carousel */}
@@ -74,7 +82,7 @@ export default function Home({
             id: "right1",
             image: t("whyChoose.right1.image"),
             title: t("whyChoose.right1.title"),
-            description:t("whyChoose.right1.description"),
+            description: t("whyChoose.right1.description"),
           },
           {
             id: "right2",

@@ -3,7 +3,7 @@ ALTER TABLE "order_product" ADD COLUMN     "price" DOUBLE PRECISION NOT NULL DEF
 ALTER COLUMN "totalPrice" SET DEFAULT 0;
 
 -- CreateTable
-CREATE TABLE "banners" (
+CREATE TABLE IF NOT EXISTS "banners" (
     "id" TEXT NOT NULL,
     "img" TEXT NOT NULL,
     "link" TEXT,

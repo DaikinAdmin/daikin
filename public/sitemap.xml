@@ -1,168 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- Homepage -->
-  <url>
-    <loc>https://daikinkobierzyce.pl/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua" />
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://daikinkobierzyce.pl/pl</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>1</priority>
   </url>
 
-  <!-- About Page -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/about" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/about" />
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua/about</loc>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- News Page -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/news</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/news" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/news" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/news" />
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en/news</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua/news</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Installation Service -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/services/installation</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/services/installation" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/services/installation" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/services/installation" />
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en/services/installation</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua/services/installation</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
-  <!-- Maintenance Service -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/services/maintenance</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/services/maintenance" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/services/maintenance" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/services/maintenance" />
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en/services/maintenance</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua/services/maintenance</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
-  <!-- Product Categories -->
-  <!-- Air Conditioning -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/products/air-conditioning" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/products/air-conditioning" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/products/air-conditioning" />
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en/products/air-conditioning</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua/products/air-conditioning</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Heat Pumps -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/products/heat-pumps" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/products/heat-pumps" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/products/heat-pumps" />
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/en/products/heat-pumps</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://daikinkobierzyce.pl/ua/products/heat-pumps</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Air Purifiers -->
   <url>
     <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://daikinkobierzyce.pl/pl/products/air-purifiers" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://daikinkobierzyce.pl/en/products/air-purifiers" />
-    <xhtml:link rel="alternate" hreflang="ua" href="https://daikinkobierzyce.pl/ua/products/air-purifiers" />
   </url>
+
   <url>
-    <loc>https://daikinkobierzyce.pl/en/products/air-purifiers</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/emura</loc>
+    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://daikinkobierzyce.pl/ua/products/air-purifiers</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/stylish</loc>
+    <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/ururu-sarara</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/perfera-nascienna</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/perfera-przypodlogowa</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/comfora</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/sensira</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-conditioning/fdxm-f9</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-4-h-w</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-4-erga</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-4-h-f</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-r-w</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-r-ech2o</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-r-f</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-r-m-t-w</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-r-m-t-f</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-h-m-t-w</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-h-m-t-ech2o</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-h-m-t-f</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/heat-pumps/altherma-3-m</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers/mc30y</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers/mck55w</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers/mc55w</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers/mck70y</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers/mck70z</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://daikinkobierzyce.pl/pl/products/air-purifiers/mc80z</loc>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

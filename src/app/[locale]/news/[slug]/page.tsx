@@ -35,11 +35,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.title} - Aktualności`,
     description: metaDescription,
-    keywords: ['aktualności Daikin', 'nowości', article.title, 'news HVAC'],
+    keywords: [
+      'aktualności Daikin',
+      'nowości',
+      article.title,
+      'news HVAC',
+      'Daikin Wrocław',
+      'klimatyzatory Wrocław',
+      'pompy ciepła Wrocław',
+      'pompy ciepła Kobierzyce',
+      'HVAC Wrocław'
+    ],
     openGraph: {
       title: article.title,
       description: metaDescription,
-      url: `https://daikinkobierzyce.pl/${locale}/news/${slug}`,
+      url: `https://daikinkobierzyce.pl/pl/news/${slug}`,
       type: 'article',
       publishedTime: article.publishedAt,
       images: article.coverImage 
@@ -60,12 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: article.coverImage ? [article.coverImage] : [],
     },
     alternates: {
-      canonical: `/${locale}/news/${slug}`,
-      languages: {
-        'pl': `/pl/news/${slug}`,
-        'en': `/en/news/${slug}`,
-        'uk': `/ua/news/${slug}`,
-      },
+      canonical: `/pl/news/${slug}`,
     },
   };
 }

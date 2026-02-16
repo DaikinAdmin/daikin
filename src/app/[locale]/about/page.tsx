@@ -23,20 +23,28 @@ export async function generateMetadata({
   return {
     title: "O Nas - AMM Salon Daikin Kobierzyce",
     description: "Poznaj AMM Salon - autoryzowanego partnera Daikin w Polsce. Doświadczony zespół, najwyższa jakość usług, perfekcja wykonania i partnerskie podejście do każdego klienta.",
-    keywords: ['o nas', 'AMM Salon', 'Daikin partner', 'autoryzowany serwis Daikin', 'doświadczenie HVAC', 'certyfikowani instalatorzy'],
+    keywords: [
+      'o nas',
+      'AMM Salon',
+      'Daikin partner',
+      'autoryzowany serwis Daikin',
+      'doświadczenie HVAC',
+      'certyfikowani instalatorzy',
+      'Daikin Wrocław',
+      'klimatyzatory Wrocław',
+      'pompy ciepła Wrocław',
+      'pompy ciepła Kobierzyce',
+      'klimatyzacja Polska',
+      'HVAC Wrocław'
+    ],
     openGraph: {
       title: "O Nas - AMM Salon Daikin",
       description: "Poznaj historię i wartości AMM Salon - Twojego zaufanego partnera Daikin.",
-      url: `https://daikinkobierzyce.pl/${locale}/about`,
+      url: `https://daikinkobierzyce.pl/pl/about`,
       type: 'website',
     },
     alternates: {
-      canonical: `/${locale}/about`,
-      languages: {
-        'pl': '/pl/about',
-        'en': '/en/about',
-        'uk': '/ua/about',
-      },
+      canonical: `/pl/about`,
     },
   };
 }

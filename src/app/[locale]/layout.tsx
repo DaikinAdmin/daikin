@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Montserrat } from "next/font/google";
 import { Source_Sans_3 } from "next/font/google";
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { notFound } from 'next/navigation';
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
@@ -53,70 +53,94 @@ const myriadPro = localFont({
 //   weight: "100 900",
 // });
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://daikinkobierzyce.pl'),
-  title: {
-    default: "Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji i Pompy Ciepła",
-    template: "%s | Daikin Kobierzyce"
-  },
-  description: "AMM Salon - Autoryzowany partner Daikin w Polsce. Oferujemy profesjonalne systemy klimatyzacji, pompy ciepła, oczyszczacze powietrza oraz kompleksowe usługi instalacyjne i serwisowe.",
-  keywords: ['Daikin', 'klimatyzacja', 'pompy ciepła', 'oczyszczacze powietrza', 'klimatyzacja Kobierzyce', 'montaż klimatyzacji', 'serwis klimatyzacji', 'systemy HVAC', 'Wrocław'],
-  authors: [{ name: 'AMM Salon Daikin' }],
-  creator: 'AMM Salon',
-  publisher: 'AMM Salon',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  icons: {
-    icon: '/favicon.png',
-  },
-  alternates: {
-    canonical: '/',
-    languages: {
-      'pl': '/pl',
-      'en': '/en',
-      'uk': '/ua',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const indexPl = locale === "pl";
+
+  const keywords = [
+    "Daikin Wrocław",
+    "klimatyzatory Wrocław",
+    "pompy ciepła Wrocław",
+    "pompy ciepła Kobierzyce",
+    "klimatyzacja Polska",
+    "montaż klimatyzacji Wrocław",
+    "serwis klimatyzacji Wrocław",
+    "klimatyzacja Kobierzyce",
+    "autoryzowany partner Daikin Wrocław",
+    "HVAC Wrocław",
+  ];
+
+  return {
+    metadataBase: new URL("https://daikinkobierzyce.pl"),
+    title: {
+      default:
+        "Klimatyzacja Wrocław i Kobierzyce | Pompy Ciepła Daikin – Montaż i Serwis",
+      template: "%s | Daikin Kobierzyce",
     },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'pl_PL',
-    url: 'https://daikinkobierzyce.pl',
-    siteName: 'Daikin Kobierzyce',
-    title: 'Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji',
-    description: 'Profesjonalne systemy klimatyzacji, pompy ciepła i oczyszczacze powietrza Daikin. Autoryzowany partner z pełnym zakresem usług instalacji i serwisu.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Daikin Kobierzyce - Systemy Klimatyzacji',
+    description:
+      "Autoryzowany partner Daikin. Profesjonalny montaż klimatyzacji, pomp ciepła i oczyszczaczy powietrza we Wrocławiu i Kobierzycach. Serwis i doradztwo.",
+    keywords,
+    authors: [{ name: "AMM Salon Daikin" }],
+    creator: "AMM Salon",
+    publisher: "AMM Salon",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    icons: {
+      icon: "/favicon.png",
+    },
+    alternates: {
+      canonical: "https://daikinkobierzyce.pl/pl",
+    },
+    openGraph: {
+      type: "website",
+      locale: "pl_PL",
+      url: "https://daikinkobierzyce.pl/pl",
+      siteName: "Daikin Kobierzyce",
+      title:
+        "Klimatyzacja i Pompy Ciepła Daikin – Wrocław i Kobierzyce",
+      description:
+        "Autoryzowany partner Daikin. Montaż i serwis klimatyzacji oraz pomp ciepła. Oczyszczacze powietrza Daikin we Wrocławiu i Kobierzycach.",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Klimatyzacja Daikin Wrocław",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        "Klimatyzacja i Pompy Ciepła Daikin – Wrocław i Kobierzyce",
+      description:
+        "Autoryzowany partner Daikin. Montaż i serwis klimatyzacji oraz pomp ciepła. Oczyszczacze powietrza Daikin we Wrocławiu i Kobierzycach.",
+      images: ["/og-image.jpg"],
+    },
+    robots: {
+      index: indexPl,
+      follow: indexPl,
+      googleBot: {
+        index: indexPl,
+        follow: indexPl,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Daikin Kobierzyce - Profesjonalne Systemy Klimatyzacji',
-    description: 'Profesjonalne systemy klimatyzacji, pompy ciepła i oczyszczacze powietrza Daikin.',
-    images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'verification_token',
-  },
-};
+    verification: {
+      google: "verification_token",
+    },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -124,12 +148,11 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-
   // Ensure that the incoming `locale` is valid
   const { locale } = await params;
 
@@ -144,9 +167,7 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={`${montserrat.variable} antialiased font-sans`}>
         <OrganizationSchema locale={locale} />
-        <NextIntlClientProvider>
-          {children}
-        </NextIntlClientProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   );
