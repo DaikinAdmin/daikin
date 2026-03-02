@@ -4,8 +4,24 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
 import { useTranslations } from 'next-intl';
 
+
 export default function Footer() {
   const t = useTranslations('footer');
+
+  const contacts = [
+    {
+      title: t('salesSupport'),
+      name: 'Andżela Ivanovic',
+      phone: '+48 (690) 990 794',
+      email: 'a.ivanovic@ammproject.com',
+    },
+    {
+      title: t('salesSupport'),
+      name: 'Piotr Matysiak',
+      phone: '+48 (690) 909 774',
+      email: 'p.matysiak@ammproject.com',
+    },
+  ];
   return (
     <footer className="bg-amm text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -106,29 +122,31 @@ export default function Footer() {
           {/* Contact Information */}
           <div>
             <h3 className="text-lg font-semibold mb-6 text-white">{t('contact')}</h3>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-white">{t('salesSupport')}</p>
-                  <p className="text-white font-medium">+48 (690) 990 794</p>
+            <div className="space-y-6">
+              {contacts.map((contact, idx) => (
+                <div key={idx} className="border-b border-blue-100 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+                  <div>
+                    <p className="text-white font-semibold">{contact.title}</p>
+                    <p className="text-white font-medium">{contact.name}</p>
+                    <div className="flex items-center space-x-2 mt-1">
+                      <Phone className="h-5 w-5 text-white flex-shrink-0" />
+                      <span className="text-white">{contact.phone}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 mt-1">
+                    <Mail className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-white">{contact.email}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-white">{t('email')}</p>
-                  <p className="text-white font-medium">a.ivanovic@ammproject.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
+              ))}
+              <div className="flex items-start space-x-3 mt-6">
                 <MapPin className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white">{t('headquarters')}</p>
                   <p className="text-white font-medium">
-                    Krótka 3, 55-040 <br /> 
+                    Krótka 3, 55-040 <br />
                     Kobierzyce, Poland
                   </p>
                 </div>
