@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Icon } from "@iconify-icon/react";
@@ -51,6 +51,7 @@ export function HeroCarousel() {
 					</Button>
 				</div>
 			</div>
+
 		</section>
 	);
 }

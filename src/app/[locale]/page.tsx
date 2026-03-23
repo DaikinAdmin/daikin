@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ProductCarousel from "@/components/product-carousel";
 import { HeroCarousel } from "@/components/hero-carousel";
+import { QuizSection } from "@/components/quiz-section";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -67,6 +68,9 @@ export default function Home({
 
       {/* Product Carousel */}
       <ProductCarousel />
+
+      {/* Quiz Section */}
+      <QuizSection />
 
       <WhyChooseSection
         title="Dlaczego Daikin?"
