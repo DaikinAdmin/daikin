@@ -8,9 +8,10 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
-import { use } from "react";
+import { use, Suspense } from "react";
 import WhyChooseSection from "@/components/why-choose";
 import type { Metadata } from "next";
+import { VisitModalController } from "@/components/visit-modal-controller";
 
 export async function generateMetadata({
   params,
@@ -98,6 +99,10 @@ export default function Home({
       />
 
       <Footer />
+
+      <Suspense>
+        <VisitModalController />
+      </Suspense>
     </div>
   );
 }
