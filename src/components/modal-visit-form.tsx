@@ -6,7 +6,7 @@ import { Input } from "./ui/inputForm";
 
 const VISIT_SLOTS = [
   { value: "12.06 10:00-14:00", label: "12.06 (piątek) 10:00–14:00" },
-  { value: "12.06 14:00-18:00", label: "12.06 (piątek) 14:00–18:00" },
+  { value: "12.06 14:00-17:00", label: "12.06 (piątek) 14:00–17:00" },
   { value: "13.06 9:00-14:00",  label: "13.06 (sobota) 9:00–14:00" },
 ];
 
