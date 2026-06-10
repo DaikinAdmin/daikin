@@ -11,9 +11,9 @@ export function HeroCarousel() {
   const t = useTranslations("home.hero.banner");
 
   const imageDesktop =
-    "https://daikinkobierzyce.pl/api/images/banery/banner_desktop-1767173854537.png";
+    "/pc-test.png";
   const imageMobile =
-    "https://daikinkobierzyce.pl/api/images/banery/banner_mobile-1767173882608.png";
+    "/mobile-test.png";
   const imageAlt = t("imageAlt");
   const description = t("description");
   const shortDescription = t("shortDescription");
@@ -21,15 +21,17 @@ export function HeroCarousel() {
   return (
     <section className="bg-white mb-8 md:mb-0">
       {/* Banner image (desktop/mobile) */}
-      <Link href="?visit=1" className="relative w-full">
-        <picture>
-          <source media="(min-width: 768px)" srcSet={imageDesktop} />
-          <img
-            src={imageMobile}
-            alt={imageAlt}
-            className="w-full h-auto object-cover"
-          />
-        </picture>
+      <Link href="?visit=1" className="block w-full">
+        <div className="w-full overflow-hidden md:aspect-[32/15] xl:aspect-auto xl:h-[37.5rem]">
+          <picture>
+            <source media="(min-width: 768px)" srcSet={imageDesktop} />
+            <img
+              src={imageMobile}
+              alt={imageAlt}
+              className="block w-full h-auto md:h-full md:object-cover md:object-center"
+            />
+          </picture>
+        </div>
       </Link>
 
       {/* Banner content under image */}
