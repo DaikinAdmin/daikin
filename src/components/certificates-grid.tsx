@@ -79,7 +79,7 @@ const sections: Section[] = [
         title: "KLIMATYZATORY SPLIT / MULTI / SKY AIR NA CZYNNIK R32",
         subtitle: "DAIKIN SZKOLENIE MONTAŻOWE",
         imgSrc:
-          "https://daikinkobierzyce.pl/api/images/certificates/r32-1781167496480.jpg",
+          "https://daikinkobierzyce.pl/api/images/certificates/r32-1781171545495.jpg",
       },
       {
         id: "rezydencyjne",
