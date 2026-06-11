@@ -761,6 +761,30 @@
       "airPurifiers": "Air Purifiers"
     }
   },
+  "realizations": {
+    "hero": {
+      "title": "Our Realizations",
+      "subtitle": "Explore selected projects we have completed – from residential air conditioning installations to advanced commercial HVAC systems."
+    },
+    "items": {
+      "r1": {
+        "title": "Residential Air Conditioning – Wrocław",
+        "description": "Installation of a Daikin Perfera air conditioning system in a modern apartment. Work included fitting indoor and outdoor units, cable routing, and full system commissioning."
+      },
+      "r2": {
+        "title": "Heat Pump – Kobierzyce",
+        "description": "Installation of a Daikin Altherma 3 heat pump in a single-family home. The system provides heating, cooling, and hot water preparation with high energy efficiency."
+      },
+      "r3": {
+        "title": "Multi-Split System – Office",
+        "description": "Complete Daikin multi-split system installation in an office building. The project covered climate control for several zones with different temperature requirements."
+      },
+      "r4": {
+        "title": "VRV – Commercial Property",
+        "description": "Deployment of a Daikin VRV system in a large commercial property. An advanced installation with multiple indoor units managed from a single central controller."
+      }
+    }
+  },
   "signIn": {
     "title": "Sign In",
     "description": "Enter your details below to login to your account",

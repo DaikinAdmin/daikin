@@ -761,6 +761,30 @@
       "airPurifiers": "Oczyszczacze powietrza"
     }
   },
+  "realizations": {
+    "hero": {
+      "title": "Nasze realizacje",
+      "subtitle": "Poznaj wybrane projekty, które zrealizowaliśmy – od domowych instalacji klimatyzacji po zaawansowane systemy HVAC w obiektach komercyjnych."
+    },
+    "items": {
+      "r1": {
+        "title": "Klimatyzacja mieszkalna – Wrocław",
+        "description": "Montaż systemu klimatyzacji Daikin Perfera w nowoczesnym mieszkaniu. Prace obejmowały instalację jednostki wewnętrznej i zewnętrznej, wykonanie przepustów oraz uruchomienie i konfigurację systemu."
+      },
+      "r2": {
+        "title": "Pompa ciepła – Kobierzyce",
+        "description": "Instalacja pompy ciepła Daikin Altherma 3 w domu jednorodzinnym. System zapewnia ogrzewanie, chłodzenie oraz przygotowanie ciepłej wody użytkowej z wysoką efektywnością energetyczną."
+      },
+      "r3": {
+        "title": "System multi-split – biuro",
+        "description": "Kompleksowa instalacja systemu multi-split Daikin w budynku biurowym. Projekt obejmował klimatyzację kilku stref o różnych wymaganiach temperaturowych."
+      },
+      "r4": {
+        "title": "VRV – obiekt komercyjny",
+        "description": "Wdrożenie systemu VRV Daikin w dużym obiekcie komercyjnym. Zaawansowana instalacja obejmująca wiele jednostek wewnętrznych zarządzanych z jednego sterownika centralnego."
+      }
+    }
+  },
   "signIn": {
     "title": "Zaloguj się",
     "description": "Wprowadź swoje dane, aby zalogować się do swojego konta",

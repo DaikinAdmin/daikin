@@ -194,7 +194,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
               {/* Realizację */}
               <Link
-                href="#"
+                href="/realizations"
                 className="px-4 py-2 hover:text-primary rounded-md transition-colors"
                 locale={locale}
               >
@@ -431,14 +431,14 @@ const Header: React.FC<HeaderProps> = (props) => {
               </Link>
 
                 {/* Realizację */}
-                {/* <Link
+              <Link
                 href="/realizations"
                 className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 locale={locale}
               >
                 {t('nav.realizations')}
-              </Link> */}
+              </Link>
               </nav>
 
               {/* Bottom Section - Auth & Language */}
