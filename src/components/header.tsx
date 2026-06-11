@@ -185,11 +185,11 @@ const Header: React.FC<HeaderProps> = (props) => {
 
               {/* Twoja wiedza */}
               <Link
-                href="#"
+                href="/certificates"
                 className="px-4 py-2 hover:text-primary rounded-md transition-colors"
                 locale={locale}
               >
-                {t("nav.knowledge")}
+                {t("nav.certificates")}
               </Link>
 
               {/* Realizację */}
@@ -399,6 +399,16 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </Link>
                   </div>
                 </div>
+
+                {/* Certyfikaty */}
+                <Link
+                  href="/certificates"
+                  className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                  locale={locale}
+                >
+                  {t("nav.certificates")}
+                </Link>
 
                 {/* Wiadomości */}
                 <Link
