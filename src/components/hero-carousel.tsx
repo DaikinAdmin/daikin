@@ -11,9 +11,9 @@ export function HeroCarousel() {
   const t = useTranslations("home.hero.banner");
 
   const imageDesktop =
-    "/banners/cieploapp-desktop.png";
+    "/banners/cieploapp-desktop.webp";
   const imageMobile =
-    "/banners/cieploapp-mobile.png";
+    "/banners/cieploapp-mobile.webp";
   const imageAlt = t("imageAlt");
   const description = t("description"); 
   const shortDescription = t("shortDescription");
