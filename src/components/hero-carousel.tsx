@@ -11,17 +11,17 @@ export function HeroCarousel() {
   const t = useTranslations("home.hero.banner");
 
   const imageDesktop =
-    "/pc-test.png";
+    "/banners/cieploapp-desktop.png";
   const imageMobile =
-    "/mobile-test.png";
+    "/banners/cieploapp-mobile.png";
   const imageAlt = t("imageAlt");
-  const description = t("description");
+  const description = t("description"); 
   const shortDescription = t("shortDescription");
 
   return (
     <section className="bg-white mb-8 md:mb-0">
       {/* Banner image (desktop/mobile) */}
-      <Link href="?visit=1" className="block w-full">
+      <Link href="https://ammproject.cieplo.app/" className="block w-full">
         <div className="w-full overflow-hidden md:aspect-[32/15] xl:aspect-auto xl:h-[37.5rem]">
           <picture>
             <source media="(min-width: 768px)" srcSet={imageDesktop} />
