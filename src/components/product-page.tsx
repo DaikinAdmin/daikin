@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useBanner } from "@/hooks/use-banner";
 
 export default function ProductTemplatePage({
   heroTitle,
@@ -17,8 +18,13 @@ export default function ProductTemplatePage({
 }: ProductPageProps) {
   const t = useTranslations("productPage");
   const locale = useLocale();
-  const rawBanner = t(`${categorySlug}.banner`, { default: "" }) as string;
+  const { banners } = useBanner(categorySlug);
+  // Banners come from the admin panel; translations stay as fallback
+  const rawBanner =
+    banners.desktop?.img ?? (t(`${categorySlug}.banner`, { default: "" }) as string);
+  const rawBannerMobile = banners.mobile?.img ?? rawBanner;
   const bannerSrc = rawBanner ? encodeURI(rawBanner) : "";
+  const bannerMobileSrc = rawBannerMobile ? encodeURI(rawBannerMobile) : "";
   const productsRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -28,11 +34,19 @@ export default function ProductTemplatePage({
         <section className="w-full">
           <div className="relative w-full h-[250px] lg:h-[650px]">
             <Image
+              src={bannerMobileSrc}
+              alt={heroTitle || "Banner"}
+              fill
+              unoptimized
+              className="object-cover lg:hidden"
+              priority
+            />
+            <Image
               src={bannerSrc}
               alt={heroTitle || "Banner"}
               fill
               unoptimized
-              className="object-cover"
+              className="object-cover hidden lg:block"
               priority
             />
           </div>

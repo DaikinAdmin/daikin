@@ -5,15 +5,22 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Icon } from "@iconify-icon/react";
 import { Button } from "@/components/ui/button";
+import { useBanner } from "@/hooks/use-banner";
 
 // Static responsive banner (no carousel for now)
 export function HeroCarousel() {
   const t = useTranslations("home.hero.banner");
+  const { banners } = useBanner("home");
 
+  // Banners come from the admin panel; the hardcoded files stay as fallback
   const imageDesktop =
-    "/banners/cieploapp-desktop.webp";
+    banners.desktop?.img ?? "/banners/cieploapp-desktop.webp";
   const imageMobile =
-    "/banners/cieploapp-mobile.webp";
+    banners.mobile?.img ?? "/banners/cieploapp-mobile.webp";
+  // A configured banner brings its own link (which may be empty)
+  const bannerLink = banners.desktop
+    ? banners.desktop.link ?? banners.mobile?.link ?? ""
+    : "https://ammproject.cieplo.app/";
   const imageAlt = t("imageAlt");
   const description = t("description"); 
   const shortDescription = t("shortDescription");
@@ -21,7 +28,7 @@ export function HeroCarousel() {
   return (
     <section className="bg-white mb-8 md:mb-0">
       {/* Banner image (desktop/mobile) */}
-      <Link href="https://ammproject.cieplo.app/" className="block w-full">
+      <BannerLinkWrapper href={bannerLink}>
         <div className="w-full overflow-hidden md:aspect-[32/15] xl:aspect-auto xl:h-[37.5rem]">
           <picture>
             <source media="(min-width: 768px)" srcSet={imageDesktop} />
@@ -32,7 +39,7 @@ export function HeroCarousel() {
             />
           </picture>
         </div>
-      </Link>
+      </BannerLinkWrapper>
 
       {/* Banner content under image */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-4 grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-8 items-start">
@@ -79,5 +86,22 @@ export function HeroCarousel() {
         </div>
       </div>
     </section>
+  );
+}
+
+/** Wraps the banner in a link only when the banner has one configured. */
+function BannerLinkWrapper({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  if (!href) return <div className="block w-full">{children}</div>;
+
+  return (
+    <Link href={href} className="block w-full">
+      {children}
+    </Link>
   );
 }

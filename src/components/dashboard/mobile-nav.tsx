@@ -19,6 +19,8 @@ import {
   Layers,
   Sparkles,
   Package,
+  ImageIcon,
+  Camera,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
@@ -115,6 +117,16 @@ const getRoleNavItems = (t: any): Record<UserRole, Array<{
       title: "Features",
       href: "/dashboard/features",
       icon: Sparkles,
+    },
+    {
+      title: "Banners",
+      href: "/dashboard/banners",
+      icon: ImageIcon,
+    },
+    {
+      title: "Realizations",
+      href: "/dashboard/realizations",
+      icon: Camera,
     },
     {
       title: "Benefits",

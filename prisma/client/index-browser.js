@@ -370,6 +370,16 @@ exports.Prisma.BannersScalarFieldEnum = {
   isMobile: 'isMobile'
 };
 
+exports.Prisma.RealizationPhotoScalarFieldEnum = {
+  id: 'id',
+  img: 'img',
+  alt: 'alt',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.Products_carouselScalarFieldEnum = {
   id: 'id',
   productSlug: 'productSlug',
@@ -426,6 +436,7 @@ exports.Prisma.ModelName = {
   Feature: 'Feature',
   FeatureTranslation: 'FeatureTranslation',
   banners: 'banners',
+  RealizationPhoto: 'RealizationPhoto',
   products_carousel: 'products_carousel'
 };
 

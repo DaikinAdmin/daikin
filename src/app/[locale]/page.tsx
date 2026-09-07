@@ -12,6 +12,7 @@ import { use, Suspense } from "react";
 import WhyChooseSection from "@/components/why-choose";
 import type { Metadata } from "next";
 import { VisitModalController } from "@/components/visit-modal-controller";
+import { HOME_WHY_CHOOSE_IMAGES } from "@/data/why-choose-images";
 
 export async function generateMetadata({
   params,
@@ -78,20 +79,20 @@ export default function Home({
         subtitle="Liderujemy w branży dzięki innowacyjnej technologii i doskonałej wydajności"
         leftItem={{
           id: "left1",
-          image: t("whyChoose.left1.image"),
+          image: HOME_WHY_CHOOSE_IMAGES.left1,
           title: t("whyChoose.left1.title"),
           description: t("whyChoose.left1.description"),
         }}
         rightItems={[
           {
             id: "right1",
-            image: t("whyChoose.right1.image"),
+            image: HOME_WHY_CHOOSE_IMAGES.right1,
             title: t("whyChoose.right1.title"),
             description: t("whyChoose.right1.description"),
           },
           {
             id: "right2",
-            image: t("whyChoose.right2.image"),
+            image: HOME_WHY_CHOOSE_IMAGES.right2,
             title: t("whyChoose.right2.title"),
             description: t("whyChoose.right2.description"),
           },

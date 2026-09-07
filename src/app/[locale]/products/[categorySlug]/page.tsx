@@ -7,6 +7,7 @@ import ProductTemplatePage from "@/components/product-page";
 import WhyChooseSection from "@/components/why-choose";
 import { Product } from "@/types/product";
 import { use, useEffect, useState } from "react";
+import { getProductWhyChooseImages } from "@/data/why-choose-images";
 
 export default function ProductsPage({
   params,
@@ -15,6 +16,7 @@ export default function ProductsPage({
 }) {
   const { locale, categorySlug } = use(params);
   const t = useTranslations("productPage");
+  const whyChooseImages = getProductWhyChooseImages(categorySlug);
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -72,7 +74,7 @@ export default function ProductsPage({
         subtitle={t(`${categorySlug}.whyChoose.subtitle`)}
         leftItem={{
           id: "left1",
-          image: t(`${categorySlug}.whyChoose.left1.image`),
+          image: whyChooseImages.left1,
           title: t(`${categorySlug}.whyChoose.left1.title`),
           description:
             t(`${categorySlug}.whyChoose.left1.description`),
@@ -80,14 +82,14 @@ export default function ProductsPage({
         rightItems={[
           {
             id: "right1",
-            image: t(`${categorySlug}.whyChoose.right1.image`),
+            image: whyChooseImages.right1,
             title: t(`${categorySlug}.whyChoose.right1.title`),
             description:
               t(`${categorySlug}.whyChoose.right1.description`),
           },
           {
             id: "right2",
-            image: t(`${categorySlug}.whyChoose.right2.image`),
+            image: whyChooseImages.right2,
             title: t(`${categorySlug}.whyChoose.right2.title`),
             description:
               t(`${categorySlug}.whyChoose.right2.description`),

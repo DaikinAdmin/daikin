@@ -731,6 +731,65 @@
       "cancel": "Cancel",
       "confirmRedeem": "Confirm & Redeem",
       "redeeming": "Redeeming..."
+    },
+    "banners": {
+      "title": "Banners management",
+      "addBanner": "Add banner",
+      "editBanner": "Edit banner",
+      "allBanners": "All banners",
+      "allLocations": "All locations",
+      "fallbackHint": "When there is no banner for the requested language, the fallback order is PL, EN, UA. When there is no mobile banner, the desktop one is shown.",
+      "formDescription": "Pick an image, a location, a language and the device type.",
+      "noBanners": "No banners found",
+      "preview": "Preview",
+      "image": "Image",
+      "selectImage": "Select image",
+      "changeImage": "Change image",
+      "imageRequired": "Image is required",
+      "location": "Location",
+      "locale": "Language",
+      "device": "Device",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "isMobile": "Mobile banner",
+      "link": "Link",
+      "active": "Active",
+      "actions": "Actions",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "areYouSure": "Are you sure?",
+      "deleteConfirmation": "This action cannot be undone. The banner will be permanently deleted."
+    },
+    "realizations": {
+      "title": "Realizations management",
+      "addPhoto": "Add photo",
+      "editPhoto": "Edit photo",
+      "allPhotos": "All photos",
+      "orderHint": "Use the arrows to set the order of the photos on the realizations page.",
+      "formDescription": "Pick a photo and fill in its alternative text.",
+      "noPhotos": "No photos found",
+      "order": "Order",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "preview": "Preview",
+      "image": "Photo",
+      "selectImage": "Select photo",
+      "changeImage": "Change photo",
+      "imageRequired": "Photo is required",
+      "alt": "Alt text",
+      "altPlaceholder": "e.g. Daikin air conditioning installation",
+      "active": "Active",
+      "actions": "Actions",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "areYouSure": "Are you sure?",
+      "deleteConfirmation": "This action cannot be undone. The photo will be permanently deleted."
     }
   },
   "footer": {
@@ -1151,18 +1210,15 @@
         "subtitle": "Daikin devices lead the industry with innovative technology and excellent performance",
         "left1": {
           "title": "Excellent Performance",
-          "description": "Industry-leading SEER ratings that reduce energy costs while providing year-round comfort.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/czyste_powietrze-1765210725323.jpg"
+          "description": "Industry-leading SEER ratings that reduce energy costs while providing year-round comfort."
         },
         "right1": {
           "title": "Clean Air",
-          "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonaly_komfort-1765210718053.jpg"
+          "description": "Multi-stage filtration systems remove allergens, dust, and odors for healthier indoor air quality."
         },
         "right2": {
           "title": "Excellent Comfort",
-          "description": "Advanced climate control technology ensures consistent temperature and humidity throughout the space.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonala_wydajnosc-1765210707161.jpg"
+          "description": "Advanced climate control technology ensures consistent temperature and humidity throughout the space."
         }
       }
     },
@@ -1181,18 +1237,15 @@
         "subtitle": "Daikin devices lead the industry with innovative technology and excellent performance",
         "left1": {
           "title": "Durability and Reliability",
-          "description": "Japanese engineering guarantees long device lifespan. The technology is designed to operate stably even in the toughest conditions.",
-          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla1-1765266488522.jpg"
+          "description": "Japanese engineering guarantees long device lifespan. The technology is designed to operate stably even in the toughest conditions."
         },
         "right1": {
           "title": "Energy Efficiency",
-          "description": "Advanced Daikin technology extracts energy from the environment and converts it into heat with minimal electricity consumption.",
-          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla2-1765266506015.jpg"
+          "description": "Advanced Daikin technology extracts energy from the environment and converts it into heat with minimal electricity consumption."
         },
         "right2": {
           "title": "Year-Round Comfort",
-          "description": "The system automatically adjusts heating and cooling power to home conditions, maintaining the ideal temperature.",
-          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla3-1765266515323.jpg"
+          "description": "The system automatically adjusts heating and cooling power to home conditions, maintaining the ideal temperature."
         }
       }
     },
@@ -1211,18 +1264,15 @@
         "subtitle": "Daikin devices lead the industry with innovative technology and excellent performance",
         "left1": {
           "title": "Effective Pollutant Capture",
-          "description": "HEPA filter captures dust and airborne substances along with harmful gases, while Streamer technology breaks down gases.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz _powietrza1-1765269773035.jpg"
+          "description": "HEPA filter captures dust and airborne substances along with harmful gases, while Streamer technology breaks down gases."
         },
         "right1": {
           "title": "Purification Efficiency",
-          "description": "Our unique tower structure draws air over a large area from 3 directions.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza2-1765269782059.jpg"
+          "description": "Our unique tower structure draws air over a large area from 3 directions."
         },
         "right2": {
           "title": "Decomposition",
-          "description": "Streamer technology decomposes harmful substances trapped on the filter through oxidation.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza3-1765269791100.jpg"
+          "description": "Streamer technology decomposes harmful substances trapped on the filter through oxidation."
         }
       }
     }

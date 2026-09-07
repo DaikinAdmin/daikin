@@ -731,6 +731,65 @@
       "cancel": "Anuluj",
       "confirmRedeem": "Potwierdź i zrealizuj",
       "redeeming": "Realizowanie..."
+    },
+    "banners": {
+      "title": "Zarządzanie banerami",
+      "addBanner": "Dodaj baner",
+      "editBanner": "Edytuj baner",
+      "allBanners": "Wszystkie banery",
+      "allLocations": "Wszystkie lokalizacje",
+      "fallbackHint": "Jeśli nie ma banera dla wybranego języka, wyświetlany jest baner w kolejności: PL, EN, UA. Jeśli nie ma wersji mobilnej, wyświetlana jest wersja desktopowa.",
+      "formDescription": "Wybierz obraz, lokalizację, język i typ urządzenia.",
+      "noBanners": "Nie znaleziono banerów",
+      "preview": "Podgląd",
+      "image": "Obraz",
+      "selectImage": "Wybierz obraz",
+      "changeImage": "Zmień obraz",
+      "imageRequired": "Obraz jest wymagany",
+      "location": "Lokalizacja",
+      "locale": "Język",
+      "device": "Urządzenie",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "isMobile": "Baner mobilny",
+      "link": "Link",
+      "active": "Aktywny",
+      "actions": "Akcje",
+      "save": "Zapisz",
+      "saving": "Zapisywanie...",
+      "cancel": "Anuluj",
+      "delete": "Usuń",
+      "deleting": "Usuwanie...",
+      "areYouSure": "Czy na pewno?",
+      "deleteConfirmation": "Ta akcja nie może zostać cofnięta. Baner zostanie trwale usunięty."
+    },
+    "realizations": {
+      "title": "Zarządzanie realizacjami",
+      "addPhoto": "Dodaj zdjęcie",
+      "editPhoto": "Edytuj zdjęcie",
+      "allPhotos": "Wszystkie zdjęcia",
+      "orderHint": "Kolejność zdjęć na stronie realizacji ustawiasz strzałkami.",
+      "formDescription": "Wybierz zdjęcie i uzupełnij opis alternatywny.",
+      "noPhotos": "Nie znaleziono zdjęć",
+      "order": "Kolejność",
+      "moveUp": "Przenieś w górę",
+      "moveDown": "Przenieś w dół",
+      "preview": "Podgląd",
+      "image": "Zdjęcie",
+      "selectImage": "Wybierz zdjęcie",
+      "changeImage": "Zmień zdjęcie",
+      "imageRequired": "Zdjęcie jest wymagane",
+      "alt": "Opis alternatywny",
+      "altPlaceholder": "np. Montaż klimatyzacji Daikin",
+      "active": "Aktywne",
+      "actions": "Akcje",
+      "save": "Zapisz",
+      "saving": "Zapisywanie...",
+      "cancel": "Anuluj",
+      "delete": "Usuń",
+      "deleting": "Usuwanie...",
+      "areYouSure": "Czy na pewno?",
+      "deleteConfirmation": "Ta akcja nie może zostać cofnięta. Zdjęcie zostanie trwale usunięte."
     }
   },
   "footer": {
@@ -1151,18 +1210,15 @@
         "subtitle": "Urządzenia firmy Daikin liderują w branży dzięki innowacyjnej technologii i doskonałej wydajności",
         "left1": {
           "title": "Doskonała wydajność",
-          "description": "Wiodące w branży oceny SEER, które obniżają koszty energii, zapewniając komfort przez cały rok.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/czyste_powietrze-1765210725323.jpg"
+          "description": "Wiodące w branży oceny SEER, które obniżają koszty energii, zapewniając komfort przez cały rok."
         },
         "right1": {
           "title": "Czyste powietrze",
-          "description": "Wieloetapowe systemy filtracji usuwają alergeny, kurz i zapachy dla zdrowszej jakości powietrza wewnętrznego.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonaly_komfort-1765210718053.jpg"
+          "description": "Wieloetapowe systemy filtracji usuwają alergeny, kurz i zapachy dla zdrowszej jakości powietrza wewnętrznego."
         },
         "right2": {
           "title": "Doskonały komfort",
-          "description": "Zaawansowana technologia kontroli klimatu zapewnia stałą temperaturę i wilgotność w całej przestrzeni.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-conditioning/Doskonala_wydajnosc-1765210707161.jpg"
+          "description": "Zaawansowana technologia kontroli klimatu zapewnia stałą temperaturę i wilgotność w całej przestrzeni."
         }
       }
     },
@@ -1181,18 +1237,15 @@
         "subtitle": "Urządzenia firmy Daikin liderują w branży dzięki innowacyjnej technologii i doskonałej wydajności",
         "left1": {
           "title": "Trwałość i niezawodność",
-          "description": "Japońska inżynieria to gwarancja długiej żywotności urządzenia. Technologia została zaprojektowana tak, by stabilnie pracować nawet w najtrudniejszych warunkach.",
-          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla1-1765266488522.jpg"
+          "description": "Japońska inżynieria to gwarancja długiej żywotności urządzenia. Technologia została zaprojektowana tak, by stabilnie pracować nawet w najtrudniejszych warunkach."
         },
         "right1": {
           "title": "Efektywność energetyczna",
-          "description": "Zaawansowana technologia Daikin pozwala pobierać energię z otoczenia i przekształcać ją w ciepło przy minimalnym zużyciu prądu.",
-          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla2-1765266506015.jpg"
+          "description": "Zaawansowana technologia Daikin pozwala pobierać energię z otoczenia i przekształcać ją w ciepło przy minimalnym zużyciu prądu."
         },
         "right2": {
           "title": "Komfort przez cały rok",
-          "description": "System sam dostosowuje moc ogrzewania i chłodzenia do warunków w domu, utrzymując idealną temperaturę.",
-          "image": "https://daikinkobierzyce.pl/api/images/heat-pumps/dlaczego_pompa_ciepla3-1765266515323.jpg"
+          "description": "System sam dostosowuje moc ogrzewania i chłodzenia do warunków w domu, utrzymując idealną temperaturę."
         }
       }
     },
@@ -1211,23 +1264,20 @@
         "subtitle": "Liderujemy w branży dzięki innowacyjnej technologii i doskonał ej wydajności",
         "left1": {
           "title": "Skuteczne wychwytywanie zanieczyszczeń",
-          "description": "Filtr HEPA zatrzymujący kurz wychwytuje substancje unoszące się razem ze szkodliwymi gazami, a technologia Streamer rozkłada gazy.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz _powietrza1-1765269773035.jpg"
+          "description": "Filtr HEPA zatrzymujący kurz wychwytuje substancje unoszące się razem ze szkodliwymi gazami, a technologia Streamer rozkłada gazy."
         },
         "right1": {
           "title": "Wydajność oczyszczania",
-          "description": "Nasza unikalna wieżowa struktura pobiera powietrze na dużym obszarze z 3 kierunków.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza2-1765269782059.jpg"
+          "description": "Nasza unikalna wieżowa struktura pobiera powietrze na dużym obszarze z 3 kierunków."
         },
         "right2": {
           "title": "Rozkład",
-          "description": "Technologia Streamer służy do rozkładu szkodliwych substancji zatrzymanych na filtrze poprzez utlenianie.",
-          "image": "https://daikinkobierzyce.pl/api/images/air-purifiers/dlaczego_oczyszczacz_powietrza3-1765269791100.jpg"
+          "description": "Technologia Streamer służy do rozkładu szkodliwych substancji zatrzymanych na filtrze poprzez utlenianie."
         }
       }
     }
   },
-    "getQuoteModal": {
+  "getQuoteModal": {
     "title": "Skontaktuj się z nami - o resztę zadbamy my!",
     "name": "Imię i Nazwisko",
     "namePlaceholder": "Wpisz Imię i Nazwisko",
@@ -1246,18 +1296,18 @@
     "successMessage": "Dziękujemy za Twoje zapytanie! Skontaktujemy się z Tobą wkrótce.",
     "errorMessage": "Wystąpił błąd podczas wysyłania zapytania. Proszę spróbuj ponownie później.",
     "interests": {
-        "options": {
-          "ac" : "Klimatyzacja",
-          "hp" : "Pompy ciepła",
-          "ap" : "Oczyszczacze powietrza"
-        },
-        "services": {
-          "installation" : "Usługi instalacyjne",
-          "maintenance" : "Usługi serwisowe"
-        },
-        "groups":{
-          "products": "Produkty",
-          "services": "Usługi"
+      "options": {
+        "ac": "Klimatyzacja",
+        "hp": "Pompy ciepła",
+        "ap": "Oczyszczacze powietrza"
+      },
+      "services": {
+        "installation": "Usługi instalacyjne",
+        "maintenance": "Usługi serwisowe"
+      },
+      "groups": {
+        "products": "Produkty",
+        "services": "Usługi"
       }
     }
   },

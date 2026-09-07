@@ -134,6 +134,11 @@ export type FeatureTranslation = $Result.DefaultSelection<Prisma.$FeatureTransla
  */
 export type banners = $Result.DefaultSelection<Prisma.$bannersPayload>
 /**
+ * Model RealizationPhoto
+ * 
+ */
+export type RealizationPhoto = $Result.DefaultSelection<Prisma.$RealizationPhotoPayload>
+/**
  * Model products_carousel
  * 
  */
@@ -513,6 +518,16 @@ export class PrismaClient<
     * ```
     */
   get banners(): Prisma.bannersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.realizationPhoto`: Exposes CRUD operations for the **RealizationPhoto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RealizationPhotos
+    * const realizationPhotos = await prisma.realizationPhoto.findMany()
+    * ```
+    */
+  get realizationPhoto(): Prisma.RealizationPhotoDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.products_carousel`: Exposes CRUD operations for the **products_carousel** model.
@@ -981,6 +996,7 @@ export namespace Prisma {
     Feature: 'Feature',
     FeatureTranslation: 'FeatureTranslation',
     banners: 'banners',
+    RealizationPhoto: 'RealizationPhoto',
     products_carousel: 'products_carousel'
   };
 
@@ -997,7 +1013,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "userDetails" | "session" | "account" | "verification" | "twoFactor" | "order" | "orderProduct" | "benefitDescription" | "benefits" | "service" | "category" | "categoryTranslation" | "product" | "productSpecs" | "productImages" | "productTranslation" | "productItems" | "productItemsLookup" | "productItemsTranslation" | "productItemsLookupTranslation" | "feature" | "featureTranslation" | "banners" | "products_carousel"
+      modelProps: "user" | "userDetails" | "session" | "account" | "verification" | "twoFactor" | "order" | "orderProduct" | "benefitDescription" | "benefits" | "service" | "category" | "categoryTranslation" | "product" | "productSpecs" | "productImages" | "productTranslation" | "productItems" | "productItemsLookup" | "productItemsTranslation" | "productItemsLookupTranslation" | "feature" | "featureTranslation" | "banners" | "realizationPhoto" | "products_carousel"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2777,6 +2793,80 @@ export namespace Prisma {
           }
         }
       }
+      RealizationPhoto: {
+        payload: Prisma.$RealizationPhotoPayload<ExtArgs>
+        fields: Prisma.RealizationPhotoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RealizationPhotoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RealizationPhotoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>
+          }
+          findFirst: {
+            args: Prisma.RealizationPhotoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RealizationPhotoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>
+          }
+          findMany: {
+            args: Prisma.RealizationPhotoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>[]
+          }
+          create: {
+            args: Prisma.RealizationPhotoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>
+          }
+          createMany: {
+            args: Prisma.RealizationPhotoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RealizationPhotoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>[]
+          }
+          delete: {
+            args: Prisma.RealizationPhotoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>
+          }
+          update: {
+            args: Prisma.RealizationPhotoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>
+          }
+          deleteMany: {
+            args: Prisma.RealizationPhotoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RealizationPhotoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RealizationPhotoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>[]
+          }
+          upsert: {
+            args: Prisma.RealizationPhotoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RealizationPhotoPayload>
+          }
+          aggregate: {
+            args: Prisma.RealizationPhotoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRealizationPhoto>
+          }
+          groupBy: {
+            args: Prisma.RealizationPhotoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RealizationPhotoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RealizationPhotoCountArgs<ExtArgs>
+            result: $Utils.Optional<RealizationPhotoCountAggregateOutputType> | number
+          }
+        }
+      }
       products_carousel: {
         payload: Prisma.$products_carouselPayload<ExtArgs>
         fields: Prisma.products_carouselFieldRefs
@@ -2983,6 +3073,7 @@ export namespace Prisma {
     feature?: FeatureOmit
     featureTranslation?: FeatureTranslationOmit
     banners?: bannersOmit
+    realizationPhoto?: RealizationPhotoOmit
     products_carousel?: products_carouselOmit
   }
 
@@ -30197,6 +30288,1061 @@ export namespace Prisma {
 
 
   /**
+   * Model RealizationPhoto
+   */
+
+  export type AggregateRealizationPhoto = {
+    _count: RealizationPhotoCountAggregateOutputType | null
+    _avg: RealizationPhotoAvgAggregateOutputType | null
+    _sum: RealizationPhotoSumAggregateOutputType | null
+    _min: RealizationPhotoMinAggregateOutputType | null
+    _max: RealizationPhotoMaxAggregateOutputType | null
+  }
+
+  export type RealizationPhotoAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type RealizationPhotoSumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type RealizationPhotoMinAggregateOutputType = {
+    id: string | null
+    img: string | null
+    alt: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RealizationPhotoMaxAggregateOutputType = {
+    id: string | null
+    img: string | null
+    alt: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RealizationPhotoCountAggregateOutputType = {
+    id: number
+    img: number
+    alt: number
+    sortOrder: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RealizationPhotoAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type RealizationPhotoSumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type RealizationPhotoMinAggregateInputType = {
+    id?: true
+    img?: true
+    alt?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RealizationPhotoMaxAggregateInputType = {
+    id?: true
+    img?: true
+    alt?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RealizationPhotoCountAggregateInputType = {
+    id?: true
+    img?: true
+    alt?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RealizationPhotoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RealizationPhoto to aggregate.
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealizationPhotos to fetch.
+     */
+    orderBy?: RealizationPhotoOrderByWithRelationInput | RealizationPhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RealizationPhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealizationPhotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealizationPhotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RealizationPhotos
+    **/
+    _count?: true | RealizationPhotoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RealizationPhotoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RealizationPhotoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RealizationPhotoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RealizationPhotoMaxAggregateInputType
+  }
+
+  export type GetRealizationPhotoAggregateType<T extends RealizationPhotoAggregateArgs> = {
+        [P in keyof T & keyof AggregateRealizationPhoto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRealizationPhoto[P]>
+      : GetScalarType<T[P], AggregateRealizationPhoto[P]>
+  }
+
+
+
+
+  export type RealizationPhotoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RealizationPhotoWhereInput
+    orderBy?: RealizationPhotoOrderByWithAggregationInput | RealizationPhotoOrderByWithAggregationInput[]
+    by: RealizationPhotoScalarFieldEnum[] | RealizationPhotoScalarFieldEnum
+    having?: RealizationPhotoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RealizationPhotoCountAggregateInputType | true
+    _avg?: RealizationPhotoAvgAggregateInputType
+    _sum?: RealizationPhotoSumAggregateInputType
+    _min?: RealizationPhotoMinAggregateInputType
+    _max?: RealizationPhotoMaxAggregateInputType
+  }
+
+  export type RealizationPhotoGroupByOutputType = {
+    id: string
+    img: string
+    alt: string | null
+    sortOrder: number
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: RealizationPhotoCountAggregateOutputType | null
+    _avg: RealizationPhotoAvgAggregateOutputType | null
+    _sum: RealizationPhotoSumAggregateOutputType | null
+    _min: RealizationPhotoMinAggregateOutputType | null
+    _max: RealizationPhotoMaxAggregateOutputType | null
+  }
+
+  type GetRealizationPhotoGroupByPayload<T extends RealizationPhotoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RealizationPhotoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RealizationPhotoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RealizationPhotoGroupByOutputType[P]>
+            : GetScalarType<T[P], RealizationPhotoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RealizationPhotoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    img?: boolean
+    alt?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["realizationPhoto"]>
+
+  export type RealizationPhotoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    img?: boolean
+    alt?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["realizationPhoto"]>
+
+  export type RealizationPhotoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    img?: boolean
+    alt?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["realizationPhoto"]>
+
+  export type RealizationPhotoSelectScalar = {
+    id?: boolean
+    img?: boolean
+    alt?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RealizationPhotoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "img" | "alt" | "sortOrder" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["realizationPhoto"]>
+
+  export type $RealizationPhotoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RealizationPhoto"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      img: string
+      alt: string | null
+      sortOrder: number
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["realizationPhoto"]>
+    composites: {}
+  }
+
+  type RealizationPhotoGetPayload<S extends boolean | null | undefined | RealizationPhotoDefaultArgs> = $Result.GetResult<Prisma.$RealizationPhotoPayload, S>
+
+  type RealizationPhotoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RealizationPhotoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RealizationPhotoCountAggregateInputType | true
+    }
+
+  export interface RealizationPhotoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RealizationPhoto'], meta: { name: 'RealizationPhoto' } }
+    /**
+     * Find zero or one RealizationPhoto that matches the filter.
+     * @param {RealizationPhotoFindUniqueArgs} args - Arguments to find a RealizationPhoto
+     * @example
+     * // Get one RealizationPhoto
+     * const realizationPhoto = await prisma.realizationPhoto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RealizationPhotoFindUniqueArgs>(args: SelectSubset<T, RealizationPhotoFindUniqueArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RealizationPhoto that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RealizationPhotoFindUniqueOrThrowArgs} args - Arguments to find a RealizationPhoto
+     * @example
+     * // Get one RealizationPhoto
+     * const realizationPhoto = await prisma.realizationPhoto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RealizationPhotoFindUniqueOrThrowArgs>(args: SelectSubset<T, RealizationPhotoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RealizationPhoto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoFindFirstArgs} args - Arguments to find a RealizationPhoto
+     * @example
+     * // Get one RealizationPhoto
+     * const realizationPhoto = await prisma.realizationPhoto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RealizationPhotoFindFirstArgs>(args?: SelectSubset<T, RealizationPhotoFindFirstArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RealizationPhoto that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoFindFirstOrThrowArgs} args - Arguments to find a RealizationPhoto
+     * @example
+     * // Get one RealizationPhoto
+     * const realizationPhoto = await prisma.realizationPhoto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RealizationPhotoFindFirstOrThrowArgs>(args?: SelectSubset<T, RealizationPhotoFindFirstOrThrowArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RealizationPhotos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RealizationPhotos
+     * const realizationPhotos = await prisma.realizationPhoto.findMany()
+     * 
+     * // Get first 10 RealizationPhotos
+     * const realizationPhotos = await prisma.realizationPhoto.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const realizationPhotoWithIdOnly = await prisma.realizationPhoto.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RealizationPhotoFindManyArgs>(args?: SelectSubset<T, RealizationPhotoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RealizationPhoto.
+     * @param {RealizationPhotoCreateArgs} args - Arguments to create a RealizationPhoto.
+     * @example
+     * // Create one RealizationPhoto
+     * const RealizationPhoto = await prisma.realizationPhoto.create({
+     *   data: {
+     *     // ... data to create a RealizationPhoto
+     *   }
+     * })
+     * 
+     */
+    create<T extends RealizationPhotoCreateArgs>(args: SelectSubset<T, RealizationPhotoCreateArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RealizationPhotos.
+     * @param {RealizationPhotoCreateManyArgs} args - Arguments to create many RealizationPhotos.
+     * @example
+     * // Create many RealizationPhotos
+     * const realizationPhoto = await prisma.realizationPhoto.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RealizationPhotoCreateManyArgs>(args?: SelectSubset<T, RealizationPhotoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RealizationPhotos and returns the data saved in the database.
+     * @param {RealizationPhotoCreateManyAndReturnArgs} args - Arguments to create many RealizationPhotos.
+     * @example
+     * // Create many RealizationPhotos
+     * const realizationPhoto = await prisma.realizationPhoto.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RealizationPhotos and only return the `id`
+     * const realizationPhotoWithIdOnly = await prisma.realizationPhoto.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RealizationPhotoCreateManyAndReturnArgs>(args?: SelectSubset<T, RealizationPhotoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RealizationPhoto.
+     * @param {RealizationPhotoDeleteArgs} args - Arguments to delete one RealizationPhoto.
+     * @example
+     * // Delete one RealizationPhoto
+     * const RealizationPhoto = await prisma.realizationPhoto.delete({
+     *   where: {
+     *     // ... filter to delete one RealizationPhoto
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RealizationPhotoDeleteArgs>(args: SelectSubset<T, RealizationPhotoDeleteArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RealizationPhoto.
+     * @param {RealizationPhotoUpdateArgs} args - Arguments to update one RealizationPhoto.
+     * @example
+     * // Update one RealizationPhoto
+     * const realizationPhoto = await prisma.realizationPhoto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RealizationPhotoUpdateArgs>(args: SelectSubset<T, RealizationPhotoUpdateArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RealizationPhotos.
+     * @param {RealizationPhotoDeleteManyArgs} args - Arguments to filter RealizationPhotos to delete.
+     * @example
+     * // Delete a few RealizationPhotos
+     * const { count } = await prisma.realizationPhoto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RealizationPhotoDeleteManyArgs>(args?: SelectSubset<T, RealizationPhotoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RealizationPhotos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RealizationPhotos
+     * const realizationPhoto = await prisma.realizationPhoto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RealizationPhotoUpdateManyArgs>(args: SelectSubset<T, RealizationPhotoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RealizationPhotos and returns the data updated in the database.
+     * @param {RealizationPhotoUpdateManyAndReturnArgs} args - Arguments to update many RealizationPhotos.
+     * @example
+     * // Update many RealizationPhotos
+     * const realizationPhoto = await prisma.realizationPhoto.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RealizationPhotos and only return the `id`
+     * const realizationPhotoWithIdOnly = await prisma.realizationPhoto.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RealizationPhotoUpdateManyAndReturnArgs>(args: SelectSubset<T, RealizationPhotoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RealizationPhoto.
+     * @param {RealizationPhotoUpsertArgs} args - Arguments to update or create a RealizationPhoto.
+     * @example
+     * // Update or create a RealizationPhoto
+     * const realizationPhoto = await prisma.realizationPhoto.upsert({
+     *   create: {
+     *     // ... data to create a RealizationPhoto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RealizationPhoto we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RealizationPhotoUpsertArgs>(args: SelectSubset<T, RealizationPhotoUpsertArgs<ExtArgs>>): Prisma__RealizationPhotoClient<$Result.GetResult<Prisma.$RealizationPhotoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RealizationPhotos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoCountArgs} args - Arguments to filter RealizationPhotos to count.
+     * @example
+     * // Count the number of RealizationPhotos
+     * const count = await prisma.realizationPhoto.count({
+     *   where: {
+     *     // ... the filter for the RealizationPhotos we want to count
+     *   }
+     * })
+    **/
+    count<T extends RealizationPhotoCountArgs>(
+      args?: Subset<T, RealizationPhotoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RealizationPhotoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RealizationPhoto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RealizationPhotoAggregateArgs>(args: Subset<T, RealizationPhotoAggregateArgs>): Prisma.PrismaPromise<GetRealizationPhotoAggregateType<T>>
+
+    /**
+     * Group by RealizationPhoto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RealizationPhotoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RealizationPhotoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RealizationPhotoGroupByArgs['orderBy'] }
+        : { orderBy?: RealizationPhotoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RealizationPhotoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRealizationPhotoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RealizationPhoto model
+   */
+  readonly fields: RealizationPhotoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RealizationPhoto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RealizationPhotoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RealizationPhoto model
+   */
+  interface RealizationPhotoFieldRefs {
+    readonly id: FieldRef<"RealizationPhoto", 'String'>
+    readonly img: FieldRef<"RealizationPhoto", 'String'>
+    readonly alt: FieldRef<"RealizationPhoto", 'String'>
+    readonly sortOrder: FieldRef<"RealizationPhoto", 'Int'>
+    readonly isActive: FieldRef<"RealizationPhoto", 'Boolean'>
+    readonly createdAt: FieldRef<"RealizationPhoto", 'DateTime'>
+    readonly updatedAt: FieldRef<"RealizationPhoto", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RealizationPhoto findUnique
+   */
+  export type RealizationPhotoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * Filter, which RealizationPhoto to fetch.
+     */
+    where: RealizationPhotoWhereUniqueInput
+  }
+
+  /**
+   * RealizationPhoto findUniqueOrThrow
+   */
+  export type RealizationPhotoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * Filter, which RealizationPhoto to fetch.
+     */
+    where: RealizationPhotoWhereUniqueInput
+  }
+
+  /**
+   * RealizationPhoto findFirst
+   */
+  export type RealizationPhotoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * Filter, which RealizationPhoto to fetch.
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealizationPhotos to fetch.
+     */
+    orderBy?: RealizationPhotoOrderByWithRelationInput | RealizationPhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RealizationPhotos.
+     */
+    cursor?: RealizationPhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealizationPhotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealizationPhotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RealizationPhotos.
+     */
+    distinct?: RealizationPhotoScalarFieldEnum | RealizationPhotoScalarFieldEnum[]
+  }
+
+  /**
+   * RealizationPhoto findFirstOrThrow
+   */
+  export type RealizationPhotoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * Filter, which RealizationPhoto to fetch.
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealizationPhotos to fetch.
+     */
+    orderBy?: RealizationPhotoOrderByWithRelationInput | RealizationPhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RealizationPhotos.
+     */
+    cursor?: RealizationPhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealizationPhotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealizationPhotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RealizationPhotos.
+     */
+    distinct?: RealizationPhotoScalarFieldEnum | RealizationPhotoScalarFieldEnum[]
+  }
+
+  /**
+   * RealizationPhoto findMany
+   */
+  export type RealizationPhotoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * Filter, which RealizationPhotos to fetch.
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RealizationPhotos to fetch.
+     */
+    orderBy?: RealizationPhotoOrderByWithRelationInput | RealizationPhotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RealizationPhotos.
+     */
+    cursor?: RealizationPhotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RealizationPhotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RealizationPhotos.
+     */
+    skip?: number
+    distinct?: RealizationPhotoScalarFieldEnum | RealizationPhotoScalarFieldEnum[]
+  }
+
+  /**
+   * RealizationPhoto create
+   */
+  export type RealizationPhotoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a RealizationPhoto.
+     */
+    data: XOR<RealizationPhotoCreateInput, RealizationPhotoUncheckedCreateInput>
+  }
+
+  /**
+   * RealizationPhoto createMany
+   */
+  export type RealizationPhotoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RealizationPhotos.
+     */
+    data: RealizationPhotoCreateManyInput | RealizationPhotoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RealizationPhoto createManyAndReturn
+   */
+  export type RealizationPhotoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * The data used to create many RealizationPhotos.
+     */
+    data: RealizationPhotoCreateManyInput | RealizationPhotoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RealizationPhoto update
+   */
+  export type RealizationPhotoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a RealizationPhoto.
+     */
+    data: XOR<RealizationPhotoUpdateInput, RealizationPhotoUncheckedUpdateInput>
+    /**
+     * Choose, which RealizationPhoto to update.
+     */
+    where: RealizationPhotoWhereUniqueInput
+  }
+
+  /**
+   * RealizationPhoto updateMany
+   */
+  export type RealizationPhotoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RealizationPhotos.
+     */
+    data: XOR<RealizationPhotoUpdateManyMutationInput, RealizationPhotoUncheckedUpdateManyInput>
+    /**
+     * Filter which RealizationPhotos to update
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * Limit how many RealizationPhotos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RealizationPhoto updateManyAndReturn
+   */
+  export type RealizationPhotoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * The data used to update RealizationPhotos.
+     */
+    data: XOR<RealizationPhotoUpdateManyMutationInput, RealizationPhotoUncheckedUpdateManyInput>
+    /**
+     * Filter which RealizationPhotos to update
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * Limit how many RealizationPhotos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RealizationPhoto upsert
+   */
+  export type RealizationPhotoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the RealizationPhoto to update in case it exists.
+     */
+    where: RealizationPhotoWhereUniqueInput
+    /**
+     * In case the RealizationPhoto found by the `where` argument doesn't exist, create a new RealizationPhoto with this data.
+     */
+    create: XOR<RealizationPhotoCreateInput, RealizationPhotoUncheckedCreateInput>
+    /**
+     * In case the RealizationPhoto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RealizationPhotoUpdateInput, RealizationPhotoUncheckedUpdateInput>
+  }
+
+  /**
+   * RealizationPhoto delete
+   */
+  export type RealizationPhotoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+    /**
+     * Filter which RealizationPhoto to delete.
+     */
+    where: RealizationPhotoWhereUniqueInput
+  }
+
+  /**
+   * RealizationPhoto deleteMany
+   */
+  export type RealizationPhotoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RealizationPhotos to delete
+     */
+    where?: RealizationPhotoWhereInput
+    /**
+     * Limit how many RealizationPhotos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RealizationPhoto without action
+   */
+  export type RealizationPhotoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RealizationPhoto
+     */
+    select?: RealizationPhotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RealizationPhoto
+     */
+    omit?: RealizationPhotoOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model products_carousel
    */
 
@@ -31564,6 +32710,19 @@ export namespace Prisma {
   };
 
   export type BannersScalarFieldEnum = (typeof BannersScalarFieldEnum)[keyof typeof BannersScalarFieldEnum]
+
+
+  export const RealizationPhotoScalarFieldEnum: {
+    id: 'id',
+    img: 'img',
+    alt: 'alt',
+    sortOrder: 'sortOrder',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RealizationPhotoScalarFieldEnum = (typeof RealizationPhotoScalarFieldEnum)[keyof typeof RealizationPhotoScalarFieldEnum]
 
 
   export const Products_carouselScalarFieldEnum: {
@@ -33369,6 +34528,70 @@ export namespace Prisma {
     isMobile?: BoolWithAggregatesFilter<"banners"> | boolean
   }
 
+  export type RealizationPhotoWhereInput = {
+    AND?: RealizationPhotoWhereInput | RealizationPhotoWhereInput[]
+    OR?: RealizationPhotoWhereInput[]
+    NOT?: RealizationPhotoWhereInput | RealizationPhotoWhereInput[]
+    id?: StringFilter<"RealizationPhoto"> | string
+    img?: StringFilter<"RealizationPhoto"> | string
+    alt?: StringNullableFilter<"RealizationPhoto"> | string | null
+    sortOrder?: IntFilter<"RealizationPhoto"> | number
+    isActive?: BoolFilter<"RealizationPhoto"> | boolean
+    createdAt?: DateTimeFilter<"RealizationPhoto"> | Date | string
+    updatedAt?: DateTimeFilter<"RealizationPhoto"> | Date | string
+  }
+
+  export type RealizationPhotoOrderByWithRelationInput = {
+    id?: SortOrder
+    img?: SortOrder
+    alt?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RealizationPhotoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RealizationPhotoWhereInput | RealizationPhotoWhereInput[]
+    OR?: RealizationPhotoWhereInput[]
+    NOT?: RealizationPhotoWhereInput | RealizationPhotoWhereInput[]
+    img?: StringFilter<"RealizationPhoto"> | string
+    alt?: StringNullableFilter<"RealizationPhoto"> | string | null
+    sortOrder?: IntFilter<"RealizationPhoto"> | number
+    isActive?: BoolFilter<"RealizationPhoto"> | boolean
+    createdAt?: DateTimeFilter<"RealizationPhoto"> | Date | string
+    updatedAt?: DateTimeFilter<"RealizationPhoto"> | Date | string
+  }, "id">
+
+  export type RealizationPhotoOrderByWithAggregationInput = {
+    id?: SortOrder
+    img?: SortOrder
+    alt?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RealizationPhotoCountOrderByAggregateInput
+    _avg?: RealizationPhotoAvgOrderByAggregateInput
+    _max?: RealizationPhotoMaxOrderByAggregateInput
+    _min?: RealizationPhotoMinOrderByAggregateInput
+    _sum?: RealizationPhotoSumOrderByAggregateInput
+  }
+
+  export type RealizationPhotoScalarWhereWithAggregatesInput = {
+    AND?: RealizationPhotoScalarWhereWithAggregatesInput | RealizationPhotoScalarWhereWithAggregatesInput[]
+    OR?: RealizationPhotoScalarWhereWithAggregatesInput[]
+    NOT?: RealizationPhotoScalarWhereWithAggregatesInput | RealizationPhotoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RealizationPhoto"> | string
+    img?: StringWithAggregatesFilter<"RealizationPhoto"> | string
+    alt?: StringNullableWithAggregatesFilter<"RealizationPhoto"> | string | null
+    sortOrder?: IntWithAggregatesFilter<"RealizationPhoto"> | number
+    isActive?: BoolWithAggregatesFilter<"RealizationPhoto"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"RealizationPhoto"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"RealizationPhoto"> | Date | string
+  }
+
   export type products_carouselWhereInput = {
     AND?: products_carouselWhereInput | products_carouselWhereInput[]
     OR?: products_carouselWhereInput[]
@@ -35171,26 +36394,26 @@ export namespace Prisma {
   }
 
   export type bannersCreateInput = {
-    id: string
+    id?: string
     img: string
     link?: string | null
     location: string
     locale: string
     isActive?: boolean
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     isMobile?: boolean
   }
 
   export type bannersUncheckedCreateInput = {
-    id: string
+    id?: string
     img: string
     link?: string | null
     location: string
     locale: string
     isActive?: boolean
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     isMobile?: boolean
   }
 
@@ -35219,14 +36442,14 @@ export namespace Prisma {
   }
 
   export type bannersCreateManyInput = {
-    id: string
+    id?: string
     img: string
     link?: string | null
     location: string
     locale: string
     isActive?: boolean
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
     isMobile?: boolean
   }
 
@@ -35252,6 +36475,76 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isMobile?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type RealizationPhotoCreateInput = {
+    id?: string
+    img: string
+    alt?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RealizationPhotoUncheckedCreateInput = {
+    id?: string
+    img: string
+    alt?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RealizationPhotoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealizationPhotoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealizationPhotoCreateManyInput = {
+    id?: string
+    img: string
+    alt?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RealizationPhotoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RealizationPhotoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type products_carouselCreateInput = {
@@ -36616,6 +37909,44 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isMobile?: SortOrder
+  }
+
+  export type RealizationPhotoCountOrderByAggregateInput = {
+    id?: SortOrder
+    img?: SortOrder
+    alt?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RealizationPhotoAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type RealizationPhotoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    img?: SortOrder
+    alt?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RealizationPhotoMinOrderByAggregateInput = {
+    id?: SortOrder
+    img?: SortOrder
+    alt?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RealizationPhotoSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
   }
 
   export type products_carouselCountOrderByAggregateInput = {
