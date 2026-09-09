@@ -32,6 +32,10 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 ENV DATABASE_URL="postgresql://daikin:aJY1c0TLKzMEA9kjel5wDuHc+mXRN/cNHX9dG7VJYxI=@postgres:5432/daikin?schema=public&connection_limit=20&pool_timeout=30&connect_timeout=10&socket_timeout=60"
 
+# NEXT_PUBLIC_* vars must be present at build time — Next.js inlines them into the client bundle
+ARG NEXT_PUBLIC_GA_ID
+ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
+
 # Generate Prisma Client for both native and Debian
 RUN npx prisma generate
 
