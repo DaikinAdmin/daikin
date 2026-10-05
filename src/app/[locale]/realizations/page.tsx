@@ -19,7 +19,7 @@ const PHOTOS: RealizationPhoto[] = [
   },
   {
     id: "r2",
-    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2886-1781178758410-1788784661183.webp",
+    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2922-1781178849941-1788784658154.webp",
     alt: "Montaż pompy ciepła – realizacja 2",
   },
   {
@@ -29,7 +29,7 @@ const PHOTOS: RealizationPhoto[] = [
   },
   {
     id: "r4",
-    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2913-1781178811793-1788784655493.webp",
+    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2907-1781178787191-1788784651275.webp",
     alt: "Montaż systemu VRV – realizacja 4",
   },
 ];
