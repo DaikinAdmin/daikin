@@ -19,6 +19,7 @@
     "@headlessui/react": "^2.2.9",
     "@hookform/resolvers": "^5.2.2",
     "@iconify/react": "^6.0.2",
+    "@next/third-parties": "^16.3.4",
     "@prisma/adapter-pg": "^7.0.0",
     "@prisma/client": "^7.1.0",
     "@radix-ui/react-accordion": "^1.2.12",

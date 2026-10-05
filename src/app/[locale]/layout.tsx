@@ -8,6 +8,7 @@ import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
 import { OrganizationSchema } from "@/components/structured-data";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // Google Font - Source Sans 3 as fallback
 const sourceSans = Source_Sans_3({
@@ -168,6 +169,9 @@ export default async function LocaleLayout({
       <body className={`${montserrat.variable} antialiased font-sans`}>
         <OrganizationSchema locale={locale} />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
