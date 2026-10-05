@@ -14,22 +14,22 @@ import type { Metadata } from "next";
 const PHOTOS: RealizationPhoto[] = [
   {
     id: "r1",
-    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2886-1781178758410.JPG",
+    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2886-1781178758410-1788784661183.webp",
     alt: "Montaż klimatyzacji Daikin – realizacja 1",
   },
   {
     id: "r2",
-    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2922-1781178849941.JPG",
+    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2886-1781178758410-1788784661183.webp",
     alt: "Montaż pompy ciepła – realizacja 2",
   },
   {
     id: "r3",
-    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2913-1781178811793.JPG",
+    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2913-1781178811793-1788784655493.webp",
     alt: "Instalacja systemu multi-split – realizacja 3",
   },
   {
     id: "r4",
-    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2907-1781178787191.JPG",
+    src: "https://daikinkobierzyce.pl/api/images/realization/IMG_2913-1781178811793-1788784655493.webp",
     alt: "Montaż systemu VRV – realizacja 4",
   },
 ];
