@@ -44,6 +44,27 @@
         "ctaPrimary": "Kalkulator kredytowy",
         "ctaSecondary": "Czytaj więcej"
       },
+      "banners": {
+        "prev": "Poprzedni baner",
+        "next": "Następny baner",
+        "goToSlide": "Przejdź do banera {number}",
+        "heatpumpday": {
+          "title": "Heat Pump Day – pakiet korzyści",
+          "description": "Od 05.10 do 31.10, tylko w salonach partnerskich: kupując pompę ciepła Daikin otrzymasz zwrot za energię, 10 lat gwarancji oraz przegląd serwisowy gratis.",
+          "shortDescription": "Zwrot za energię, 10 lat gwarancji i przegląd serwisowy gratis – 05.10–31.10.",
+          "imageAlt": "Baner promocyjny Daikin Heat Pump Day – pakiet korzyści w salonach partnerskich",
+          "ctaPrimary": "Kalkulator kredytowy",
+          "ctaSecondary": "Czytaj więcej"
+        },
+        "cieploapp": {
+          "title": "Oszacuj koszty ogrzewania z Ciepło.app",
+          "description": "Sprawdź swój dom profesjonalnymi metodami, bez specjalistycznej wiedzy. Ekologiczne źródła ciepła, niezawodność przez lata, profesjonalne doradztwo i niższe rachunki za ogrzewanie.",
+          "shortDescription": "Sprawdź swój dom profesjonalnymi metodami, bez specjalistycznej wiedzy.",
+          "imageAlt": "Baner Ciepło.app – oszacuj koszty ogrzewania profesjonalnymi metodami",
+          "ctaPrimary": "Sprawdź swój dom",
+          "ctaSecondary": "Czytaj więcej"
+        }
+      },
       "slides": {
         "slide1": {
           "badge": "Nowe produkty 2025",

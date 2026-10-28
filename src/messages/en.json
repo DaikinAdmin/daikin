@@ -44,6 +44,27 @@
         "ctaPrimary": "Credit Calculator",
         "ctaSecondary": "Read More"
       },
+      "banners": {
+        "prev": "Previous banner",
+        "next": "Next banner",
+        "goToSlide": "Go to banner {number}",
+        "heatpumpday": {
+          "title": "Heat Pump Day – benefits package",
+          "description": "From 5 to 31 October, in partner showrooms only: buy a Daikin heat pump and get an energy refund, a 10-year warranty and a free service inspection.",
+          "shortDescription": "Energy refund, 10-year warranty and a free service inspection – 5–31 October.",
+          "imageAlt": "Daikin Heat Pump Day promotional banner – benefits package in partner showrooms",
+          "ctaPrimary": "Credit Calculator",
+          "ctaSecondary": "Read More"
+        },
+        "cieploapp": {
+          "title": "Estimate your heating costs with Ciepło.app",
+          "description": "Check your home with professional methods, no expert knowledge required. Eco-friendly heat sources, reliability for years, professional advice and lower heating bills.",
+          "shortDescription": "Check your home with professional methods, no expert knowledge required.",
+          "imageAlt": "Ciepło.app banner – estimate heating costs with professional methods",
+          "ctaPrimary": "Check your home",
+          "ctaSecondary": "Read More"
+        }
+      },
       "slides": {
         "slide1": {
           "badge": "New Products 2025",
