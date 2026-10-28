@@ -780,6 +780,126 @@
         "title": "Klimatyzacja",
         "subtitle": "Realizacje systemów klimatyzacji Daikin w domach i obiektach komercyjnych.",
         "items": {
+          "attic-perfera": {
+            "tag": "Realizacja – klimatyzacja na poddaszu",
+            "title": "Klimatyzacja Daikin Perfera na poddaszu",
+            "meta": [
+              {
+                "label": "Powierzchnia",
+                "value": "ponad 50 m²"
+              },
+              {
+                "label": "Urządzenie",
+                "value": "Daikin Perfera przypodłogowa"
+              },
+              {
+                "label": "Koszt",
+                "value": "11 000 zł"
+              }
+            ],
+            "building": {
+              "title": "Opis budynku",
+              "text": "Poddasze o powierzchni ponad 50 m², ze skosami dachowymi ograniczającymi możliwości montażu standardowej jednostki ściennej."
+            },
+            "needs": {
+              "title": "Potrzeby klienta",
+              "text": "Klient chciał zamontować klimatyzację, jednak układ pomieszczenia i skosy utrudniały znalezienie odpowiedniego miejsca na jednostkę wewnętrzną."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie",
+              "text": "Zaproponowaliśmy klimatyzator przypodłogowy Daikin Perfera. Realizacja obejmowała dobór rozwiązania oraz montaż jednostki wewnętrznej i zewnętrznej."
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "11 000 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "jednostkę wewnętrzną,",
+                "jednostkę zewnętrzną,",
+                "montaż."
+              ]
+            }
+          },
+          "perfera-lift": {
+            "tag": "Realizacja – montaż z podnośnikiem",
+            "title": "Daikin Perfera z montażem przy użyciu podnośnika",
+            "meta": [
+              {
+                "label": "Powierzchnia",
+                "value": "ok. 45 m²"
+              },
+              {
+                "label": "Urządzenie",
+                "value": "Daikin Perfera"
+              },
+              {
+                "label": "Koszt",
+                "value": "8 400 zł"
+              }
+            ],
+            "building": {
+              "title": "Opis budynku",
+              "text": "Budynek bez balkonu, w którym zaplanowano montaż klimatyzacji w pomieszczeniu o powierzchni około 45 m²."
+            },
+            "needs": {
+              "title": "Potrzeby klienta",
+              "text": "Klient chciał zapewnić sobie komfort termiczny, a głównym wyzwaniem było wykonanie montażu jednostki zewnętrznej ze względu na brak balkonu i utrudniony dostęp do miejsca instalacji."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie",
+              "text": "Zaproponowaliśmy klimatyzator Daikin Perfera. Ze względu na warunki techniczne montaż jednostki zewnętrznej został przeprowadzony z wykorzystaniem podnośnika."
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "8 400 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "jednostkę wewnętrzną,",
+                "jednostkę zewnętrzną,",
+                "montaż z użyciem podnośnika."
+              ]
+            }
+          },
+          "multi-split": {
+            "tag": "Realizacja – system Multi Split",
+            "title": "System klimatyzacji Daikin Multi Split",
+            "meta": [
+              {
+                "label": "Powierzchnia",
+                "value": "35 m² + 25 m²"
+              },
+              {
+                "label": "System",
+                "value": "Daikin Multi Split 2×1"
+              },
+              {
+                "label": "Koszt",
+                "value": "11 000 zł"
+              }
+            ],
+            "building": {
+              "title": "Opis budynku",
+              "text": "Mieszkanie z salonem połączonym z kuchnią o powierzchni około 35 m² oraz sypialnią o powierzchni 25 m²."
+            },
+            "needs": {
+              "title": "Potrzeby klienta",
+              "text": "Klient chciał klimatyzować oba pomieszczenia, jednocześnie oszczędzając miejsce na balkonie i ograniczając liczbę widocznych korytek instalacyjnych."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie",
+              "text": "Zaproponowaliśmy system Daikin Multi Split, składający się z dwóch jednostek wewnętrznych połączonych z jedną jednostką zewnętrzną. Rozwiązanie pozwoliło uwzględnić ograniczoną przestrzeń na balkonie oraz potrzebę estetycznego poprowadzenia instalacji."
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "11 000 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "2 jednostki wewnętrzne,",
+                "jednostkę zewnętrzną,",
+                "montaż."
+              ]
+            }
+          },
           "house-warsaw": {
             "tag": "Realizacja – dom jednorodzinny",
             "title": "Klimatyzacja w domu jednorodzinnym – komfort przez cały rok",
