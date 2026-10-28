@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -10,36 +10,42 @@ import { FadeIn } from "@/components/fade-in";
 import { WhyChooseGrid } from "@/components/why-choose-grid";
 import type { Metadata } from "next";
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'services.installation' });
-  
+  const t = await getTranslations({
+    locale,
+    namespace: "services.installation",
+  });
+
   return {
-    title: "Usługi Instalacyjne - Profesjonalny Montaż Klimatyzacji i Pomp Ciepła",
-    description: "Profesjonalny montaż systemów klimatyzacji, pomp ciepła i oczyszczaczy powietrza Daikin. Certyfikowani technicy, gwarancja jakości i rozszerzona gwarancja na produkty.",
+    title:
+      "Usługi Instalacyjne - Profesjonalny Montaż Klimatyzacji i Pomp Ciepła",
+    description:
+      "Profesjonalny montaż systemów klimatyzacji, pomp ciepła i oczyszczaczy powietrza Daikin. Certyfikowani technicy, gwarancja jakości i rozszerzona gwarancja na produkty.",
     keywords: [
-      'montaż klimatyzacji',
-      'instalacja pompy ciepła',
-      'montaż oczyszczacza',
-      'serwis instalacyjny Daikin',
-      'certyfikowani instalatorzy',
-      'profesjonalny montaż HVAC',
-      'Daikin Wrocław',
-      'klimatyzatory Wrocław',
-      'pompy ciepła Wrocław',
-      'pompy ciepła Kobierzyce',
-      'montaż klimatyzacji Wrocław',
-      'HVAC Wrocław'
+      "montaż klimatyzacji",
+      "instalacja pompy ciepła",
+      "montaż oczyszczacza",
+      "serwis instalacyjny Daikin",
+      "certyfikowani instalatorzy",
+      "profesjonalny montaż HVAC",
+      "Daikin Wrocław",
+      "klimatyzatory Wrocław",
+      "pompy ciepła Wrocław",
+      "pompy ciepła Kobierzyce",
+      "montaż klimatyzacji Wrocław",
+      "HVAC Wrocław",
     ],
     openGraph: {
       title: "Usługi Instalacyjne - Daikin Kobierzyce",
-      description: "Profesjonalny montaż i instalacja systemów Daikin przez certyfikowanych techników.",
+      description:
+        "Profesjonalny montaż i instalacja systemów Daikin przez certyfikowanych techników.",
       url: `https://daikinkobierzyce.pl/pl/services/installation`,
-      type: 'website',
+      type: "website",
     },
     alternates: {
       canonical: `/pl/services/installation`,
@@ -57,10 +63,22 @@ export default function InstallationPage({
   const t = useTranslations("services.installation");
 
   const whyChooseItems = [
-    { key: "certified", img: "https://daikinkobierzyce.pl/api/images/installation/Certyfikowani_technicy-1765203546613.jpg" },
-    { key: "quality", img: "https://daikinkobierzyce.pl/api/images/installation/Gwarancja_jakosci-1765203688866.jpg" },
-    { key: "fast", img: "https://daikinkobierzyce.pl/api/images/installation/Szybko_i_efektywnie-1765203842446.jpg" },
-    { key: "warranty", img: "https://daikinkobierzyce.pl/api/images/installation/Rozszerzona_gwarancja-1765203918859.jpg" },
+    {
+      key: "certified",
+      img: "https://daikinkobierzyce.pl/api/images/installation/Certyfikowani_technicy-1765203546613.jpg",
+    },
+    {
+      key: "quality",
+      img: "https://daikinkobierzyce.pl/api/images/installation/Gwarancja_jakosci-1765203688866.jpg",
+    },
+    {
+      key: "fast",
+      img: "https://daikinkobierzyce.pl/api/images/installation/Szybko_i_efektywnie-1765203842446.jpg",
+    },
+    {
+      key: "warranty",
+      img: "https://daikinkobierzyce.pl/api/images/installation/Rozszerzona_gwarancja-1765203918859.jpg",
+    },
   ];
 
   const processSteps = ["step1", "step2", "step3", "step4", "step5", "step6"];
@@ -85,12 +103,6 @@ export default function InstallationPage({
             </FadeIn>
           </div>
         </section>
-
-        {/* Why Choose Us Section */}
-        <WhyChooseGrid
-          items={whyChooseItems}
-          namespace="services.installation"
-        />
 
         {/* Process Section */}
         <section className="py-16">
@@ -125,6 +137,12 @@ export default function InstallationPage({
             </div>
           </div>
         </section>
+
+        {/* Why Choose Us Section */}
+        <WhyChooseGrid
+          items={whyChooseItems}
+          namespace="services.installation"
+        />
 
         {/* What We Install Section */}
         <section className="py-16 w-full bg-container">

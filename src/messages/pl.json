@@ -766,22 +766,259 @@
       "title": "Nasze realizacje",
       "subtitle": "Poznaj wybrane projekty, które zrealizowaliśmy – od domowych instalacji klimatyzacji po zaawansowane systemy HVAC w obiektach komercyjnych."
     },
-    "items": {
-      "r1": {
-        "title": "Klimatyzacja mieszkalna – Wrocław",
-        "description": "Montaż systemu klimatyzacji Daikin Perfera w nowoczesnym mieszkaniu. Prace obejmowały instalację jednostki wewnętrznej i zewnętrznej, wykonanie przepustów oraz uruchomienie i konfigurację systemu."
+    "index": {
+      "open": "Zobacz realizacje"
+    },
+    "booklet": {
+      "before": "Przed realizacją",
+      "after": "Po realizacji",
+      "back": "Powrót do realizacji",
+      "contact": "Skontaktuj się z nami"
+    },
+    "groups": {
+      "air-conditioning": {
+        "title": "Klimatyzacja",
+        "subtitle": "Realizacje systemów klimatyzacji Daikin w domach i obiektach komercyjnych.",
+        "items": {
+          "attic-perfera": {
+            "tag": "Realizacja – klimatyzacja na poddaszu",
+            "title": "Klimatyzacja Daikin Perfera na poddaszu",
+            "meta": [
+              {
+                "label": "Powierzchnia",
+                "value": "ponad 50 m²"
+              },
+              {
+                "label": "Urządzenie",
+                "value": "Daikin Perfera przypodłogowa"
+              },
+              {
+                "label": "Koszt",
+                "value": "11 000 zł"
+              }
+            ],
+            "building": {
+              "title": "Opis budynku",
+              "text": "Poddasze o powierzchni ponad 50 m², ze skosami dachowymi ograniczającymi możliwości montażu standardowej jednostki ściennej."
+            },
+            "needs": {
+              "title": "Potrzeby klienta",
+              "text": "Klient chciał zamontować klimatyzację, jednak układ pomieszczenia i skosy utrudniały znalezienie odpowiedniego miejsca na jednostkę wewnętrzną."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie",
+              "text": "Zaproponowaliśmy klimatyzator przypodłogowy Daikin Perfera. Realizacja obejmowała dobór rozwiązania oraz montaż jednostki wewnętrznej i zewnętrznej."
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "11 000 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "jednostkę wewnętrzną,",
+                "jednostkę zewnętrzną,",
+                "montaż."
+              ]
+            }
+          },
+          "perfera-lift": {
+            "tag": "Realizacja – montaż z podnośnikiem",
+            "title": "Daikin Perfera z montażem przy użyciu podnośnika",
+            "meta": [
+              {
+                "label": "Powierzchnia",
+                "value": "ok. 45 m²"
+              },
+              {
+                "label": "Urządzenie",
+                "value": "Daikin Perfera"
+              },
+              {
+                "label": "Koszt",
+                "value": "8 400 zł"
+              }
+            ],
+            "building": {
+              "title": "Opis budynku",
+              "text": "Budynek bez balkonu, w którym zaplanowano montaż klimatyzacji w pomieszczeniu o powierzchni około 45 m²."
+            },
+            "needs": {
+              "title": "Potrzeby klienta",
+              "text": "Klient chciał zapewnić sobie komfort termiczny, a głównym wyzwaniem było wykonanie montażu jednostki zewnętrznej ze względu na brak balkonu i utrudniony dostęp do miejsca instalacji."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie",
+              "text": "Zaproponowaliśmy klimatyzator Daikin Perfera. Ze względu na warunki techniczne montaż jednostki zewnętrznej został przeprowadzony z wykorzystaniem podnośnika."
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "8 400 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "jednostkę wewnętrzną,",
+                "jednostkę zewnętrzną,",
+                "montaż z użyciem podnośnika."
+              ]
+            }
+          },
+          "multi-split": {
+            "tag": "Realizacja – system Multi Split",
+            "title": "System klimatyzacji Daikin Multi Split",
+            "meta": [
+              {
+                "label": "Powierzchnia",
+                "value": "35 m² + 25 m²"
+              },
+              {
+                "label": "System",
+                "value": "Daikin Multi Split 2×1"
+              },
+              {
+                "label": "Koszt",
+                "value": "11 000 zł"
+              }
+            ],
+            "building": {
+              "title": "Opis budynku",
+              "text": "Mieszkanie z salonem połączonym z kuchnią o powierzchni około 35 m² oraz sypialnią o powierzchni 25 m²."
+            },
+            "needs": {
+              "title": "Potrzeby klienta",
+              "text": "Klient chciał klimatyzować oba pomieszczenia, jednocześnie oszczędzając miejsce na balkonie i ograniczając liczbę widocznych korytek instalacyjnych."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie",
+              "text": "Zaproponowaliśmy system Daikin Multi Split, składający się z dwóch jednostek wewnętrznych połączonych z jedną jednostką zewnętrzną. Rozwiązanie pozwoliło uwzględnić ograniczoną przestrzeń na balkonie oraz potrzebę estetycznego poprowadzenia instalacji."
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "11 000 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "2 jednostki wewnętrzne,",
+                "jednostkę zewnętrzną,",
+                "montaż."
+              ]
+            }
+          },
+          "house-warsaw": {
+            "tag": "Realizacja – dom jednorodzinny",
+            "title": "Klimatyzacja w domu jednorodzinnym – komfort przez cały rok",
+            "location": "Warszawa, woj. mazowieckie",
+            "building": {
+              "title": "Opis budynku i potrzeby klienta",
+              "text": "Dom jednorodzinny o powierzchni ok. 160 m², zamieszkały przez 4-osobową rodzinę. Klient zgłosił potrzebę skutecznego chłodzenia latem oraz energooszczędnego ogrzewania zimą, a także cichej pracy urządzeń i estetycznego wyglądu wnętrz. W domu nie było wcześniej klimatyzacji."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie oraz zakres naszych prac",
+              "text": "Zaproponowaliśmy 3 jednostki wewnętrzne Daikin Stylish o mocy 2,5 kW oraz 1 jednostkę zewnętrzną multi 3×2,5 kW. Zakres prac obejmował:",
+              "list": [
+                "dobór urządzeń i przygotowanie projektu instalacji,",
+                "montaż jednostek wewnętrznych i zewnętrznej,",
+                "wykonanie instalacji chłodniczej i elektrycznej,",
+                "uruchomienie systemu, szkolenie z obsługi i przekazanie dokumentacji."
+              ]
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "18 500 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "3 jednostki wewnętrzne Daikin Stylish (2,5 kW),",
+                "1 jednostkę zewnętrzną multi (3×2,5 kW),",
+                "montaż, materiały, instalację, uruchomienie, szkolenie."
+              ]
+            },
+            "features": [
+              {
+                "title": "Komfort przez cały rok",
+                "text": "Chłodzenie latem, ogrzewanie zimą."
+              },
+              {
+                "title": "Energooszczędność",
+                "text": "Niskie rachunki za prąd dzięki technologii inwerterowej."
+              },
+              {
+                "title": "Cicha praca",
+                "text": "Nawet 19 dB(A) w trybie cichym."
+              },
+              {
+                "title": "Estetyka",
+                "text": "Nowoczesny design, który pasuje do każdego wnętrza."
+              }
+            ]
+          },
+          "house-wroclaw": {
+            "tag": "Realizacja – dom jednorodzinny",
+            "title": "Klimatyzacja w domu jednorodzinnym – komfort przez cały rok",
+            "location": "Wrocław, woj. dolnośląskie",
+            "building": {
+              "title": "Opis budynku i potrzeby klienta",
+              "text": "Dom jednorodzinny o powierzchni ok. 160 m², zamieszkały przez 4-osobową rodzinę. Klient zgłosił potrzebę skutecznego chłodzenia latem oraz energooszczędnego ogrzewania zimą, a także cichej pracy urządzeń i estetycznego wyglądu wnętrz. W domu nie było wcześniej klimatyzacji."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie oraz zakres naszych prac",
+              "text": "Zaproponowaliśmy 3 jednostki wewnętrzne Daikin Stylish o mocy 2,5 kW oraz 1 jednostkę zewnętrzną multi 3×2,5 kW. Zakres prac obejmował:",
+              "list": [
+                "dobór urządzeń i przygotowanie projektu instalacji,",
+                "montaż jednostek wewnętrznych i zewnętrznej,",
+                "wykonanie instalacji chłodniczej i elektrycznej,",
+                "uruchomienie systemu, szkolenie z obsługi i przekazanie dokumentacji."
+              ]
+            },
+            "cost": {
+              "title": "Koszt inwestycji",
+              "price": "15 500 zł",
+              "includesTitle": "Cena obejmowała:",
+              "includes": [
+                "3 jednostki wewnętrzne Daikin Stylish (2,5 kW),",
+                "1 jednostkę zewnętrzną multi (3×2,5 kW),",
+                "montaż, materiały, instalację, uruchomienie, szkolenie."
+              ]
+            },
+            "features": [
+              {
+                "title": "Komfort przez cały rok",
+                "text": "Chłodzenie latem, ogrzewanie zimą."
+              },
+              {
+                "title": "Energooszczędność",
+                "text": "Niskie rachunki za prąd dzięki technologii inwerterowej."
+              },
+              {
+                "title": "Cicha praca",
+                "text": "Nawet 19 dB(A) w trybie cichym."
+              },
+              {
+                "title": "Estetyka",
+                "text": "Nowoczesny design, który pasuje do każdego wnętrza."
+              }
+            ]
+          }
+        }
       },
-      "r2": {
-        "title": "Pompa ciepła – Kobierzyce",
-        "description": "Instalacja pompy ciepła Daikin Altherma 3 w domu jednorodzinnym. System zapewnia ogrzewanie, chłodzenie oraz przygotowanie ciepłej wody użytkowej z wysoką efektywnością energetyczną."
-      },
-      "r3": {
-        "title": "System multi-split – biuro",
-        "description": "Kompleksowa instalacja systemu multi-split Daikin w budynku biurowym. Projekt obejmował klimatyzację kilku stref o różnych wymaganiach temperaturowych."
-      },
-      "r4": {
-        "title": "VRV – obiekt komercyjny",
-        "description": "Wdrożenie systemu VRV Daikin w dużym obiekcie komercyjnym. Zaawansowana instalacja obejmująca wiele jednostek wewnętrznych zarządzanych z jednego sterownika centralnego."
+      "heat-pumps": {
+        "title": "Pompy ciepła",
+        "subtitle": "Realizacje instalacji pomp ciepła Daikin Altherma.",
+        "items": {
+          "house-kobierzyce": {
+            "tag": "Realizacja – dom jednorodzinny",
+            "title": "Pompa ciepła Daikin Altherma 3 – Kobierzyce",
+            "location": "Kobierzyce, woj. dolnośląskie",
+            "building": {
+              "title": "Opis budynku i potrzeby klienta",
+              "text": "Dom jednorodzinny, w którym klient oczekiwał nowoczesnego, efektywnego źródła ogrzewania, chłodzenia oraz ciepłej wody użytkowej."
+            },
+            "solution": {
+              "title": "Zastosowane rozwiązanie oraz zakres naszych prac",
+              "text": "Instalacja pompy ciepła Daikin Altherma 3. System zapewnia ogrzewanie, chłodzenie oraz przygotowanie ciepłej wody użytkowej z wysoką efektywnością energetyczną. Zakres prac obejmował:",
+              "list": [
+                "montaż jednostki zewnętrznej i wewnętrznej,",
+                "wykonanie instalacji hydraulicznej i elektrycznej,",
+                "uruchomienie i konfigurację systemu."
+              ]
+            }
+          }
+        }
       }
     }
   },
@@ -1227,7 +1464,7 @@
       }
     }
   },
-    "getQuoteModal": {
+  "getQuoteModal": {
     "title": "Skontaktuj się z nami - o resztę zadbamy my!",
     "name": "Imię i Nazwisko",
     "namePlaceholder": "Wpisz Imię i Nazwisko",
@@ -1246,18 +1483,18 @@
     "successMessage": "Dziękujemy za Twoje zapytanie! Skontaktujemy się z Tobą wkrótce.",
     "errorMessage": "Wystąpił błąd podczas wysyłania zapytania. Proszę spróbuj ponownie później.",
     "interests": {
-        "options": {
-          "ac" : "Klimatyzacja",
-          "hp" : "Pompy ciepła",
-          "ap" : "Oczyszczacze powietrza"
-        },
-        "services": {
-          "installation" : "Usługi instalacyjne",
-          "maintenance" : "Usługi serwisowe"
-        },
-        "groups":{
-          "products": "Produkty",
-          "services": "Usługi"
+      "options": {
+        "ac": "Klimatyzacja",
+        "hp": "Pompy ciepła",
+        "ap": "Oczyszczacze powietrza"
+      },
+      "services": {
+        "installation": "Usługi instalacyjne",
+        "maintenance": "Usługi serwisowe"
+      },
+      "groups": {
+        "products": "Produkty",
+        "services": "Usługi"
       }
     }
   },

@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Category } from "@/types/product";
+import { REALIZATION_GROUPS } from "@/data/realizations";
 
 // Helper function to get initials from name
 function getInitials(name: string | null | undefined): string {
@@ -50,6 +51,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   const locale = props.currentLocale ?? defaultLocale;
   const router = useRouter();
   const t = useTranslations("header");
+  const tGlobal = useTranslations("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session, isPending } = useSession();
   const [categories, setCategories] = useState<Category[]>([]);
@@ -89,7 +91,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <>
       <header className="bg-white text-header shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-5">
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
@@ -193,13 +195,25 @@ const Header: React.FC<HeaderProps> = (props) => {
               </Link>
 
               {/* Realizację */}
-              <Link
-                href="/realizations"
-                className="px-4 py-2 hover:text-primary rounded-md transition-colors"
-                locale={locale}
-              >
-                {t("nav.realizations")}
-              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center px-4 py-2 hover:text-primary rounded-md transition-colors">
+                  {t("nav.realizations")}
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-[200px]">
+                  {REALIZATION_GROUPS.map((group) => (
+                    <DropdownMenuItem key={group.id} asChild>
+                      <Link
+                        href={`/realizations/${group.id}`}
+                        className="cursor-pointer"
+                        locale={locale}
+                      >
+                        {tGlobal(`realizations.groups.${group.id}.title`)}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               {/* Twoje konto */}
               <DropdownMenu>

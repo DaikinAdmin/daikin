@@ -766,22 +766,259 @@
       "title": "Our Realizations",
       "subtitle": "Explore selected projects we have completed – from residential air conditioning installations to advanced commercial HVAC systems."
     },
-    "items": {
-      "r1": {
-        "title": "Residential Air Conditioning – Wrocław",
-        "description": "Installation of a Daikin Perfera air conditioning system in a modern apartment. Work included fitting indoor and outdoor units, cable routing, and full system commissioning."
+    "index": {
+      "open": "View realizations"
+    },
+    "booklet": {
+      "before": "Before",
+      "after": "After",
+      "back": "Back to realizations",
+      "contact": "Contact us"
+    },
+    "groups": {
+      "air-conditioning": {
+        "title": "Air conditioning",
+        "subtitle": "Daikin air conditioning projects in homes and commercial buildings.",
+        "items": {
+          "attic-perfera": {
+            "tag": "Project – air conditioning in an attic",
+            "title": "Daikin Perfera air conditioning in an attic",
+            "meta": [
+              {
+                "label": "Area",
+                "value": "over 50 m²"
+              },
+              {
+                "label": "Unit",
+                "value": "Daikin Perfera floor-standing"
+              },
+              {
+                "label": "Cost",
+                "value": "PLN 11,000"
+              }
+            ],
+            "building": {
+              "title": "Building description",
+              "text": "An attic of over 50 m², with sloping ceilings that limited the options for mounting a standard wall unit."
+            },
+            "needs": {
+              "title": "Client needs",
+              "text": "The client wanted to install air conditioning, but the layout of the room and the roof slopes made it difficult to find a suitable place for the indoor unit."
+            },
+            "solution": {
+              "title": "Solution used",
+              "text": "We proposed a Daikin Perfera floor-standing air conditioner. The project covered the selection of the solution and the installation of the indoor and outdoor units."
+            },
+            "cost": {
+              "title": "Investment cost",
+              "price": "PLN 11,000",
+              "includesTitle": "The price included:",
+              "includes": [
+                "the indoor unit,",
+                "the outdoor unit,",
+                "installation."
+              ]
+            }
+          },
+          "perfera-lift": {
+            "tag": "Project – installation with a lift",
+            "title": "Daikin Perfera installed using a lift",
+            "meta": [
+              {
+                "label": "Area",
+                "value": "approx. 45 m²"
+              },
+              {
+                "label": "Unit",
+                "value": "Daikin Perfera"
+              },
+              {
+                "label": "Cost",
+                "value": "PLN 8,400"
+              }
+            ],
+            "building": {
+              "title": "Building description",
+              "text": "A building without a balcony, where air conditioning was planned for a room of about 45 m²."
+            },
+            "needs": {
+              "title": "Client needs",
+              "text": "The client wanted thermal comfort, and the main challenge was installing the outdoor unit given the lack of a balcony and the difficult access to the installation site."
+            },
+            "solution": {
+              "title": "Solution used",
+              "text": "We proposed a Daikin Perfera air conditioner. Because of the technical conditions, the outdoor unit was installed using a lift."
+            },
+            "cost": {
+              "title": "Investment cost",
+              "price": "PLN 8,400",
+              "includesTitle": "The price included:",
+              "includes": [
+                "the indoor unit,",
+                "the outdoor unit,",
+                "installation using a lift."
+              ]
+            }
+          },
+          "multi-split": {
+            "tag": "Project – Multi Split system",
+            "title": "Daikin Multi Split air conditioning system",
+            "meta": [
+              {
+                "label": "Area",
+                "value": "35 m² + 25 m²"
+              },
+              {
+                "label": "System",
+                "value": "Daikin Multi Split 2×1"
+              },
+              {
+                "label": "Cost",
+                "value": "PLN 11,000"
+              }
+            ],
+            "building": {
+              "title": "Building description",
+              "text": "An apartment with a living room combined with a kitchen of about 35 m² and a bedroom of 25 m²."
+            },
+            "needs": {
+              "title": "Client needs",
+              "text": "The client wanted to air-condition both rooms while saving space on the balcony and limiting the number of visible installation ducts."
+            },
+            "solution": {
+              "title": "Solution used",
+              "text": "We proposed a Daikin Multi Split system consisting of two indoor units connected to a single outdoor unit. The solution took into account the limited space on the balcony and the need for a tidy routing of the installation."
+            },
+            "cost": {
+              "title": "Investment cost",
+              "price": "PLN 11,000",
+              "includesTitle": "The price included:",
+              "includes": [
+                "2 indoor units,",
+                "the outdoor unit,",
+                "installation."
+              ]
+            }
+          },
+          "house-warsaw": {
+            "tag": "Project – single-family house",
+            "title": "Air conditioning in a single-family house – comfort all year round",
+            "location": "Warsaw, Masovian Voivodeship",
+            "building": {
+              "title": "Building description and client needs",
+              "text": "A single-family house of about 160 m², home to a family of four. The client needed effective cooling in summer and energy-efficient heating in winter, as well as quiet operation and a tidy interior look. The house had no air conditioning before."
+            },
+            "solution": {
+              "title": "Solution used and scope of our work",
+              "text": "We proposed 3 Daikin Stylish indoor units of 2.5 kW and 1 multi outdoor unit of 3×2.5 kW. The scope of work included:",
+              "list": [
+                "selection of equipment and preparation of the installation design,",
+                "installation of the indoor and outdoor units,",
+                "refrigerant and electrical installation,",
+                "system commissioning, user training and handover of documentation."
+              ]
+            },
+            "cost": {
+              "title": "Investment cost",
+              "price": "PLN 18,500",
+              "includesTitle": "The price included:",
+              "includes": [
+                "3 Daikin Stylish indoor units (2.5 kW),",
+                "1 multi outdoor unit (3×2.5 kW),",
+                "installation, materials, commissioning, training."
+              ]
+            },
+            "features": [
+              {
+                "title": "Comfort all year round",
+                "text": "Cooling in summer, heating in winter."
+              },
+              {
+                "title": "Energy efficiency",
+                "text": "Low electricity bills thanks to inverter technology."
+              },
+              {
+                "title": "Quiet operation",
+                "text": "As low as 19 dB(A) in quiet mode."
+              },
+              {
+                "title": "Aesthetics",
+                "text": "Modern design that fits any interior."
+              }
+            ]
+          },
+          "house-wroclaw": {
+            "tag": "Project – single-family house",
+            "title": "Air conditioning in a single-family house – comfort all year round",
+            "location": "Wroclaw, Lower Silesian Voivodeship",
+            "building": {
+              "title": "Building description and client needs",
+              "text": "A single-family house of about 160 m², home to a family of four. The client needed effective cooling in summer and energy-efficient heating in winter, as well as quiet operation and a tidy interior look. The house had no air conditioning before."
+            },
+            "solution": {
+              "title": "Solution used and scope of our work",
+              "text": "We proposed 3 Daikin Stylish indoor units of 2.5 kW and 1 multi outdoor unit of 3×2.5 kW. The scope of work included:",
+              "list": [
+                "selection of equipment and preparation of the installation design,",
+                "installation of the indoor and outdoor units,",
+                "refrigerant and electrical installation,",
+                "system commissioning, user training and handover of documentation."
+              ]
+            },
+            "cost": {
+              "title": "Investment cost",
+              "price": "PLN 15,500",
+              "includesTitle": "The price included:",
+              "includes": [
+                "3 Daikin Stylish indoor units (2.5 kW),",
+                "1 multi outdoor unit (3×2.5 kW),",
+                "installation, materials, commissioning, training."
+              ]
+            },
+            "features": [
+              {
+                "title": "Comfort all year round",
+                "text": "Cooling in summer, heating in winter."
+              },
+              {
+                "title": "Energy efficiency",
+                "text": "Low electricity bills thanks to inverter technology."
+              },
+              {
+                "title": "Quiet operation",
+                "text": "As low as 19 dB(A) in quiet mode."
+              },
+              {
+                "title": "Aesthetics",
+                "text": "Modern design that fits any interior."
+              }
+            ]
+          }
+        }
       },
-      "r2": {
-        "title": "Heat Pump – Kobierzyce",
-        "description": "Installation of a Daikin Altherma 3 heat pump in a single-family home. The system provides heating, cooling, and hot water preparation with high energy efficiency."
-      },
-      "r3": {
-        "title": "Multi-Split System – Office",
-        "description": "Complete Daikin multi-split system installation in an office building. The project covered climate control for several zones with different temperature requirements."
-      },
-      "r4": {
-        "title": "VRV – Commercial Property",
-        "description": "Deployment of a Daikin VRV system in a large commercial property. An advanced installation with multiple indoor units managed from a single central controller."
+      "heat-pumps": {
+        "title": "Heat pumps",
+        "subtitle": "Daikin Altherma heat pump installations.",
+        "items": {
+          "house-kobierzyce": {
+            "tag": "Project – single-family house",
+            "title": "Daikin Altherma 3 heat pump – Kobierzyce",
+            "location": "Kobierzyce, Lower Silesian Voivodeship",
+            "building": {
+              "title": "Building description and client needs",
+              "text": "A single-family house where the client wanted a modern, efficient source of heating, cooling and domestic hot water."
+            },
+            "solution": {
+              "title": "Solution used and scope of our work",
+              "text": "Installation of a Daikin Altherma 3 heat pump. The system provides heating, cooling and domestic hot water with high energy efficiency. The scope of work included:",
+              "list": [
+                "installation of the outdoor and indoor units,",
+                "hydraulic and electrical installation,",
+                "system commissioning and configuration."
+              ]
+            }
+          }
+        }
       }
     }
   },
