@@ -53,6 +53,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   const t = useTranslations("header");
   const tGlobal = useTranslations("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openMobileSections, setOpenMobileSections] = useState<Record<string, boolean>>({});
   const { data: session, isPending } = useSession();
   const [categories, setCategories] = useState<Category[]>([]);
   const [isMounted, setIsMounted] = useState(false);
@@ -86,6 +87,10 @@ const Header: React.FC<HeaderProps> = (props) => {
         },
       },
     });
+  };
+
+  const toggleMobileSection = (section: string) => {
+    setOpenMobileSections((current) => ({ ...current, [section]: !current[section] }));
   };
 
   return (
@@ -304,7 +309,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
       {/* Full-Screen Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-14 sm:top-16 z-40 lg:hidden">
+        <div className="fixed inset-0 top-[5.5rem] sm:top-[6.5rem] z-40 lg:hidden">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -312,7 +317,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           />
 
           {/* Menu Content */}
-          <div className="absolute inset-0 bg-white overflow-y-auto shadow-lg mt-14">
+          <div className="absolute inset-0 bg-white overflow-y-auto shadow-lg">
             <div className="flex flex-col min-h-full">
               {/* User Profile Section - Top Priority */}
               {isMounted && session?.user && (
@@ -371,10 +376,11 @@ const Header: React.FC<HeaderProps> = (props) => {
 
                 {/* Produkty */}
                 <div className="space-y-1">
-                  <div className="px-4 py-2 text-h2-mobile">
+                  <button type="button" onClick={() => toggleMobileSection("products")} className="flex w-full items-center justify-between px-4 py-3.5 text-left text-h2-mobile hover:text-primary hover:bg-blue-50 rounded-lg font-medium transition-colors">
                     {t("nav.products")}
-                  </div>
-                  <div className="pl-4 space-y-1">
+                    <ChevronDown className={`h-5 w-5 transition-transform ${openMobileSections.products ? "rotate-180" : ""}`} />
+                  </button>
+                  {openMobileSections.products && <div className="pl-4 space-y-1">
                     {categories.map((cat) => (
                       <Link
                         key={cat.slug}
@@ -386,15 +392,16 @@ const Header: React.FC<HeaderProps> = (props) => {
                         {cat.categoryDetails[0].name}
                       </Link>
                     ))}
-                  </div>
+                  </div>}
                 </div>
 
                 {/* Usługi */}
                 <div className="space-y-1">
-                  <div className="px-4 py-2 text-h2-mobile">
+                  <button type="button" onClick={() => toggleMobileSection("services")} className="flex w-full items-center justify-between px-4 py-3.5 text-left text-h2-mobile hover:text-primary hover:bg-blue-50 rounded-lg font-medium transition-colors">
                     {t("nav.services")}
-                  </div>
-                  <div className="pl-4 space-y-1">
+                    <ChevronDown className={`h-5 w-5 transition-transform ${openMobileSections.services ? "rotate-180" : ""}`} />
+                  </button>
+                  {openMobileSections.services && <div className="pl-4 space-y-1">
                     <Link
                       href="/services/installation"
                       className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
@@ -411,7 +418,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     >
                       {t("nav.maintenance")}
                     </Link>
-                  </div>
+                  </div>}
                 </div>
 
                 {/* Certyfikaty */}
@@ -445,14 +452,44 @@ const Header: React.FC<HeaderProps> = (props) => {
               </Link>
 
                 {/* Realizację */}
-              <Link
-                href="/realizations"
-                className="block px-4 py-3.5 text-h2-mobile text-amm hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-                locale={locale}
-              >
-                {t('nav.realizations')}
-              </Link>
+              <div className="space-y-1">
+                <button type="button" onClick={() => toggleMobileSection("realizations")} className="flex w-full items-center justify-between px-4 py-3.5 text-left text-h2-mobile hover:text-primary hover:bg-blue-50 rounded-lg font-medium transition-colors">
+                  {t("nav.realizations")}
+                  <ChevronDown className={`h-5 w-5 transition-transform ${openMobileSections.realizations ? "rotate-180" : ""}`} />
+                </button>
+                {openMobileSections.realizations && (
+                  <div className="pl-4 space-y-1">
+                    {REALIZATION_GROUPS.map((group) => (
+                      <Link key={group.id} href={`/realizations/${group.id}`} className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)} locale={locale}>
+                        {tGlobal(`realizations.groups.${group.id}.title`)}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+                <div className="space-y-1">
+                  <button type="button" onClick={() => toggleMobileSection("account")} className="flex w-full items-center justify-between px-4 py-3.5 text-left text-h2-mobile hover:text-primary hover:bg-blue-50 rounded-lg font-medium transition-colors">
+                    {t("nav.account")}
+                    <ChevronDown className={`h-5 w-5 transition-transform ${openMobileSections.account ? "rotate-180" : ""}`} />
+                  </button>
+                  {openMobileSections.account && (
+                    <div className="pl-4 space-y-1">
+                      {isMounted && session?.user ? (
+                        <>
+                          <Link href="/dashboard" className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)} locale={locale}>{t("auth.dashboard")}</Link>
+                          <Link href="/dashboard/profile" className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)} locale={locale}>{t("auth.settings")}</Link>
+                          <button type="button" onClick={() => { setIsMenuOpen(false); handleSignOut(); }} className="flex w-full items-center px-4 py-2.5 text-left text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"><LogOut className="h-4 w-4 mr-2" />{t("auth.signOut")}</button>
+                        </>
+                      ) : (
+                        <>
+                          <Link href="/signin" className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)} locale={locale}>{t("auth.signIn")}</Link>
+                          <Link href="/signup" className="block px-4 py-2.5 text-amm hover:text-primary hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)} locale={locale}>{t("auth.signUp")}</Link>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
               </nav>
 
               {/* Bottom Section - Auth & Language */}
